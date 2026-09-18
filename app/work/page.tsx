@@ -7,16 +7,7 @@ import Link from "next/link";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Code2,
-  Globe2,
-  Layers3,
-  MoveUpRight,
-  Palette,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 
 /* =========================================================
    PROJECTS
@@ -33,9 +24,11 @@ const projects = [
       "A premium booking and digital experience created for a London-based hair specialist.",
     image: "/showcase/creative-workspace.jpg",
     video: "/expertise/111.mp4",
-    href: "https://pengtresses.vercel.app",
+    href: "/work/pengtresses",
+    liveUrl: "https://foreverpenghair.com",
     accent: "#d9ff25",
     layout: "featured",
+    capabilities: ["Booking platform", "Payments", "Automation", "Admin dashboard"],
   },
   {
     number: "02",
@@ -46,9 +39,11 @@ const projects = [
     description:
       "A professional digital presence for a growing welding electrode manufacturer.",
     image: "/showcase/01.jpg",
-    href: "https://github.com/numoenochtetteh/power-electrode-ltd",
+    href: "/work/power-electrode-ltd",
+    liveUrl: "https://www.powerelectrodeltd.com/",
     accent: "#8fb5ff",
     layout: "standard",
+    capabilities: ["Website", "SEO", "Manufacturing", "Growth"],
   },
   {
     number: "03",
@@ -60,9 +55,11 @@ const projects = [
       "A modern logistics website focused on credibility, services and customer confidence.",
     image: "/showcase/product-design.jpg",
     video: "/expertise/6.mp4",
-    href: "https://totallog.org",
+    href: "/work/total-logistics",
+    liveUrl: "https://totallog.org",
     accent: "#ff8b67",
     layout: "standard",
+    capabilities: ["Website", "Logistics", "Responsive", "Strategy"],
   },
   {
     number: "04",
@@ -73,9 +70,11 @@ const projects = [
     description:
       "A polished jewellery shopping experience built around strong imagery and clean product presentation.",
     image: "/showcase/03.jpg",
-    href: "#",
+    href: "/work/numo-sebi",
+    liveUrl: "https://jewelry-store-numo-sebi-two.vercel.app",
     accent: "#c9bfff",
     layout: "wide",
+    capabilities: ["E-commerce", "Frontend", "Product UI", "Responsive"],
   },
   {
     number: "05",
@@ -86,9 +85,11 @@ const projects = [
     description:
       "A minimal architectural portfolio designed to let projects and imagery lead the experience.",
     image: "/showcase/02.jpg",
-    href: "https://kent-architects.vercel.app",
+    href: "/work/kent-architects",
+    liveUrl: "https://kent-architects.vercel.app",
     accent: "#79dcb5",
     layout: "standard",
+    capabilities: ["Architecture", "Portfolio", "Frontend", "Responsive"],
   },
   {
     number: "06",
@@ -100,9 +101,11 @@ const projects = [
       "A modern operations interface designed around clarity, tracking and business-critical information.",
     image: "/showcase/coding-workspace.jpg",
     video: "/expertise/03.mp4",
-    href: "#",
+    href: "/work/lucenex",
+    liveUrl: null,
     accent: "#ffd66b",
     layout: "standard",
+    capabilities: ["SaaS", "Data & AI", "Dashboard", "Frontend"],
   },
 ];
 
@@ -187,7 +190,7 @@ export default function WorkPage() {
                   <span />
                 </div>
 
-                <span>numodigital.com/work</span>
+                <span>devnumo.com/work</span>
 
                 <ArrowUpRight size={15} />
               </div>
@@ -231,7 +234,7 @@ export default function WorkPage() {
               <Sparkles size={17} />
 
               <div>
-                <small>NUMO DIGITAL</small>
+                <small>DEVNUMO</small>
                 <strong>Made for growth.</strong>
               </div>
             </div>
@@ -295,73 +298,10 @@ export default function WorkPage() {
 
         <section id="projects" className="project-gallery">
           <div className="project-gallery-inner">
-            {/* =================================================
-                PROJECT 01 FEATURED
-            ================================================= */}
-
-            <a
-              href={projects[0].href}
-              target="_blank"
-              rel="noreferrer"
-              className="case-project case-project-featured"
-              style={
-                {
-                  "--project-accent": projects[0].accent,
-                } as React.CSSProperties
-              }
-              data-reveal
-            >
-              <div className="case-media">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  poster={projects[0].image}
-                >
-                  <source src={projects[0].video} type="video/mp4" />
-                </video>
-
-                <div className="case-media-overlay" />
-
-                <span className="case-number">{projects[0].number}</span>
-
-                <span className="case-arrow">
-                  <ArrowUpRight size={22} />
-                </span>
-
-                <div className="case-floating-label">
-                  <span>Featured project</span>
-                  <strong>{projects[0].type}</strong>
-                </div>
-              </div>
-
-              <div className="case-content">
-                <div>
-                  <div className="case-meta">
-                    <span>{projects[0].industry}</span>
-                    <span>{projects[0].type}</span>
-                    <span>{projects[0].year}</span>
-                  </div>
-
-                  <h3>{projects[0].title}</h3>
-                </div>
-
-                <p>{projects[0].description}</p>
-              </div>
-            </a>
-
-            {/* =================================================
-                PROJECTS 02 + 03
-            ================================================= */}
-
-            <div className="project-pair">
-              {projects.slice(1, 3).map((project) => (
-                <a
-                  href={project.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="case-project case-project-half"
+            <div className="project-grid">
+              {projects.map((project) => (
+                <article
+                  className="portfolio-project-card"
                   style={
                     {
                       "--project-accent": project.accent,
@@ -370,271 +310,77 @@ export default function WorkPage() {
                   key={project.number}
                   data-reveal
                 >
-                  <div className="case-media">
-                    {project.video ? (
-                      <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        poster={project.image}
-                      >
-                        <source src={project.video} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 800px) 100vw, 50vw"
-                      />
-                    )}
+                  <Link
+                    href={project.href}
+                    className="portfolio-media-link"
+                    aria-label={`View ${project.title} case study`}
+                  >
+                    <div className="portfolio-media">
+                      {project.video ? (
+                        <video autoPlay muted loop playsInline poster={project.image}>
+                          <source src={project.video} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 820px) 100vw, 50vw"
+                        />
+                      )}
 
-                    <div className="case-media-overlay" />
+                      <div className="portfolio-media-shade" />
 
-                    <span className="case-number">{project.number}</span>
+                      <span className="portfolio-number">{project.number}</span>
 
-                    <span className="case-arrow">
-                      <ArrowUpRight size={20} />
-                    </span>
-                  </div>
+                      <span className="portfolio-arrow">
+                        <ArrowUpRight size={20} />
+                      </span>
+                    </div>
+                  </Link>
 
-                  <div className="case-content case-content-small">
-                    <div>
-                      <div className="case-meta">
-                        <span>{project.industry}</span>
-                        <span>{project.year}</span>
-                      </div>
-
+                  <div className="portfolio-card-body">
+                    <div className="portfolio-title-line">
                       <h3>{project.title}</h3>
+                      <em>· {project.type}</em>
                     </div>
 
                     <p>{project.description}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
 
-            {/* =================================================
-                PROJECT 04
-            ================================================= */}
-
-            <a
-              href={projects[3].href}
-              className="case-project case-project-banner"
-              style={
-                {
-                  "--project-accent": projects[3].accent,
-                } as React.CSSProperties
-              }
-              data-reveal
-            >
-              <div className="banner-content">
-                <div className="banner-top">
-                  <span>{projects[3].number}</span>
-
-                  <span>
-                    {projects[3].industry} · {projects[3].year}
-                  </span>
-                </div>
-
-                <div>
-                  <h3>{projects[3].title}</h3>
-
-                  <p>{projects[3].description}</p>
-                </div>
-
-                <span className="banner-arrow">
-                  <ArrowUpRight size={24} />
-                </span>
-              </div>
-
-              <div className="banner-media">
-                <Image
-                  src={projects[3].image}
-                  alt={projects[3].title}
-                  fill
-                  sizes="100vw"
-                />
-              </div>
-            </a>
-          </div>
-        </section>
-
-        {/* =====================================================
-            DARK FEATURE SECTION
-        ====================================================== */}
-
-        <section className="work-feature-section">
-          <div className="work-feature-inner" data-reveal>
-            <div className="work-feature-copy">
-              <span className="dark-project-label">
-                <span />
-                DIGITAL EXPERIENCES
-              </span>
-
-              <h2>
-                Design that gets
-                <br />
-                out of the way.
-              </h2>
-
-              <p>
-                Strong digital work should help people understand the business,
-                find what matters and take action without unnecessary friction.
-              </p>
-
-              <div className="feature-points">
-                <div>
-                  <Palette size={18} />
-                  <span>Clear visual direction</span>
-                </div>
-
-                <div>
-                  <Layers3 size={18} />
-                  <span>Purposeful UX</span>
-                </div>
-
-                <div>
-                  <Code2 size={18} />
-                  <span>Responsive development</span>
-                </div>
-
-                <div>
-                  <Globe2 size={18} />
-                  <span>Built for real users</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="work-feature-visual">
-              <div className="feature-ring feature-ring-one" />
-              <div className="feature-ring feature-ring-two" />
-              <div className="feature-ring feature-ring-three" />
-
-              <div className="feature-center">
-                <strong>numo</strong>
-                <span>DIGITAL</span>
-              </div>
-
-              <div className="feature-node feature-node-one">
-                <Palette size={17} />
-                DESIGN
-              </div>
-
-              <div className="feature-node feature-node-two">
-                <Code2 size={17} />
-                BUILD
-              </div>
-
-              <div className="feature-node feature-node-three">
-                <Globe2 size={17} />
-                LAUNCH
-              </div>
-
-              <div className="feature-node feature-node-four">
-                <MoveUpRight size={17} />
-                GROW
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* =====================================================
-            PROJECTS 05 + 06
-        ====================================================== */}
-
-        <section className="project-gallery project-gallery-bottom">
-          <div className="project-gallery-inner">
-            <div className="project-pair">
-              {projects.slice(4, 6).map((project) => (
-                <a
-                  href={project.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="case-project case-project-half"
-                  style={
-                    {
-                      "--project-accent": project.accent,
-                    } as React.CSSProperties
-                  }
-                  key={project.number}
-                  data-reveal
-                >
-                  <div className="case-media">
-                    {project.video ? (
-                      <video
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        poster={project.image}
-                      >
-                        <source src={project.video} type="video/mp4" />
-                      </video>
-                    ) : (
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 800px) 100vw, 50vw"
-                      />
-                    )}
-
-                    <div className="case-media-overlay" />
-
-                    <span className="case-number">{project.number}</span>
-
-                    <span className="case-arrow">
-                      <ArrowUpRight size={20} />
-                    </span>
-                  </div>
-
-                  <div className="case-content case-content-small">
-                    <div>
-                      <div className="case-meta">
-                        <span>{project.industry}</span>
-                        <span>{project.type}</span>
-                      </div>
-
-                      <h3>{project.title}</h3>
+                    <div className="portfolio-tags">
+                      {project.capabilities.map((item) => (
+                        <span key={item}>{item}</span>
+                      ))}
                     </div>
 
-                    <p>{project.description}</p>
+                    <div className="portfolio-actions">
+                      {project.liveUrl ? (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="portfolio-action portfolio-action-live"
+                        >
+                          View live site
+                          <ArrowUpRight size={14} />
+                        </a>
+                      ) : (
+                        <span className="portfolio-action portfolio-action-muted">
+                          Private project
+                        </span>
+                      )}
+
+                      <Link
+                        href={project.href}
+                        className="portfolio-action portfolio-action-study"
+                      >
+                        View case study
+                        <ArrowRight size={14} />
+                      </Link>
+                    </div>
                   </div>
-                </a>
+                </article>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* =====================================================
-            PHILOSOPHY
-        ====================================================== */}
-
-        <section className="work-philosophy">
-          <div className="work-philosophy-inner">
-            <span data-reveal>WHAT MATTERS</span>
-
-            <h2 data-reveal>
-              Not work for
-              <br />
-              the portfolio.
-              <br />
-              <em>Work for the business.</em>
-            </h2>
-
-            <div className="philosophy-bottom" data-reveal>
-              <p>
-                Beautiful design matters, but the job is bigger than making
-                something look good. The goal is to make the business easier to
-                understand and easier to trust.
-              </p>
-
-              <Link href="/contact">
-                Start a project
-                <ArrowUpRight size={17} />
-              </Link>
             </div>
           </div>
         </section>
@@ -1041,11 +787,7 @@ export default function WorkPage() {
           ====================================================== */
 
           .project-gallery {
-            padding: 0 28px 120px;
-          }
-
-          .project-gallery-bottom {
-            padding-top: 120px;
+            padding: 0 28px 105px;
           }
 
           .project-gallery-inner {
@@ -1053,503 +795,229 @@ export default function WorkPage() {
             margin: 0 auto;
           }
 
-          .case-project {
+          .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+          }
+
+          .portfolio-project-card {
+            display: flex;
+            min-width: 0;
+            overflow: hidden;
+            border: 1px solid #dcd9d1;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.72);
+            padding: 14px;
+            flex-direction: column;
+            box-shadow: 0 18px 45px rgba(27, 27, 23, 0.035);
+            transition:
+              transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s ease,
+              border-color 0.35s ease;
+          }
+
+          .portfolio-project-card:hover {
+            border-color: #c9c5bb;
+            transform: translateY(-5px);
+            box-shadow: 0 28px 65px rgba(27, 27, 23, 0.075);
+          }
+
+          .portfolio-media-link {
             display: block;
-            color: #111;
+            color: inherit;
             text-decoration: none;
           }
 
-          .case-media {
+          .portfolio-media {
             position: relative;
+            aspect-ratio: 1.48 / 1;
             overflow: hidden;
-            border-radius: 28px;
+            border-radius: 21px;
             background: #deddd7;
           }
 
-          .case-project-featured .case-media {
-            height: 650px;
-          }
-
-          .case-media img,
-          .case-media video {
+          .portfolio-media img,
+          .portfolio-media video {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
           }
 
-          .case-project:hover .case-media img,
-          .case-project:hover .case-media video {
-            transform: scale(1.045);
+          .portfolio-project-card:hover .portfolio-media img,
+          .portfolio-project-card:hover .portfolio-media video {
+            transform: scale(1.035);
           }
 
-          .case-media-overlay {
+          .portfolio-media-shade {
             position: absolute;
             inset: 0;
             background: linear-gradient(
               180deg,
-              rgba(0, 0, 0, 0.08),
-              transparent 40%,
-              rgba(0, 0, 0, 0.08)
+              rgba(0, 0, 0, 0.07),
+              transparent 34%,
+              rgba(0, 0, 0, 0.04)
             );
+            pointer-events: none;
           }
 
-          .case-number {
+          .portfolio-number {
             position: absolute;
-            top: 18px;
-            left: 18px;
+            top: 14px;
+            left: 14px;
             z-index: 3;
             display: grid;
-            min-width: 42px;
-            height: 32px;
+            min-width: 40px;
+            height: 30px;
             place-items: center;
+            border: 1px solid rgba(17, 17, 17, 0.05);
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.94);
             font-family: ui-monospace, monospace;
-            font-size: 9px;
+            font-size: 8px;
+            backdrop-filter: blur(12px);
           }
 
-          .case-arrow {
+          .portfolio-arrow {
             position: absolute;
-            top: 16px;
-            right: 16px;
-            z-index: 4;
+            top: 13px;
+            right: 13px;
+            z-index: 3;
             display: grid;
-            width: 46px;
-            height: 46px;
+            width: 43px;
+            height: 43px;
             place-items: center;
             border-radius: 50%;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            color: #111;
+            backdrop-filter: blur(12px);
             transition:
-              transform 0.3s ease,
-              background 0.3s ease,
-              color 0.3s ease;
+              transform 0.35s ease,
+              background 0.35s ease;
           }
 
-          .case-project:hover .case-arrow {
+          .portfolio-project-card:hover .portfolio-arrow {
             background: var(--project-accent);
             transform: rotate(45deg);
           }
 
-          .case-floating-label {
-            position: absolute;
-            bottom: 25px;
-            left: 25px;
-            z-index: 4;
+          .portfolio-card-body {
             display: flex;
-            min-width: 220px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.85);
-            padding: 13px 15px;
+            min-height: 310px;
+            padding: 26px 14px 14px;
             flex-direction: column;
-            backdrop-filter: blur(15px);
           }
 
-          .case-floating-label span {
-            color: #7e7871;
-            font-family: ui-monospace, monospace;
-            font-size: 7px;
-          }
-
-          .case-floating-label strong {
-            margin-top: 4px;
-            font-size: 12px;
-          }
-
-          .case-content {
-            display: grid;
-            grid-template-columns: 1fr 0.6fr;
-            gap: 50px;
-            align-items: end;
-            padding: 25px 4px 55px;
-          }
-
-          .case-meta {
+          .portfolio-title-line {
             display: flex;
-            gap: 6px;
+            align-items: baseline;
+            gap: 8px;
             flex-wrap: wrap;
           }
 
-          .case-meta span {
-            border: 1px solid #cfccc5;
-            border-radius: 999px;
-            padding: 6px 9px;
-            color: #716b65;
-            font-size: 8px;
-          }
-
-          .case-content h3 {
-            margin: 18px 0 0;
-            font-size: clamp(40px, 4vw, 62px);
-            font-weight: 600;
-            line-height: 0.92;
+          .portfolio-title-line h3 {
+            margin: 0;
+            font-size: clamp(30px, 3vw, 46px);
+            font-weight: 650;
+            line-height: 0.96;
             letter-spacing: -0.055em;
           }
 
-          .case-content > p {
-            margin: 0;
-            color: #69635d;
-            font-size: 13px;
-            line-height: 1.6;
-          }
-
-          /* =====================================================
-             PROJECT PAIR
-          ====================================================== */
-
-          .project-pair {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-          }
-
-          .case-project-half .case-media {
-            height: 480px;
-          }
-
-          .case-content-small {
-            display: block;
-            padding-bottom: 55px;
-          }
-
-          .case-content-small > p {
-            max-width: 500px;
-            margin-top: 16px;
-          }
-
-          /* =====================================================
-             BANNER PROJECT
-          ====================================================== */
-
-          .case-project-banner {
-            display: grid;
-            min-height: 570px;
-            margin-top: 15px;
-            grid-template-columns: 0.7fr 1.3fr;
-            overflow: hidden;
-            border-radius: 30px;
-            background: var(--project-accent);
-          }
-
-          .banner-content {
-            position: relative;
-            display: flex;
-            padding: 38px;
-            flex-direction: column;
-            justify-content: space-between;
-          }
-
-          .banner-top {
-            display: flex;
-            justify-content: space-between;
-            font-family: ui-monospace, monospace;
-            font-size: 8px;
-            letter-spacing: 0.08em;
-          }
-
-          .banner-content h3 {
-            margin: 0;
-            font-size: clamp(45px, 5vw, 78px);
+          .portfolio-title-line em {
+            color: #5f5b55;
+            font-family: Georgia, serif;
+            font-size: 16px;
             font-weight: 600;
-            line-height: 0.88;
-            letter-spacing: -0.065em;
           }
 
-          .banner-content p {
-            max-width: 470px;
-            margin: 22px 0 0;
-            font-size: 12px;
-            line-height: 1.6;
-          }
-
-          .banner-arrow {
-            position: absolute;
-            right: 25px;
-            bottom: 25px;
-            display: grid;
-            width: 52px;
-            height: 52px;
-            place-items: center;
-            border-radius: 50%;
-            background: #111;
-            color: white;
-            transition: transform 0.3s ease;
-          }
-
-          .case-project-banner:hover .banner-arrow {
-            transform: rotate(45deg);
-          }
-
-          .banner-media {
-            position: relative;
-            min-height: 570px;
-            overflow: hidden;
-          }
-
-          .banner-media img {
-            object-fit: cover;
-            transition: transform 0.8s ease;
-          }
-
-          .case-project-banner:hover .banner-media img {
-            transform: scale(1.04);
-          }
-
-          /* =====================================================
-             FEATURE DARK
-          ====================================================== */
-
-          .work-feature-section {
-            padding: 28px;
-          }
-
-          .work-feature-inner {
-            display: grid;
-            width: min(1350px, 100%);
-            min-height: 690px;
-            margin: 0 auto;
-            grid-template-columns: 1fr 1fr;
-            overflow: hidden;
-            border-radius: 34px;
-            background: #111;
-            color: white;
-          }
-
-          .work-feature-copy {
-            display: flex;
-            justify-content: center;
-            padding: 70px;
-            flex-direction: column;
-          }
-
-          .dark-project-label {
-            display: inline-flex;
-            align-self: flex-start;
-            align-items: center;
-            gap: 9px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 6px;
-            padding: 8px 11px;
-            color: rgba(255, 255, 255, 0.6);
-            font-family: ui-monospace, monospace;
-            font-size: 8px;
-            letter-spacing: 0.1em;
-          }
-
-          .dark-project-label span {
-            width: 8px;
-            height: 8px;
-            border-radius: 2px;
-            background: #d9ff25;
-          }
-
-          .work-feature-copy h2 {
-            margin: 35px 0 0;
-            font-size: clamp(55px, 5.7vw, 90px);
-            font-weight: 600;
-            line-height: 0.9;
-            letter-spacing: -0.065em;
-          }
-
-          .work-feature-copy > p {
-            max-width: 500px;
-            margin: 30px 0 0;
-            color: rgba(255, 255, 255, 0.56);
+          .portfolio-card-body > p {
+            max-width: 560px;
+            margin: 18px 0 0;
+            color: #5f5b55;
             font-size: 14px;
-            line-height: 1.65;
+            line-height: 1.6;
           }
 
-          .feature-points {
-            display: grid;
-            margin-top: 40px;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-          }
-
-          .feature-points > div {
+          .portfolio-tags {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
-            padding-top: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 10px;
+            gap: 7px;
+            margin-top: 24px;
+            flex-wrap: wrap;
           }
 
-          .feature-points svg {
-            color: #d9ff25;
-          }
-
-          .work-feature-visual {
-            position: relative;
-            overflow: hidden;
-          }
-
-          .feature-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-          }
-
-          .feature-ring-one {
-            width: 230px;
-            height: 230px;
-          }
-
-          .feature-ring-two {
-            width: 420px;
-            height: 420px;
-          }
-
-          .feature-ring-three {
-            width: 620px;
-            height: 620px;
-          }
-
-          .feature-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            display: flex;
-            width: 125px;
-            height: 125px;
+          .portfolio-tags span {
+            display: inline-flex;
+            min-height: 29px;
             align-items: center;
             justify-content: center;
-            border-radius: 30px;
-            background: #d9ff25;
-            color: #111;
-            flex-direction: column;
-            transform: translate(-50%, -50%);
-            animation: featurePulse 4s ease-in-out infinite;
-          }
-
-          .feature-center strong {
-            font-size: 25px;
-          }
-
-          .feature-center span {
-            font-family: ui-monospace, monospace;
-            font-size: 6px;
-            letter-spacing: 0.13em;
-          }
-
-          @keyframes featurePulse {
-            50% {
-              transform: translate(-50%, -50%) scale(1.07);
-            }
-          }
-
-          .feature-node {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.14);
+            border: 1px solid #d4d1ca;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 11px 14px;
-            font-family: ui-monospace, monospace;
+            background: #eeece7;
+            padding: 0 11px;
+            color: #34312d;
             font-size: 8px;
-            backdrop-filter: blur(10px);
-            animation: featureNodeFloat 5s ease-in-out infinite;
+            font-weight: 700;
+            letter-spacing: 0.015em;
+            text-transform: uppercase;
           }
 
-          .feature-node-one {
-            top: 19%;
-            left: 14%;
-          }
-
-          .feature-node-two {
-            top: 24%;
-            right: 13%;
-            animation-delay: -1.3s;
-          }
-
-          .feature-node-three {
-            bottom: 20%;
-            left: 18%;
-            animation-delay: -2.6s;
-          }
-
-          .feature-node-four {
-            right: 16%;
-            bottom: 22%;
-            animation-delay: -3.8s;
-          }
-
-          @keyframes featureNodeFloat {
-            50% {
-              transform: translateY(-13px);
-            }
-          }
-
-          /* =====================================================
-             PHILOSOPHY
-          ====================================================== */
-
-          .work-philosophy {
-            padding: 150px 28px;
-          }
-
-          .work-philosophy-inner {
-            width: min(1350px, 100%);
-            margin: 0 auto;
-          }
-
-          .work-philosophy-inner > span {
-            font-family: ui-monospace, monospace;
-            font-size: 9px;
-            letter-spacing: 0.15em;
-          }
-
-          .work-philosophy h2 {
-            margin: 35px 0 0;
-            font-size: clamp(65px, 8vw, 125px);
-            font-weight: 600;
-            line-height: 0.85;
-            letter-spacing: -0.075em;
-          }
-
-          .work-philosophy h2 em {
-            color: #817a73;
-            font-family: serif;
-            font-weight: 400;
-          }
-
-          .philosophy-bottom {
+          .portfolio-actions {
             display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 50px;
-            margin-top: 60px;
+            gap: 9px;
+            margin-top: auto;
+            padding-top: 28px;
+            flex-wrap: wrap;
           }
 
-          .philosophy-bottom p {
-            max-width: 600px;
-            margin: 0;
-            color: #68615b;
-            font-size: 15px;
-            line-height: 1.65;
-          }
-
-          .philosophy-bottom a {
+          .portfolio-action {
             display: inline-flex;
+            min-height: 43px;
             align-items: center;
-            gap: 25px;
+            justify-content: center;
+            gap: 9px;
             border-radius: 999px;
-            background: #111;
-            padding: 15px 20px 15px 25px;
-            color: white;
-            font-size: 12px;
+            padding: 0 17px;
+            font-size: 10px;
+            font-weight: 700;
             text-decoration: none;
+            transition:
+              transform 0.3s ease,
+              background 0.3s ease,
+              border-color 0.3s ease;
           }
 
-          .philosophy-bottom a svg {
-            color: #d9ff25;
+          .portfolio-action-live {
+            border: 1px solid #c9c6bf;
+            background: #fff;
+            color: #111;
+          }
+
+          .portfolio-action-live:hover {
+            border-color: #111;
+            transform: translateY(-2px);
+          }
+
+          .portfolio-action-study {
+            border: 1px solid #111;
+            background: #111;
+            color: #fff;
+          }
+
+          .portfolio-action-study svg {
+            color: var(--project-accent);
+          }
+
+          .portfolio-action-study:hover {
+            background: #222;
+            transform: translateY(-2px);
+          }
+
+          .portfolio-action-muted {
+            border: 1px solid #d3d0c9;
+            background: #ebe8e2;
+            color: #807c75;
+            cursor: default;
           }
 
           /* =====================================================
@@ -1801,6 +1269,31 @@ export default function WorkPage() {
               margin-top: 18px;
             }
 
+
+            .case-project-details {
+              margin-top: 18px;
+            }
+
+            .case-project-details > p {
+              font-size: 12px;
+              line-height: 1.55;
+            }
+
+            .case-content-small .case-project-details {
+              margin-top: 16px;
+            }
+
+            .case-actions {
+              gap: 8px;
+              margin-top: 16px;
+            }
+
+            .case-action {
+              min-height: 42px;
+              padding: 0 14px;
+              font-size: 9.5px;
+            }
+
             .case-project-banner {
               min-height: auto;
               border-radius: 20px;
@@ -1809,6 +1302,11 @@ export default function WorkPage() {
             .banner-content {
               min-height: 380px;
               padding: 24px;
+            }
+
+
+            .banner-actions {
+              padding-right: 0;
             }
 
             .banner-content h3 {
@@ -1903,6 +1401,114 @@ export default function WorkPage() {
               width: 100%;
               justify-content: space-between;
             }
+          }
+
+          /* =====================================================
+             RESPONSIVE PROJECT GRID
+          ====================================================== */
+
+          @media (max-width: 980px) {
+            .portfolio-card-body {
+              min-height: 300px;
+            }
+          }
+
+          @media (max-width: 820px) {
+            .project-grid {
+              grid-template-columns: 1fr;
+            }
+
+            .project-gallery {
+              padding-right: 18px;
+              padding-left: 18px;
+            }
+
+            .portfolio-card-body {
+              min-height: auto;
+            }
+
+            .portfolio-actions {
+              margin-top: 26px;
+            }
+          }
+
+          @media (max-width: 600px) {
+            .project-gallery {
+              padding-right: 12px;
+              padding-bottom: 72px;
+              padding-left: 12px;
+            }
+
+            .project-grid {
+              gap: 18px;
+            }
+
+            .portfolio-project-card {
+              border-radius: 22px;
+              padding: 9px;
+            }
+
+            .portfolio-media {
+              aspect-ratio: 1.3 / 1;
+              border-radius: 17px;
+            }
+
+            .portfolio-card-body {
+              padding: 21px 9px 10px;
+            }
+
+            .portfolio-title-line {
+              gap: 6px;
+            }
+
+            .portfolio-title-line h3 {
+              font-size: 31px;
+            }
+
+            .portfolio-title-line em {
+              font-size: 14px;
+            }
+
+            .portfolio-card-body > p {
+              margin-top: 14px;
+              font-size: 12.5px;
+            }
+
+            .portfolio-tags {
+              margin-top: 18px;
+            }
+
+            .portfolio-tags span {
+              min-height: 27px;
+              padding: 0 9px;
+              font-size: 7px;
+            }
+
+            .portfolio-actions {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 8px;
+              padding-top: 22px;
+            }
+
+            .portfolio-action {
+              width: 100%;
+              min-height: 44px;
+              padding: 0 10px;
+              font-size: 9px;
+            }
+
+          }
+
+          @media (max-width: 390px) {
+            .portfolio-title-line h3 {
+              font-size: 28px;
+            }
+
+            .portfolio-actions {
+              grid-template-columns: 1fr;
+            }
+
           }
 
           /* =====================================================

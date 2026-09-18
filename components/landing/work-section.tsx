@@ -1,786 +1,516 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-const projects = [
+const selectedProjects = [
   {
-    title: "PENGTRESSES",
-    type: "Website",
-    industry: "Beauty",
-    description:
-      "Premium booking and digital experience for a London-based hair specialist.",
-    image: "/showcase/3.png",
-    href: "https://pengtresses.vercel.app",
-  },
-  {
+    number: "02",
     title: "Power Electrode Ltd",
-    type: "Website",
     industry: "Manufacturing",
+    year: "2026",
     description:
-      "Corporate website for a growing welding electrode manufacturer.",
-    image: "/showcase/8.png",
-    href: "https://github.com/numoenochtetteh/power-electrode-ltd",
+      "A professional digital presence for a growing welding electrode manufacturer.",
+    image: "/showcase/01.jpg",
+    href: "/work/power-electrode-ltd",
   },
   {
+    number: "03",
     title: "Total Logistics",
-    type: "Website",
     industry: "Logistics",
+    year: "2026",
     description:
-      "A modern business website focused on trust, services and credibility.",
+      "A modern logistics website focused on credibility, services and customer confidence.",
     image: "/showcase/7.png",
-    href: "https://totallog.org",
+    video: "/expertise/6.mp4",
+    href: "/work/total-logistics",
   },
 ];
+
+const wideProject = {
+  number: "04",
+  title: "NUMO & SEBI",
+  industry: "E-commerce",
+  year: "2026",
+  description:
+    "A polished jewellery shopping experience built around strong imagery and clean product presentation.",
+  image: "/showcase/03.jpg",
+  href: "/work/numo-sebi",
+};
+
 export function WorkSection() {
   return (
-    <section id="work" className="portfolio-work">
-      <div className="portfolio-container">
-        {/* ======================================================
-            WORK HEADER
-        ====================================================== */}
+    <section id="work" className="home-selected-work">
+      <div className="home-selected-inner">
+        <header className="home-selected-header">
+          <div>
+            <span className="home-selected-badge">
+              <i /> SELECTED WORK
+            </span>
+            <h2>Proof in the work.</h2>
+          </div>
 
-        <header className="portfolio-header">
-          <span className="portfolio-eyebrow">
-            <span className="portfolio-eyebrow-dot" />
-            OUR WORK
-          </span>
+          <div className="home-selected-intro">
+            <p>
+              A selection of websites and digital products built around real
+              business needs — from credibility and discovery to booking,
+              operations and growth.
+            </p>
 
-          <h2>Digital Experiences.</h2>
-
-          <p>
-            We design and develop thoughtful digital experiences that help
-            businesses look better, communicate clearly and grow online.
-          </p>
-
-          <a href="#projects" className="portfolio-view-button">
-            Explore our work
-            <ArrowRight size={18} />
-          </a>
+            <Link href="/work">
+              View all work
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </header>
 
-        {/* ======================================================
-            PROJECTS
-        ====================================================== */}
+        <div className="home-selected-grid">
+          {selectedProjects.map((project) => (
+            <Link
+              href={project.href}
+              key={project.title}
+              className="home-case-card"
+            >
+              <div className="home-case-media">
+                {project.video ? (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster={project.image}
+                  >
+                    <source src={project.video} type="video/mp4" />
+                  </video>
+                ) : (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 760px) 100vw, 50vw"
+                  />
+                )}
 
-        <div id="projects" className="portfolio-grid">
-          {/* ====================================================
-              PROJECT 01
-          ==================================================== */}
+                <span className="home-case-number">{project.number}</span>
+                <span className="home-case-arrow">
+                  <ArrowUpRight size={19} />
+                </span>
+              </div>
 
-          <a
-            href={projects[0].href}
-            target="_blank"
-            rel="noreferrer"
-            className="portfolio-project"
-          >
-            <div className="project-image project-image-featured">
-              <Image
-                src={projects[0].image}
-                alt={projects[0].title}
-                fill
-                priority
-                sizes="(max-width: 900px) 100vw, 58vw"
-              />
+              <div className="home-case-copy">
+                <div className="home-case-meta">
+                  <span>{project.industry}</span>
+                  <span>{project.year}</span>
+                </div>
 
-              <div className="project-overlay" />
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
 
-              <span className="project-index">01</span>
+                <span className="home-case-study-link">
+                  View case study
+                  <ArrowUpRight size={14} />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
 
-              <span className="project-arrow">
-                <ArrowUpRight size={21} />
+        <Link href={wideProject.href} className="home-wide-case">
+          <div className="home-wide-copy">
+            <div className="home-wide-top">
+              <span>{wideProject.number}</span>
+              <span>
+                {wideProject.industry} · {wideProject.year}
               </span>
             </div>
 
-            <div className="project-information">
-              <div className="project-title-row">
-                <h3>{projects[0].title}</h3>
-
-                <div className="project-tags">
-                  <span>{projects[0].industry}</span>
-                  <span>{projects[0].type}</span>
-                </div>
-              </div>
-
-              <p>{projects[0].description}</p>
-            </div>
-          </a>
-
-          {/* ====================================================
-              PROJECT 02
-          ==================================================== */}
-
-          <a
-            href={projects[1].href}
-            target="_blank"
-            rel="noreferrer"
-            className="portfolio-project"
-          >
-            <div className="project-image">
-              <Image
-                src={projects[1].image}
-                alt={projects[1].title}
-                fill
-                sizes="(max-width: 900px) 100vw, 42vw"
-              />
-
-              <div className="project-overlay" />
-
-              <span className="project-index">02</span>
-
-              <span className="project-arrow">
-                <ArrowUpRight size={20} />
-              </span>
-            </div>
-
-            <div className="project-information">
-              <div className="project-title-row">
-                <h3>{projects[1].title}</h3>
-
-                <div className="project-tags">
-                  <span>{projects[1].industry}</span>
-                </div>
-              </div>
-
-              <p>{projects[1].description}</p>
-            </div>
-          </a>
-
-          {/* ====================================================
-              PROJECT 03
-          ==================================================== */}
-
-          <a
-            href={projects[2].href}
-            target="_blank"
-            rel="noreferrer"
-            className="portfolio-project"
-          >
-            <div className="project-image">
-              <Image
-                src={projects[2].image}
-                alt={projects[2].title}
-                fill
-                sizes="(max-width: 900px) 100vw, 58vw"
-              />
-
-              <div className="project-overlay" />
-
-              <span className="project-index">03</span>
-
-              <span className="project-arrow">
-                <ArrowUpRight size={20} />
-              </span>
-            </div>
-
-            <div className="project-information">
-              <div className="project-title-row">
-                <h3>{projects[2].title}</h3>
-
-                <div className="project-tags">
-                  <span>{projects[2].industry}</span>
-                  <span>{projects[2].type}</span>
-                </div>
-              </div>
-
-              <p>{projects[2].description}</p>
-            </div>
-          </a>
-
-          {/* ====================================================
-              CTA CARD
-          ==================================================== */}
-
-          <div className="portfolio-statement">
-            <div className="statement-top">
-              <span>What we build</span>
-              <span>2026</span>
-            </div>
-
-            <div className="statement-content">
+            <div>
               <h3>
-                Websites built to
+                NUMO &amp;
                 <br />
-                make businesses
-                <br />
-                look serious.
+                SEBI
               </h3>
-
-              <a href="/contact">
-                Start a project
-                <ArrowUpRight size={17} />
-              </a>
+              <p>{wideProject.description}</p>
             </div>
+
+            <span className="home-wide-arrow">
+              <ArrowUpRight size={23} />
+            </span>
           </div>
-        </div>
 
-        {/* ======================================================
-            FOOTER
-        ====================================================== */}
-
-        <div className="portfolio-footer">
-          <p>
-            Web Design
-            <span>•</span>
-            Development
-            <span>•</span>
-            UX/UI
-            <span>•</span>
-            SEO
-            <span>•</span>
-            Branding
-          </p>
-
-          <a href="/contact">
-            Let&apos;s work together
-            <ArrowUpRight size={15} />
-          </a>
-        </div>
+          <div className="home-wide-media">
+            <Image
+              src={wideProject.image}
+              alt={wideProject.title}
+              fill
+              sizes="(max-width: 760px) 100vw, 65vw"
+            />
+          </div>
+        </Link>
       </div>
 
       <style jsx global>{`
-        /* ======================================================
-           SECTION
-        ====================================================== */
-
-        .portfolio-work {
+        .home-selected-work {
           position: relative;
-          width: 100%;
           overflow: hidden;
           background: #f4f4f1;
-          color: #0a0a0a;
-          padding: 110px 28px 90px;
+          padding: 110px 28px 120px;
+          color: #0b0b0b;
         }
 
-        .portfolio-container {
+        .home-selected-inner {
           width: min(1400px, 100%);
           margin: 0 auto;
         }
 
-        /* ======================================================
-           HEADER
-        ====================================================== */
-
-        .portfolio-header {
-          display: flex;
-          max-width: 1100px;
-          margin: 0 auto 70px;
-          align-items: center;
-          flex-direction: column;
-          text-align: center;
+        .home-selected-header {
+          display: grid;
+          grid-template-columns: 1.25fr 0.75fr;
+          gap: 70px;
+          align-items: end;
+          margin-bottom: 62px;
         }
 
-        .portfolio-eyebrow {
+        .home-selected-badge {
           display: inline-flex;
           align-items: center;
-          justify-content: center;
           gap: 9px;
-          margin-bottom: 30px;
-          border: 1px solid #d4cec1;
-          border-radius: 5px;
-          padding: 8px 12px;
-          color: #5f574f;
-          font-family:
-            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 9px;
-          font-weight: 700;
+          border: 1px solid #d6d2c9;
+          border-radius: 6px;
+          background: rgba(255, 255, 255, 0.42);
+          padding: 9px 12px;
+          color: #5e5a53;
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
+          font-weight: 800;
           letter-spacing: 0.16em;
-          text-transform: uppercase;
         }
 
-        .portfolio-eyebrow-dot {
-          display: block;
+        .home-selected-badge i {
           width: 8px;
           height: 8px;
-          flex-shrink: 0;
           border-radius: 2px;
           background: #d9ff25;
         }
 
-        .portfolio-header h2 {
-          max-width: 1100px;
+        .home-selected-header h2 {
+          margin: 25px 0 0;
+          font-size: clamp(58px, 7vw, 102px);
+          font-weight: 690;
+          line-height: 0.88;
+          letter-spacing: -0.07em;
+        }
+
+        .home-selected-intro {
+          max-width: 480px;
+          justify-self: end;
+        }
+
+        .home-selected-intro p {
           margin: 0;
-          font-size: clamp(43px, 5vw, 72px);
+          color: #68665f;
+          font-size: 14px;
+          line-height: 1.65;
+        }
+
+        .home-selected-intro a {
+          display: inline-flex;
+          align-items: center;
+          gap: 14px;
+          margin-top: 22px;
+          color: #111;
+          font-size: 12px;
           font-weight: 700;
-          line-height: 0.98;
+          text-decoration: none;
+        }
+
+        .home-selected-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 18px;
+        }
+
+        .home-case-card {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .home-case-media {
+          position: relative;
+          height: 520px;
+          overflow: hidden;
+          border-radius: 28px;
+          background: #dddcd6;
+        }
+
+        .home-case-media img,
+        .home-case-media video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .home-case-card:hover .home-case-media img,
+        .home-case-card:hover .home-case-media video {
+          transform: scale(1.025);
+        }
+
+        .home-case-number,
+        .home-case-arrow {
+          position: absolute;
+          z-index: 3;
+          top: 18px;
+          display: grid;
+          place-items: center;
+          background: rgba(255, 255, 255, 0.96);
+          color: #111;
+        }
+
+        .home-case-number {
+          left: 18px;
+          min-width: 50px;
+          height: 40px;
+          border-radius: 999px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
+          font-weight: 800;
+        }
+
+        .home-case-arrow {
+          right: 18px;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          transition: transform 0.35s ease;
+        }
+
+        .home-case-card:hover .home-case-arrow {
+          transform: rotate(8deg) scale(1.04);
+        }
+
+        .home-case-copy {
+          padding: 22px 8px 46px;
+        }
+
+        .home-case-meta {
+          display: flex;
+          gap: 7px;
+          margin-bottom: 18px;
+        }
+
+        .home-case-meta span {
+          border: 1px solid #d6d3cc;
+          border-radius: 999px;
+          padding: 7px 10px;
+          color: #67645e;
+          font-size: 8px;
+        }
+
+        .home-case-copy h3 {
+          margin: 0;
+          font-size: clamp(34px, 3.3vw, 52px);
+          font-weight: 680;
+          line-height: 0.97;
           letter-spacing: -0.055em;
         }
 
-        .portfolio-header p {
-          max-width: 570px;
-          margin: 28px auto 0;
-          color: #555555;
-          font-size: 16px;
-          line-height: 1.45;
-          letter-spacing: -0.015em;
-        }
-
-        .portfolio-view-button {
-          display: inline-flex;
-          align-items: center;
-          gap: 28px;
-          margin-top: 30px;
-          border: 1px solid #c9c9c5;
-          border-radius: 999px;
-          padding: 14px 21px 14px 26px;
-          color: #111;
-          font-size: 13px;
-          font-weight: 500;
-          text-decoration: none;
-          transition:
-            background 0.3s ease,
-            color 0.3s ease,
-            transform 0.3s ease;
-        }
-
-        .portfolio-view-button svg {
-          transition: transform 0.3s ease;
-        }
-
-        .portfolio-view-button:hover {
-          background: #111;
-          color: #fff;
-          transform: translateY(-2px);
-        }
-
-        .portfolio-view-button:hover svg {
-          transform: translateX(4px);
-        }
-
-        /* ======================================================
-           PROJECT GRID
-        ====================================================== */
-
-        .portfolio-grid {
-          display: grid;
-          grid-template-columns: 1.45fr 1fr;
-          gap: 18px;
-          align-items: start;
-        }
-
-        .portfolio-project {
-          display: block;
-          min-width: 0;
-          color: #111;
-          text-decoration: none;
-        }
-
-        /* ======================================================
-           PROJECT IMAGE
-        ====================================================== */
-
-        .project-image {
-          position: relative;
-          height: 390px;
-          overflow: hidden;
-          border-radius: 26px;
-          background: #e8e8e5;
-        }
-
-        .project-image-featured {
-          height: 390px;
-        }
-
-        .project-image img {
-          object-fit: cover;
-          transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .portfolio-project:hover .project-image img {
-          transform: scale(1.045);
-        }
-
-        .project-overlay {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.1) 0%,
-            transparent 35%,
-            transparent 75%,
-            rgba(0, 0, 0, 0.04) 100%
-          );
-          pointer-events: none;
-        }
-
-        /* ======================================================
-           NUMBER
-        ====================================================== */
-
-        .project-index {
-          position: absolute;
-          top: 17px;
-          left: 17px;
-          z-index: 3;
-          display: flex;
-          height: 31px;
-          min-width: 40px;
-          align-items: center;
-          justify-content: center;
-          border-radius: 999px;
-          background: rgba(255, 255, 255, 0.95);
-          padding: 0 10px;
-          color: #111;
-          font-family:
-            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 9px;
-          font-weight: 700;
-          backdrop-filter: blur(10px);
-        }
-
-        /* ======================================================
-           ARROW
-        ====================================================== */
-
-        .project-arrow {
-          position: absolute;
-          top: 15px;
-          right: 15px;
-          z-index: 3;
-          display: flex;
-          width: 43px;
-          height: 43px;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.95);
-          color: #111;
-          backdrop-filter: blur(12px);
-          transition:
-            transform 0.35s ease,
-            background 0.3s ease,
-            color 0.3s ease;
-        }
-
-        .portfolio-project:hover .project-arrow {
-          background: #111;
-          color: #fff;
-          transform: rotate(45deg);
-        }
-
-        /* ======================================================
-           PROJECT DETAILS
-        ====================================================== */
-
-        .project-information {
-          padding: 18px 5px 36px;
-        }
-
-        .project-title-row {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 20px;
-        }
-
-        .project-title-row h3 {
-          margin: 0;
-          font-size: clamp(25px, 2vw, 31px);
-          font-weight: 650;
-          line-height: 1;
-          letter-spacing: -0.045em;
-        }
-
-        .project-tags {
-          display: flex;
-          gap: 6px;
-          flex-wrap: wrap;
-          justify-content: flex-end;
-        }
-
-        .project-tags span {
-          border: 1px solid #cacac5;
-          border-radius: 5px;
-          padding: 5px 8px;
-          background: rgba(255, 255, 255, 0.45);
-          font-size: 9px;
-          font-weight: 500;
-        }
-
-        .project-information p {
-          max-width: 560px;
-          margin: 12px 0 0;
-          color: #606060;
+        .home-case-copy p {
+          max-width: 520px;
+          margin: 15px 0 0;
+          color: #6d6a64;
           font-size: 12px;
           line-height: 1.55;
         }
 
-        /* ======================================================
-           CTA CARD
-        ====================================================== */
+        .home-case-study-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 18px;
+          font-size: 10px;
+          font-weight: 750;
+        }
 
-        .portfolio-statement {
+        .home-wide-case {
+          display: grid;
+          min-height: 590px;
+          grid-template-columns: 35% 65%;
+          margin-top: 24px;
+          overflow: hidden;
+          border-radius: 30px;
+          background: #c8bbff;
+          color: #101010;
+          text-decoration: none;
+        }
+
+        .home-wide-copy {
           position: relative;
           display: flex;
-          min-height: 390px;
-          overflow: hidden;
-          padding: 28px;
           flex-direction: column;
           justify-content: space-between;
-          border-radius: 26px;
-          background: #d9ff25;
+          padding: 42px 46px;
         }
 
-        .portfolio-statement::after {
-          position: absolute;
-          right: -80px;
-          bottom: -100px;
-          width: 260px;
-          height: 260px;
-          border: 1px solid rgba(0, 0, 0, 0.12);
-          border-radius: 50%;
-          content: "";
-        }
-
-        .portfolio-statement::before {
-          position: absolute;
-          right: -5px;
-          bottom: -160px;
-          width: 340px;
-          height: 340px;
-          border: 1px solid rgba(0, 0, 0, 0.09);
-          border-radius: 50%;
-          content: "";
-        }
-
-        .statement-top {
-          position: relative;
-          z-index: 2;
+        .home-wide-top {
           display: flex;
           justify-content: space-between;
-          font-family:
-            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 9px;
+          gap: 20px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
           font-weight: 700;
           letter-spacing: 0.08em;
-          text-transform: uppercase;
         }
 
-        .statement-content {
-          position: relative;
-          z-index: 2;
+        .home-wide-copy h3 {
+          margin: 0 0 24px;
+          font-size: clamp(56px, 6vw, 92px);
+          font-weight: 760;
+          line-height: 0.85;
+          letter-spacing: -0.07em;
         }
 
-        .statement-content h3 {
+        .home-wide-copy p {
+          max-width: 390px;
           margin: 0;
-          font-size: clamp(34px, 3.4vw, 51px);
-          font-weight: 600;
-          line-height: 0.98;
-          letter-spacing: -0.055em;
-        }
-
-        .statement-content a {
-          display: inline-flex;
-          align-items: center;
-          gap: 35px;
-          margin-top: 28px;
-          border-radius: 999px;
-          background: #111;
-          padding: 13px 17px;
-          color: white;
-          font-size: 11px;
-          font-weight: 600;
-          text-decoration: none;
-          transition: gap 0.3s ease;
-        }
-
-        .statement-content a:hover {
-          gap: 45px;
-        }
-
-        /* ======================================================
-           FOOTER
-        ====================================================== */
-
-        .portfolio-footer {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-top: 45px;
-          padding-top: 25px;
-          border-top: 1px solid #d1d1cc;
-        }
-
-        .portfolio-footer p {
-          display: flex;
-          gap: 10px;
-          margin: 0;
-          color: #777;
-          font-size: 11px;
-        }
-
-        .portfolio-footer a {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          color: #111;
           font-size: 12px;
-          font-weight: 600;
-          text-decoration: none;
+          line-height: 1.55;
         }
 
-        .portfolio-footer a svg {
-          transition: transform 0.3s ease;
+        .home-wide-arrow {
+          position: absolute;
+          right: 30px;
+          bottom: 30px;
+          display: grid;
+          width: 60px;
+          height: 60px;
+          place-items: center;
+          border-radius: 50%;
+          background: #111;
+          color: white;
+          transition: transform 0.35s ease;
         }
 
-        .portfolio-footer a:hover svg {
-          transform: translate(3px, -3px);
+        .home-wide-case:hover .home-wide-arrow {
+          transform: rotate(8deg) scale(1.05);
         }
 
-        /* ======================================================
-           TABLET
-        ====================================================== */
+        .home-wide-media {
+          position: relative;
+          min-height: 590px;
+          overflow: hidden;
+        }
+
+        .home-wide-media img {
+          object-fit: cover;
+          object-position: center 28%;
+          transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .home-wide-case:hover .home-wide-media img {
+          transform: scale(1.025);
+        }
 
         @media (max-width: 900px) {
-          .portfolio-work {
-            padding: 80px 18px 70px;
-          }
-
-          .portfolio-header {
-            margin-bottom: 60px;
-          }
-
-          .portfolio-header h2 {
-            font-size: 48px;
-          }
-
-          .portfolio-header p {
-            font-size: 15px;
-          }
-
-          .portfolio-grid {
+          .home-selected-header {
             grid-template-columns: 1fr;
+            gap: 30px;
           }
 
-          .project-image,
-          .project-image-featured {
-            height: 500px;
+          .home-selected-intro {
+            justify-self: start;
           }
 
-          .portfolio-statement {
-            min-height: 400px;
+          .home-case-media {
+            height: 430px;
+          }
+
+          .home-wide-case {
+            grid-template-columns: 42% 58%;
+            min-height: 500px;
+          }
+
+          .home-wide-media {
+            min-height: 500px;
           }
         }
 
-        /* ======================================================
-           MOBILE
-        ====================================================== */
-
-        @media (max-width: 600px) {
-          .portfolio-work {
-            padding: 70px 12px 60px;
+        @media (max-width: 620px) {
+          .home-selected-work {
+            padding: 82px 12px 90px;
           }
 
-          .portfolio-header {
-            max-width: 390px;
-            margin-bottom: 50px;
+          .home-selected-header {
+            margin-bottom: 38px;
           }
 
-          .portfolio-eyebrow {
-            margin-bottom: 18px;
-            padding: 6px 9px;
-            font-size: 7px;
+          .home-selected-header h2 {
+            margin-top: 20px;
+            font-size: 54px;
           }
 
-          .portfolio-eyebrow-dot {
-            width: 7px;
-            height: 7px;
+          .home-selected-intro p {
+            font-size: 13px;
           }
 
-          .portfolio-header h2 {
-            font-size: 42px;
-            line-height: 0.98;
+          .home-selected-grid {
+            grid-template-columns: 1fr;
+            gap: 6px;
           }
 
-          .portfolio-header p {
-            max-width: 350px;
-            margin-top: 22px;
-            font-size: 14px;
-            line-height: 1.45;
+          .home-case-media {
+            height: 330px;
+            border-radius: 22px;
           }
 
-          .portfolio-view-button {
-            gap: 22px;
-            margin-top: 25px;
-            padding: 13px 18px 13px 22px;
-            font-size: 12px;
+          .home-case-copy {
+            padding: 18px 4px 38px;
           }
 
-          .portfolio-grid {
-            gap: 10px;
+          .home-case-copy h3 {
+            font-size: 36px;
           }
 
-          .project-image,
-          .project-image-featured {
-            height: 350px;
-            border-radius: 18px;
+          .home-wide-case {
+            grid-template-columns: 1fr;
+            min-height: 0;
+            border-radius: 22px;
           }
 
-          .project-index {
-            top: 13px;
-            left: 13px;
+          .home-wide-copy {
+            min-height: 360px;
+            padding: 28px 24px;
           }
 
-          .project-arrow {
-            top: 12px;
-            right: 12px;
-            width: 41px;
-            height: 41px;
+          .home-wide-copy h3 {
+            font-size: 62px;
           }
 
-          .project-information {
-            padding: 17px 3px 32px;
+          .home-wide-copy p {
+            max-width: 280px;
+            padding-right: 55px;
           }
 
-          .project-title-row {
-            align-items: flex-start;
-            gap: 12px;
-            flex-direction: column;
+          .home-wide-arrow {
+            right: 22px;
+            bottom: 22px;
+            width: 52px;
+            height: 52px;
           }
 
-          .project-title-row h3 {
-            font-size: 27px;
-          }
-
-          .project-tags {
-            justify-content: flex-start;
-          }
-
-          .project-information p {
-            font-size: 12px;
-          }
-
-          .portfolio-statement {
-            min-height: 350px;
-            padding: 22px;
-            border-radius: 18px;
-          }
-
-          .statement-content h3 {
-            font-size: 38px;
-          }
-
-          .portfolio-footer {
-            align-items: flex-start;
-            gap: 25px;
-            flex-direction: column;
-          }
-
-          .portfolio-footer p {
-            gap: 7px;
-            flex-wrap: wrap;
+          .home-wide-media {
+            min-height: 430px;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .project-image img,
-          .project-arrow,
-          .portfolio-view-button,
-          .portfolio-view-button svg,
-          .statement-content a,
-          .portfolio-footer a svg {
-            transition: none;
+          .home-case-media img,
+          .home-case-media video,
+          .home-case-arrow,
+          .home-wide-arrow,
+          .home-wide-media img {
+            transition: none !important;
           }
         }
       `}</style>
