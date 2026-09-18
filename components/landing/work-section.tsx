@@ -44,12 +44,11 @@ export function WorkSection() {
     <section id="work" className="home-selected-work">
       <div className="home-selected-inner">
         <header className="home-selected-header">
-          <div>
-            <span className="home-selected-badge">
-              <i /> SELECTED WORK
-            </span>
-            <h2>Proof in the work.</h2>
-          </div>
+          <span className="home-selected-badge">
+            <i /> SELECTED WORK
+          </span>
+
+          <h2>Proof in the work.</h2>
 
           <div className="home-selected-intro">
             <p>
@@ -165,11 +164,12 @@ export function WorkSection() {
         }
 
         .home-selected-header {
-          display: grid;
-          grid-template-columns: 1.25fr 0.75fr;
-          gap: 70px;
-          align-items: end;
-          margin-bottom: 62px;
+          display: flex;
+          max-width: 760px;
+          margin: 0 auto 62px;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
         }
 
         .home-selected-badge {
@@ -196,15 +196,15 @@ export function WorkSection() {
 
         .home-selected-header h2 {
           margin: 25px 0 0;
-          font-size: clamp(58px, 7vw, 102px);
-          font-weight: 690;
-          line-height: 0.88;
-          letter-spacing: -0.07em;
+          font-size: clamp(48px, 5.4vw, 76px);
+          font-weight: 700;
+          line-height: 0.94;
+          letter-spacing: -0.06em;
         }
 
         .home-selected-intro {
-          max-width: 480px;
-          justify-self: end;
+          max-width: 560px;
+          margin: 24px auto 0;
         }
 
         .home-selected-intro p {
@@ -217,6 +217,7 @@ export function WorkSection() {
         .home-selected-intro a {
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: 14px;
           margin-top: 22px;
           color: #111;
@@ -232,15 +233,31 @@ export function WorkSection() {
         }
 
         .home-case-card {
+          overflow: hidden;
+          border: 1px solid #d8d5cd;
+          border-radius: 28px;
+          background: rgba(255, 255, 255, 0.52);
           color: inherit;
           text-decoration: none;
+          box-shadow: 0 10px 28px rgba(35, 31, 26, 0.025);
+          transition:
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.35s ease,
+            border-color 0.35s ease;
+        }
+
+        .home-case-card:hover {
+          border-color: #c9c5bc;
+          transform: translateY(-4px);
+          box-shadow: 0 18px 42px rgba(35, 31, 26, 0.07);
         }
 
         .home-case-media {
           position: relative;
           height: 520px;
+          margin: 10px 10px 0;
           overflow: hidden;
-          border-radius: 28px;
+          border-radius: 20px;
           background: #dddcd6;
         }
 
@@ -291,7 +308,7 @@ export function WorkSection() {
         }
 
         .home-case-copy {
-          padding: 22px 8px 46px;
+          padding: 22px 24px 30px;
         }
 
         .home-case-meta {
@@ -339,6 +356,7 @@ export function WorkSection() {
           grid-template-columns: 35% 65%;
           margin-top: 24px;
           overflow: hidden;
+          border: 1px solid #c8c3d8;
           border-radius: 30px;
           background: #c8bbff;
           color: #101010;
@@ -414,12 +432,7 @@ export function WorkSection() {
 
         @media (max-width: 900px) {
           .home-selected-header {
-            grid-template-columns: 1fr;
-            gap: 30px;
-          }
-
-          .home-selected-intro {
-            justify-self: start;
+            max-width: 680px;
           }
 
           .home-case-media {
@@ -442,16 +455,24 @@ export function WorkSection() {
           }
 
           .home-selected-header {
-            margin-bottom: 38px;
+            max-width: 100%;
+            margin-bottom: 42px;
           }
 
           .home-selected-header h2 {
             margin-top: 20px;
-            font-size: 54px;
+            font-size: 42px;
+            line-height: 0.98;
+          }
+
+          .home-selected-intro {
+            max-width: 340px;
+            margin-top: 20px;
           }
 
           .home-selected-intro p {
             font-size: 13px;
+            line-height: 1.5;
           }
 
           .home-selected-grid {
@@ -459,13 +480,18 @@ export function WorkSection() {
             gap: 6px;
           }
 
-          .home-case-media {
-            height: 330px;
+          .home-case-card {
             border-radius: 22px;
           }
 
+          .home-case-media {
+            height: 330px;
+            margin: 7px 7px 0;
+            border-radius: 16px;
+          }
+
           .home-case-copy {
-            padding: 18px 4px 38px;
+            padding: 18px 18px 24px;
           }
 
           .home-case-copy h3 {

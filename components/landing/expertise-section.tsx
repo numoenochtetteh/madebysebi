@@ -25,11 +25,11 @@ const expertiseCards: ExpertiseCard[] = [
     ],
   },
   {
-    title: "Solutions for fintech",
+    title: "Fintech & digital finance",
     video: "/expertise/fintech-solutions.mp4",
     poster: "/expertise/fintech-solutions.png",
     description:
-      "We create clear, trustworthy digital experiences for financial technology products and modern service platforms.",
+      "We shape clear, trustworthy websites and product experiences for fintech, payments and modern financial platforms.",
     services: [
       "Fintech websites",
       "Platform design",
@@ -38,11 +38,11 @@ const expertiseCards: ExpertiseCard[] = [
     ],
   },
   {
-    title: "Websites for technology",
+    title: "Websites for business",
     video: "/expertise/tech-websites.mp4",
     poster: "/expertise/tech-websites.png",
     description:
-      "We build distinctive, responsive websites that help technology businesses explain their products and attract customers.",
+      "We build distinctive, responsive websites that help businesses explain what they do, earn trust and turn attention into action.",
     services: [
       "Technology websites",
       "Landing pages",
@@ -51,10 +51,10 @@ const expertiseCards: ExpertiseCard[] = [
     ],
   },
   {
-    title: "Brand experience",
+    title: "Brand & digital experience",
     video: "/expertise/brand-experience.mp4",
     description:
-      "We translate a company’s personality into a consistent digital experience across its website, content and interactions.",
+      "We turn brand direction into a consistent digital experience across websites, campaigns, content and customer touchpoints.",
     services: [
       "Digital direction",
       "Visual identity",
