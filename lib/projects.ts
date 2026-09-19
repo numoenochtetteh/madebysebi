@@ -24,6 +24,7 @@ export type CaseStudyProject = {
   outcomeTitle: string;
   outcome: string;
   gallery: string[];
+  wideGalleryFirst?: boolean;
   operationsTitle?: string;
   operationsCopy?: string;
   operationsImage?: string;
@@ -206,7 +207,7 @@ export const caseStudyProjects: CaseStudyProject[] = [
     headline: "A freight website built around clarity, trust and moving goods in and out of Ghana.",
     intro:
       "Total Logistics needed a business website that communicates what the company actually helps customers do: move cargo in and out of Ghana with confidence. The experience had to present sea, air and road services clearly, support trust from the first screen, and make it easy for clients to reach the team.",
-    image: "/case-studies/total-logistics/02-hero.png",
+    image: "/case-studies/total-logistics/05-ship-hero.jpg",
     video: "/expertise/6.mp4",
     accent: "#2d7dff",
     liveUrl: "https://totallog.org",
@@ -239,11 +240,11 @@ export const caseStudyProjects: CaseStudyProject[] = [
     outcome:
       "The final result gives Total Logistics a clearer and more dependable online presence — one that helps prospects understand the company's offer, trust its capability and contact the team about shipments moving into Ghana, out of Ghana or across West African routes.",
     gallery: [
-      "/case-studies/total-logistics/02-hero.png",
       "/case-studies/total-logistics/01-services.png",
       "/case-studies/total-logistics/03-export-services.png",
       "/case-studies/total-logistics/04-service-cards.png",
     ],
+    wideGalleryFirst: false,
     connectLabel: "CONTACT",
     connectHeading: "Clear contact routes for import, export and freight enquiries.",
     connectCopy:

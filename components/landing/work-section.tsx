@@ -17,15 +17,15 @@ const selectedProjects = [
     href: "/work/pengtresses",
   },
   {
-    number: "03",
-    title: "Total Logistics",
-    industry: "Logistics",
+    number: "06",
+    title: "Lucenex",
+    industry: "Data & AI",
     year: "2026",
     description:
-      "A logistics website built to explain shipping services clearly and make import and export enquiries across Ghana easier to start.",
-    image: "/case-studies/total-logistics/02-hero.png",
-    video: "/expertise/6.mp4",
-    href: "/work/total-logistics",
+      "A modern business website for a US data and AI company, built to communicate services clearly and position the brand with more authority online.",
+    image: "/case-studies/lucenex/01-home.png",
+    video: "/expertise/03.mp4",
+    href: "/work/lucenex",
   },
 ];
 

@@ -247,13 +247,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
             {project.gallery.map((image, index) => (
               <figure
                 key={`${image}-${index}`}
-                className={index === 0 ? styles.galleryWide : styles.galleryItem}
+                className={index === 0 && project.wideGalleryFirst !== false ? styles.galleryWide : styles.galleryItem}
               >
                 <Image
                   src={image}
                   alt={`${project.title} project detail ${index + 1}`}
                   fill
-                  sizes={index === 0 ? "100vw" : "(max-width: 760px) 100vw, 50vw"}
+                  sizes={index === 0 && project.wideGalleryFirst !== false ? "100vw" : "(max-width: 760px) 100vw, 50vw"}
                 unoptimized
                 />
               </figure>
