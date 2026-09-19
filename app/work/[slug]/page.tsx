@@ -14,10 +14,7 @@ import {
 
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
-import {
-  caseStudyProjects,
-  getCaseStudyProject,
-} from "@/lib/projects";
+import { caseStudyProjects, getCaseStudyProject } from "@/lib/projects";
 
 import styles from "./case-study.module.css";
 
@@ -43,6 +40,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+function getConnectTheme(platform: string) {
+  const key = platform.toLowerCase();
+
+  if (key.includes("instagram")) return "instagram";
+  if (key.includes("tiktok")) return "tiktok";
+  if (key.includes("facebook")) return "facebook";
+  if (key.includes("linkedin")) return "linkedin";
+  if (key.includes("email")) return "email";
+  if (key.includes("phone")) return "phone";
+  if (key.includes("location")) return "location";
+
+  return "default";
+}
+
 export default async function CaseStudyPage({ params }: PageProps) {
   const { slug } = await params;
   const project = getCaseStudyProject(slug);
@@ -53,9 +64,15 @@ export default async function CaseStudyPage({ params }: PageProps) {
     (item) => item.slug === project.slug,
   );
   const otherProjects = [1, 2].map(
-    (offset) =>
-      caseStudyProjects[(currentIndex + offset) % caseStudyProjects.length],
+    (offset) => caseStudyProjects[(currentIndex + offset) % caseStudyProjects.length],
   );
+
+  const connectLabel = project.connectLabel ?? "ONLINE PRESENCE";
+  const connectHeading =
+    project.connectHeading ?? "Website, search and social should tell the same story.";
+  const connectCopy =
+    project.connectCopy ??
+    "The website becomes the destination while social channels create repeated reasons for customers to discover, remember and return to the brand.";
 
   return (
     <>
@@ -134,6 +151,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 fill
                 priority
                 sizes="100vw"
+              unoptimized
               />
             )}
 
@@ -236,6 +254,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                   alt={`${project.title} project detail ${index + 1}`}
                   fill
                   sizes={index === 0 ? "100vw" : "(max-width: 760px) 100vw, 50vw"}
+                unoptimized
                 />
               </figure>
             ))}
@@ -257,6 +276,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                   alt={`${project.title} operations interface with private client data redacted`}
                   fill
                   sizes="100vw"
+                unoptimized
                 />
               </div>
             ) : (
@@ -276,27 +296,49 @@ export default async function CaseStudyPage({ params }: PageProps) {
         {project.socialChannels?.length ? (
           <section className={styles.socialSection}>
             <div className={styles.socialHeading}>
-              <div className={styles.sectionLabel}>ONLINE PRESENCE</div>
-              <h2>Website, search and social should tell the same story.</h2>
-              <p>
-                The website becomes the destination while social channels create
-                repeated reasons for customers to discover, remember and return to
-                the brand.
-              </p>
+              <div className={styles.sectionLabel}>{connectLabel}</div>
+              <h2>{connectHeading}</h2>
+              <p>{connectCopy}</p>
             </div>
 
             <div className={styles.socialGrid}>
-              {project.socialChannels.map((channel, index) => (
-                <article key={channel.platform}>
-                  <div className={styles.socialTop}>
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <Globe2 size={18} />
-                  </div>
-                  <h3>{channel.platform}</h3>
-                  <strong>{channel.handle}</strong>
-                  <p>{channel.note}</p>
-                </article>
-              ))}
+              {project.socialChannels.map((channel, index) => {
+                const theme = getConnectTheme(channel.platform);
+
+                const cardContent = (
+                  <>
+                    <div className={styles.socialTop}>
+                      <span>{String(index + 1).padStart(2, "0")}</span>
+                      {channel.url ? <ArrowUpRight size={18} /> : <Globe2 size={18} />}
+                    </div>
+                    <h3>{channel.platform}</h3>
+                    <strong>{channel.handle}</strong>
+                    <p>{channel.note}</p>
+                  </>
+                );
+
+                return channel.url ? (
+                  <a
+                    key={channel.platform}
+                    href={channel.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.socialCard}
+                    data-theme={theme}
+                    aria-label={`Open ${channel.platform}`}
+                  >
+                    {cardContent}
+                  </a>
+                ) : (
+                  <article
+                    key={channel.platform}
+                    className={styles.socialCard}
+                    data-theme={theme}
+                  >
+                    {cardContent}
+                  </article>
+                );
+              })}
             </div>
           </section>
         ) : null}
@@ -343,6 +385,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                     alt={`${item.title} project preview`}
                     fill
                     sizes="(max-width: 760px) 100vw, 50vw"
+                  unoptimized
                   />
 
                   <span className={styles.otherWorkNumber}>{item.number}</span>
@@ -363,10 +406,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
                 <p>{item.summary}</p>
 
-                <Link
-                  href={`/work/${item.slug}`}
-                  className={styles.otherWorkCaseLink}
-                >
+                <Link href={`/work/${item.slug}`} className={styles.otherWorkCaseLink}>
                   View case study
                   <ArrowUpRight size={14} />
                 </Link>

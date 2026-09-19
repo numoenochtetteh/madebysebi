@@ -34,14 +34,15 @@ const projects = [
     number: "02",
     title: "Power Electrode Ltd",
     industry: "Manufacturing",
-    type: "Corporate website",
+    type: "Website + digital presence",
     year: "2026",
     description:
-      "A professional digital presence for a growing welding electrode manufacturer.",
-    image: "/showcase/01.jpg",
+      "A manufacturing website designed to explain products clearly, build trust fast and support enquiries from industrial buyers across Ghana.",
+    image: "/case-studies/power-electrode/03-values.png",
+    video: "/case-studies/power-electrode/hero-video.mp4",
     href: "/work/power-electrode-ltd",
     liveUrl: "https://www.powerelectrodeltd.com/",
-    accent: "#8fb5ff",
+    accent: "#ff6a00",
     layout: "standard",
     capabilities: ["Website", "SEO", "Manufacturing", "Growth"],
   },
@@ -52,12 +53,12 @@ const projects = [
     type: "Business website",
     year: "2026",
     description:
-      "A modern logistics website focused on credibility, services and customer confidence.",
-    image: "/showcase/product-design.jpg",
+      "A logistics website built to explain shipping services clearly and make import and export enquiries across Ghana easier to start.",
+    image: "/case-studies/total-logistics/02-hero.png",
     video: "/expertise/6.mp4",
     href: "/work/total-logistics",
     liveUrl: "https://totallog.org",
-    accent: "#ff8b67",
+    accent: "#2d7dff",
     layout: "standard",
     capabilities: ["Website", "Logistics", "Responsive", "Strategy"],
   },
@@ -65,11 +66,12 @@ const projects = [
     number: "04",
     title: "NUMO & SEBI",
     industry: "E-commerce",
-    type: "Digital store",
+    type: "Jewellery storefront",
     year: "2026",
     description:
-      "A polished jewellery shopping experience built around strong imagery and clean product presentation.",
-    image: "/showcase/03.jpg",
+      "A premium jewellery e-commerce concept that combines editorial storytelling, product detail and a clean shopping flow.",
+    image: "/case-studies/numo-sebi/04-editorial.png",
+    video: "/case-studies/numo-sebi/hero-video.mp4",
     href: "/work/numo-sebi",
     liveUrl: "https://jewelry-store-numo-sebi-two.vercel.app",
     accent: "#c9bfff",
@@ -83,8 +85,8 @@ const projects = [
     type: "Portfolio website",
     year: "2026",
     description:
-      "A minimal architectural portfolio designed to let projects and imagery lead the experience.",
-    image: "/showcase/02.jpg",
+      "An architecture portfolio experience built to present residential projects with calm layouts, strong imagery and a more considered sense of professionalism.",
+    image: "/case-studies/kent-architects/02-modern-villa.jpg",
     href: "/work/kent-architects",
     liveUrl: "https://kent-architects.vercel.app",
     accent: "#79dcb5",
@@ -94,18 +96,18 @@ const projects = [
   {
     number: "06",
     title: "Lucenex",
-    industry: "Technology",
-    type: "SaaS interface",
+    industry: "Data & AI",
+    type: "Company website",
     year: "2026",
     description:
-      "A modern operations interface designed around clarity, tracking and business-critical information.",
-    image: "/showcase/coding-workspace.jpg",
+      "A modern business website for a US data and AI company, built to communicate services clearly and position the brand with more authority online.",
+    image: "/case-studies/lucenex/01-home.png",
     video: "/expertise/03.mp4",
     href: "/work/lucenex",
     liveUrl: null,
     accent: "#ffd66b",
     layout: "standard",
-    capabilities: ["SaaS", "Data & AI", "Dashboard", "Frontend"],
+    capabilities: ["Data & AI", "Company website", "Services", "Frontend"],
   },
 ];
 
@@ -326,6 +328,7 @@ export default function WorkPage() {
                           alt={project.title}
                           fill
                           sizes="(max-width: 820px) 100vw, 50vw"
+                        unoptimized
                         />
                       )}
 

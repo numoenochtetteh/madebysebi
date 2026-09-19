@@ -6,14 +6,15 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 const selectedProjects = [
   {
-    number: "02",
-    title: "Power Electrode Ltd",
-    industry: "Manufacturing",
+    number: "01",
+    title: "Forever Peng Hair",
+    industry: "Beauty",
     year: "2026",
     description:
-      "A professional digital presence for a growing welding electrode manufacturer.",
-    image: "/showcase/01.jpg",
-    href: "/work/power-electrode-ltd",
+      "A premium website and booking platform built to turn service discovery, availability and deposits into one clear client journey.",
+    image: "/showcase/3.png",
+    video: "/expertise/111.mp4",
+    href: "/work/pengtresses",
   },
   {
     number: "03",
@@ -21,8 +22,8 @@ const selectedProjects = [
     industry: "Logistics",
     year: "2026",
     description:
-      "A modern logistics website focused on credibility, services and customer confidence.",
-    image: "/showcase/7.png",
+      "A logistics website built to explain shipping services clearly and make import and export enquiries across Ghana easier to start.",
+    image: "/case-studies/total-logistics/02-hero.png",
     video: "/expertise/6.mp4",
     href: "/work/total-logistics",
   },
@@ -34,8 +35,8 @@ const wideProject = {
   industry: "E-commerce",
   year: "2026",
   description:
-    "A polished jewellery shopping experience built around strong imagery and clean product presentation.",
-  image: "/showcase/03.jpg",
+    "A premium jewellery e-commerce concept that combines editorial storytelling, product detail and a clean shopping flow.",
+  image: "/case-studies/numo-sebi/04-editorial.png",
   href: "/work/numo-sebi",
 };
 
@@ -88,6 +89,7 @@ export function WorkSection() {
                     alt={project.title}
                     fill
                     sizes="(max-width: 760px) 100vw, 50vw"
+                  unoptimized
                   />
                 )}
 
@@ -144,6 +146,7 @@ export function WorkSection() {
               alt={wideProject.title}
               fill
               sizes="(max-width: 760px) 100vw, 65vw"
+            unoptimized
             />
           </div>
         </Link>
