@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { WhatsAppButton } from "@/components/landing/whatsapp-button";
 
 export const metadata: Metadata = {
   title: "Numo Digital — Websites Built for Business Growth",
@@ -26,6 +27,7 @@ export default function RootLayout({
         }
       >
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
@@ -10,12 +9,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  Code2,
   Mail,
   MessageSquare,
-  Palette,
-  Search,
-  Sparkles,
 } from "lucide-react";
 
 const services = [
@@ -25,6 +20,7 @@ const services = [
   "SEO & GEO",
   "Digital Marketing",
   "Website Consultation",
+  "Other",
 ];
 
 export default function ContactPage() {
@@ -276,151 +272,6 @@ export default function ContactPage() {
                   </span>
                 </button>
               </form>
-            </div>
-          </div>
-        </section>
-
-        {/* =====================================================
-            SERVICES STRIP
-        ===================================================== */}
-
-        <section className="contact-services">
-          <div className="contact-services-inner">
-            <div className="contact-services-heading" data-reveal>
-              <span>02</span>
-
-              <h2>
-                Not sure what
-                <br />
-                you need yet?
-              </h2>
-
-              <p>
-                That&apos;s fine. Tell us what isn&apos;t working and we&apos;ll
-                help identify where we can make the biggest difference.
-              </p>
-            </div>
-
-            <div className="contact-service-cards">
-              <div className="mini-service-card" data-reveal>
-                <div className="mini-service-icon lime">
-                  <Code2 size={21} />
-                </div>
-
-                <span>01</span>
-
-                <h3>
-                  Website
-                  <br />
-                  projects
-                </h3>
-
-                <p>
-                  New websites, redesigns, landing pages and responsive
-                  development.
-                </p>
-              </div>
-
-              <div className="mini-service-card" data-reveal>
-                <div className="mini-service-icon purple">
-                  <Palette size={21} />
-                </div>
-
-                <span>02</span>
-
-                <h3>
-                  Design &
-                  <br />
-                  branding
-                </h3>
-
-                <p>
-                  UX/UI, visual identity and a clearer digital direction for
-                  your business.
-                </p>
-              </div>
-
-              <div className="mini-service-card" data-reveal>
-                <div className="mini-service-icon blue">
-                  <Search size={21} />
-                </div>
-
-                <span>03</span>
-
-                <h3>
-                  Growth &
-                  <br />
-                  visibility
-                </h3>
-
-                <p>
-                  SEO, performance, website audits and digital growth strategy.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* =====================================================
-            DARK SECTION
-        ===================================================== */}
-
-        <section className="contact-dark">
-          <div className="contact-dark-inner" data-reveal>
-            <div className="contact-dark-copy">
-              <span className="dark-contact-badge">
-                <span />
-                WHAT HAPPENS NEXT
-              </span>
-
-              <h2>
-                Simple.
-                <br />
-                Clear.
-                <br />
-                No pressure.
-              </h2>
-
-              <p>
-                Once we receive your enquiry, we&apos;ll review the project and
-                get back to you to discuss the goals, scope and next steps.
-              </p>
-            </div>
-
-            <div className="contact-steps">
-              <div className="contact-step">
-                <span>01</span>
-                <h3>We review</h3>
-                <p>
-                  We look through your project details and understand what you
-                  need.
-                </p>
-              </div>
-
-              <div className="contact-step">
-                <span>02</span>
-                <h3>We talk</h3>
-                <p>
-                  We discuss your business, project goals, timing and budget.
-                </p>
-              </div>
-
-              <div className="contact-step">
-                <span>03</span>
-                <h3>We scope</h3>
-                <p>
-                  You receive a clear recommendation, scope and cost for the
-                  project.
-                </p>
-              </div>
-
-              <div className="contact-step">
-                <span>04</span>
-                <h3>We build</h3>
-                <p>
-                  Once approved, we begin the project and keep things moving.
-                </p>
-              </div>
             </div>
           </div>
         </section>

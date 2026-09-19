@@ -56,14 +56,14 @@ const values = [
 ];
 
 const capabilities = [
-  "Web Design",
-  "Web Development",
-  "UX/UI",
-  "Branding",
-  "SEO & GEO",
-  "Digital Strategy",
-  "Website Audits",
-  "Performance",
+  { title: "Web Design", href: "/services#web-design-development" },
+  { title: "Web Development", href: "/services#web-design-development" },
+  { title: "UX/UI", href: "/services#ux-ui-product-design" },
+  { title: "Branding", href: "/services#branding-visual-design" },
+  { title: "SEO & GEO", href: "/services#seo-geo-visibility" },
+  { title: "Digital Strategy", href: "/services#digital-marketing-growth" },
+  { title: "Website Audits", href: "/services#consultation-audits" },
+  { title: "Performance", href: "/services#consultation-audits" },
 ];
 
 export default function AboutPage() {
@@ -189,9 +189,9 @@ export default function AboutPage() {
         <section className="about-marquee">
           <div className="about-marquee-track">
             {[...capabilities, ...capabilities].map((item, index) => (
-              <div className="about-marquee-item" key={`${item}-${index}`}>
+              <div className="about-marquee-item" key={`${item.title}-${index}`}>
                 <span />
-                {item}
+                {item.title}
                 <i>✦</i>
               </div>
             ))}
@@ -422,13 +422,21 @@ export default function AboutPage() {
 
             <div className="capabilities-list">
               {capabilities.map((capability, index) => (
-                <div className="capability-row" key={capability} data-reveal>
+                <Link
+                  className="capability-row"
+                  href={capability.href}
+                  key={capability.title}
+                  data-reveal
+                  aria-label={`Explore ${capability.title} services`}
+                >
                   <span>{String(index + 1).padStart(2, "0")}</span>
 
-                  <h3>{capability}</h3>
+                  <h3>{capability.title}</h3>
 
-                  <ArrowUpRight size={19} />
-                </div>
+                  <span className="capability-action" aria-hidden="true">
+                    <ArrowUpRight size={19} />
+                  </span>
+                </Link>
               ))}
             </div>
           </div>
@@ -1334,6 +1342,9 @@ export default function AboutPage() {
 
           .capability-row {
             display: grid;
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
             min-height: 90px;
             grid-template-columns: 80px 1fr auto;
             align-items: center;
@@ -1344,6 +1355,25 @@ export default function AboutPage() {
           .capability-row:hover {
             padding-right: 8px;
             padding-left: 8px;
+          }
+
+          .capability-action {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            transition:
+              transform 0.3s ease,
+              background 0.3s ease,
+              border-color 0.3s ease;
+          }
+
+          .capability-row:hover .capability-action {
+            border-color: #d2cfc8;
+            background: rgba(255, 255, 255, 0.6);
+            transform: translate(2px, -2px);
           }
 
           .capability-row > span {

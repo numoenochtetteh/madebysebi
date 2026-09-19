@@ -25,6 +25,7 @@ import {
 const services = [
   {
     number: "01",
+    slug: "web-design-development",
     title: "Web Design",
     subtitle: "& Development",
     description:
@@ -42,6 +43,7 @@ const services = [
   },
   {
     number: "02",
+    slug: "ux-ui-product-design",
     title: "UX/UI",
     subtitle: "& Product Design",
     description:
@@ -59,6 +61,7 @@ const services = [
   },
   {
     number: "03",
+    slug: "branding-visual-design",
     title: "Branding",
     subtitle: "& Visual Design",
     description:
@@ -76,6 +79,7 @@ const services = [
   },
   {
     number: "04",
+    slug: "seo-geo-visibility",
     title: "SEO & GEO",
     subtitle: "& Visibility",
     description:
@@ -93,6 +97,7 @@ const services = [
   },
   {
     number: "05",
+    slug: "digital-marketing-growth",
     title: "Digital Marketing",
     subtitle: "& Growth",
     description:
@@ -110,6 +115,7 @@ const services = [
   },
   {
     number: "06",
+    slug: "consultation-audits",
     title: "Consultation",
     subtitle: "& Audits",
     description:
@@ -321,6 +327,7 @@ export default function ServicesPage() {
 
               return (
                 <article
+                  id={service.slug}
                   key={service.number}
                   className={`service-card ${
                     index === 0 || index === 3 ? "service-card-wide" : ""
@@ -965,6 +972,7 @@ export default function ServicesPage() {
           }
 
           .service-card {
+            scroll-margin-top: 110px;
             position: relative;
             overflow: hidden;
             border: 1px solid #d6d4ce;
