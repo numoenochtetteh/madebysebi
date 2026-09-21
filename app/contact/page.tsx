@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
@@ -23,7 +23,57 @@ const services = [
   "Other",
 ];
 
+const faqs = [
+  {
+    question: "How long does a website project usually take?",
+    answer:
+      "Most business websites take around 2–6 weeks depending on the size, complexity, content and how quickly feedback is provided. Larger websites or projects with custom functionality may take longer.",
+  },
+  {
+    question: "How much does a website cost?",
+    answer:
+      "Projects currently start from GH₵3,000. The final cost depends on the number of pages, design requirements, functionality, integrations and overall scope. International projects can also be quoted in USD or GBP.",
+  },
+  {
+    question: "We have a limited budget. Can you still work with us?",
+    answer:
+      "Yes. If your budget is limited, we can discuss the most important parts of the project first and recommend a realistic scope. The goal is to build what your business genuinely needs without adding unnecessary features.",
+  },
+  {
+    question: "Do you outsource any work?",
+    answer:
+      "Our core website design and development work is handled by the Numo Digital team. If a project requires a specialist service outside our core expertise, we will always communicate that clearly before involving anyone else.",
+  },
+  {
+    question: "What services do you offer?",
+    answer:
+      "We provide web design and development, UX/UI design, branding and visual design, SEO and GEO, digital marketing, website consultation, performance improvements and ongoing digital support.",
+  },
+  {
+    question: "We're not based in Ghana. Does that matter?",
+    answer:
+      "Not at all. Numo Digital is based in Accra, Ghana, but we work with businesses internationally. Meetings, project updates, reviews and delivery can all be handled remotely.",
+  },
+  {
+    question: "What are your payment terms?",
+    answer:
+      "We normally require a 50% deposit before starting a project, with the remaining balance paid according to the agreed project milestones or before final delivery. Larger projects can be structured into additional milestones.",
+  },
+  {
+    question: "How many meetings can we have?",
+    answer:
+      "We keep communication flexible. Projects normally include an initial discovery discussion, project reviews and any necessary meetings required to keep the work moving clearly and efficiently.",
+  },
+  {
+    question: "Can we arrange a call before starting?",
+    answer:
+      "Absolutely. We can arrange a call to understand your business, what you are trying to achieve and whether Numo Digital is the right fit before you commit to a project.",
+  },
+];
+
 export default function ContactPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
 
@@ -89,8 +139,6 @@ export default function ContactPage() {
 
         <section className="contact-main">
           <div className="contact-main-inner">
-            {/* LEFT */}
-
             <div className="contact-left" data-reveal>
               <div className="contact-section-label">
                 <span>01</span>
@@ -137,7 +185,23 @@ export default function ContactPage() {
 
                   <p>Clear scope, process and communication</p>
                 </div>
+
+                <div>
+                  <span className="contact-point-icon">
+                    <Check size={16} />
+                  </span>
+
+                  <p>
+                    <strong>Based in Accra</strong> · Working with clients
+                    worldwide
+                  </p>
+                </div>
               </div>
+
+              <p className="contact-worldwide-note">
+                International projects are welcome. Location is not a barrier;
+                projects can be quoted in USD or GBP where appropriate.
+              </p>
 
               <div className="direct-contact">
                 <span>Prefer email?</span>
@@ -149,9 +213,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* RIGHT FORM */}
-
-            <div className="contact-form-card" data-reveal>
+            <div id="contact-form" className="contact-form-card" data-reveal>
               <div className="contact-form-top">
                 <div>
                   <span>PROJECT ENQUIRY</span>
@@ -236,6 +298,9 @@ export default function ContactPage() {
                       <option>GH₵5,000 – GH₵10,000</option>
                       <option>GH₵10,000 – GH₵20,000</option>
                       <option>GH₵20,000+</option>
+                      <option>
+                        International project — quote in USD / GBP
+                      </option>
                     </select>
                   </div>
 
@@ -271,7 +336,73 @@ export default function ContactPage() {
                     <ArrowRight size={18} />
                   </span>
                 </button>
+
+                <p className="contact-privacy-note">
+                  By sending an enquiry, you agree that Numo Digital may use the
+                  information provided to respond to your project request. See
+                  our
+                  <a href="/privacy"> Privacy Policy</a>.
+                </p>
               </form>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            FAQ
+        ===================================================== */}
+
+        <section className="contact-faq">
+          <div className="contact-faq-inner">
+            <div className="contact-faq-heading" data-reveal>
+              <span className="contact-faq-eyebrow">
+                <i />
+                ANYTHING ELSE?
+              </span>
+
+              <h2>The answers to your questions.</h2>
+
+              <p>
+                A few things clients usually want to know before starting a
+                project with us.
+              </p>
+
+              <a href="#contact-form" className="contact-faq-cta">
+                Start a project
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+
+            <div className="contact-faq-list" data-reveal>
+              {faqs.map((faq, index) => {
+                const isOpen = openFaq === index;
+
+                return (
+                  <article
+                    className={`contact-faq-item ${isOpen ? "is-open" : ""}`}
+                    key={faq.question}
+                  >
+                    <button
+                      type="button"
+                      className="contact-faq-question"
+                      onClick={() => setOpenFaq(isOpen ? null : index)}
+                      aria-expanded={isOpen}
+                    >
+                      <span>{faq.question}</span>
+
+                      <span className="contact-faq-arrow">
+                        <ArrowUpRight size={15} />
+                      </span>
+                    </button>
+
+                    <div className="contact-faq-answer">
+                      <div>
+                        <p>{faq.answer}</p>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -304,10 +435,6 @@ export default function ContactPage() {
         </section>
 
         <style jsx global>{`
-          /* =====================================================
-             GLOBAL
-          ===================================================== */
-
           .contact-page {
             overflow: hidden;
             background: #f4f4f1;
@@ -515,6 +642,18 @@ export default function ContactPage() {
             background: #d9ff25;
           }
 
+          .contact-worldwide-note {
+            max-width: 520px;
+            margin: 24px 0 0;
+            padding: 14px 16px;
+            border: 1px solid #d9d5cc;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.48);
+            color: #69635e;
+            font-size: 12px;
+            line-height: 1.6;
+          }
+
           .direct-contact {
             display: flex;
             margin-top: 55px;
@@ -644,6 +783,19 @@ export default function ContactPage() {
             box-shadow: 0 0 0 4px rgba(217, 255, 37, 0.11);
           }
 
+          .contact-privacy-note {
+            margin: 14px 4px 0;
+            color: #7a746e;
+            font-size: 10px;
+            line-height: 1.55;
+          }
+
+          .contact-privacy-note a {
+            color: #111;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+          }
+
           .contact-submit {
             display: flex;
             width: 100%;
@@ -677,210 +829,168 @@ export default function ContactPage() {
           }
 
           /* =====================================================
-             SERVICE HELP
+             FAQ
           ===================================================== */
 
-          .contact-services {
+          .contact-faq {
             padding: 120px 28px 150px;
+            background: #f4f4f1;
           }
 
-          .contact-services-inner {
+          .contact-faq-inner {
+            display: grid;
             width: min(1350px, 100%);
             margin: 0 auto;
+            grid-template-columns: 0.72fr 1.28fr;
+            gap: 95px;
+            align-items: start;
           }
 
-          .contact-services-heading {
-            display: grid;
-            grid-template-columns: 100px 1fr 0.6fr;
-            gap: 50px;
-            align-items: end;
+          .contact-faq-heading {
+            position: sticky;
+            top: 120px;
           }
 
-          .contact-services-heading > span {
-            align-self: start;
-            color: #9aac00;
+          .contact-faq-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: #5f5a54;
             font-family: ui-monospace, monospace;
-            font-size: 9px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
           }
 
-          .contact-services-heading h2 {
-            margin: 0;
-            font-size: clamp(55px, 6vw, 90px);
+          .contact-faq-eyebrow i {
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #111;
+          }
+
+          .contact-faq-heading h2 {
+            max-width: 500px;
+            margin: 22px 0 0;
+            font-size: clamp(50px, 5.4vw, 82px);
             font-weight: 600;
-            line-height: 0.9;
+            line-height: 0.91;
             letter-spacing: -0.065em;
           }
 
-          .contact-services-heading p {
-            margin: 0;
-            color: #69635d;
-            font-size: 14px;
-            line-height: 1.65;
+          .contact-faq-heading > p {
+            max-width: 400px;
+            margin: 25px 0 0;
+            color: #6b655f;
+            font-size: 13px;
+            line-height: 1.7;
           }
 
-          .contact-service-cards {
+          .contact-faq-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 28px;
+            border-radius: 999px;
+            background: #d9ff25;
+            padding: 12px 15px 12px 18px;
+            color: #111;
+            font-size: 11px;
+            font-weight: 650;
+            text-decoration: none;
+            transition:
+              transform 0.25s ease,
+              background 0.25s ease;
+          }
+
+          .contact-faq-cta:hover {
+            background: #cfff00;
+            transform: translateY(-2px);
+          }
+
+          .contact-faq-list {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 70px;
+            gap: 10px;
           }
 
-          .mini-service-card {
+          .contact-faq-item {
+            overflow: hidden;
+            border: 1px solid transparent;
+            border-radius: 22px;
+            background: #e9e8e4;
+            transition:
+              background 0.3s ease,
+              border-color 0.3s ease;
+          }
+
+          .contact-faq-item.is-open {
+            border-color: #d5d2ca;
+            background: #efeee9;
+          }
+
+          .contact-faq-question {
             display: flex;
-            min-height: 390px;
-            padding: 25px;
-            flex-direction: column;
-            border: 1px solid #d6d3cc;
-            border-radius: 25px;
-            background: #eceae5;
+            width: 100%;
+            min-height: 82px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            border: 0;
+            background: transparent;
+            padding: 20px 20px 20px 25px;
+            color: #111;
+            text-align: left;
+            cursor: pointer;
+          }
+
+          .contact-faq-question > span:first-child {
+            font-size: clamp(17px, 1.45vw, 21px);
+            font-weight: 550;
+            letter-spacing: -0.025em;
+          }
+
+          .contact-faq-arrow {
+            display: grid;
+            width: 34px;
+            height: 34px;
+            flex: 0 0 34px;
+            place-items: center;
+            border-radius: 50%;
+            background: #111;
+            color: #fff;
             transition:
               transform 0.35s ease,
               background 0.35s ease;
           }
 
-          .mini-service-card:hover {
-            background: #f8f7f3;
-            transform: translateY(-6px);
-          }
-
-          .mini-service-icon {
-            display: grid;
-            width: 48px;
-            height: 48px;
-            place-items: center;
-            border-radius: 14px;
-          }
-
-          .mini-service-icon.lime {
+          .contact-faq-item.is-open .contact-faq-arrow {
             background: #d9ff25;
+            color: #111;
+            transform: rotate(90deg);
           }
 
-          .mini-service-icon.purple {
-            background: #c9bfff;
-          }
-
-          .mini-service-icon.blue {
-            background: #87afff;
-          }
-
-          .mini-service-card > span {
-            margin-top: 25px;
-            color: #8b857f;
-            font-family: ui-monospace, monospace;
-            font-size: 8px;
-          }
-
-          .mini-service-card h3 {
-            margin: auto 0 0;
-            font-size: 34px;
-            line-height: 0.96;
-            letter-spacing: -0.045em;
-          }
-
-          .mini-service-card p {
-            margin: 17px 0 0;
-            color: #6d665f;
-            font-size: 12px;
-            line-height: 1.6;
-          }
-
-          /* =====================================================
-             DARK
-          ===================================================== */
-
-          .contact-dark {
-            padding: 28px;
-          }
-
-          .contact-dark-inner {
+          .contact-faq-answer {
             display: grid;
-            width: min(1350px, 100%);
-            min-height: 650px;
-            margin: 0 auto;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 50px;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+          }
+
+          .contact-faq-item.is-open .contact-faq-answer {
+            grid-template-rows: 1fr;
+          }
+
+          .contact-faq-answer > div {
             overflow: hidden;
-            border-radius: 34px;
-            background: #111;
-            padding: 65px;
-            color: white;
           }
 
-          .contact-dark-copy {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-          }
-
-          .dark-contact-badge {
-            display: inline-flex;
-            align-self: flex-start;
-            align-items: center;
-            gap: 9px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 6px;
-            padding: 8px 11px;
-            color: rgba(255, 255, 255, 0.6);
-            font-family: ui-monospace, monospace;
-            font-size: 8px;
-            letter-spacing: 0.11em;
-          }
-
-          .dark-contact-badge > span {
-            width: 8px;
-            height: 8px;
-            border-radius: 2px;
-            background: #d9ff25;
-          }
-
-          .contact-dark h2 {
-            margin: 35px 0 0;
-            font-size: clamp(55px, 5.5vw, 85px);
-            font-weight: 600;
-            line-height: 0.88;
-            letter-spacing: -0.065em;
-          }
-
-          .contact-dark-copy > p {
-            max-width: 470px;
-            margin: 30px 0 0;
-            color: rgba(255, 255, 255, 0.55);
-            font-size: 13px;
-            line-height: 1.65;
-          }
-
-          .contact-steps {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-          }
-
-          .contact-step {
-            display: flex;
-            min-height: 245px;
-            padding: 24px;
-            flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
-          }
-
-          .contact-step > span {
-            color: #d9ff25;
-            font-family: ui-monospace, monospace;
-            font-size: 8px;
-          }
-
-          .contact-step h3 {
-            margin: auto 0 10px;
-            font-size: 26px;
-          }
-
-          .contact-step p {
+          .contact-faq-answer p {
+            max-width: 760px;
             margin: 0;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 11px;
-            line-height: 1.6;
+            padding: 0 70px 26px 25px;
+            color: #5f5a55;
+            font-size: 13px;
+            line-height: 1.75;
           }
 
           /* =====================================================
@@ -976,16 +1086,13 @@ export default function ContactPage() {
               grid-template-columns: 1fr;
             }
 
-            .contact-services-heading {
+            .contact-faq-inner {
               grid-template-columns: 1fr;
+              gap: 55px;
             }
 
-            .contact-service-cards {
-              grid-template-columns: 1fr 1fr;
-            }
-
-            .contact-dark-inner {
-              grid-template-columns: 1fr;
+            .contact-faq-heading {
+              position: static;
             }
 
             .contact-final-inner {
@@ -1044,45 +1151,37 @@ export default function ContactPage() {
               padding: 20px;
             }
 
-            .contact-services {
-              padding: 80px 12px 90px;
+            .contact-faq {
+              padding: 85px 12px 100px;
             }
 
-            .contact-services-heading h2 {
+            .contact-faq-inner {
+              gap: 40px;
+            }
+
+            .contact-faq-heading h2 {
               font-size: 48px;
             }
 
-            .contact-service-cards {
-              grid-template-columns: 1fr;
-              margin-top: 50px;
+            .contact-faq-question {
+              min-height: 70px;
+              gap: 15px;
+              padding: 17px 15px 17px 18px;
             }
 
-            .mini-service-card {
-              min-height: 310px;
-              border-radius: 20px;
+            .contact-faq-question > span:first-child {
+              font-size: 16px;
             }
 
-            .contact-dark {
-              padding: 12px;
+            .contact-faq-arrow {
+              width: 31px;
+              height: 31px;
+              flex-basis: 31px;
             }
 
-            .contact-dark-inner {
-              min-height: auto;
-              border-radius: 22px;
-              padding: 45px 22px;
-            }
-
-            .contact-dark h2 {
-              font-size: 49px;
-            }
-
-            .contact-steps {
-              grid-template-columns: 1fr;
-              margin-top: 35px;
-            }
-
-            .contact-step {
-              min-height: 215px;
+            .contact-faq-answer p {
+              padding: 0 18px 22px;
+              font-size: 12px;
             }
 
             .contact-final {

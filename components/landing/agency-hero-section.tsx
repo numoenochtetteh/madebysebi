@@ -122,7 +122,7 @@ export function AgencyHeroSection() {
               </span>
             </div>
 
-            <span>Websites built for businesses in Ghana and the UK</span>
+            <span>Websites built for businesses in Ghana and worldwide</span>
           </div>
         </div>
 

@@ -16,7 +16,7 @@ import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 const projects = [
   {
     number: "01",
-    title: "PENGTRESSES",
+    title: "Forever Peng Hair",
     industry: "Beauty",
     type: "Booking platform",
     year: "2026",
@@ -85,7 +85,7 @@ const projects = [
     year: "2026",
     description:
       "A premium jewellery e-commerce concept that combines editorial storytelling, product detail and a clean shopping flow.",
-    image: "/case-studies/numo-sebi/04-editorial.png",
+    image: "/case-studies/numo-sebi/04-editorial.webp",
     video: "/case-studies/numo-sebi/hero-video.mp4",
     href: "/work/numo-sebi",
     liveUrl: "https://jewelry-store-numo-sebi-two.vercel.app",
@@ -214,7 +214,7 @@ export default function WorkPage() {
 
               <div>
                 <small>BEAUTY</small>
-                <strong>PENGTRESSES</strong>
+                <strong>Forever Peng Hair</strong>
               </div>
 
               <ArrowUpRight size={18} />

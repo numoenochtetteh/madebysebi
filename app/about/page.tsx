@@ -7,53 +7,7 @@ import Link from "next/link";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Code2,
-  Compass,
-  Globe2,
-  Layers3,
-  Palette,
-  Rocket,
-  Sparkles,
-  Target,
-} from "lucide-react";
-
-const values = [
-  {
-    number: "01",
-    title: "Clarity first",
-    description:
-      "Good digital experiences should make businesses easier to understand, not more complicated.",
-    icon: Compass,
-    color: "#d9ff25",
-  },
-  {
-    number: "02",
-    title: "Design with purpose",
-    description:
-      "We care about how things look, but every visual decision should support a real business goal.",
-    icon: Palette,
-    color: "#b8a7ff",
-  },
-  {
-    number: "03",
-    title: "Build properly",
-    description:
-      "Fast, responsive and thoughtful development matters just as much as the visual design.",
-    icon: Code2,
-    color: "#78a8ff",
-  },
-  {
-    number: "04",
-    title: "Think beyond launch",
-    description:
-      "A website should continue supporting the business long after the first version goes live.",
-    icon: Rocket,
-    color: "#ff815c",
-  },
-];
+import { ArrowRight, ArrowUpRight, Sparkles, Target } from "lucide-react";
 
 const capabilities = [
   { title: "Web Design", href: "/services#web-design-development" },
@@ -64,6 +18,27 @@ const capabilities = [
   { title: "Digital Strategy", href: "/services#digital-marketing-growth" },
   { title: "Website Audits", href: "/services#consultation-audits" },
   { title: "Performance", href: "/services#consultation-audits" },
+];
+
+const teamMembers = [
+  {
+    name: "Numo Nanortey Francis",
+    role: "WordPress Engineer | Full Stack",
+    image:
+      "https://images.pexels.com/photos/12903019/pexels-photo-12903019.jpeg?cs=srgb&dl=pexels-mizunokozuki-12903019.jpg&fm=jpg",
+  },
+  {
+    name: "Enoch Numo Tetteh",
+    role: "Frontend Engineer",
+    image:
+      "https://images.pexels.com/photos/8729954/pexels-photo-8729954.jpeg?cs=srgb&dl=pexels-mikhail-nilov-8729954.jpg&fm=jpg",
+  },
+  {
+    name: "Bernard Numo",
+    role: "Frontend Developer",
+    image:
+      "https://images.pexels.com/photos/30767586/pexels-photo-30767586.jpeg?cs=srgb&dl=pexels-uiliamnornberg-30767586.jpg&fm=jpg",
+  },
 ];
 
 export default function AboutPage() {
@@ -129,9 +104,9 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* =================================================
+          {/* =====================================================
               HERO VISUAL
-          ================================================= */}
+          ===================================================== */}
 
           <div className="about-hero-visual" data-reveal>
             <div className="about-main-media">
@@ -158,7 +133,7 @@ export default function AboutPage() {
 
               <div>
                 <small>BASED IN</small>
-                <strong>Ghana · Working globally</strong>
+                <strong>Accra, Ghana · Working worldwide</strong>
               </div>
             </div>
 
@@ -189,7 +164,10 @@ export default function AboutPage() {
         <section className="about-marquee">
           <div className="about-marquee-track">
             {[...capabilities, ...capabilities].map((item, index) => (
-              <div className="about-marquee-item" key={`${item.title}-${index}`}>
+              <div
+                className="about-marquee-item"
+                key={`${item.title}-${index}`}
+              >
                 <span />
                 {item.title}
                 <i>✦</i>
@@ -289,119 +267,6 @@ export default function AboutPage() {
         </section>
 
         {/* =====================================================
-            VALUES
-        ===================================================== */}
-
-        <section className="about-values">
-          <div className="about-values-inner">
-            <div className="values-heading" data-reveal>
-              <span className="about-section-label">
-                <span>03</span>
-                WHAT MATTERS
-              </span>
-
-              <h2>
-                The principles behind
-                <br />
-                everything we build.
-              </h2>
-            </div>
-
-            <div className="values-grid">
-              {values.map((value) => {
-                const Icon = value.icon;
-
-                return (
-                  <article
-                    className="value-card"
-                    key={value.number}
-                    data-reveal
-                    style={
-                      {
-                        "--value-color": value.color,
-                      } as React.CSSProperties
-                    }
-                  >
-                    <div className="value-top">
-                      <span>{value.number}</span>
-
-                      <div className="value-icon">
-                        <Icon size={21} strokeWidth={1.7} />
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3>{value.title}</h3>
-                      <p>{value.description}</p>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* =====================================================
-            DARK PHILOSOPHY
-        ===================================================== */}
-
-        <section className="about-philosophy">
-          <div className="about-philosophy-inner" data-reveal>
-            <div className="philosophy-copy">
-              <span className="dark-about-label">
-                <span />
-                OUR PHILOSOPHY
-              </span>
-
-              <h2>
-                Make it clear.
-                <br />
-                Make it useful.
-                <br />
-                <span>Make it memorable.</span>
-              </h2>
-
-              <p>
-                The best websites are not the ones with the most effects. They
-                are the ones that make people understand the business, trust it
-                and know what to do next.
-              </p>
-            </div>
-
-            <div className="philosophy-system">
-              <div className="philosophy-ring philosophy-ring-one" />
-              <div className="philosophy-ring philosophy-ring-two" />
-              <div className="philosophy-ring philosophy-ring-three" />
-
-              <div className="philosophy-center">
-                <strong>numo</strong>
-                <small>DIGITAL</small>
-              </div>
-
-              <div className="philosophy-node node-strategy">
-                <Compass size={17} />
-                STRATEGY
-              </div>
-
-              <div className="philosophy-node node-design">
-                <Palette size={17} />
-                DESIGN
-              </div>
-
-              <div className="philosophy-node node-build">
-                <Code2 size={17} />
-                BUILD
-              </div>
-
-              <div className="philosophy-node node-growth">
-                <Globe2 size={17} />
-                GROWTH
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* =====================================================
             CAPABILITIES
         ===================================================== */}
 
@@ -409,7 +274,7 @@ export default function AboutPage() {
           <div className="about-capabilities-inner">
             <div className="capabilities-heading" data-reveal>
               <div className="about-section-label">
-                <span>04</span>
+                <span>03</span>
                 CAPABILITIES
               </div>
 
@@ -443,90 +308,60 @@ export default function AboutPage() {
         </section>
 
         {/* =====================================================
-            VISUAL COLLAGE
+            TEAM
         ===================================================== */}
 
-        <section className="about-collage">
-          <div className="about-collage-inner">
-            <div className="collage-card collage-large" data-reveal>
-              <Image
-                src="/showcase/creative-workspace.jpg"
-                alt="Creative digital work"
-                fill
-                sizes="(max-width: 900px) 100vw, 60vw"
-              />
+        <section className="about-team">
+          <div className="about-team-inner">
+            <div className="about-team-heading" data-reveal>
+              <div className="about-section-label">
+                <span>04</span>
+                OUR TEAM
+              </div>
 
-              <div className="collage-overlay" />
+              <div>
+                <h2>
+                  Small team.
+                  <br />
+                  Built to deliver.
+                </h2>
 
-              <span>Design with purpose.</span>
+                <p>
+                  Three developers bringing web design, frontend engineering and
+                  full-stack capability together for businesses in Ghana and
+                  around the world.
+                </p>
+              </div>
             </div>
 
-            <div className="collage-right">
-              <div className="collage-card collage-small" data-reveal>
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  poster="/expertise/tech-websites.png"
+            <div className="about-team-grid">
+              {teamMembers.map((member, index) => (
+                <article
+                  className="about-team-card"
+                  key={member.name}
+                  data-reveal
                 >
-                  <source src="/expertise/tech-websites.mp4" type="video/mp4" />
-                </video>
+                  <div className="about-team-photo">
+                    <img
+                      src={member.image}
+                      alt={`Temporary placeholder portrait for ${member.name}`}
+                      loading="lazy"
+                      decoding="async"
+                    />
 
-                <div className="collage-overlay" />
+                    <span className="about-team-photo-note">TEMP PHOTO</span>
 
-                <span>Built to perform.</span>
-              </div>
+                    <span className="about-team-number">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
 
-              <div className="collage-message" data-reveal>
-                <div className="collage-message-top">
-                  <span>NUMO DIGITAL</span>
-                  <span>2026</span>
-                </div>
-
-                <h3>
-                  Good digital
-                  <br />
-                  work should make
-                  <br />
-                  business easier.
-                </h3>
-
-                <Link href="/work">
-                  View our work
-                  <ArrowUpRight size={17} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* =====================================================
-            FINAL STATEMENT
-        ===================================================== */}
-
-        <section className="about-statement">
-          <div className="about-statement-inner">
-            <span data-reveal>WHY NUMO DIGITAL</span>
-
-            <h2 data-reveal>
-              We care about the
-              <br />
-              details because your
-              <br />
-              <em>customers notice them.</em>
-            </h2>
-
-            <div className="statement-bottom" data-reveal>
-              <p>
-                From the first headline to mobile performance, every part of the
-                experience contributes to how people perceive your business.
-              </p>
-
-              <Link href="/contact">
-                Let&apos;s work together
-                <ArrowUpRight size={17} />
-              </Link>
+                  <div className="about-team-copy">
+                    <h3>{member.name}</h3>
+                    <p>{member.role}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -558,15 +393,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* =====================================================
-            STYLES
-        ===================================================== */}
-
         <style jsx global>{`
-          /* =====================================================
-             GLOBAL
-          ===================================================== */
-
           .about-page {
             overflow: hidden;
             background: #f4f4f1;
@@ -977,15 +804,18 @@ export default function AboutPage() {
           .feature-media-overlay {
             position: absolute;
             inset: 0;
+            z-index: 1;
             background: linear-gradient(
               180deg,
               transparent 50%,
               rgba(0, 0, 0, 0.18)
             );
+            pointer-events: none;
           }
 
           .feature-media-tag {
             position: absolute;
+            z-index: 2;
             bottom: 22px;
             left: 22px;
             display: flex;
@@ -1056,268 +886,11 @@ export default function AboutPage() {
           }
 
           /* =====================================================
-             VALUES
-          ===================================================== */
-
-          .about-values {
-            padding: 120px 28px 140px;
-          }
-
-          .about-values-inner {
-            width: min(1350px, 100%);
-            margin: 0 auto;
-          }
-
-          .values-heading {
-            margin-bottom: 70px;
-          }
-
-          .values-heading h2 {
-            margin: 30px 0 0;
-            font-size: clamp(53px, 6vw, 90px);
-            font-weight: 600;
-            line-height: 0.91;
-            letter-spacing: -0.065em;
-          }
-
-          .values-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-          }
-
-          .value-card {
-            display: flex;
-            min-height: 390px;
-            padding: 25px;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid #d5d2cb;
-            border-radius: 25px;
-            background: #eeece7;
-            transition:
-              transform 0.35s ease,
-              background 0.35s ease;
-          }
-
-          .value-card:hover {
-            background: #f8f7f4;
-            transform: translateY(-6px);
-          }
-
-          .value-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          }
-
-          .value-top > span {
-            font-family: ui-monospace, monospace;
-            font-size: 9px;
-          }
-
-          .value-icon {
-            display: grid;
-            width: 48px;
-            height: 48px;
-            place-items: center;
-            border-radius: 14px;
-            background: var(--value-color);
-          }
-
-          .value-card h3 {
-            margin: 0;
-            font-size: 29px;
-            letter-spacing: -0.04em;
-          }
-
-          .value-card p {
-            margin: 15px 0 0;
-            color: #6c665f;
-            font-size: 12px;
-            line-height: 1.6;
-          }
-
-          /* =====================================================
-             PHILOSOPHY
-          ===================================================== */
-
-          .about-philosophy {
-            padding: 28px;
-          }
-
-          .about-philosophy-inner {
-            display: grid;
-            width: min(1350px, 100%);
-            min-height: 700px;
-            margin: 0 auto;
-            grid-template-columns: 1fr 1fr;
-            overflow: hidden;
-            border-radius: 34px;
-            background: #111;
-            color: white;
-          }
-
-          .philosophy-copy {
-            display: flex;
-            justify-content: center;
-            padding: 70px;
-            flex-direction: column;
-          }
-
-          .dark-about-label {
-            display: inline-flex;
-            align-self: flex-start;
-            align-items: center;
-            gap: 9px;
-            border: 1px solid rgba(255, 255, 255, 0.17);
-            border-radius: 6px;
-            padding: 8px 11px;
-            color: rgba(255, 255, 255, 0.6);
-            font-family: ui-monospace, monospace;
-            font-size: 8px;
-            letter-spacing: 0.12em;
-          }
-
-          .dark-about-label > span {
-            width: 8px;
-            height: 8px;
-            border-radius: 2px;
-            background: #d9ff25;
-          }
-
-          .philosophy-copy h2 {
-            margin: 35px 0 0;
-            font-size: clamp(54px, 5.7vw, 90px);
-            font-weight: 600;
-            line-height: 0.9;
-            letter-spacing: -0.065em;
-          }
-
-          .philosophy-copy h2 span {
-            color: #d9ff25;
-          }
-
-          .philosophy-copy p {
-            max-width: 500px;
-            margin: 30px 0 0;
-            color: rgba(255, 255, 255, 0.55);
-            font-size: 14px;
-            line-height: 1.65;
-          }
-
-          .philosophy-system {
-            position: relative;
-            overflow: hidden;
-          }
-
-          .philosophy-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-          }
-
-          .philosophy-ring-one {
-            width: 230px;
-            height: 230px;
-          }
-
-          .philosophy-ring-two {
-            width: 420px;
-            height: 420px;
-          }
-
-          .philosophy-ring-three {
-            width: 620px;
-            height: 620px;
-          }
-
-          .philosophy-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            display: flex;
-            width: 125px;
-            height: 125px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 30px;
-            background: #d9ff25;
-            color: #111;
-            flex-direction: column;
-            transform: translate(-50%, -50%);
-            animation: aboutPulse 4s ease-in-out infinite;
-          }
-
-          .philosophy-center strong {
-            font-size: 25px;
-          }
-
-          .philosophy-center small {
-            font-family: ui-monospace, monospace;
-            font-size: 6px;
-            letter-spacing: 0.13em;
-          }
-
-          @keyframes aboutPulse {
-            50% {
-              transform: translate(-50%, -50%) scale(1.07);
-            }
-          }
-
-          .philosophy-node {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 11px 14px;
-            font-family: ui-monospace, monospace;
-            font-size: 8px;
-            backdrop-filter: blur(10px);
-            animation: aboutNodeFloat 5s ease-in-out infinite;
-          }
-
-          .node-strategy {
-            top: 20%;
-            left: 14%;
-          }
-
-          .node-design {
-            top: 24%;
-            right: 14%;
-            animation-delay: -1.3s;
-          }
-
-          .node-build {
-            bottom: 20%;
-            left: 19%;
-            animation-delay: -2.5s;
-          }
-
-          .node-growth {
-            right: 16%;
-            bottom: 22%;
-            animation-delay: -3.7s;
-          }
-
-          @keyframes aboutNodeFloat {
-            50% {
-              transform: translateY(-13px);
-            }
-          }
-
-          /* =====================================================
              CAPABILITIES
           ===================================================== */
 
           .about-capabilities {
-            padding: 150px 28px;
+            padding: 120px 28px 150px;
           }
 
           .about-capabilities-inner {
@@ -1342,13 +915,13 @@ export default function AboutPage() {
 
           .capability-row {
             display: grid;
-            color: inherit;
-            text-decoration: none;
-            cursor: pointer;
             min-height: 90px;
             grid-template-columns: 80px 1fr auto;
             align-items: center;
             border-bottom: 1px solid #d2cfc8;
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
             transition: padding 0.3s ease;
           }
 
@@ -1390,174 +963,133 @@ export default function AboutPage() {
           }
 
           /* =====================================================
-             COLLAGE
+             TEAM
           ===================================================== */
 
-          .about-collage {
-            padding: 0 28px 140px;
+          .about-team {
+            padding: 0 28px 150px;
           }
 
-          .about-collage-inner {
-            display: grid;
+          .about-team-inner {
             width: min(1350px, 100%);
             margin: 0 auto;
-            grid-template-columns: 1.3fr 0.7fr;
-            gap: 15px;
           }
 
-          .collage-card {
+          .about-team-heading {
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: 90px;
+            align-items: end;
+            margin-bottom: 58px;
+          }
+
+          .about-team-heading h2 {
+            max-width: 780px;
+            margin: 0;
+            font-size: clamp(52px, 5.6vw, 88px);
+            font-weight: 600;
+            line-height: 0.91;
+            letter-spacing: -0.065em;
+          }
+
+          .about-team-heading p {
+            max-width: 610px;
+            margin: 24px 0 0;
+            color: #6e6963;
+            font-size: 14px;
+            line-height: 1.7;
+          }
+
+          .about-team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+          }
+
+          .about-team-card {
+            min-width: 0;
+          }
+
+          .about-team-photo {
             position: relative;
+            min-height: 520px;
             overflow: hidden;
+            border: 1px solid #d7d3cb;
             border-radius: 28px;
+            background: #e9e7e1;
           }
 
-          .collage-large {
-            min-height: 720px;
-          }
-
-          .collage-small {
-            min-height: 350px;
-          }
-
-          .collage-card img,
-          .collage-card video {
+          .about-team-photo img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
+            filter: saturate(0.86);
+            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
           }
 
-          .collage-card img {
-            object-fit: cover;
+          .about-team-card:hover .about-team-photo img {
+            transform: scale(1.025);
           }
 
-          .collage-overlay {
+          .about-team-photo::after {
+            content: "";
             position: absolute;
-            inset: 0;
+            inset: auto 0 0;
+            height: 36%;
             background: linear-gradient(
-              180deg,
-              transparent 60%,
-              rgba(0, 0, 0, 0.35)
+              to top,
+              rgba(0, 0, 0, 0.34),
+              transparent
             );
+            pointer-events: none;
           }
 
-          .collage-card > span {
+          .about-team-photo-note,
+          .about-team-number {
             position: absolute;
-            bottom: 25px;
-            left: 25px;
-            z-index: 3;
-            color: white;
-            font-size: 19px;
-            font-weight: 600;
-          }
-
-          .collage-right {
-            display: grid;
-            grid-template-rows: 1fr 1fr;
-            gap: 15px;
-          }
-
-          .collage-message {
-            display: flex;
-            min-height: 355px;
-            padding: 28px;
-            flex-direction: column;
-            justify-content: space-between;
-            border-radius: 28px;
-            background: #d9ff25;
-          }
-
-          .collage-message-top {
-            display: flex;
-            justify-content: space-between;
+            z-index: 2;
+            top: 18px;
+            border-radius: 999px;
             font-family: ui-monospace, monospace;
             font-size: 8px;
+            letter-spacing: 0.11em;
           }
 
-          .collage-message h3 {
-            margin: auto 0 0;
-            font-size: clamp(35px, 3.4vw, 51px);
-            font-weight: 600;
-            line-height: 0.94;
-            letter-spacing: -0.055em;
+          .about-team-photo-note {
+            left: 18px;
+            background: #d9ff25;
+            padding: 8px 10px;
+            color: #0b0b0b;
           }
 
-          .collage-message a {
-            display: inline-flex;
-            align-self: flex-start;
-            align-items: center;
-            gap: 25px;
-            margin-top: 25px;
-            border-radius: 999px;
-            background: #111;
-            padding: 13px 17px;
-            color: white;
-            font-size: 10px;
-            text-decoration: none;
+          .about-team-number {
+            right: 18px;
+            display: grid;
+            width: 36px;
+            height: 36px;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            color: #111;
           }
 
-          /* =====================================================
-             STATEMENT
-          ===================================================== */
-
-          .about-statement {
-            padding: 130px 28px 160px;
+          .about-team-copy {
+            padding: 18px 4px 0;
           }
 
-          .about-statement-inner {
-            width: min(1350px, 100%);
-            margin: 0 auto;
-          }
-
-          .about-statement-inner > span {
-            font-family: ui-monospace, monospace;
-            font-size: 9px;
-            letter-spacing: 0.15em;
-          }
-
-          .about-statement h2 {
-            margin: 35px 0 0;
-            font-size: clamp(65px, 8vw, 125px);
-            font-weight: 600;
-            line-height: 0.85;
-            letter-spacing: -0.075em;
-          }
-
-          .about-statement h2 em {
-            color: #827b74;
-            font-family: serif;
-            font-weight: 400;
-          }
-
-          .statement-bottom {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 50px;
-            margin-top: 60px;
-          }
-
-          .statement-bottom p {
-            max-width: 600px;
+          .about-team-copy h3 {
             margin: 0;
-            color: #68615b;
-            font-size: 15px;
-            line-height: 1.65;
+            font-size: clamp(24px, 2.1vw, 34px);
+            font-weight: 550;
+            letter-spacing: -0.04em;
           }
 
-          .statement-bottom a {
-            display: inline-flex;
-            align-items: center;
-            gap: 25px;
-            border-radius: 999px;
-            background: #111;
-            padding: 15px 20px 15px 25px;
-            color: white;
-            font-size: 12px;
-            text-decoration: none;
-          }
-
-          .statement-bottom a svg {
-            color: #d9ff25;
+          .about-team-copy p {
+            margin: 8px 0 0;
+            color: #77716b;
+            font-size: 13px;
           }
 
           /* =====================================================
@@ -1680,33 +1212,21 @@ export default function AboutPage() {
               min-height: 550px;
             }
 
-            .values-grid {
-              grid-template-columns: 1fr 1fr;
-            }
-
-            .about-philosophy-inner {
-              grid-template-columns: 1fr;
-            }
-
-            .philosophy-system {
-              min-height: 540px;
-            }
-
             .about-capabilities-inner {
               grid-template-columns: 1fr;
             }
 
-            .about-collage-inner {
+            .about-team-heading {
+              grid-template-columns: 1fr;
+              gap: 28px;
+            }
+
+            .about-team-grid {
               grid-template-columns: 1fr;
             }
 
-            .collage-large {
-              min-height: 550px;
-            }
-
-            .statement-bottom {
-              align-items: flex-start;
-              flex-direction: column;
+            .about-team-photo {
+              min-height: 560px;
             }
 
             .about-final-inner {
@@ -1820,68 +1340,6 @@ export default function AboutPage() {
               font-size: 47px;
             }
 
-            .about-values {
-              padding: 80px 12px 90px;
-            }
-
-            .values-heading h2 {
-              font-size: 47px;
-            }
-
-            .values-grid {
-              grid-template-columns: 1fr;
-            }
-
-            .value-card {
-              min-height: 300px;
-              border-radius: 20px;
-            }
-
-            .about-philosophy {
-              padding: 12px;
-            }
-
-            .about-philosophy-inner {
-              border-radius: 22px;
-            }
-
-            .philosophy-copy {
-              padding: 50px 24px;
-            }
-
-            .philosophy-copy h2 {
-              font-size: 48px;
-            }
-
-            .philosophy-system {
-              min-height: 420px;
-            }
-
-            .philosophy-ring-one {
-              width: 170px;
-              height: 170px;
-            }
-
-            .philosophy-ring-two {
-              width: 280px;
-              height: 280px;
-            }
-
-            .philosophy-ring-three {
-              width: 390px;
-              height: 390px;
-            }
-
-            .philosophy-center {
-              width: 95px;
-              height: 95px;
-            }
-
-            .philosophy-node {
-              padding: 8px 10px;
-              font-size: 7px;
-            }
-
             .about-capabilities {
               padding: 90px 14px;
             }
@@ -1898,38 +1356,17 @@ export default function AboutPage() {
               font-size: 23px;
             }
 
-            .about-collage {
-              padding: 0 12px 90px;
+            .about-team {
+              padding: 0 16px 100px;
             }
 
-            .collage-large {
-              min-height: 430px;
+            .about-team-heading h2 {
+              font-size: clamp(44px, 13vw, 62px);
             }
 
-            .collage-small {
-              min-height: 300px;
-            }
-
-            .collage-message {
-              min-height: 330px;
-              border-radius: 20px;
-              padding: 22px;
-            }
-
-            .collage-message h3 {
-              font-size: 38px;
-            }
-
-            .about-statement {
-              padding: 90px 14px;
-            }
-
-            .about-statement h2 {
-              font-size: 54px;
-            }
-
-            .statement-bottom {
-              margin-top: 40px;
+            .about-team-photo {
+              min-height: 470px;
+              border-radius: 22px;
             }
 
             .about-final {
@@ -1955,9 +1392,7 @@ export default function AboutPage() {
           @media (prefers-reduced-motion: reduce) {
             .about-glow,
             .about-floating-card,
-            .about-marquee-track,
-            .philosophy-center,
-            .philosophy-node {
+            .about-marquee-track {
               animation: none !important;
             }
 

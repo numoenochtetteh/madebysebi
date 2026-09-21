@@ -36,7 +36,7 @@ const wideProject = {
   year: "2026",
   description:
     "A premium jewellery e-commerce concept that combines editorial storytelling, product detail and a clean shopping flow.",
-  image: "/case-studies/numo-sebi/04-editorial.png",
+  image: "/case-studies/numo-sebi/04-editorial.webp",
   href: "/work/numo-sebi",
 };
 

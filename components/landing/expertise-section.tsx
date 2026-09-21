@@ -25,26 +25,26 @@ const expertiseCards: ExpertiseCard[] = [
     ],
   },
   {
-    title: "Fintech & digital finance",
+    title: "E-commerce & booking websites",
     video: "/expertise/fintech-solutions.mp4",
     poster: "/expertise/fintech-solutions.png",
     description:
-      "We shape clear, trustworthy websites and product experiences for fintech, payments and modern financial platforms.",
+      "We build customer-friendly websites that help businesses sell products, take bookings, collect deposits and turn interest into action.",
     services: [
-      "Fintech websites",
-      "Platform design",
-      "Responsive development",
-      "Conversion strategy",
+      "E-commerce websites",
+      "Booking platforms",
+      "Payments & deposits",
+      "Customer journeys",
     ],
   },
   {
-    title: "Websites for business",
+    title: "Corporate & business websites",
     video: "/expertise/tech-websites.mp4",
     poster: "/expertise/tech-websites.png",
     description:
       "We build distinctive, responsive websites that help businesses explain what they do, earn trust and turn attention into action.",
     services: [
-      "Technology websites",
+      "Company websites",
       "Landing pages",
       "Website redesign",
       "Performance",

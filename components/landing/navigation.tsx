@@ -218,7 +218,7 @@ export function Navigation() {
             {/* Location */}
             <div className="mt-7 flex items-center justify-end border-t border-black/[0.06] pt-5">
               <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-black/40">
-                Accra, Ghana
+                Accra, Ghana · Worldwide
               </span>
             </div>
           </div>

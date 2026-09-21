@@ -6,7 +6,7 @@ const companies = [
   "NUMO & SEBI",
   "Kent Architects",
   "Lucenex Corp",
-  "PENGTRESSES",
+  "Forever Peng Hair",
   "Power Electrode Ltd",
 ];
 

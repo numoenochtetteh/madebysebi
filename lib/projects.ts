@@ -44,7 +44,7 @@ export const caseStudyProjects: CaseStudyProject[] = [
     slug: "pengtresses",
     number: "01",
     title: "Forever Peng Hair",
-    shortTitle: "PENGTRESSES",
+    shortTitle: "Forever Peng Hair",
     industry: "Beauty",
     type: "Booking platform",
     year: "2026",
@@ -283,7 +283,7 @@ export const caseStudyProjects: CaseStudyProject[] = [
     headline: "A jewellery shopping experience designed to make the brand feel premium and the products feel desirable.",
     intro:
       "NUMO & SEBI was approached as more than a simple product grid. The goal was to shape a refined e-commerce experience for a jewellery brand — one that sells through mood, presentation and clarity, while still making it easy for customers to browse pieces, view details and move through checkout with confidence.",
-    image: "/case-studies/numo-sebi/04-editorial.png",
+    image: "/case-studies/numo-sebi/04-editorial.webp",
     video: "/case-studies/numo-sebi/hero-video.mp4",
     accent: "#c8bbff",
     liveUrl: "https://jewelry-store-numo-sebi-two.vercel.app",
@@ -316,7 +316,7 @@ export const caseStudyProjects: CaseStudyProject[] = [
     outcome:
       "NUMO & SEBI demonstrates how a jewellery store can feel premium online while still supporting real buying behaviour. It gives the brand a stronger digital identity, better product presentation and a cleaner path from discovery to purchase.",
     gallery: [
-      "/case-studies/numo-sebi/04-editorial.png",
+      "/case-studies/numo-sebi/04-editorial.webp",
       "/case-studies/numo-sebi/01-product-page.png",
       "/case-studies/numo-sebi/02-checkout.png",
       "/case-studies/numo-sebi/03-collection.png",

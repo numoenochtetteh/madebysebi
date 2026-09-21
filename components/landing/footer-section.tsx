@@ -194,13 +194,13 @@ export function FooterSection() {
             </a>
 
             <p>
-              We design and develop modern digital experiences for businesses
-              that want to look better, communicate clearly and grow online.
+              We design and develop professional websites for businesses and
+              companies that want to look credible, communicate clearly and grow online.
             </p>
 
             <div className="numo-footer-location">
               <span className="numo-status-dot" />
-              Accra, Ghana
+              Accra, Ghana · Working worldwide
             </div>
           </div>
 
@@ -241,11 +241,11 @@ export function FooterSection() {
           <p>© 2026 Numo Digital. All rights reserved.</p>
 
           <div>
-            <a href="#">Privacy</a>
+            <a href="/privacy">Privacy</a>
 
             <span>•</span>
 
-            <a href="#">Terms</a>
+            <a href="/terms">Terms</a>
           </div>
 
           <a href="#" className="numo-footer-back-top">
