@@ -5,28 +5,16 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
 const heroCards = [
-  { src: "/showcase/1.png", className: "numo-arc-card numo-arc-card-1" },
-  { src: "/showcase/2.png", className: "numo-arc-card numo-arc-card-2" },
-  { src: "/showcase/3.png", className: "numo-arc-card numo-arc-card-3" },
-  { src: "/showcase/4.png", className: "numo-arc-card numo-arc-card-4" },
-  {
-    src: "/showcase/creative-workspace.jpg",
-    className: "numo-arc-card numo-arc-card-5",
-  },
-  {
-    src: "/showcase/coding-workspace.jpg",
-    className: "numo-arc-card numo-arc-card-6",
-  },
-  {
-    src: "/showcase/product-design.jpg",
-    className: "numo-arc-card numo-arc-card-7",
-  },
-  {
-    src: "/showcase/web-design.jpg",
-    className: "numo-arc-card numo-arc-card-8",
-  },
-  { src: "/showcase/1.png", className: "numo-arc-card numo-arc-card-9" },
-  { src: "/showcase/2.png", className: "numo-arc-card numo-arc-card-10" },
+  { src: "/showcase/header-set/01-coffee.jpg", className: "numo-arc-card numo-arc-card-1" },
+  { src: "/showcase/header-set/03-house.jpg", className: "numo-arc-card numo-arc-card-2" },
+  { src: "/showcase/header-set/04-portrait.jpg", className: "numo-arc-card numo-arc-card-3" },
+  { src: "/showcase/header-set/06-ship.jpg", className: "numo-arc-card numo-arc-card-4" },
+  { src: "/showcase/header-set/10-reference.webp", className: "numo-arc-card numo-arc-card-5" },
+  { src: "/showcase/header-set/02-yellow.jpg", className: "numo-arc-card numo-arc-card-6" },
+  { src: "/showcase/header-set/08-laptop.jpg", className: "numo-arc-card numo-arc-card-7" },
+  { src: "/showcase/header-set/09-prestige.webp", className: "numo-arc-card numo-arc-card-8" },
+  { src: "/showcase/header-set/07-hair.webp", className: "numo-arc-card numo-arc-card-9" },
+  { src: "/showcase/header-set/05-construction.jpg", className: "numo-arc-card numo-arc-card-10" },
 ];
 
 const desktopTabs = ["Web Design", "Development", "UI/UX", "Digital Products"];
@@ -77,8 +65,6 @@ export function GalleryHero() {
     return () => window.clearInterval(interval);
   }, [isMobile, activeTab]);
 
-  const visibleTabs = isMobile ? mobileTabs : desktopTabs;
-
   return (
     <section className="numo-arc-hero">
       {/* BACKGROUND GLOW */}
@@ -111,7 +97,7 @@ export function GalleryHero() {
         ====================================================== */}
 
         <div className="numo-company-bar">
-          {visibleTabs.map((item) => (
+          {desktopTabs.map((item) => (
             <button
               key={item}
               type="button"
@@ -135,7 +121,7 @@ export function GalleryHero() {
           {heroCards.map((card, index) => (
             <div key={`${card.src}-${index}`} className={card.className}>
               <div className="numo-card-inner">
-                <img src={card.src} alt="" />
+                <img src={card.src} alt="" width={320} height={320} />
               </div>
             </div>
           ))}
@@ -188,6 +174,7 @@ export function GalleryHero() {
           background: linear-gradient(180deg, #f7f6f2 0%, #f2f1ec 100%);
 
           color: #081126;
+          font-family: var(--font-instrument);
 
           isolation: isolate;
           box-sizing: border-box;
@@ -364,23 +351,7 @@ export function GalleryHero() {
 
           transform: translateX(-50%);
 
-          animation: numoBarReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-
           box-sizing: border-box;
-        }
-
-        @keyframes numoBarReveal {
-          from {
-            opacity: 0;
-
-            transform: translate(-50%, -10px);
-          }
-
-          to {
-            opacity: 1;
-
-            transform: translate(-50%, 0);
-          }
         }
 
         .numo-company-pill {
@@ -721,7 +692,6 @@ export function GalleryHero() {
 
           box-shadow: 0 10px 24px rgba(10, 15, 25, 0.08);
 
-          animation: numoReveal 0.8s 0.08s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .numo-content-eyebrow svg {
@@ -743,7 +713,6 @@ export function GalleryHero() {
 
           letter-spacing: -0.055em;
 
-          animation: numoReveal 0.9s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .numo-arc-content p {
@@ -757,21 +726,6 @@ export function GalleryHero() {
 
           line-height: 1.5;
 
-          animation: numoReveal 0.9s 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
-        }
-
-        @keyframes numoReveal {
-          from {
-            opacity: 0;
-
-            transform: translateY(20px);
-          }
-
-          to {
-            opacity: 1;
-
-            transform: translateY(0);
-          }
         }
 
         /* =====================================================
@@ -788,7 +742,6 @@ export function GalleryHero() {
 
           margin-top: 24px;
 
-          animation: numoReveal 0.9s 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
         .numo-arc-actions a {
@@ -977,24 +930,12 @@ export function GalleryHero() {
 
             transform: translateX(-50%);
 
-            animation: numoMobileBarReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1)
-              both;
-
             box-sizing: border-box;
           }
 
-          @keyframes numoMobileBarReveal {
-            from {
-              opacity: 0;
-
-              transform: translate(-50%, -8px);
-            }
-
-            to {
-              opacity: 1;
-
-              transform: translate(-50%, 0);
-            }
+          /* Keep the server-rendered tabs stable when the phone hydrates. */
+          .numo-company-pill:nth-child(2) {
+            display: none;
           }
 
           .numo-company-pill {

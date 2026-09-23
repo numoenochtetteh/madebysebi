@@ -89,8 +89,9 @@ export default function RootLayout({
         style={
           {
             "--font-instrument":
-              "Arial, Helvetica, system-ui, -apple-system, sans-serif",
-            "--font-instrument-serif": "Georgia, 'Times New Roman', serif",
+              "\"Proxima Nova\", \"Helvetica Neue\", Helvetica, Arial, system-ui, -apple-system, sans-serif",
+            "--font-instrument-serif":
+              "\"Libre Baskerville\", Georgia, 'Times New Roman', serif",
             "--font-jetbrains": "Consolas, Monaco, 'Courier New', monospace",
           } as React.CSSProperties
         }
