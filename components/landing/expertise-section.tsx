@@ -83,7 +83,8 @@ export function ExpertiseSection() {
           <h2>Where strategy, design and development come together.</h2>
 
           <p>
-            From first idea to final launch, we shape digital experiences that feel distinctive, useful and built around your business.
+            From first idea to final launch, we shape digital experiences that
+            feel distinctive, useful and built around your business.
           </p>
         </div>
 
@@ -144,6 +145,7 @@ export function ExpertiseSection() {
                     <span className="details-number">0{index + 1} / 04</span>
 
                     <h4>{card.title}</h4>
+
                     <p>{card.description}</p>
 
                     <div className="service-list">
@@ -401,6 +403,10 @@ export function ExpertiseSection() {
           text-decoration: none;
         }
 
+        /* =====================================================
+           TABLET — UNCHANGED
+        ===================================================== */
+
         @media (max-width: 800px) and (min-width: 481px) {
           .expertise-section {
             padding: 48px 18px 64px;
@@ -433,9 +439,18 @@ export function ExpertiseSection() {
           }
         }
 
+        /* =====================================================
+           PHONE ONLY
+           One large card per row
+        ===================================================== */
+
         @media (max-width: 480px) {
           .expertise-section {
-            padding: 80px 12px 90px;
+            padding: 70px 12px 80px;
+          }
+
+          .expertise-heading {
+            margin-bottom: 42px;
           }
 
           .expertise-heading h2 {
@@ -446,23 +461,58 @@ export function ExpertiseSection() {
 
           .expertise-heading p {
             font-size: 14px;
+            line-height: 1.45;
+          }
+
+          .expertise-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
           }
 
           .expertise-card {
-            height: 300px;
+            width: 100%;
+            height: 320px;
+            border-radius: 24px;
+          }
+
+          .card-title-row {
+            padding: 20px 22px;
           }
 
           .card-title-row h3 {
-            max-width: 75%;
+            max-width: 78%;
             font-size: 20px;
+            line-height: 1.15;
+          }
+
+          .card-title-row button {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
           }
 
           .expertise-media {
-            inset: 68px 0 0;
+            inset: 72px 0 0;
+          }
+
+          .expertise-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center bottom;
           }
 
           .details-content {
-            padding: 72px 20px 20px;
+            padding: 76px 20px 20px;
+          }
+
+          .details-content h4 {
+            font-size: 30px;
+          }
+
+          .details-content p {
+            font-size: 12px;
           }
         }
 
