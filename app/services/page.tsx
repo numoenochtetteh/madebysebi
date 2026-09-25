@@ -30,7 +30,7 @@ const services = [
     subtitle: "& Development",
     description:
       "Fast, responsive websites built to communicate your value clearly, build trust and turn attention into enquiries.",
-    image: "/services/web-design.webp",
+    image: "/services/web-design-custom.png",
     color: "#cefa74",
     dark: false,
     icon: Code2,
@@ -66,7 +66,7 @@ const services = [
     subtitle: "& Visual Design",
     description:
       "Distinctive visual identities that make your business feel consistent, professional and easy to remember.",
-    image: "/services/branding.jpg",
+    image: "/services/branding-custom.png",
     color: "#ff815c",
     dark: true,
     icon: Palette,
@@ -84,7 +84,7 @@ const services = [
     subtitle: "& Visibility",
     description:
       "Better structure, content and performance so people can discover your business through search engines and AI platforms.",
-    image: "/services/seo.webp",
+    image: "/services/seo-custom.png",
     color: "#7bdcb5",
     dark: false,
     icon: Search,
@@ -461,7 +461,7 @@ export default function ServicesPage() {
               <h2>
                 From idea
                 <br />
-                to launch.
+                to experience.
               </h2>
 
               <p>

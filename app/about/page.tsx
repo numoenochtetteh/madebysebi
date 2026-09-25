@@ -7,7 +7,13 @@ import Link from "next/link";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 
-import { ArrowRight, ArrowUpRight, Sparkles, Target } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Sparkles,
+  Target,
+  Linkedin,
+} from "lucide-react";
 
 const capabilities = [
   { title: "Web Design", href: "/services#web-design-development" },
@@ -24,20 +30,24 @@ const teamMembers = [
   {
     name: "Numo Nanortey Francis",
     role: "WordPress Engineer | Full Stack",
-    image:
-      "https://images.pexels.com/photos/12903019/pexels-photo-12903019.jpeg?cs=srgb&dl=pexels-mizunokozuki-12903019.jpg&fm=jpg",
+    image: "/team/francis-team.jpg",
+    linkedin: "https://www.linkedin.com/in/numofrancis/",
+    imageClass: "team-image-francis",
   },
   {
     name: "Enoch Numo Tetteh",
     role: "Frontend Engineer",
-    image:
-      "https://images.pexels.com/photos/8729954/pexels-photo-8729954.jpeg?cs=srgb&dl=pexels-mikhail-nilov-8729954.jpg&fm=jpg",
+    image: "/team/enoch-team.jpg",
+    linkedin: "https://www.linkedin.com/in/enoch-numo-tetteh-993432358/",
+    imageClass: "team-image-enoch",
   },
   {
     name: "Bernard Numo",
     role: "Frontend Developer",
     image:
       "https://images.pexels.com/photos/30767586/pexels-photo-30767586.jpeg?cs=srgb&dl=pexels-uiliamnornberg-30767586.jpg&fm=jpg",
+    linkedin: "",
+    imageClass: "team-image-bernard",
   },
 ];
 
@@ -93,8 +103,9 @@ export default function AboutPage() {
             <div className="about-hero-bottom" data-reveal>
               <p>
                 MadeBySebi is an independent digital studio in Accra creating
-                thoughtful websites, web apps and brand experiences for businesses
-                that want to feel clearer, sharper and more confident online.
+                thoughtful websites, web apps and brand experiences for
+                businesses that want to feel clearer, sharper and more confident
+                online.
               </p>
 
               <Link href="/contact">
@@ -189,16 +200,16 @@ export default function AboutPage() {
 
             <div className="about-story-copy">
               <h2 data-reveal>
-                Small studio.
+                Good design.
                 <br />
-                Serious work.
+                Better business.
               </h2>
 
               <div className="about-story-text" data-reveal>
                 <p>
-                  We built MadeBySebi around a simple belief: strong digital work
-                  should feel considered, useful and unmistakably connected to
-                  the business behind it.
+                  We built MadeBySebi around a simple belief: strong digital
+                  work should feel considered, useful and unmistakably connected
+                  to the business behind it.
                 </p>
 
                 <p>
@@ -255,8 +266,8 @@ export default function AboutPage() {
 
               <p>
                 That clarity becomes the creative foundation for everything that
-                follows — messaging, structure, visual direction, development and
-                the final launch.
+                follows — messaging, structure, visual direction, development
+                and the final launch.
               </p>
 
               <Link href="/services">
@@ -315,22 +326,24 @@ export default function AboutPage() {
         <section className="about-team">
           <div className="about-team-inner">
             <div className="about-team-heading" data-reveal>
-              <div className="about-section-label">
-                <span>04</span>
-                OUR TEAM
-              </div>
+              <div className="about-team-heading-left">
+                <div className="about-section-label">
+                  <span>04</span>
+                  OUR TEAM
+                </div>
 
-              <div>
                 <h2>
-                  Small team.
+                  Our team.
                   <br />
                   Built to deliver.
                 </h2>
+              </div>
 
+              <div className="about-team-heading-right">
                 <p>
-                  Three developers bringing web design, frontend engineering and
-                  full-stack capability together for businesses in Ghana and
-                  around the world.
+                  Three developers combining design, frontend engineering and
+                  full-stack development to build thoughtful digital experiences
+                  for businesses in Ghana and around the world.
                 </p>
               </div>
             </div>
@@ -345,21 +358,40 @@ export default function AboutPage() {
                   <div className="about-team-photo">
                     <img
                       src={member.image}
-                      alt={`Temporary placeholder portrait for ${member.name}`}
+                      alt={`${member.name} — ${member.role}`}
                       loading="lazy"
                       decoding="async"
+                      className={member.imageClass}
                     />
-
-                    <span className="about-team-photo-note">TEMP PHOTO</span>
 
                     <span className="about-team-number">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
 
-                  <div className="about-team-copy">
-                    <h3>{member.name}</h3>
-                    <p>{member.role}</p>
+                  <div className="about-team-info">
+                    <div className="about-team-copy">
+                      <h3>{member.name}</h3>
+                      <p>{member.role}</p>
+                    </div>
+
+                    <div className="about-team-actions">
+                      {member.linkedin ? (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="about-team-linkedin"
+                          aria-label={`${member.name} LinkedIn profile`}
+                        >
+                          <Linkedin size={16} strokeWidth={2} />
+                          <span>LinkedIn</span>
+                          <ArrowUpRight size={13} strokeWidth={2} />
+                        </a>
+                      ) : (
+                        <span className="about-team-action-space" />
+                      )}
+                    </div>
                   </div>
                 </article>
               ))}
@@ -968,7 +1000,7 @@ export default function AboutPage() {
           ===================================================== */
 
           .about-team {
-            padding: 0 28px 150px;
+            padding: 70px 28px 130px;
           }
 
           .about-team-inner {
@@ -978,45 +1010,59 @@ export default function AboutPage() {
 
           .about-team-heading {
             display: grid;
-            grid-template-columns: 0.7fr 1.3fr;
-            gap: 90px;
-            align-items: end;
-            margin-bottom: 58px;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 70px;
+            align-items: start;
+            margin-bottom: 48px;
           }
 
-          .about-team-heading h2 {
-            max-width: 780px;
-            margin: 0;
-            font-size: clamp(52px, 5.6vw, 88px);
+          .about-team-heading-left {
+            min-width: 0;
+          }
+
+          .about-team-heading-left h2 {
+            max-width: 620px;
+            margin: 28px 0 0;
+            font-size: clamp(52px, 5vw, 78px);
             font-weight: 600;
-            line-height: 0.91;
-            letter-spacing: -0.065em;
+            line-height: 0.92;
+            letter-spacing: -0.06em;
           }
 
-          .about-team-heading p {
-            max-width: 610px;
-            margin: 24px 0 0;
+          .about-team-heading-right {
+            display: flex;
+            align-items: flex-start;
+            padding-top: 62px;
+          }
+
+          .about-team-heading-right p {
+            max-width: 560px;
+            margin: 0;
             color: #6e6963;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.7;
           }
 
           .about-team-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: start;
+            gap: 18px;
           }
 
           .about-team-card {
+            display: flex;
             min-width: 0;
+            flex-direction: column;
           }
 
           .about-team-photo {
             position: relative;
-            min-height: 520px;
+            width: 100%;
+            height: 390px;
             overflow: hidden;
             border: 1px solid #d7d3cb;
-            border-radius: 28px;
+            border-radius: 24px;
             background: #e9e7e1;
           }
 
@@ -1026,9 +1072,22 @@ export default function AboutPage() {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            transition:
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 0.35s ease;
+          }
+
+          .about-team-photo img.team-image-francis {
+            object-position: center 35%;
+          }
+
+          .about-team-photo img.team-image-enoch {
+            object-position: center 32%;
+          }
+
+          .about-team-photo img.team-image-bernard {
+            object-position: center 42%;
             filter: saturate(0.86);
-            transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
           }
 
           .about-team-card:hover .about-team-photo img {
@@ -1039,58 +1098,94 @@ export default function AboutPage() {
             content: "";
             position: absolute;
             inset: auto 0 0;
-            height: 36%;
+            height: 18%;
             background: linear-gradient(
               to top,
-              rgba(0, 0, 0, 0.34),
+              rgba(0, 0, 0, 0.12),
               transparent
             );
             pointer-events: none;
           }
 
-          .about-team-photo-note,
           .about-team-number {
             position: absolute;
             z-index: 2;
-            top: 18px;
-            border-radius: 999px;
+            top: 16px;
+            right: 16px;
+            display: grid;
+            width: 34px;
+            height: 34px;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.94);
+            color: #111;
             font-family: ui-monospace, monospace;
             font-size: 8px;
-            letter-spacing: 0.11em;
+            letter-spacing: 0.08em;
+            backdrop-filter: blur(10px);
           }
 
-          .about-team-photo-note {
-            left: 18px;
-            background: #cefa74;
-            padding: 8px 10px;
-            color: #0b0b0b;
-          }
-
-          .about-team-number {
-            right: 18px;
-            display: grid;
-            width: 36px;
-            height: 36px;
-            place-items: center;
-            background: rgba(255, 255, 255, 0.9);
-            color: #111;
+          .about-team-info {
+            display: flex;
+            min-height: 150px;
+            padding: 22px 4px 0;
+            flex-direction: column;
           }
 
           .about-team-copy {
-            padding: 18px 4px 0;
+            min-width: 0;
           }
 
           .about-team-copy h3 {
             margin: 0;
-            font-size: clamp(24px, 2.1vw, 34px);
+            font-size: clamp(24px, 1.9vw, 30px);
             font-weight: 550;
+            line-height: 1.08;
             letter-spacing: -0.04em;
           }
 
           .about-team-copy p {
-            margin: 8px 0 0;
+            margin: 10px 0 0;
             color: #77716b;
             font-size: 13px;
+            line-height: 1.5;
+          }
+
+          .about-team-actions {
+            display: flex;
+            min-height: 42px;
+            align-items: flex-end;
+            margin-top: 18px;
+          }
+
+          .about-team-action-space {
+            display: block;
+            min-height: 40px;
+          }
+
+          .about-team-linkedin {
+            display: inline-flex;
+            height: 40px;
+            align-items: center;
+            gap: 7px;
+            border: 1px solid #d2cfc8;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.55);
+            padding: 0 14px;
+            color: #111;
+            font-size: 11px;
+            font-weight: 600;
+            text-decoration: none;
+            transition:
+              transform 0.25s ease,
+              background 0.25s ease,
+              border-color 0.25s ease;
+          }
+
+          .about-team-linkedin:hover {
+            border-color: #cefa74;
+            background: #cefa74;
+            transform: translateY(-2px);
           }
 
           /* =====================================================
@@ -1217,17 +1312,80 @@ export default function AboutPage() {
               grid-template-columns: 1fr;
             }
 
+            .about-team {
+              padding: 70px 28px 110px;
+            }
+
             .about-team-heading {
               grid-template-columns: 1fr;
-              gap: 28px;
+              gap: 24px;
+              margin-bottom: 48px;
+            }
+
+            .about-team-heading-left {
+              max-width: 680px;
+            }
+
+            .about-team-heading-left h2 {
+              max-width: 620px;
+              margin-top: 25px;
+              font-size: clamp(50px, 8vw, 72px);
+              line-height: 0.92;
+            }
+
+            .about-team-heading-right {
+              padding-top: 0;
+              padding-bottom: 0;
+            }
+
+            .about-team-heading-right p {
+              max-width: 600px;
+              font-size: 14px;
+              line-height: 1.7;
             }
 
             .about-team-grid {
-              grid-template-columns: 1fr;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 40px 20px;
             }
 
             .about-team-photo {
-              min-height: 560px;
+              height: 390px;
+              border-radius: 22px;
+            }
+
+            .about-team-photo img.team-image-francis {
+              object-position: center 35%;
+            }
+
+            .about-team-photo img.team-image-enoch {
+              object-position: center 32%;
+            }
+
+            .about-team-photo img.team-image-bernard {
+              object-position: center 42%;
+            }
+
+            .about-team-info {
+              min-height: 145px;
+              padding-top: 18px;
+            }
+
+            .about-team-copy h3 {
+              font-size: 27px;
+            }
+
+            .about-team-copy p {
+              font-size: 13px;
+            }
+
+            .about-team-actions {
+              margin-top: 15px;
+            }
+
+            .about-team-linkedin {
+              height: 39px;
+              padding: 0 13px;
             }
 
             .about-final-inner {
@@ -1358,16 +1516,97 @@ export default function AboutPage() {
             }
 
             .about-team {
-              padding: 0 16px 100px;
+              padding: 60px 14px 90px;
             }
 
-            .about-team-heading h2 {
-              font-size: clamp(44px, 13vw, 62px);
+            .about-team-heading {
+              grid-template-columns: 1fr;
+              gap: 20px;
+              margin-bottom: 36px;
+            }
+
+            .about-team-heading-left {
+              max-width: 100%;
+            }
+
+            .about-team-heading-left h2 {
+              max-width: 100%;
+              margin-top: 22px;
+              font-size: 48px;
+              line-height: 0.94;
+              letter-spacing: -0.055em;
+            }
+
+            .about-team-heading-right {
+              padding: 0;
+            }
+
+            .about-team-heading-right p {
+              max-width: 100%;
+              margin: 0;
+              font-size: 14px;
+              line-height: 1.65;
+            }
+
+            .about-team-grid {
+              grid-template-columns: 1fr;
+              gap: 42px;
+            }
+
+            .about-team-card {
+              width: 100%;
             }
 
             .about-team-photo {
-              min-height: 470px;
+              width: 100%;
+              height: 380px;
               border-radius: 22px;
+            }
+
+            .about-team-photo img.team-image-francis {
+              object-position: center 35%;
+            }
+
+            .about-team-photo img.team-image-enoch {
+              object-position: center 32%;
+            }
+
+            .about-team-photo img.team-image-bernard {
+              object-position: center 40%;
+            }
+
+            .about-team-number {
+              top: 14px;
+              right: 14px;
+              width: 32px;
+              height: 32px;
+              font-size: 7px;
+            }
+
+            .about-team-info {
+              min-height: auto;
+              padding: 17px 2px 0;
+            }
+
+            .about-team-copy h3 {
+              font-size: 27px;
+              line-height: 1.05;
+            }
+
+            .about-team-copy p {
+              margin-top: 8px;
+              font-size: 13px;
+            }
+
+            .about-team-actions {
+              min-height: auto;
+              margin-top: 14px;
+            }
+
+            .about-team-linkedin {
+              height: 38px;
+              padding: 0 13px;
+              font-size: 11px;
             }
 
             .about-final {
