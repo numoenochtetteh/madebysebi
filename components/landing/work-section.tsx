@@ -17,15 +17,15 @@ const selectedProjects = [
     href: "/work/pengtresses",
   },
   {
-    number: "06",
-    title: "Lucenex",
-    industry: "Data & AI",
+    number: "02",
+    title: "Power Electrode Ltd",
+    industry: "Manufacturing",
     year: "2026",
     description:
-      "A modern business website for a US data and AI company, built to communicate services clearly and position the brand with more authority online.",
-    image: "/case-studies/lucenex/01-home.png",
-    video: "/expertise/03.mp4",
-    href: "/work/lucenex",
+      "A clearer digital presence for a Ghanaian welding electrode manufacturer, built to explain products clearly, build trust and support easier buyer enquiries.",
+    image: "/case-studies/power-electrode/03-values.png",
+    video: "/case-studies/power-electrode/hero-video.mp4",
+    href: "/work/power-electrode-ltd",
   },
 ];
 
@@ -74,13 +74,7 @@ export function WorkSection() {
             >
               <div className="home-case-media">
                 {project.video ? (
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    poster={project.image}
-                  >
+                  <video autoPlay muted loop playsInline poster={project.image}>
                     <source src={project.video} type="video/mp4" />
                   </video>
                 ) : (
@@ -89,7 +83,7 @@ export function WorkSection() {
                     alt={project.title}
                     fill
                     sizes="(max-width: 760px) 100vw, 50vw"
-                  unoptimized
+                    unoptimized
                   />
                 )}
 
@@ -151,7 +145,7 @@ export function WorkSection() {
               alt={wideProject.title}
               fill
               sizes="(max-width: 760px) 100vw, 65vw"
-            unoptimized
+              unoptimized
             />
           </div>
         </Link>
@@ -405,7 +399,6 @@ export function WorkSection() {
           line-height: 1.55;
         }
 
-
         .home-wide-study-link {
           display: inline-flex;
           align-items: center;
@@ -444,7 +437,7 @@ export function WorkSection() {
 
         .home-wide-media img {
           object-fit: cover;
-          object-position: center 36%;
+          object-position: center 28%;
           transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
@@ -468,10 +461,6 @@ export function WorkSection() {
 
           .home-wide-media {
             min-height: 460px;
-          }
-
-          .home-wide-media img {
-            object-position: center 34%;
           }
         }
 
@@ -559,10 +548,6 @@ export function WorkSection() {
 
           .home-wide-media {
             min-height: 430px;
-          }
-
-          .home-wide-media img {
-            object-position: center 38%;
           }
         }
 

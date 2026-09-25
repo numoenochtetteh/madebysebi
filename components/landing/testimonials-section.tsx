@@ -6,39 +6,35 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "A premium booking experience bringing services, availability, consultations and deposits into one simple customer journey.",
+      "A premium booking experience that brings service discovery, availability, consultation and deposits into one clear customer journey.",
     name: "Forever Peng Hair",
     role: "Beauty",
     company: "Booking platform",
     initial: "F",
-    project: "PROJECT 01",
   },
   {
     quote:
-      "A stronger digital presence built around product trust, manufacturing capability and easier buyer enquiries.",
+      "A stronger digital presence for a Ghanaian manufacturer, shaped around product trust, manufacturing capability and easier buyer enquiries.",
     name: "Power Electrode Ltd",
     role: "Manufacturing",
     company: "Business website",
     initial: "P",
-    project: "PROJECT 02",
   },
   {
     quote:
-      "A clearer logistics experience that makes freight services easier to understand and enquiries easier to start.",
+      "A clearer logistics website that makes freight services easier to understand and gives customers a direct path to start an enquiry.",
     name: "Total Logistics",
     role: "Logistics",
     company: "Business website",
     initial: "T",
-    project: "PROJECT 03",
   },
   {
     quote:
-      "A modern digital presence for a data and AI company focused on authority, clarity and a stronger brand experience.",
+      "A modern digital presence for a data and AI company, focused on authority, clear service communication and a more confident brand experience.",
     name: "Lucenex",
     role: "Data & AI",
     company: "Digital experience",
     initial: "L",
-    project: "PROJECT 04",
   },
 ];
 
@@ -80,8 +76,8 @@ export function TestimonialsSection() {
           </h2>
 
           <p>
-            Real digital work across beauty, manufacturing, logistics and data —
-            each shaped around a different business need.
+            A selection of real projects across beauty, manufacturing, logistics
+            and data — each shaped around a different business need.
           </p>
 
           <div className="shape-testimonials-actions">
@@ -116,13 +112,16 @@ export function TestimonialsSection() {
             {testimonials.map((testimonial) => (
               <article
                 className="shape-testimonial-card"
-                key={testimonial.project}
+                key={testimonial.name}
               >
                 <div className="shape-testimonial-content">
                   <div className="shape-testimonial-topline">
-                    <span className="shape-testimonial-project">
-                      {testimonial.project}
-                    </span>
+                    <div
+                      className="shape-testimonial-stars"
+                      aria-label="Five stars"
+                    >
+                      ★★★★★
+                    </div>
 
                     <span className="shape-testimonial-live">LIVE WORK</span>
                   </div>
@@ -153,8 +152,8 @@ export function TestimonialsSection() {
         .shape-testimonials {
           position: relative;
           overflow: hidden;
-          background: #ffffff;
-          padding: 78px 0 82px;
+          background: #f4f4f1;
+          padding: 72px 0 78px;
           color: #0d0d0d;
           font-family: var(--font-inter), Inter, Arial, sans-serif;
         }
@@ -170,7 +169,7 @@ export function TestimonialsSection() {
 
         .shape-testimonials-intro {
           display: flex;
-          min-height: 390px;
+          min-height: 380px;
           flex-direction: column;
           align-items: flex-start;
           padding-top: 8px;
@@ -181,7 +180,7 @@ export function TestimonialsSection() {
           align-items: center;
           gap: 9px;
           margin-bottom: 17px;
-          color: #737373;
+          color: #666;
           font-size: 10px;
           font-weight: 700;
           letter-spacing: 0.13em;
@@ -207,14 +206,11 @@ export function TestimonialsSection() {
         .shape-testimonials-intro p {
           max-width: 295px;
           margin: 18px 0 0;
-          color: #6b6b6b;
+          color: #686868;
           font-size: 12px;
           line-height: 1.6;
         }
 
-        /*
-         * CTA + arrows live in the same row
-         */
         .shape-testimonials-actions {
           display: flex;
           width: 100%;
@@ -259,7 +255,7 @@ export function TestimonialsSection() {
           place-items: center;
           border: 0;
           border-radius: 50%;
-          background: #f0f0ee;
+          background: #e8e8e4;
           color: #111;
           cursor: pointer;
           transition:
@@ -298,13 +294,14 @@ export function TestimonialsSection() {
         .shape-testimonial-card {
           display: flex;
           min-width: min(430px, 64vw);
-          min-height: 390px;
+          min-height: 380px;
           flex: 0 0 min(430px, 64vw);
           flex-direction: column;
           justify-content: space-between;
           scroll-snap-align: start;
+          border: 1px solid rgba(0, 0, 0, 0.025);
           border-radius: 24px;
-          background: #f2f2f0;
+          background: #eeeeeb;
           padding: 28px;
         }
 
@@ -320,11 +317,15 @@ export function TestimonialsSection() {
           gap: 16px;
         }
 
-        .shape-testimonial-project {
-          color: #676767;
-          font-size: 9px;
-          font-weight: 700;
-          letter-spacing: 0.14em;
+        /*
+         * Replaces PROJECT 01 / PROJECT 02 / etc.
+         */
+        .shape-testimonial-stars {
+          color: #050505;
+          font-size: 17px;
+          line-height: 1;
+          letter-spacing: 2px;
+          white-space: nowrap;
         }
 
         .shape-testimonial-live {
@@ -339,7 +340,7 @@ export function TestimonialsSection() {
 
         .shape-testimonial-copy {
           max-width: 370px;
-          margin: 28px 0 0;
+          margin: 30px 0 0;
           font-size: clamp(18px, 1.25vw, 22px);
           font-weight: 450;
           line-height: 1.42;
@@ -400,18 +401,15 @@ export function TestimonialsSection() {
           }
         }
 
-        /*
-         * PHONE / SMALL TABLET
-         */
         @media (max-width: 780px) {
           .shape-testimonials {
-            padding: 58px 0 64px;
+            padding: 54px 0 62px;
           }
 
           .shape-testimonials-shell {
             width: 100%;
             grid-template-columns: 1fr;
-            gap: 26px;
+            gap: 24px;
           }
 
           .shape-testimonials-intro {
@@ -427,7 +425,7 @@ export function TestimonialsSection() {
           .shape-testimonials-intro h2 {
             max-width: 380px;
             font-size: clamp(30px, 8.5vw, 38px);
-            line-height: 1.03;
+            line-height: 1.04;
             letter-spacing: -0.05em;
           }
 
@@ -439,8 +437,7 @@ export function TestimonialsSection() {
           }
 
           /*
-           * EXACTLY WHAT YOU ASKED:
-           * CTA and arrows side by side
+           * Button + arrows side by side on phone.
            */
           .shape-testimonials-actions {
             display: flex;
@@ -472,33 +469,38 @@ export function TestimonialsSection() {
             overflow: hidden;
           }
 
-          /*
-           * Partial next card stays visible.
-           */
           .shape-testimonials-track {
             gap: 12px;
             padding: 0 18px 5px;
             scroll-padding-left: 18px;
           }
 
+          /*
+           * Leave part of the next card visible.
+           */
           .shape-testimonial-card {
             min-width: 82vw;
-            min-height: 350px;
+            min-height: 340px;
             flex-basis: 82vw;
             border-radius: 20px;
             padding: 22px 20px;
           }
 
+          .shape-testimonial-stars {
+            font-size: 16px;
+            letter-spacing: 1.5px;
+          }
+
           .shape-testimonial-copy {
             max-width: 100%;
-            margin-top: 23px;
+            margin-top: 24px;
             font-size: clamp(17px, 4.7vw, 20px);
             line-height: 1.42;
           }
 
           .shape-testimonial-person {
             gap: 11px;
-            margin-top: 26px;
+            margin-top: 25px;
           }
 
           .shape-testimonial-avatar {
@@ -517,12 +519,9 @@ export function TestimonialsSection() {
           }
         }
 
-        /*
-         * PHONE
-         */
         @media (max-width: 480px) {
           .shape-testimonials {
-            padding: 52px 0 58px;
+            padding: 50px 0 56px;
           }
 
           .shape-testimonials-intro {
@@ -562,13 +561,9 @@ export function TestimonialsSection() {
             scroll-padding-left: 14px;
           }
 
-          /*
-           * 83% gives you a visible piece
-           * of the next card like the reference.
-           */
           .shape-testimonial-card {
             min-width: 83vw;
-            min-height: 330px;
+            min-height: 325px;
             flex-basis: 83vw;
             border-radius: 18px;
             padding: 20px 18px;
@@ -579,8 +574,9 @@ export function TestimonialsSection() {
             flex-direction: row;
           }
 
-          .shape-testimonial-project {
-            font-size: 8.5px;
+          .shape-testimonial-stars {
+            font-size: 15px;
+            letter-spacing: 1px;
           }
 
           .shape-testimonial-live {
