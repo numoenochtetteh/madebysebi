@@ -3,6 +3,9 @@ import { Inter, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { WhatsAppButton } from "@/components/landing/whatsapp-button";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { getSiteUrl } from "@/lib/site-url";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,8 +19,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://numo-digital.vercel.app";
+const siteUrl = getSiteUrl();
 
 const socialProfiles = [
   "https://www.linkedin.com/company/madebysebi/",
@@ -99,6 +101,7 @@ const organizationSchema = {
   image: `${siteUrl}/brand/madebysebi-og.png`,
   description:
     "Web design and development studio creating websites, web apps and digital experiences for businesses in Ghana and worldwide.",
+  email: "hello.madebysebi@gmail.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Accra",
@@ -130,6 +133,8 @@ export default function RootLayout({
       >
         {children}
         <WhatsAppButton />
+        <Analytics />
+        <SpeedInsights />
         <Script
           id="madebysebi-organization-schema"
           type="application/ld+json"

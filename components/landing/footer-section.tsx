@@ -164,6 +164,11 @@ export function FooterSection() {
               <span>+233 54 247 0922</span>
             </a>
 
+            <a href="mailto:hello.madebysebi@gmail.com">
+              <span aria-hidden="true">@</span>
+              <span>hello.madebysebi@gmail.com</span>
+            </a>
+
             <p>
               <MapPin size={16} />
 

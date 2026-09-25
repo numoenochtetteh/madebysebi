@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
+import { LazyVideo } from "@/components/media/lazy-video";
 
 import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 
@@ -197,15 +198,11 @@ export default function WorkPage() {
               </div>
 
               <div className="work-browser-media">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
+                <LazyVideo
+                  src="/expertise/1.mp4"
                   poster="/showcase/creative-workspace.jpg"
-                >
-                  <source src="/expertise/1.mp4" type="video/mp4" />
-                </video>
+                  eager
+                />
               </div>
             </div>
 
@@ -318,16 +315,13 @@ export default function WorkPage() {
                   >
                     <div className="portfolio-media">
                       {project.video ? (
-                        <video autoPlay muted loop playsInline poster={project.image}>
-                          <source src={project.video} type="video/mp4" />
-                        </video>
+                        <LazyVideo src={project.video} poster={project.image} />
                       ) : (
                         <Image
                           src={project.image}
                           alt={project.title}
                           fill
                           sizes="(max-width: 820px) 100vw, 50vw"
-                        unoptimized
                         />
                       )}
 

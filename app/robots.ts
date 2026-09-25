@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/site-url";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://numo-digital.vercel.app";
+const baseUrl = getSiteUrl();
 
 export default function robots(): MetadataRoute.Robots {
   return {

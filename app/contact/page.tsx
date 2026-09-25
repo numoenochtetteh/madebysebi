@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
@@ -72,6 +72,57 @@ const faqs = [
 
 export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [formMessage, setFormMessage] = useState("");
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setFormStatus("submitting");
+    setFormMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          company: formData.get("company"),
+          website: formData.get("website"),
+          service: formData.get("service"),
+          budget: formData.get("budget"),
+          timeline: formData.get("timeline"),
+          message: formData.get("message"),
+          businessWebsite: formData.get("businessWebsite"),
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Unable to send your enquiry.");
+      }
+
+      form.reset();
+      setFormStatus("success");
+      setFormMessage(
+        "Thanks — your enquiry has been sent. We’ll get back to you as soon as possible.",
+      );
+    } catch (error) {
+      setFormStatus("error");
+      setFormMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to send your enquiry. Please email hello.madebysebi@gmail.com directly.",
+      );
+    }
+  };
 
   useEffect(() => {
     const elements = document.querySelectorAll("[data-reveal]");
@@ -204,6 +255,10 @@ export default function ContactPage() {
               </p>
 
               <div className="direct-contact">
+                <a className="contact-email-link" href="mailto:hello.madebysebi@gmail.com">
+                  hello.madebysebi@gmail.com <ArrowUpRight size={14} />
+                </a>
+
                 <span>FOLLOW MADEBYSEBI</span>
 
                 <div className="contact-social-links">
@@ -233,13 +288,14 @@ export default function ContactPage() {
                 <MessageSquare size={22} />
               </div>
 
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="form-field">
                     <label htmlFor="name">FULL NAME *</label>
 
                     <input
                       id="name"
+                      name="name"
                       type="text"
                       placeholder="Your name"
                       required
@@ -251,6 +307,7 @@ export default function ContactPage() {
 
                     <input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="you@company.com"
                       required
@@ -264,6 +321,7 @@ export default function ContactPage() {
 
                     <input
                       id="company"
+                      name="company"
                       type="text"
                       placeholder="Business name"
                     />
@@ -274,6 +332,7 @@ export default function ContactPage() {
 
                     <input
                       id="website"
+                      name="website"
                       type="text"
                       placeholder="www.example.com"
                     />
@@ -283,7 +342,7 @@ export default function ContactPage() {
                 <div className="form-field">
                   <label htmlFor="service">WHAT DO YOU NEED HELP WITH? *</label>
 
-                  <select id="service" required defaultValue="">
+                  <select id="service" name="service" required defaultValue="">
                     <option value="" disabled>
                       Select a service
                     </option>
@@ -300,7 +359,7 @@ export default function ContactPage() {
                   <div className="form-field">
                     <label htmlFor="budget">PROJECT BUDGET</label>
 
-                    <select id="budget" defaultValue="">
+                    <select id="budget" name="budget" defaultValue="">
                       <option value="" disabled>
                         Select budget
                       </option>
@@ -317,7 +376,7 @@ export default function ContactPage() {
                   <div className="form-field">
                     <label htmlFor="timeline">IDEAL TIMELINE</label>
 
-                    <select id="timeline" defaultValue="">
+                    <select id="timeline" name="timeline" defaultValue="">
                       <option value="" disabled>
                         Select timeline
                       </option>
@@ -334,18 +393,45 @@ export default function ContactPage() {
 
                   <textarea
                     id="message"
+                    name="message"
                     rows={6}
                     placeholder="What are you trying to build or improve?"
                     required
                   />
                 </div>
 
-                <button type="submit" className="contact-submit">
-                  Send enquiry
+                <div className="form-honeypot" aria-hidden="true">
+                  <label htmlFor="businessWebsite">Leave this field empty</label>
+                  <input
+                    id="businessWebsite"
+                    name="businessWebsite"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="contact-submit"
+                  disabled={formStatus === "submitting"}
+                >
+                  {formStatus === "submitting" ? "Sending…" : "Send enquiry"}
                   <span>
                     <ArrowRight size={18} />
                   </span>
                 </button>
+
+                {formMessage ? (
+                  <p
+                    className={`contact-form-status ${
+                      formStatus === "success" ? "is-success" : "is-error"
+                    }`}
+                    role="status"
+                  >
+                    {formMessage}
+                  </p>
+                ) : null}
 
                 <p className="contact-privacy-note">
                   By sending an enquiry, you agree that MadeBySebi may use the
@@ -670,6 +756,22 @@ export default function ContactPage() {
             flex-direction: column;
           }
 
+          .contact-email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: #111;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+          }
+
+          .contact-email-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+          }
+
           .direct-contact > span {
             color: #8b857f;
             font-family: ui-monospace, monospace;
@@ -810,6 +912,32 @@ export default function ContactPage() {
             box-shadow: 0 0 0 4px rgba(206, 250, 116, 0.11);
           }
 
+          .form-honeypot {
+            position: absolute !important;
+            left: -10000px !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+          }
+
+          .contact-form-status {
+            margin: 14px 4px 0;
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-size: 11px;
+            line-height: 1.5;
+          }
+
+          .contact-form-status.is-success {
+            background: rgba(206, 250, 116, 0.24);
+            color: #31400d;
+          }
+
+          .contact-form-status.is-error {
+            background: rgba(200, 58, 58, 0.08);
+            color: #8c2424;
+          }
+
           .contact-privacy-note {
             margin: 14px 4px 0;
             color: #7a746e;
@@ -853,6 +981,11 @@ export default function ContactPage() {
 
           .contact-submit:hover > span {
             transform: rotate(-45deg);
+          }
+
+          .contact-submit:disabled {
+            cursor: wait;
+            opacity: 0.72;
           }
 
           /* =====================================================

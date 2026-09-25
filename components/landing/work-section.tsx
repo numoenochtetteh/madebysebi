@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { LazyVideo } from "@/components/media/lazy-video";
 
 const selectedProjects = [
   {
@@ -74,16 +75,13 @@ export function WorkSection() {
             >
               <div className="home-case-media">
                 {project.video ? (
-                  <video autoPlay muted loop playsInline poster={project.image}>
-                    <source src={project.video} type="video/mp4" />
-                  </video>
+                  <LazyVideo src={project.video} poster={project.image} />
                 ) : (
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     sizes="(max-width: 760px) 100vw, 50vw"
-                    unoptimized
                   />
                 )}
 
@@ -145,7 +143,6 @@ export function WorkSection() {
               alt={wideProject.title}
               fill
               sizes="(max-width: 760px) 100vw, 65vw"
-              unoptimized
             />
           </div>
         </Link>

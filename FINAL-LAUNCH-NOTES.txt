@@ -1,0 +1,79 @@
+MadeBySebi final launch notes
+============================
+
+What was fixed
+--------------
+1. Contact form now posts to /api/contact and is prepared to email:
+   hello.madebysebi@gmail.com
+   It includes required-field validation, a bot honeypot, loading state,
+   success state and clear error fallback.
+
+2. Next.js image optimization is enabled again.
+   The homepage gallery now uses next/image instead of plain <img> tags.
+   Explicit "unoptimized" image flags were removed from project cards.
+
+3. Video performance is improved.
+   Below-the-fold videos only load when the user scrolls near them.
+   Several large MP4 files were re-encoded with H.264 + fast-start while
+   preserving good visual quality.
+
+4. Vercel Web Analytics + Speed Insights are mounted in the root layout.
+   Enable both features from the Vercel project dashboard after deployment.
+
+5. Launch cleanup completed.
+   - Added branded 404 page.
+   - Added hello.madebysebi@gmail.com to the website/footer/schema.
+   - Removed the old hard-coded Numo Digital URL fallback.
+   - Vercel production URL is detected automatically until a custom domain exists.
+   - Added .env.example.
+   - Checked internal links and local media references.
+
+Contact form setup (required once)
+----------------------------------
+The code is ready, but email delivery needs a Resend API key.
+
+1. Create a free Resend account using hello.madebysebi@gmail.com.
+2. Create an API key.
+3. In Vercel -> Project -> Settings -> Environment Variables add:
+
+   RESEND_API_KEY = your Resend API key
+   CONTACT_TO_EMAIL = hello.madebysebi@gmail.com
+   CONTACT_FROM_EMAIL = MadeBySebi Website <onboarding@resend.dev>
+
+4. Redeploy.
+5. Submit one real test enquiry from the live Contact page.
+
+Until a custom domain is verified with Resend, the onboarding@resend.dev sender
+can only deliver to the email address on the Resend account. Sign up with
+hello.madebysebi@gmail.com so enquiries can reach that inbox during initial
+setup. After buying the domain, verify it in Resend and
+change CONTACT_FROM_EMAIL to something like:
+MadeBySebi <hello@madebysebi.com>
+
+Vercel analytics + Speed Insights
+---------------------------------
+In Vercel, enable both Web Analytics and Speed Insights for the project. The
+tracking components are already wired into the root layout. Redeploy if Vercel
+asks you to do so.
+
+Domain later
+------------
+When the custom domain is purchased, add this Vercel environment variable:
+NEXT_PUBLIC_SITE_URL=https://your-final-domain.com
+Then redeploy.
+
+Local verification before deployment
+------------------------------------
+pnpm install
+pnpm build
+pnpm dev
+
+The production build passed on 25 September 2026. The contact endpoint was
+checked for malformed, missing and oversized input at code level. Live email
+delivery still requires RESEND_API_KEY and a test submission after deployment.
+
+Deployment
+----------
+git add -A
+git commit -m "Optimize MadeBySebi performance and launch setup"
+git push origin main

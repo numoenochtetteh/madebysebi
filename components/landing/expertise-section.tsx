@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LazyVideo } from "@/components/media/lazy-video";
 
 type ExpertiseCard = {
   title: string;
@@ -53,6 +54,7 @@ const expertiseCards: ExpertiseCard[] = [
   {
     title: "Brand & digital experience",
     video: "/expertise/brand-experience.mp4",
+    poster: "/expertise/brand-experience-poster.jpg",
     description:
       "We turn brand direction into a consistent digital experience across websites, campaigns, content and customer touchpoints.",
     services: [
@@ -117,23 +119,11 @@ export function ExpertiseSection() {
                 </div>
 
                 <div className="expertise-media">
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
+                  <LazyVideo
+                    src={card.video}
                     poster={card.poster}
-                    aria-label={`${card.title} animated preview`}
-                    onCanPlay={(event) => {
-                      event.currentTarget.play().catch(() => {
-                        // Muted autoplay can occasionally be delayed by
-                        // the browser. The loop remains enabled.
-                      });
-                    }}
-                  >
-                    <source src={card.video} type="video/mp4" />
-                  </video>
+                    ariaLabel={`${card.title} animated preview`}
+                  />
                 </div>
 
                 <div

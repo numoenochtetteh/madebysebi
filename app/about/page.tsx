@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
+import { LazyVideo } from "@/components/media/lazy-video";
 
 import {
   ArrowRight,
@@ -121,15 +122,11 @@ export default function AboutPage() {
 
           <div className="about-hero-visual" data-reveal>
             <div className="about-main-media">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
+              <LazyVideo
+                src="/expertise/0001.mp4"
                 poster="/showcase/creative-workspace.jpg"
-              >
-                <source src="/expertise/0001.mp4" type="video/mp4" />
-              </video>
+                eager
+              />
 
               <div className="about-media-overlay" />
 

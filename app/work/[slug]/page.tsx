@@ -14,6 +14,7 @@ import {
 
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
+import { LazyVideo } from "@/components/media/lazy-video";
 import { caseStudyProjects, getCaseStudyProject } from "@/lib/projects";
 
 import styles from "./case-study.module.css";
@@ -148,9 +149,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <section className={styles.heroMediaWrap}>
           <div className={styles.heroMedia}>
             {project.video ? (
-              <video autoPlay muted loop playsInline poster={project.image}>
-                <source src={project.video} type="video/mp4" />
-              </video>
+              <LazyVideo src={project.video} poster={project.image} eager />
             ) : (
               <Image
                 src={project.image}
@@ -158,7 +157,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 fill
                 priority
                 sizes="100vw"
-              unoptimized
               />
             )}
 
@@ -261,7 +259,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
                   alt={`${project.title} project detail ${index + 1}`}
                   fill
                   sizes={index === 0 && project.wideGalleryFirst !== false ? "100vw" : "(max-width: 760px) 100vw, 50vw"}
-                unoptimized
                 />
               </figure>
             ))}
@@ -283,7 +280,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
                   alt={`${project.title} operations interface with private client data redacted`}
                   fill
                   sizes="100vw"
-                unoptimized
                 />
               </div>
             ) : (
@@ -392,7 +388,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
                     alt={`${item.title} project preview`}
                     fill
                     sizes="(max-width: 760px) 100vw, 50vw"
-                  unoptimized
                   />
 
                   <span className={styles.otherWorkNumber}>{item.number}</span>

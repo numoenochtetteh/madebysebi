@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
+import { LazyVideo } from "@/components/media/lazy-video";
 
 import {
   ArrowRight,
@@ -223,15 +224,11 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="browser-preview">
-                    <video
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
+                    <LazyVideo
+                      src="/expertise/1080.mp4"
                       poster="/expertise/product-experience.png"
-                    >
-                      <source src="/expertise/1080.mp4" type="video/mp4" />
-                    </video>
+                      eager
+                    />
                   </div>
                 </div>
               </div>

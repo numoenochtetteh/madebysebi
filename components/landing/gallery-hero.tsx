@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Sparkles } from "lucide-react";
@@ -130,7 +131,15 @@ export function GalleryHero() {
           {heroCards.map((card, index) => (
             <div key={`${card.src}-${index}`} className={card.className}>
               <div className="numo-card-inner">
-                <img src={card.src} alt="" width={320} height={320} />
+                <Image
+                  src={card.src}
+                  alt=""
+                  width={320}
+                  height={320}
+                  sizes="(max-width: 620px) 140px, 240px"
+                  quality={78}
+                  priority={card.className.includes("featured")}
+                />
               </div>
             </div>
           ))}
