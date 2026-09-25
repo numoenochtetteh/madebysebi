@@ -126,13 +126,18 @@ export function WorkSection() {
               </span>
             </div>
 
-            <div>
+            <div className="home-wide-content">
               <h3>
                 NUMO &amp;
                 <br />
                 SEBI
               </h3>
               <p>{wideProject.description}</p>
+
+              <span className="home-wide-study-link">
+                View case study
+                <ArrowUpRight size={15} />
+              </span>
             </div>
 
             <span className="home-wide-arrow">
@@ -194,15 +199,16 @@ export function WorkSection() {
           width: 8px;
           height: 8px;
           border-radius: 2px;
-          background: #d9ff25;
+          background: #cefa74;
         }
 
         .home-selected-header h2 {
           margin: 25px 0 0;
-          font-size: clamp(48px, 5.4vw, 76px);
-          font-weight: 700;
-          line-height: 0.94;
-          letter-spacing: -0.06em;
+          font-size: clamp(42px, 4.8vw, 64px);
+          font-weight: 500;
+          line-height: 1.02;
+          letter-spacing: -0.035em;
+          text-wrap: balance;
         }
 
         .home-selected-intro {
@@ -355,7 +361,7 @@ export function WorkSection() {
 
         .home-wide-case {
           display: grid;
-          min-height: 590px;
+          min-height: 500px;
           grid-template-columns: 35% 65%;
           margin-top: 24px;
           overflow: hidden;
@@ -371,7 +377,7 @@ export function WorkSection() {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: 42px 46px;
+          padding: 34px 40px;
         }
 
         .home-wide-top {
@@ -385,8 +391,8 @@ export function WorkSection() {
         }
 
         .home-wide-copy h3 {
-          margin: 0 0 24px;
-          font-size: clamp(56px, 6vw, 92px);
+          margin: 0 0 18px;
+          font-size: clamp(52px, 5.3vw, 82px);
           font-weight: 760;
           line-height: 0.85;
           letter-spacing: -0.07em;
@@ -397,6 +403,19 @@ export function WorkSection() {
           margin: 0;
           font-size: 12px;
           line-height: 1.55;
+        }
+
+
+        .home-wide-study-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+          margin-top: 24px;
+          border-bottom: 1px solid rgba(16, 16, 16, 0.35);
+          padding-bottom: 5px;
+          font-size: 11px;
+          font-weight: 750;
+          letter-spacing: -0.01em;
         }
 
         .home-wide-arrow {
@@ -419,13 +438,13 @@ export function WorkSection() {
 
         .home-wide-media {
           position: relative;
-          min-height: 590px;
+          min-height: 500px;
           overflow: hidden;
         }
 
         .home-wide-media img {
           object-fit: cover;
-          object-position: center 28%;
+          object-position: center 36%;
           transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
@@ -444,11 +463,15 @@ export function WorkSection() {
 
           .home-wide-case {
             grid-template-columns: 42% 58%;
-            min-height: 500px;
+            min-height: 460px;
           }
 
           .home-wide-media {
-            min-height: 500px;
+            min-height: 460px;
+          }
+
+          .home-wide-media img {
+            object-position: center 34%;
           }
         }
 
@@ -464,8 +487,9 @@ export function WorkSection() {
 
           .home-selected-header h2 {
             margin-top: 20px;
-            font-size: 42px;
-            line-height: 0.98;
+            font-size: 36px;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
           }
 
           .home-selected-intro {
@@ -516,6 +540,11 @@ export function WorkSection() {
             font-size: 62px;
           }
 
+          .home-wide-study-link {
+            margin-top: 18px;
+            font-size: 10px;
+          }
+
           .home-wide-copy p {
             max-width: 280px;
             padding-right: 55px;
@@ -530,6 +559,10 @@ export function WorkSection() {
 
           .home-wide-media {
             min-height: 430px;
+          }
+
+          .home-wide-media img {
+            object-position: center 38%;
           }
         }
 

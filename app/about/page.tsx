@@ -79,7 +79,7 @@ export default function AboutPage() {
           <div className="about-hero-inner">
             <span className="about-badge" data-reveal>
               <span />
-              ABOUT NUMO DIGITAL
+              ABOUT MADEBYSEBI
             </span>
 
             <h1 data-reveal>
@@ -92,9 +92,9 @@ export default function AboutPage() {
 
             <div className="about-hero-bottom" data-reveal>
               <p>
-                Numo Digital is a web design and development studio focused on
-                helping growing businesses look credible, communicate clearly
-                and create better digital experiences.
+                MadeBySebi is an independent digital studio in Accra creating
+                thoughtful websites, web apps and brand experiences for businesses
+                that want to feel clearer, sharper and more confident online.
               </p>
 
               <Link href="/contact">
@@ -150,7 +150,7 @@ export default function AboutPage() {
               <Sparkles size={18} />
 
               <div>
-                <small>NUMO DIGITAL</small>
+                <small>MADEBYSEBI</small>
                 <strong>Websites built seriously.</strong>
               </div>
             </div>
@@ -196,15 +196,15 @@ export default function AboutPage() {
 
               <div className="about-story-text" data-reveal>
                 <p>
-                  We started Numo Digital with a simple idea: businesses should
-                  not need a huge agency to get a website that looks
-                  professional and actually works.
+                  We built MadeBySebi around a simple belief: strong digital work
+                  should feel considered, useful and unmistakably connected to
+                  the business behind it.
                 </p>
 
                 <p>
-                  We bring strategy, design and development together so each
-                  project feels consistent from the first conversation to the
-                  final launch.
+                  Strategy, design and development stay connected from the first
+                  conversation to launch, so every decision supports the same
+                  story, experience and business goal.
                 </p>
               </div>
             </div>
@@ -220,7 +220,7 @@ export default function AboutPage() {
             <div className="about-feature-media" data-reveal>
               <Image
                 src="/showcase/coding-workspace.jpg"
-                alt="Numo Digital workspace"
+                alt="MadeBySebi workspace"
                 fill
                 sizes="(max-width: 900px) 100vw, 50vw"
               />
@@ -248,14 +248,15 @@ export default function AboutPage() {
               </h2>
 
               <p>
-                Before thinking about colours, animations or layouts, we first
-                understand what the business is trying to achieve and what
-                customers need to understand.
+                Before choosing colours, motion or layouts, we get clear on the
+                business, the audience and the action the experience needs to
+                make easier.
               </p>
 
               <p>
-                That gives us a stronger foundation for everything that comes
-                next — structure, messaging, design, development and launch.
+                That clarity becomes the creative foundation for everything that
+                follows — messaging, structure, visual direction, development and
+                the final launch.
               </p>
 
               <Link href="/services">
@@ -452,7 +453,7 @@ export default function AboutPage() {
             width: 8px;
             height: 8px;
             border-radius: 2px;
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .about-hero h1 {
@@ -495,7 +496,7 @@ export default function AboutPage() {
           }
 
           .about-hero-bottom a svg {
-            color: #d9ff25;
+            color: #cefa74;
           }
 
           /* =====================================================
@@ -515,7 +516,7 @@ export default function AboutPage() {
             left: -80px;
             width: 480px;
             height: 480px;
-            background: rgba(217, 255, 37, 0.2);
+            background: rgba(206, 250, 116, 0.2);
           }
 
           .about-glow-blue {
@@ -591,7 +592,7 @@ export default function AboutPage() {
             width: 8px;
             height: 8px;
             border-radius: 2px;
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .about-floating-card {
@@ -638,7 +639,7 @@ export default function AboutPage() {
             height: 38px;
             place-items: center;
             border-radius: 11px;
-            background: #d9ff25;
+            background: #cefa74;
             font-family: ui-monospace, monospace;
             font-size: 9px;
           }
@@ -647,7 +648,7 @@ export default function AboutPage() {
             width: 38px;
             height: 38px;
             border-radius: 11px;
-            background: #d9ff25;
+            background: #cefa74;
             padding: 9px;
           }
 
@@ -700,7 +701,7 @@ export default function AboutPage() {
             width: 9px;
             height: 9px;
             border-radius: 2px;
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .about-marquee-item i {
@@ -835,7 +836,7 @@ export default function AboutPage() {
             height: 29px;
             place-items: center;
             border-radius: 50%;
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .about-feature-copy {
@@ -882,7 +883,7 @@ export default function AboutPage() {
           }
 
           .about-feature-copy > a svg {
-            color: #d9ff25;
+            color: #cefa74;
           }
 
           /* =====================================================
@@ -1060,7 +1061,7 @@ export default function AboutPage() {
 
           .about-team-photo-note {
             left: 18px;
-            background: #d9ff25;
+            background: #cefa74;
             padding: 8px 10px;
             color: #0b0b0b;
           }
@@ -1122,7 +1123,7 @@ export default function AboutPage() {
             width: 490px;
             height: 490px;
             border-radius: 50%;
-            background: rgba(217, 255, 37, 0.78);
+            background: rgba(206, 250, 116, 0.78);
             filter: blur(100px);
           }
 
@@ -1167,7 +1168,7 @@ export default function AboutPage() {
             height: 54px;
             place-items: center;
             border-radius: 50%;
-            background: #d9ff25;
+            background: #cefa74;
             color: #111;
             transition: transform 0.3s ease;
           }
@@ -1252,8 +1253,8 @@ export default function AboutPage() {
 
             .about-hero h1 {
               margin-top: 30px;
-              font-size: 50px;
-              line-height: 0.9;
+              font-size: 42px;
+              line-height: 1.04;
             }
 
             .about-hero-bottom {

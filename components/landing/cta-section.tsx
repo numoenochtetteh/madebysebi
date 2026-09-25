@@ -127,7 +127,7 @@ export function CtaSection() {
               BACKGROUND GLOWS
           ===================================================== */}
 
-          <div className="cta-orb-one pointer-events-none absolute -left-24 top-0 h-[320px] w-[320px] rounded-full bg-[#d9ff25]/25 blur-[110px]" />
+          <div className="cta-orb-one pointer-events-none absolute -left-24 top-0 h-[320px] w-[320px] rounded-full bg-[#cefa74]/25 blur-[110px]" />
 
           <div className="cta-orb-two pointer-events-none absolute -right-20 top-10 h-[340px] w-[340px] rounded-full bg-[#9b8aff]/15 blur-[120px]" />
 
@@ -176,20 +176,18 @@ export function CtaSection() {
 
               <div>
                 <span className="mb-4 inline-flex items-center gap-3 rounded-full border border-black/10 bg-white/45 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-black/50 backdrop-blur-sm sm:text-[10px]">
-                  <span className="h-[7px] w-[7px] rounded-[2px] bg-[#d9ff25]" />
-                  About Numo Digital
+                  <span className="h-[7px] w-[7px] rounded-[2px] bg-[#cefa74]" />
+                  About MadeBySebi
                 </span>
 
-                <h2 className="max-w-[620px] font-display text-[clamp(2.8rem,4.6vw,4.8rem)] font-medium leading-[0.92] tracking-[-0.06em]">
+                <h2 className="max-w-[620px] font-display text-[clamp(2.8rem,4.6vw,4.8rem)] font-medium leading-[1.02] tracking-[-0.035em]">
                   Ready for a website
                   <br />
                   <span className="text-black/45">built for growth?</span>
                 </h2>
 
                 <p className="mt-5 max-w-[570px] text-sm leading-[1.7] text-black/60 sm:text-base lg:text-[17px]">
-                  Numo Digital designs and develops professional websites that
-                  help growing businesses build trust, attract customers and
-                  generate more enquiries.
+                  MadeBySebi creates websites and digital experiences that help ambitious businesses look sharper, communicate with confidence and turn attention into action.
                 </p>
 
                 {/* =================================================
@@ -203,7 +201,7 @@ export function CtaSection() {
                   >
                     <Link href="/contact">
                       Start a project
-                      <ArrowRight className="ml-3 h-4 w-4 text-[#d9ff25] transition-transform duration-300 group-hover:translate-x-1" />
+                      <ArrowRight className="ml-3 h-4 w-4 text-[#cefa74] transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                   </Button>
 
@@ -225,7 +223,7 @@ export function CtaSection() {
 
                 <div className="mt-7 flex flex-wrap items-center gap-3">
                   <div className="flex items-center gap-2 rounded-full border border-black/10 bg-white/45 px-3 py-2">
-                    <span className="h-[7px] w-[7px] rounded-full bg-[#d9ff25]" />
+                    <span className="h-[7px] w-[7px] rounded-full bg-[#cefa74]" />
 
                     <span className="font-mono text-[9px] text-black/50">
                       Projects from GH₵3,000
@@ -257,13 +255,13 @@ export function CtaSection() {
                 ================================================= */}
 
                 <div className="cta-floating-badge absolute bottom-3 right-3 hidden items-center gap-3 rounded-[15px] border border-black/10 bg-white/85 px-4 py-3 shadow-[0_18px_45px_rgba(0,0,0,0.08)] backdrop-blur-xl sm:flex">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-[11px] bg-[#d9ff25]">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-[11px] bg-[#cefa74]">
                     <Sparkles className="h-4 w-4" />
                   </div>
 
                   <div>
                     <span className="block font-mono text-[7px] uppercase tracking-[0.12em] text-black/40">
-                      Numo Digital
+                      MadeBySebi
                     </span>
 
                     <strong className="mt-1 block text-[10px] font-semibold">

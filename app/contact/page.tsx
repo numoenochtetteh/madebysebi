@@ -9,7 +9,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Check,
-  Mail,
   MessageSquare,
 } from "lucide-react";
 
@@ -42,7 +41,7 @@ const faqs = [
   {
     question: "Do you outsource any work?",
     answer:
-      "Our core website design and development work is handled by the Numo Digital team. If a project requires a specialist service outside our core expertise, we will always communicate that clearly before involving anyone else.",
+      "Our core website design and development work is handled by the MadeBySebi team. If a project requires a specialist service outside our core expertise, we will always communicate that clearly before involving anyone else.",
   },
   {
     question: "What services do you offer?",
@@ -52,7 +51,7 @@ const faqs = [
   {
     question: "We're not based in Ghana. Does that matter?",
     answer:
-      "Not at all. Numo Digital is based in Accra, Ghana, but we work with businesses internationally. Meetings, project updates, reviews and delivery can all be handled remotely.",
+      "Not at all. MadeBySebi is based in Accra, Ghana, but we work with businesses internationally. Meetings, project updates, reviews and delivery can all be handled remotely.",
   },
   {
     question: "What are your payment terms?",
@@ -67,7 +66,7 @@ const faqs = [
   {
     question: "Can we arrange a call before starting?",
     answer:
-      "Absolutely. We can arrange a call to understand your business, what you are trying to achieve and whether Numo Digital is the right fit before you commit to a project.",
+      "Absolutely. We can arrange a call to understand your business, what you are trying to achieve and whether MadeBySebi is the right fit before you commit to a project.",
   },
 ];
 
@@ -120,9 +119,9 @@ export default function ContactPage() {
 
             <div className="contact-hero-bottom" data-reveal>
               <p>
-                Tell us what you&apos;re building, what needs improving or where
-                your business is trying to go. We&apos;ll help you figure out
-                the right next step.
+                Tell us what you&apos;re building, what feels stuck or where the
+                business needs to go next. We&apos;ll turn that into a clear digital
+                direction.
               </p>
 
               <div className="contact-availability">
@@ -152,8 +151,9 @@ export default function ContactPage() {
               </h2>
 
               <p className="contact-left-copy">
-                You don&apos;t need to have everything figured out yet. Give us
-                the basics and we can take it from there.
+                You do not need a finished brief. Give us the business context,
+                the challenge and the ambition — we can shape the right scope from
+                there.
               </p>
 
               <div className="contact-points">
@@ -204,12 +204,22 @@ export default function ContactPage() {
               </p>
 
               <div className="direct-contact">
-                <span>Prefer email?</span>
+                <span>FOLLOW MADEBYSEBI</span>
 
-                <a href="mailto:hello@numodigital.com">
-                  hello@numodigital.com
-                  <ArrowUpRight size={15} />
-                </a>
+                <div className="contact-social-links">
+                  <a href="https://www.instagram.com/madebysebi_/" target="_blank" rel="noreferrer">
+                    Instagram <ArrowUpRight size={14} />
+                  </a>
+                  <a href="https://www.linkedin.com/company/madebysebi/" target="_blank" rel="noreferrer">
+                    LinkedIn <ArrowUpRight size={14} />
+                  </a>
+                  <a href="https://web.facebook.com/profile.php?id=61594479852181" target="_blank" rel="noreferrer">
+                    Facebook <ArrowUpRight size={14} />
+                  </a>
+                  <a href="https://x.com/MadeBySebi" target="_blank" rel="noreferrer">
+                    X <ArrowUpRight size={14} />
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -338,7 +348,7 @@ export default function ContactPage() {
                 </button>
 
                 <p className="contact-privacy-note">
-                  By sending an enquiry, you agree that Numo Digital may use the
+                  By sending an enquiry, you agree that MadeBySebi may use the
                   information provided to respond to your project request. See
                   our
                   <a href="/privacy"> Privacy Policy</a>.
@@ -416,7 +426,7 @@ export default function ContactPage() {
             <div className="contact-final-glow" />
 
             <div>
-              <span>NUMO DIGITAL</span>
+              <span>MADEBYSEBI</span>
 
               <h2>
                 Your next project
@@ -425,10 +435,10 @@ export default function ContactPage() {
               </h2>
             </div>
 
-            <a href="mailto:hello@numodigital.com">
-              Email us
+            <a href="#contact-form">
+              Start a project
               <span>
-                <Mail size={20} />
+                <MessageSquare size={20} />
               </span>
             </a>
           </div>
@@ -490,7 +500,7 @@ export default function ContactPage() {
             width: 8px;
             height: 8px;
             border-radius: 2px;
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .contact-hero h1 {
@@ -533,8 +543,8 @@ export default function ContactPage() {
             width: 9px;
             height: 9px;
             border-radius: 50%;
-            background: #d9ff25;
-            box-shadow: 0 0 0 6px rgba(217, 255, 37, 0.15);
+            background: #cefa74;
+            box-shadow: 0 0 0 6px rgba(206, 250, 116, 0.15);
           }
 
           .contact-orb {
@@ -550,7 +560,7 @@ export default function ContactPage() {
             left: -100px;
             width: 460px;
             height: 460px;
-            background: rgba(217, 255, 37, 0.2);
+            background: rgba(206, 250, 116, 0.2);
           }
 
           .contact-orb-blue {
@@ -639,7 +649,7 @@ export default function ContactPage() {
             flex-shrink: 0;
             place-items: center;
             border-radius: 9px;
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .contact-worldwide-note {
@@ -667,15 +677,32 @@ export default function ContactPage() {
             letter-spacing: 0.1em;
           }
 
-          .direct-contact > a {
+          .contact-social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 13px;
+          }
+
+          .contact-social-links > a {
             display: inline-flex;
-            align-self: flex-start;
             align-items: center;
-            gap: 15px;
-            margin-top: 10px;
+            gap: 8px;
+            border: 1px solid #cbc7bf;
+            border-radius: 999px;
+            padding: 10px 14px;
             color: #111;
-            font-size: 17px;
+            background: rgba(255, 255, 255, 0.52);
+            font-size: 12px;
+            font-weight: 600;
             text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+          }
+
+          .contact-social-links > a:hover {
+            transform: translateY(-1px);
+            border-color: #b0a9a0;
+            background: #cefa74;
           }
 
           /* =====================================================
@@ -718,7 +745,7 @@ export default function ContactPage() {
             width: 48px;
             height: 48px;
             border-radius: 14px;
-            background: #d9ff25;
+            background: #cefa74;
             padding: 13px;
           }
 
@@ -780,7 +807,7 @@ export default function ContactPage() {
           .form-field textarea:focus {
             border-color: #a5ad65;
             background: white;
-            box-shadow: 0 0 0 4px rgba(217, 255, 37, 0.11);
+            box-shadow: 0 0 0 4px rgba(206, 250, 116, 0.11);
           }
 
           .contact-privacy-note {
@@ -819,7 +846,7 @@ export default function ContactPage() {
             height: 50px;
             place-items: center;
             border-radius: 50%;
-            background: #d9ff25;
+            background: #cefa74;
             color: #111;
             transition: transform 0.3s ease;
           }
@@ -893,7 +920,7 @@ export default function ContactPage() {
             gap: 18px;
             margin-top: 28px;
             border-radius: 999px;
-            background: #d9ff25;
+            background: #cefa74;
             padding: 12px 15px 12px 18px;
             color: #111;
             font-size: 11px;
@@ -905,7 +932,7 @@ export default function ContactPage() {
           }
 
           .contact-faq-cta:hover {
-            background: #cfff00;
+            background: #c6f45e;
             transform: translateY(-2px);
           }
 
@@ -965,7 +992,7 @@ export default function ContactPage() {
           }
 
           .contact-faq-item.is-open .contact-faq-arrow {
-            background: #d9ff25;
+            background: #cefa74;
             color: #111;
             transform: rotate(90deg);
           }
@@ -1023,7 +1050,7 @@ export default function ContactPage() {
             width: 490px;
             height: 490px;
             border-radius: 50%;
-            background: rgba(217, 255, 37, 0.8);
+            background: rgba(206, 250, 116, 0.8);
             filter: blur(100px);
           }
 
@@ -1068,7 +1095,7 @@ export default function ContactPage() {
             height: 54px;
             place-items: center;
             border-radius: 50%;
-            background: #d9ff25;
+            background: #cefa74;
             color: #111;
           }
 
@@ -1117,8 +1144,8 @@ export default function ContactPage() {
             }
 
             .contact-hero h1 {
-              font-size: 53px;
-              line-height: 0.88;
+              font-size: 42px;
+              line-height: 1.04;
             }
 
             .contact-hero-bottom {
@@ -1139,7 +1166,7 @@ export default function ContactPage() {
             }
 
             .contact-left h2 {
-              font-size: 48px;
+              font-size: 36px;
             }
 
             .form-row {
@@ -1160,7 +1187,7 @@ export default function ContactPage() {
             }
 
             .contact-faq-heading h2 {
-              font-size: 48px;
+              font-size: 36px;
             }
 
             .contact-faq-question {

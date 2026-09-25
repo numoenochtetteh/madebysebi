@@ -25,7 +25,7 @@ const codeExamples = [
   experience: "Clear and professional"
 }
 
-const direction = await numo.plan(project)`,
+const direction = await madebysebi.plan(project)`,
   },
   {
     label: "Build",
@@ -52,7 +52,7 @@ const direction = await numo.plan(project)`,
   analytics: "connected"
 }
 
-await numo.launch(launchChecklist)`,
+await madebysebi.launch(launchChecklist)`,
   },
 ];
 
@@ -61,7 +61,7 @@ const benefits = [
     title: "Fast",
     text: "Performance",
     icon: Zap,
-    color: "#d9ff25",
+    color: "#cefa74",
   },
   {
     title: "Secure",
@@ -288,7 +288,7 @@ export function DevelopersSection() {
             BACKGROUND DECORATION
         ===================================================== */}
 
-        <div className="dev-orb-one pointer-events-none absolute -left-28 top-10 h-[300px] w-[300px] rounded-full bg-[#d9ff25]/25 blur-[100px]" />
+        <div className="dev-orb-one pointer-events-none absolute -left-28 top-10 h-[300px] w-[300px] rounded-full bg-[#cefa74]/25 blur-[100px]" />
 
         <div className="dev-orb-two pointer-events-none absolute -right-20 top-[-50px] h-[320px] w-[320px] rounded-full bg-[#9a84ff]/15 blur-[110px]" />
 
@@ -333,11 +333,11 @@ export function DevelopersSection() {
               }`}
             >
               <span className="mb-4 inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-black/50 sm:text-xs">
-                <span className="h-[7px] w-[7px] rounded-[2px] bg-[#d9ff25]" />
+                <span className="h-[7px] w-[7px] rounded-[2px] bg-[#cefa74]" />
                 How we build
               </span>
 
-              <h2 className="max-w-[570px] font-display text-[clamp(2.55rem,4vw,4.2rem)] font-medium leading-[0.94] tracking-[-0.06em]">
+              <h2 className="max-w-[570px] font-display text-[clamp(2.55rem,4vw,4.2rem)] font-medium leading-[1.02] tracking-[-0.035em]">
                 Built by developers.
                 <br />
                 <span className="text-black/45">
@@ -348,9 +348,7 @@ export function DevelopersSection() {
               </h2>
 
               <p className="mt-5 max-w-[520px] text-sm leading-[1.65] text-black/60 sm:text-base lg:text-[17px]">
-                We use modern technology behind the scenes to create websites
-                that feel simple, professional and effortless for your
-                customers.
+                We pair thoughtful frontend engineering with clear design decisions so every interaction feels fast, intentional and effortless for your customers.
               </p>
 
               {/* =================================================
@@ -363,7 +361,7 @@ export function DevelopersSection() {
                   className="group inline-flex h-12 items-center gap-4 rounded-full bg-black px-6 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.025]"
                 >
                   View our work
-                  <ArrowUpRight className="h-4 w-4 text-[#d9ff25] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <ArrowUpRight className="h-4 w-4 text-[#cefa74] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </a>
 
                 <a
@@ -478,7 +476,7 @@ export function DevelopersSection() {
                     Current phase
                   </span>
 
-                  <span className="rounded-full bg-[#d9ff25]/70 px-3 py-1 text-[10px] font-semibold">
+                  <span className="rounded-full bg-[#cefa74]/70 px-3 py-1 text-[10px] font-semibold">
                     {codeExamples[activeTab].label}
                   </span>
                 </div>
@@ -487,7 +485,7 @@ export function DevelopersSection() {
                     CODE
                 ================================================= */}
 
-                <div className="min-h-[205px] overflow-x-auto px-4 py-4 font-mono text-[11px] sm:px-6 sm:py-5 sm:text-[13px] lg:min-h-[220px]">
+                <div className="h-[260px] overflow-x-auto px-4 py-4 font-mono text-[11px] sm:h-[260px] sm:px-6 sm:py-5 sm:text-[13px] lg:h-[270px]">
                   <div key={activeTab} className="min-w-max text-black/70">
                     {codeExamples[activeTab].code
                       .split("\n")
@@ -531,19 +529,19 @@ export function DevelopersSection() {
 
                 <div className="flex items-center justify-between border-t border-black/[0.06] bg-[#faf9f6] px-5 py-3">
                   <div className="flex items-center gap-2 text-[9px] text-black/45 sm:text-[10px]">
-                    <span className="h-[7px] w-[7px] rounded-full bg-[#d9ff25]" />
+                    <span className="h-[7px] w-[7px] rounded-full bg-[#cefa74]" />
                     All systems ready
                   </div>
 
                   <span className="font-mono text-[8px] text-black/30">
-                    numo.digital
+                    madebysebi
                   </span>
                 </div>
               </div>
 
               {/* Small floating badge */}
               <div className="dev-orb-three absolute -bottom-5 right-8 hidden items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 shadow-lg sm:flex">
-                <span className="h-2 w-2 rounded-full bg-[#d9ff25]" />
+                <span className="h-2 w-2 rounded-full bg-[#cefa74]" />
 
                 <span className="font-mono text-[8px] uppercase tracking-[0.1em] text-black/50">
                   Ready to launch

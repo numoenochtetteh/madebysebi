@@ -63,15 +63,10 @@ export function ProcessSystem() {
             OUR PROCESS
           </span>
 
-          <h2>
-            One process behind
-            <br />
-            everything we build.
-          </h2>
+          <h2>One process behind everything we build.</h2>
 
           <p>
-            Strategy, design and development work together from the first
-            conversation to the final launch.
+            Strategy, design and development move as one system — from the first conversation to a confident launch.
           </p>
         </header>
 
@@ -110,8 +105,7 @@ export function ProcessSystem() {
                 </div>
 
                 <div className="process-center-text">
-                  <strong>numo</strong>
-                  <small>DIGITAL</small>
+                  <strong>madebysebi</strong>
                 </div>
               </div>
 
@@ -371,15 +365,17 @@ export function ProcessSystem() {
           width: 8px;
           height: 8px;
           border-radius: 2px;
-          background: #d9ff25;
+          background: #cefa74;
         }
 
         .numo-process-header h2 {
-          margin: 0;
-          font-size: clamp(46px, 5.2vw, 74px);
-          font-weight: 600;
-          line-height: 0.97;
-          letter-spacing: -0.06em;
+          max-width: 820px;
+          margin: 0 auto;
+          font-size: clamp(42px, 4.7vw, 64px);
+          font-weight: 400;
+          line-height: 1.02;
+          letter-spacing: -0.035em;
+          text-wrap: balance;
         }
 
         .numo-process-header p {
@@ -450,10 +446,10 @@ export function ProcessSystem() {
         */
 
         .pixel-yellow {
-          background: #d9ff25;
+          background: #cefa74;
           opacity: 1;
           animation: yellowPixelFloat 4s ease-in-out infinite;
-          box-shadow: 0 0 24px rgba(217, 255, 37, 0.28);
+          box-shadow: 0 0 24px rgba(206, 250, 116, 0.28);
         }
 
         .pixel-yellow:nth-child(2n) {
@@ -558,14 +554,15 @@ export function ProcessSystem() {
         }
 
         .process-center-text strong {
-          font-size: 18px;
+          font-size: 15px;
+          font-weight: 700;
           line-height: 1;
-          letter-spacing: -0.04em;
+          letter-spacing: -0.035em;
         }
 
         .process-center-text small {
           margin-top: 4px;
-          color: #d9ff25;
+          color: #cefa74;
           font-family:
             ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
           font-size: 6px;
@@ -700,7 +697,7 @@ export function ProcessSystem() {
           height: 36px;
           place-items: center;
           border-radius: 50%;
-          background: #d9ff25;
+          background: #cefa74;
           color: #29231d;
         }
 
@@ -892,7 +889,7 @@ export function ProcessSystem() {
         }
 
         .code-green {
-          color: #d9ff25;
+          color: #cefa74;
         }
 
         /* LAUNCH */
@@ -936,7 +933,7 @@ export function ProcessSystem() {
           flex-shrink: 0;
           place-items: center;
           border-radius: 10px;
-          background: #d9ff25;
+          background: #cefa74;
           color: #171717;
         }
 
@@ -988,7 +985,7 @@ export function ProcessSystem() {
         }
 
         .process-bottom a svg {
-          color: #d9ff25;
+          color: #cefa74;
           transition: transform 0.3s ease;
         }
 
@@ -1080,12 +1077,13 @@ export function ProcessSystem() {
           }
 
           .numo-process-header h2 {
-            max-width: 390px;
+            max-width: 350px;
             margin: 0 auto;
-            font-size: 42px;
-            font-weight: 700;
-            line-height: 0.98;
-            letter-spacing: -0.055em;
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+            text-wrap: balance;
           }
 
           .numo-process-header h2 br {
@@ -1402,7 +1400,7 @@ export function ProcessSystem() {
           }
 
           .pixel-yellow {
-            box-shadow: 0 0 10px rgba(217, 255, 37, 0.25);
+            box-shadow: 0 0 10px rgba(206, 250, 116, 0.25);
           }
 
           .process-center-logo {
@@ -1491,7 +1489,7 @@ export function ProcessSystem() {
 
         @media (max-width: 420px) {
           .numo-process-header h2 {
-            font-size: 40px;
+            font-size: 34px;
           }
 
           .process-board-wrapper {
@@ -1519,7 +1517,7 @@ export function ProcessSystem() {
 
         @media (max-width: 390px) {
           .numo-process-header h2 {
-            font-size: 38px;
+            font-size: 32px;
           }
 
           .numo-process-header p {

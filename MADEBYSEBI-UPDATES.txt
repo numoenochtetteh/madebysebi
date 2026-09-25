@@ -1,0 +1,19 @@
+MadeBySebi website update
+
+Implemented:
+- Full agency rebrand from Numo Digital / DevNumo to MadeBySebi.
+- MadeBySebi wordmark in navigation/footer and lime "m" favicon/app icons.
+- Brand lime standardized to #CEFA74.
+- Inter typography system and Geist Mono labels/code, following supplied brand-guidelines page.
+- Responsive heading line-height/letter-spacing cleanup for mobile.
+- Strategy / Build / Launch code panels now use equal heights at each breakpoint.
+- Client-work carousel uses real project highlights instead of sample/fabricated testimonials.
+- LinkedIn, Instagram, Facebook and X links updated to MadeBySebi accounts.
+- SEO metadata, Open Graph, X/Twitter metadata, structured data, sitemap and robots updated for MadeBySebi.
+- Premium copy refresh across key homepage/About/Contact sections.
+
+Still intentionally pending:
+- Contact form sending/integration (UI remains only).
+- A new MadeBySebi business email has not been invented; add one after it is created.
+- Custom domain: set NEXT_PUBLIC_SITE_URL in Vercel when the final domain is connected. Until then the current Vercel URL remains the fallback for canonical/sitemap URLs.
+- Replace temporary team stock photos with real team photos when ready.

@@ -83,7 +83,7 @@ export function AgencyHeroSection() {
 
           {/* Description */}
           <p className="mt-8 max-w-[540px] text-lg leading-[1.65] text-black/50">
-            Numo Digital designs and develops professional websites that help
+            MadeBySebi designs and develops professional websites that help
             growing businesses build trust, attract customers and generate more
             enquiries.
           </p>

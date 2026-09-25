@@ -39,7 +39,7 @@ export function StudioShowcase() {
         {/* Left content */}
         <div className="showcase-content">
           <div>
-            <span className="showcase-label">Numo Digital</span>
+            <span className="showcase-label">MadeBySebi</span>
 
             <h2>
               A creative partner

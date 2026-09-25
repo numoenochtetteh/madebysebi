@@ -1,11 +1,14 @@
 import type { MetadataRoute } from "next";
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://numo-digital.vercel.app";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://numo-digital.vercel.app/sitemap.xml",
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

@@ -1,653 +1,561 @@
-// "use client";
-
-// import { ArrowUpRight } from "lucide-react";
-// import { AnimatedWave } from "./animated-wave";
-
-// const footerLinks = {
-//   Product: [
-//     { name: "Features", href: "#features" },
-//     { name: "How it works", href: "#how-it-works" },
-//     { name: "Pricing", href: "#pricing" },
-//     { name: "Integrations", href: "#integrations" },
-//   ],
-//   Developers: [
-//     { name: "Documentation", href: "#developers" },
-//     { name: "API Reference", href: "#" },
-//     { name: "SDK", href: "#developers" },
-//     { name: "Status", href: "#" },
-//   ],
-//   Company: [
-//     { name: "About", href: "#" },
-//     { name: "Blog", href: "#" },
-//     { name: "Careers", href: "#", badge: "Hiring" },
-//     { name: "Contact", href: "#" },
-//   ],
-//   Legal: [
-//     { name: "Privacy", href: "#" },
-//     { name: "Terms", href: "#" },
-//     { name: "Security", href: "#security" },
-//   ],
-// };
-
-// const socialLinks = [
-//   { name: "Twitter", href: "#" },
-//   { name: "GitHub", href: "#" },
-//   { name: "LinkedIn", href: "#" },
-// ];
-
-// export function FooterSection() {
-//   return (
-//     <footer className="relative border-t border-foreground/10">
-//       {/* Animated wave background */}
-//       <div className="absolute inset-0 h-64 opacity-20 pointer-events-none overflow-hidden">
-//         <AnimatedWave />
-//       </div>
-
-//       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
-//         {/* Main Footer */}
-//         <div className="py-16 lg:py-24">
-//           <div className="grid grid-cols-2 md:grid-cols-6 gap-12 lg:gap-8">
-//             {/* Brand Column */}
-//             <div className="col-span-2">
-//               <a href="#" className="inline-flex items-center gap-2 mb-6">
-//                 <span className="text-2xl font-display">Optimus</span>
-//                 <span className="text-xs text-muted-foreground font-mono">TM</span>
-//               </a>
-
-//               <p className="text-muted-foreground leading-relaxed mb-8 max-w-xs">
-//                 The platform for teams who ship. Build, deploy, and scale with unprecedented velocity.
-//               </p>
-
-//               {/* Social Links */}
-//               <div className="flex gap-6">
-//                 {socialLinks.map((link) => (
-//                   <a
-//                     key={link.name}
-//                     href={link.href}
-//                     className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1 group"
-//                   >
-//                     {link.name}
-//                     <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-//                   </a>
-//                 ))}
-//               </div>
-//             </div>
-
-//             {/* Link Columns */}
-//             {Object.entries(footerLinks).map(([title, links]) => (
-//               <div key={title}>
-//                 <h3 className="text-sm font-medium mb-6">{title}</h3>
-//                 <ul className="space-y-4">
-//                   {links.map((link) => (
-//                     <li key={link.name}>
-//                       <a
-//                         href={link.href}
-//                         className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
-//                       >
-//                         {link.name}
-//                         {"badge" in link && link.badge && (
-//                           <span className="text-xs px-2 py-0.5 bg-foreground text-background rounded-full">
-//                             {link.badge}
-//                           </span>
-//                         )}
-//                       </a>
-//                     </li>
-//                   ))}
-//                 </ul>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* Bottom Bar */}
-//         <div className="py-8 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
-//           <p className="text-sm text-muted-foreground">
-//             2025 Optimus. All rights reserved.
-//           </p>
-
-//           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-//             <span className="flex items-center gap-2">
-//               <span className="w-2 h-2 rounded-full bg-green-500" />
-//               All systems operational
-//             </span>
-//           </div>
-//         </div>
-//       </div>
-//     </footer>
-//   );
-// }
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
-import { AnimatedWave } from "./animated-wave";
+import Link from "next/link";
+import {
+  ArrowUpRight,
+  Facebook,
+  Instagram,
+  Linkedin,
+  MapPin,
+  MessageCircle,
+} from "lucide-react";
 
-const footerLinks = {
-  Explore: [
-    { name: "Work", href: "/work" },
-    { name: "Services", href: "/services" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ],
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    handle: "MadeBySebi",
+    href: "https://www.linkedin.com/company/madebysebi/",
+    icon: "linkedin",
+  },
+  {
+    name: "X",
+    handle: "@MadeBySebi",
+    href: "https://x.com/MadeBySebi",
+    icon: "x",
+  },
+  {
+    name: "Facebook",
+    handle: "MadeBySebi",
+    href: "https://web.facebook.com/profile.php?id=61594479852181",
+    icon: "facebook",
+  },
+  {
+    name: "Instagram",
+    handle: "@madebysebi_",
+    href: "https://www.instagram.com/madebysebi_/",
+    icon: "instagram",
+  },
+] as const;
 
-  Services: [
-    { name: "Web Design", href: "/services" },
-    { name: "Web Development", href: "/services" },
-    { name: "UI / UX Design", href: "/services" },
-    { name: "SEO", href: "/services" },
-    { name: "Branding", href: "/services" },
-  ],
+const exploreLinks = [
+  { name: "Home", href: "/" },
+  { name: "Work", href: "/work" },
+  { name: "Services", href: "/services" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
+];
 
-  Social: [
-    { name: "Instagram", href: "#" },
-    { name: "LinkedIn", href: "#" },
-    { name: "GitHub", href: "#" },
-  ],
-};
+const serviceLinks = [
+  { name: "Web Design", href: "/services" },
+  { name: "Web Development", href: "/services" },
+  { name: "UI / UX Design", href: "/services" },
+  { name: "SEO & GEO", href: "/services" },
+  { name: "Branding", href: "/services" },
+];
+
+function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]["icon"] }) {
+  if (icon === "linkedin") {
+    return <Linkedin size={17} strokeWidth={2.2} />;
+  }
+
+  if (icon === "facebook") {
+    return <Facebook size={17} strokeWidth={2.2} />;
+  }
+
+  if (icon === "instagram") {
+    return <Instagram size={17} strokeWidth={2.2} />;
+  }
+
+  return <span className="mbs-x-icon">X</span>;
+}
 
 export function FooterSection() {
   return (
-    <footer className="numo-footer">
-      {/* Animated background */}
-      <div className="numo-footer-wave">
-        <AnimatedWave />
-      </div>
-
-      <div className="numo-footer-container">
-        {/* ==========================================
-            TOP CTA
-        =========================================== */}
-
-        <div className="numo-footer-cta">
-          <div>
-            <span className="numo-footer-eyebrow">
-              <span />
-              Have a project in mind?
-            </span>
-
-            <h2>
-              Let&apos;s build
-              <br />
-              something great.
-            </h2>
-          </div>
-
-          <a href="/contact" className="numo-footer-project-button">
-            <span>Start a project</span>
-
-            <span className="numo-footer-project-icon">
-              <ArrowUpRight size={22} />
-            </span>
-          </a>
+    <footer className="mbs-footer-wrap">
+      <div className="mbs-footer-shell">
+        {/* MOBILE SOCIAL ICONS */}
+        <div
+          className="mbs-footer-mobile-socials"
+          aria-label="MadeBySebi social media"
+        >
+          {socialLinks.map((social) => (
+            <a
+              key={social.name}
+              href={social.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`MadeBySebi on ${social.name}`}
+            >
+              <SocialIcon icon={social.icon} />
+            </a>
+          ))}
         </div>
 
-        {/* ==========================================
-            MAIN FOOTER
-        =========================================== */}
+        {/* DESKTOP SOCIAL RAIL */}
+        <aside className="mbs-social-rail" aria-label="MadeBySebi social media">
+          {socialLinks.map((social) => (
+            <a
+              key={social.name}
+              href={social.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`MadeBySebi on ${social.name}`}
+            >
+              <SocialIcon icon={social.icon} />
+            </a>
+          ))}
+        </aside>
 
-        <div className="numo-footer-main">
-          {/* BRAND */}
+        <div className="mbs-footer-topline">
+          <span>MadeBySebi</span>
+          <span>Accra, Ghana · Working worldwide</span>
+        </div>
 
-          <div className="numo-footer-brand">
-            <a href="#" className="numo-footer-logo">
-              numo
-              <span>DIGITAL</span>
+        <div className="mbs-footer-top">
+          <div className="mbs-footer-pitch">
+            <p className="mbs-footer-kicker">HAVE A PROJECT IN MIND?</p>
+
+            <h2>
+              Do you like
+              <br />
+              what you see?
+            </h2>
+
+            <Link href="/contact" className="mbs-footer-cta">
+              <span>Start a project</span>
+
+              <span className="mbs-footer-cta-icon">
+                <ArrowUpRight size={17} />
+              </span>
+            </Link>
+          </div>
+
+          <nav className="mbs-footer-nav" aria-label="Footer navigation">
+            <div>
+              <h3>Explore</h3>
+
+              {exploreLinks.map((link) => (
+                <Link key={link.name} href={link.href}>
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+
+            <div>
+              <h3>Services</h3>
+
+              {serviceLinks.map((link) => (
+                <Link key={link.name} href={link.href}>
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </nav>
+
+          <div className="mbs-footer-contact">
+            <h3>Get in touch</h3>
+
+            <a
+              href="https://wa.me/233542470922?text=Hello%20MadeBySebi%2C%20I%27d%20like%20to%20discuss%20a%20project."
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={16} />
+              <span>+233 54 247 0922</span>
             </a>
 
             <p>
-              We design and develop professional websites for businesses and
-              companies that want to look credible, communicate clearly and grow online.
+              <MapPin size={16} />
+
+              <span>
+                Accra, Ghana
+                <br />
+                Available worldwide
+              </span>
             </p>
-
-            <div className="numo-footer-location">
-              <span className="numo-status-dot" />
-              Accra, Ghana · Working worldwide
-            </div>
-          </div>
-
-          {/* LINKS */}
-
-          <div className="numo-footer-links">
-            {Object.entries(footerLinks).map(([title, links]) => (
-              <div className="numo-footer-column" key={title}>
-                <h3>{title}</h3>
-
-                <ul>
-                  {links.map((link) => (
-                    <li key={link.name}>
-                      <a href={link.href}>
-                        {link.name}
-
-                        <ArrowUpRight className="footer-link-arrow" size={13} />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </div>
         </div>
 
-        {/* ==========================================
-            HUGE BRAND TEXT
-        =========================================== */}
+        {/* DESKTOP + TABLET ONLY */}
+        <div className="mbs-footer-statement" aria-label="MadeBySebi">
+          madebysebi
+        </div>
 
-        <div className="numo-footer-wordmark">NUMO</div>
-
-        {/* ==========================================
-            BOTTOM
-        =========================================== */}
-
-        <div className="numo-footer-bottom">
-          <p>© 2026 Numo Digital. All rights reserved.</p>
+        {/* DESKTOP + TABLET ONLY */}
+        <div className="mbs-footer-bottom">
+          <strong>madebysebi.</strong>
+          <span>© 2026 MadeBySebi</span>
+          <span>Accra · Ghana</span>
 
           <div>
-            <a href="/privacy">Privacy</a>
-
-            <span>•</span>
-
-            <a href="/terms">Terms</a>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+            <a href="#top">Back to top ↑</a>
           </div>
-
-          <a href="#" className="numo-footer-back-top">
-            Back to top
-            <ArrowUpRight size={14} />
-          </a>
         </div>
       </div>
 
       <style jsx global>{`
-        /* ========================================================
-           FOOTER
-        ======================================================== */
-
-        .numo-footer {
+        .mbs-footer-wrap {
           position: relative;
           overflow: hidden;
-          background: #0a0a0a;
-          color: #ffffff;
-        }
-
-        .numo-footer-container {
-          position: relative;
-          z-index: 2;
-          width: min(1400px, 100%);
-          margin: 0 auto;
-          padding: 0 28px;
-        }
-
-        /* ========================================================
-           WAVE
-        ======================================================== */
-
-        .numo-footer-wave {
-          position: absolute;
-          inset: 0 0 auto;
-          height: 430px;
-          overflow: hidden;
-          opacity: 0.12;
-          pointer-events: none;
-        }
-
-        /* ========================================================
-           TOP CTA
-        ======================================================== */
-
-        .numo-footer-cta {
-          display: flex;
-          min-height: 420px;
-          align-items: flex-end;
-          justify-content: space-between;
-          gap: 60px;
-          padding: 100px 0 75px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-        }
-
-        .numo-footer-eyebrow {
-          display: inline-flex;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 30px;
-          color: rgba(255, 255, 255, 0.55);
-          font-family:
-            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 11px;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-        }
-
-        .numo-footer-eyebrow > span {
-          width: 34px;
-          height: 1px;
-          background: rgba(255, 255, 255, 0.4);
-        }
-
-        .numo-footer-cta h2 {
-          max-width: 900px;
-          margin: 0;
-          font-size: clamp(65px, 8vw, 125px);
-          font-weight: 500;
-          line-height: 0.84;
-          letter-spacing: -0.07em;
-        }
-
-        .numo-footer-project-button {
-          display: flex;
-          flex-shrink: 0;
-          align-items: center;
-          gap: 28px;
-          border-radius: 999px;
-          background: #ffffff;
-          padding: 8px 8px 8px 28px;
-          color: #111111;
-          font-size: 14px;
-          font-weight: 600;
-          text-decoration: none;
-          transition:
-            transform 0.3s ease,
-            background 0.3s ease;
-        }
-
-        .numo-footer-project-button:hover {
-          transform: translateY(-3px);
-          background: #d9ff25;
-        }
-
-        .numo-footer-project-icon {
-          display: flex;
-          width: 52px;
-          height: 52px;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          background: #111;
+          background: #f4f4f1;
+          padding: 20px 28px 28px;
           color: #fff;
-          transition: transform 0.35s ease;
+          font-family: var(--font-inter), Inter, Arial, sans-serif;
         }
 
-        .numo-footer-project-button:hover .numo-footer-project-icon {
-          transform: rotate(45deg);
-        }
-
-        /* ========================================================
-           MAIN
-        ======================================================== */
-
-        .numo-footer-main {
-          display: grid;
-          grid-template-columns: 1.25fr 1fr;
-          gap: 100px;
-          padding: 75px 0 90px;
-        }
-
-        /* ========================================================
-           BRAND
-        ======================================================== */
-
-        .numo-footer-logo {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          color: #ffffff;
-          font-size: 30px;
-          font-weight: 700;
-          letter-spacing: -0.04em;
-          text-decoration: none;
-        }
-
-        .numo-footer-logo span {
-          border-radius: 999px;
-          background: #ffffff;
-          padding: 5px 10px;
-          color: #000000;
-          font-family:
-            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 7px;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-        }
-
-        .numo-footer-brand p {
-          max-width: 440px;
-          margin: 28px 0 30px;
-          color: rgba(255, 255, 255, 0.53);
-          font-size: 15px;
-          line-height: 1.65;
-        }
-
-        .numo-footer-location {
-          display: inline-flex;
-          align-items: center;
-          gap: 9px;
-          color: rgba(255, 255, 255, 0.65);
-          font-size: 12px;
-        }
-
-        .numo-status-dot {
+        .mbs-footer-shell {
           position: relative;
-          width: 7px;
-          height: 7px;
-          border-radius: 50%;
-          background: #d9ff25;
-          box-shadow: 0 0 14px rgba(217, 255, 37, 0.5);
-        }
-
-        /* ========================================================
-           LINKS
-        ======================================================== */
-
-        .numo-footer-links {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 40px;
-        }
-
-        .numo-footer-column h3 {
-          margin: 0 0 25px;
-          color: rgba(255, 255, 255, 0.35);
-          font-family:
-            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 9px;
-          font-weight: 700;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-        }
-
-        .numo-footer-column ul {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-
-        .numo-footer-column li + li {
-          margin-top: 15px;
-        }
-
-        .numo-footer-column a {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-          color: rgba(255, 255, 255, 0.68);
-          font-size: 14px;
-          text-decoration: none;
-          transition: color 0.25s ease;
-        }
-
-        .numo-footer-column a:hover {
-          color: #ffffff;
-        }
-
-        .footer-link-arrow {
-          opacity: 0;
-          transform: translate(-3px, 3px);
-          transition:
-            opacity 0.25s ease,
-            transform 0.25s ease;
-        }
-
-        .numo-footer-column a:hover .footer-link-arrow {
-          opacity: 1;
-          transform: translate(0, 0);
-        }
-
-        /* ========================================================
-           WORDMARK
-        ======================================================== */
-
-        .numo-footer-wordmark {
+          width: min(1460px, 100%);
+          margin: 0 auto;
           overflow: hidden;
-          margin-bottom: -3vw;
-          color: #ffffff;
-          font-size: clamp(150px, 25vw, 390px);
-          font-weight: 700;
-          line-height: 0.72;
-          letter-spacing: -0.085em;
-          white-space: nowrap;
-          user-select: none;
+          border-radius: 34px;
+          background: #050505;
+          padding: 54px 72px 28px 104px;
         }
 
-        /* ========================================================
-           BOTTOM
-        ======================================================== */
-
-        .numo-footer-bottom {
-          display: grid;
-          grid-template-columns: 1fr auto 1fr;
-          align-items: center;
-          gap: 30px;
-          padding: 30px 0;
-          border-top: 1px solid rgba(255, 255, 255, 0.15);
-          color: rgba(255, 255, 255, 0.4);
-          font-size: 10px;
-        }
-
-        .numo-footer-bottom p {
-          margin: 0;
-        }
-
-        .numo-footer-bottom > div {
+        .mbs-footer-topline {
           display: flex;
           align-items: center;
-          gap: 10px;
+          justify-content: space-between;
+          gap: 20px;
+          margin-bottom: 44px;
+          padding-bottom: 18px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+          color: rgba(255, 255, 255, 0.48);
+          font-size: 10px;
+          letter-spacing: 0.02em;
         }
 
-        .numo-footer-bottom a {
-          color: inherit;
+        .mbs-footer-topline span:first-child {
+          color: #fff;
+          font-weight: 750;
+          letter-spacing: -0.02em;
+        }
+
+        .mbs-social-rail {
+          position: absolute;
+          top: 28px;
+          left: 24px;
+          z-index: 4;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .mbs-social-rail a,
+        .mbs-footer-mobile-socials a {
+          display: grid;
+          width: 42px;
+          height: 42px;
+          place-items: center;
+          border-radius: 50%;
+          background: #cefa74;
+          color: #050505;
+          text-decoration: none;
+          transition:
+            transform 0.25s ease,
+            background 0.25s ease;
+        }
+
+        .mbs-social-rail a:hover,
+        .mbs-footer-mobile-socials a:hover {
+          background: #fff;
+          transform: translateY(-2px);
+        }
+
+        .mbs-x-icon {
+          font-size: 14px;
+          font-weight: 800;
+          line-height: 1;
+        }
+
+        .mbs-footer-mobile-socials {
+          display: none;
+        }
+
+        .mbs-footer-top {
+          display: grid;
+          grid-template-columns:
+            minmax(300px, 1.15fr)
+            minmax(300px, 0.9fr)
+            minmax(240px, 0.72fr);
+          gap: clamp(48px, 6vw, 96px);
+          align-items: start;
+        }
+
+        .mbs-footer-kicker {
+          margin: 0 0 18px;
+          color: rgba(255, 255, 255, 0.4);
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 8px;
+          font-weight: 700;
+          letter-spacing: 0.16em;
+        }
+
+        .mbs-footer-pitch h2 {
+          max-width: 470px;
+          margin: 0;
+          font-size: clamp(42px, 4vw, 66px);
+          font-weight: 500;
+          line-height: 0.96;
+          letter-spacing: -0.055em;
+        }
+
+        .mbs-footer-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 18px;
+          margin-top: 28px;
+          border-radius: 999px;
+          background: #cefa74;
+          padding: 8px 8px 8px 22px;
+          color: #080808;
+          font-size: 13px;
+          font-weight: 700;
+          text-decoration: none;
+          transition:
+            transform 0.25s ease,
+            background 0.25s ease;
+        }
+
+        .mbs-footer-cta:hover {
+          background: #fff;
+          transform: translateY(-2px);
+        }
+
+        .mbs-footer-cta-icon {
+          display: grid;
+          width: 36px;
+          height: 36px;
+          place-items: center;
+          border-radius: 50%;
+          background: #050505;
+          color: #fff;
+        }
+
+        .mbs-footer-nav {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+          padding-top: 4px;
+        }
+
+        .mbs-footer-nav > div,
+        .mbs-footer-contact {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .mbs-footer-nav h3,
+        .mbs-footer-contact > h3 {
+          margin: 0 0 18px;
+          color: rgba(255, 255, 255, 0.44);
+          font-size: 12px;
+          font-weight: 450;
+        }
+
+        .mbs-footer-nav a {
+          margin-bottom: 10px;
+          color: #fff;
+          font-size: 13px;
+          font-weight: 600;
           text-decoration: none;
           transition: color 0.2s ease;
         }
 
-        .numo-footer-bottom a:hover {
-          color: #ffffff;
+        .mbs-footer-nav a:hover {
+          color: #cefa74;
         }
 
-        .numo-footer-back-top {
-          display: inline-flex;
-          justify-self: end;
+        .mbs-footer-contact {
+          padding-top: 4px;
+        }
+
+        .mbs-footer-contact > a,
+        .mbs-footer-contact > p {
+          display: flex;
+          align-items: flex-start;
+          gap: 11px;
+          margin: 0 0 18px;
+          color: #fff;
+          font-size: 13px;
+          font-weight: 600;
+          line-height: 1.55;
+          text-decoration: none;
+        }
+
+        .mbs-footer-contact > a:hover {
+          color: #cefa74;
+        }
+
+        .mbs-footer-statement {
+          width: 100%;
+          margin-top: 72px;
+          color: #fff;
+          font-size: clamp(90px, 11.2vw, 176px);
+          font-weight: 520;
+          line-height: 0.76;
+          letter-spacing: -0.075em;
+          white-space: nowrap;
+        }
+
+        .mbs-footer-bottom {
+          display: grid;
+          grid-template-columns: auto auto auto 1fr;
           align-items: center;
-          gap: 7px;
+          gap: 22px;
+          margin-top: 52px;
+          padding-top: 20px;
+          border-top: 1px solid rgba(255, 255, 255, 0.16);
+          color: rgba(255, 255, 255, 0.48);
+          font-size: 9px;
         }
 
-        /* ========================================================
-           TABLET
-        ======================================================== */
+        .mbs-footer-bottom strong {
+          color: #fff;
+          font-size: 15px;
+          font-weight: 750;
+          letter-spacing: -0.03em;
+        }
 
-        @media (max-width: 900px) {
-          .numo-footer-container {
-            padding: 0 20px;
+        .mbs-footer-bottom > div {
+          display: flex;
+          justify-content: flex-end;
+          gap: 18px;
+        }
+
+        .mbs-footer-bottom a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .mbs-footer-bottom a:hover {
+          color: #fff;
+        }
+
+        @media (max-width: 1080px) {
+          .mbs-footer-shell {
+            padding-right: 44px;
+            padding-left: 82px;
           }
 
-          .numo-footer-cta {
-            min-height: auto;
-            align-items: flex-start;
-            gap: 50px;
-            padding: 90px 0 65px;
-            flex-direction: column;
+          .mbs-footer-top {
+            grid-template-columns: 1fr 1fr;
           }
 
-          .numo-footer-cta h2 {
-            font-size: clamp(65px, 11vw, 95px);
+          .mbs-footer-contact {
+            grid-column: 2;
           }
 
-          .numo-footer-main {
-            grid-template-columns: 1fr;
-            gap: 65px;
-          }
-
-          .numo-footer-links {
-            max-width: 650px;
-          }
-
-          .numo-footer-wordmark {
-            margin-top: 30px;
+          .mbs-footer-statement {
+            font-size: clamp(76px, 11vw, 118px);
           }
         }
 
-        /* ========================================================
-           MOBILE
-        ======================================================== */
-
-        @media (max-width: 600px) {
-          .numo-footer-container {
-            padding: 0 16px;
+        @media (max-width: 760px) {
+          .mbs-footer-wrap {
+            padding: 12px;
           }
 
-          .numo-footer-wave {
-            height: 350px;
-            opacity: 0.1;
+          .mbs-footer-shell {
+            border-radius: 26px;
+            padding: 24px 20px 28px;
           }
 
-          .numo-footer-cta {
-            gap: 40px;
-            padding: 75px 0 55px;
+          .mbs-social-rail {
+            display: none;
           }
 
-          .numo-footer-eyebrow {
-            margin-bottom: 22px;
+          .mbs-footer-mobile-socials {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 28px;
+          }
+
+          .mbs-footer-mobile-socials a {
+            width: 40px;
+            height: 40px;
+          }
+
+          .mbs-footer-topline {
+            margin-bottom: 32px;
+            padding-bottom: 14px;
             font-size: 9px;
           }
 
-          .numo-footer-cta h2 {
-            font-size: 58px;
-            line-height: 0.88;
-          }
-
-          .numo-footer-project-button {
-            gap: 20px;
-            padding-left: 22px;
-          }
-
-          .numo-footer-project-icon {
-            width: 46px;
-            height: 46px;
-          }
-
-          .numo-footer-main {
-            gap: 55px;
-            padding: 55px 0 65px;
-          }
-
-          .numo-footer-brand p {
-            font-size: 13px;
-          }
-
-          .numo-footer-links {
-            grid-template-columns: 1fr 1fr;
-            gap: 45px 25px;
-          }
-
-          .numo-footer-wordmark {
-            margin-bottom: -9px;
-            font-size: 37vw;
-          }
-
-          .numo-footer-bottom {
+          .mbs-footer-top {
             grid-template-columns: 1fr;
-            gap: 15px;
-            padding: 25px 0;
+            gap: 38px;
           }
 
-          .numo-footer-back-top {
-            justify-self: start;
+          .mbs-footer-pitch h2 {
+            max-width: 300px;
+            font-size: 40px;
+            line-height: 1;
+          }
+
+          .mbs-footer-nav {
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            padding-top: 0;
+          }
+
+          .mbs-footer-nav a {
+            margin-bottom: 9px;
+            font-size: 12px;
+          }
+
+          .mbs-footer-contact {
+            grid-column: auto;
+            padding-top: 0;
+          }
+
+          /*
+           * PHONE ONLY:
+           * remove large madebysebi wordmark
+           * remove copyright/location/bottom links
+           */
+          .mbs-footer-statement,
+          .mbs-footer-bottom {
+            display: none;
+          }
+        }
+
+        @media (max-width: 430px) {
+          .mbs-footer-shell {
+            padding: 20px 16px 26px;
+          }
+
+          .mbs-footer-mobile-socials {
+            gap: 7px;
+            margin-bottom: 24px;
+          }
+
+          .mbs-footer-mobile-socials a {
+            width: 38px;
+            height: 38px;
+          }
+
+          .mbs-footer-topline {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 5px;
+          }
+
+          .mbs-footer-topline span:last-child {
+            text-align: left;
+          }
+
+          .mbs-footer-pitch h2 {
+            font-size: 36px;
+          }
+
+          .mbs-footer-nav {
+            gap: 18px;
           }
         }
       `}</style>

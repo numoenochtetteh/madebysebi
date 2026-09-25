@@ -1,14 +1,14 @@
 export function WhatsAppButton() {
   const whatsappUrl =
-    "https://wa.me/233542470922?text=Hello%20DevNumo%2C%20I%27d%20like%20to%20discuss%20a%20project.";
+    "https://wa.me/233542470922?text=Hello%20MadeBySebi%2C%20I%27d%20like%20to%20discuss%20a%20project.";
 
   return (
     <a
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat with DevNumo on WhatsApp"
-      className="group fixed bottom-5 right-5 z-[70] inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-black/10 bg-[#d9ff25] px-3.5 text-black shadow-[0_14px_35px_rgba(0,0,0,0.16)] transition-all duration-300 hover:-translate-y-1 hover:bg-white sm:bottom-6 sm:right-6 sm:h-13 sm:px-4"
+      aria-label="Chat with MadeBySebi on WhatsApp"
+      className="group fixed bottom-5 right-5 z-[70] inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-black/10 bg-[#cefa74] px-3.5 text-black shadow-[0_14px_35px_rgba(0,0,0,0.16)] transition-all duration-300 hover:-translate-y-1 hover:bg-white sm:bottom-6 sm:right-6 sm:h-13 sm:px-4"
     >
       <svg
         viewBox="0 0 24 24"

@@ -6,14 +6,14 @@ import { FooterSection } from "@/components/landing/footer-section";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
-  description: "Website and project terms for working with Numo Digital.",
+  description: "Website and project terms for working with MadeBySebi.",
   alternates: { canonical: "/terms" },
 };
 
 const sections = [
   {
     title: "Website use",
-    body: "The information on this website is provided for general information about Numo Digital, our services and our work. You may browse and share links to the website, but you may not copy, resell or misuse our website content, branding, project materials or code without permission.",
+    body: "The information on this website is provided for general information about MadeBySebi, our services and our work. You may browse and share links to the website, but you may not copy, resell or misuse our website content, branding, project materials or code without permission.",
   },
   {
     title: "Project quotations",
@@ -33,11 +33,11 @@ const sections = [
   },
   {
     title: "Third-party services",
-    body: "Projects may use third-party services such as hosting, domains, payment providers, analytics, email platforms, booking systems or APIs. Those services have their own terms, pricing and availability, and Numo Digital cannot guarantee that a third-party service will always remain unchanged or available.",
+    body: "Projects may use third-party services such as hosting, domains, payment providers, analytics, email platforms, booking systems or APIs. Those services have their own terms, pricing and availability, and MadeBySebi cannot guarantee that a third-party service will always remain unchanged or available.",
   },
   {
     title: "Ownership and portfolio use",
-    body: "Unless otherwise agreed in writing, final approved project deliverables are transferred or licensed to the client after the agreed project fees are paid. Numo Digital may show completed public-facing work in our portfolio and case studies unless the client has requested confidentiality in writing.",
+    body: "Unless otherwise agreed in writing, final approved project deliverables are transferred or licensed to the client after the agreed project fees are paid. MadeBySebi may show completed public-facing work in our portfolio and case studies unless the client has requested confidentiality in writing.",
   },
   {
     title: "Cancellations and project pauses",
@@ -49,7 +49,7 @@ const sections = [
   },
   {
     title: "Governing terms",
-    body: "Numo Digital is based in Ghana. These website terms are intended to operate alongside any project-specific written agreement. If a signed proposal, contract or statement of work contains different terms, that project-specific document takes priority for that project.",
+    body: "MadeBySebi is based in Ghana. These website terms are intended to operate alongside any project-specific written agreement. If a signed proposal, contract or statement of work contains different terms, that project-specific document takes priority for that project.",
   },
 ];
 
@@ -68,7 +68,7 @@ export default function TermsPage() {
               <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">LEGAL · TERMS</span>
               <h1 className="mt-5 text-[clamp(3.2rem,7vw,7rem)] font-semibold leading-[0.88] tracking-[-0.07em]">Terms &amp;<br />Conditions.</h1>
               <p className="mt-7 max-w-[430px] text-[15px] leading-7 text-black/60">
-                The general website and project terms that support clear expectations when working with Numo Digital.
+                The general website and project terms that support clear expectations when working with MadeBySebi.
               </p>
               <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-black/35">Last updated · 21 September 2026</p>
             </div>
@@ -78,7 +78,7 @@ export default function TermsPage() {
                 <section key={section.title} className="rounded-[24px] border border-black/10 bg-white/55 p-6 sm:p-8">
                   <div className="mb-5 flex items-center justify-between gap-5">
                     <span className="font-mono text-[9px] text-black/35">{String(index + 1).padStart(2, "0")}</span>
-                    <span className="h-2.5 w-2.5 rounded-[3px] bg-[#d9ff25]" />
+                    <span className="h-2.5 w-2.5 rounded-[3px] bg-[#cefa74]" />
                   </div>
                   <h2 className="text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">{section.title}</h2>
                   <p className="mt-4 max-w-[760px] text-[14px] leading-7 text-black/60">{section.body}</p>
@@ -89,7 +89,7 @@ export default function TermsPage() {
                 <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-white/45">Project-specific terms</span>
                 <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                   <h2 className="max-w-[650px] text-3xl font-semibold leading-[1] tracking-[-0.05em] sm:text-4xl">Every project gets a clear scope before work begins.</h2>
-                  <Link href="/contact" className="inline-flex items-center gap-2 font-semibold text-[#d9ff25]">Start a project <ArrowUpRight size={16} /></Link>
+                  <Link href="/contact" className="inline-flex items-center gap-2 font-semibold text-[#cefa74]">Start a project <ArrowUpRight size={16} /></Link>
                 </div>
               </section>
             </div>

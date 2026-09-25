@@ -641,7 +641,7 @@
   border: 1px solid #d7d3ca;
   border-radius: 34px;
   background:
-    radial-gradient(circle at 88% 8%, rgba(217,255,37,.15), transparent 24%),
+    radial-gradient(circle at 88% 8%, rgba(206,250,116,.15), transparent 24%),
     linear-gradient(180deg, #efede6 0%, #f7f6f1 100%);
   padding: 72px 28px 78px;
   color: #111;
@@ -853,7 +853,7 @@
   gap: 60px;
   margin-bottom: 110px;
   border-radius: 30px;
-  background: #d9ff25;
+  background: #cefa74;
   padding: 60px;
 }
 

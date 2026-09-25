@@ -41,7 +41,7 @@ export function AgencyHero() {
           <div className="agency-hero-badge">
             <span className="agency-badge-dot" />
 
-            <span>NUMO DIGITAL</span>
+            <span>MADEBYSEBI</span>
 
             <span className="agency-badge-divider" />
 
@@ -251,7 +251,7 @@ export function AgencyHero() {
           width: 450px;
           height: 450px;
 
-          background: rgba(217, 255, 37, 0.18);
+          background: rgba(206, 250, 116, 0.18);
 
           filter: blur(110px);
 
@@ -355,9 +355,9 @@ export function AgencyHero() {
 
           border-radius: 2px;
 
-          background: #d9ff25;
+          background: #cefa74;
 
-          box-shadow: 0 0 12px rgba(217, 255, 37, 0.4);
+          box-shadow: 0 0 12px rgba(206, 250, 116, 0.4);
         }
 
         .agency-badge-divider {
@@ -416,7 +416,7 @@ export function AgencyHero() {
 
           border-radius: 999px;
 
-          background: #d9ff25;
+          background: #cefa74;
 
           z-index: -1;
 
@@ -503,7 +503,7 @@ export function AgencyHero() {
 
           border-radius: 50%;
 
-          background: #d9ff25;
+          background: #cefa74;
 
           color: #111;
 
@@ -656,7 +656,7 @@ export function AgencyHero() {
 
           border-radius: 11px;
 
-          background: #d9ff25;
+          background: #cefa74;
 
           color: #171717;
         }

@@ -6,14 +6,14 @@ import { FooterSection } from "@/components/landing/footer-section";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How Numo Digital handles information shared through this website.",
+  description: "How MadeBySebi handles information shared through this website.",
   alternates: { canonical: "/privacy" },
 };
 
 const sections = [
   {
     title: "Information you give us",
-    body: "When you contact Numo Digital or submit a project enquiry, you may provide information such as your name, email address, company name, website, project budget, timeline and project details.",
+    body: "When you contact MadeBySebi or submit a project enquiry, you may provide information such as your name, email address, company name, website, project budget, timeline and project details.",
   },
   {
     title: "How we use your information",
@@ -33,7 +33,7 @@ const sections = [
   },
   {
     title: "Your choices and rights",
-    body: "You can ask us to correct or delete personal information we hold about you, subject to any legal or legitimate record-keeping requirements. Numo Digital is based in Ghana and aims to handle personal information in line with applicable data-protection requirements, including Ghana's Data Protection Act, 2012 (Act 843), where applicable.",
+    body: "You can ask us to correct or delete personal information we hold about you, subject to any legal or legitimate record-keeping requirements. MadeBySebi is based in Ghana and aims to handle personal information in line with applicable data-protection requirements, including Ghana's Data Protection Act, 2012 (Act 843), where applicable.",
   },
   {
     title: "International enquiries",
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
               <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">LEGAL · PRIVACY</span>
               <h1 className="mt-5 text-[clamp(3.2rem,7vw,7rem)] font-semibold leading-[0.88] tracking-[-0.07em]">Privacy<br />Policy.</h1>
               <p className="mt-7 max-w-[430px] text-[15px] leading-7 text-black/60">
-                A clear summary of what information this website may collect and how Numo Digital uses it.
+                A clear summary of what information this website may collect and how MadeBySebi uses it.
               </p>
               <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-black/35">Last updated · 21 September 2026</p>
             </div>
@@ -70,18 +70,18 @@ export default function PrivacyPage() {
                 <section key={section.title} className="rounded-[24px] border border-black/10 bg-white/55 p-6 sm:p-8">
                   <div className="mb-5 flex items-center justify-between gap-5">
                     <span className="font-mono text-[9px] text-black/35">{String(index + 1).padStart(2, "0")}</span>
-                    <span className="h-2.5 w-2.5 rounded-[3px] bg-[#d9ff25]" />
+                    <span className="h-2.5 w-2.5 rounded-[3px] bg-[#cefa74]" />
                   </div>
                   <h2 className="text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">{section.title}</h2>
                   <p className="mt-4 max-w-[760px] text-[14px] leading-7 text-black/60">{section.body}</p>
                 </section>
               ))}
 
-              <section className="rounded-[24px] bg-[#d9ff25] p-6 sm:p-8">
+              <section className="rounded-[24px] bg-[#cefa74] p-6 sm:p-8">
                 <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-black/55">Questions about privacy?</span>
                 <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                   <h2 className="max-w-[650px] text-3xl font-semibold leading-[1] tracking-[-0.05em] sm:text-4xl">Contact us and we&apos;ll help with your request.</h2>
-                  <Link href="/contact" className="inline-flex items-center gap-2 font-semibold">Contact Numo Digital <ArrowUpRight size={16} /></Link>
+                  <Link href="/contact" className="inline-flex items-center gap-2 font-semibold">Contact MadeBySebi <ArrowUpRight size={16} /></Link>
                 </div>
               </section>
             </div>

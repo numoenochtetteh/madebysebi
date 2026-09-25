@@ -53,7 +53,7 @@ const services = [
   {
     name: "SEO & GEO",
     mobileName: "SEO & GEO",
-    image: "/services/seo.webp",
+    image: "/services/seo-custom.png",
     icon: Search,
     title: "SEO & GEO",
     secondTitle: "& Search Visibility",
@@ -64,7 +64,7 @@ const services = [
   {
     name: "Web Design & Development",
     mobileName: "Web Design",
-    image: "/services/web-design.webp",
+    image: "/services/web-design-custom.png",
     icon: Code2,
     title: "Web Design",
     secondTitle: "& Development",
@@ -75,7 +75,7 @@ const services = [
   {
     name: "Branding & Visual Design",
     mobileName: "Branding",
-    image: "/services/branding.jpg",
+    image: "/services/branding-custom.png",
     icon: Palette,
     title: "Branding",
     secondTitle: "& Visual Design",
@@ -219,7 +219,7 @@ export function ServicesShowcase() {
 
           border-radius: 2px;
 
-          background: #d9ff25;
+          background: #cefa74;
         }
 
         @media (max-width: 600px) {
@@ -262,15 +262,12 @@ export function ServicesShowcase() {
             </span>
           </div>
 
-          <h2 className="font-display text-[clamp(3rem,5.7vw,6rem)] font-semibold leading-[0.92] tracking-[-0.055em]">
-            We lead when your challenge
-            <br className="hidden sm:block" />
-            <span className="sm:inline"> fits these expertise areas</span>
+          <h2 className="font-display text-[clamp(2.7rem,5vw,5.25rem)] font-medium leading-[1.02] tracking-[-0.035em]">
+            How we help businesses grow online.
           </h2>
 
           <p className="mx-auto mt-8 max-w-[680px] text-base leading-relaxed text-black/65 sm:text-lg">
-            Building from scratch or redesigning—we combine strategy, design and
-            development to bring your vision to life.
+            Strategy, design, development and visibility — brought together to make your digital presence more useful, memorable and effective.
           </p>
 
           <Link
@@ -350,7 +347,7 @@ export function ServicesShowcase() {
 
               {/* TITLE */}
 
-              <h3 className="font-display text-[clamp(2.9rem,4.8vw,5.5rem)] font-medium leading-[0.9] tracking-[-0.055em]">
+              <h3 className="font-display text-[clamp(2.9rem,4.8vw,5.5rem)] font-medium leading-[0.98] tracking-[-0.035em]">
                 <span className="block">{activeService.title}</span>
 
                 <span className="mt-2 block font-serif font-normal italic">

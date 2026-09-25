@@ -1,52 +1,88 @@
 import type { Metadata } from "next";
+import { Inter, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { WhatsAppButton } from "@/components/landing/whatsapp-button";
 
-const siteUrl = "https://numo-digital.vercel.app";
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-mono",
+});
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://numo-digital.vercel.app";
+
+const socialProfiles = [
+  "https://www.linkedin.com/company/madebysebi/",
+  "https://www.instagram.com/madebysebi_/",
+  "https://x.com/MadeBySebi",
+  "https://web.facebook.com/profile.php?id=61594479852181",
+];
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Numo Digital — Websites Built for Business Growth",
-    template: "%s | Numo Digital",
+    default: "MadeBySebi — Web Design, Development & Digital Experiences",
+    template: "%s | MadeBySebi",
   },
   description:
-    "Numo Digital is an Accra-based web design and development agency building professional websites for businesses and companies worldwide.",
+    "MadeBySebi is an Accra-based web design and development studio creating premium websites, web apps and digital experiences for businesses in Ghana and worldwide.",
   keywords: [
     "web design Ghana",
     "web development Ghana",
-    "business websites",
-    "company website design",
-    "frontend development",
-    "website agency Ghana",
-    "Numo Digital",
+    "web design Accra",
+    "business websites Ghana",
+    "website design agency Ghana",
+    "web apps Ghana",
+    "UI UX design Ghana",
+    "SEO Ghana",
+    "MadeBySebi",
   ],
+  applicationName: "MadeBySebi",
+  authors: [{ name: "MadeBySebi" }],
+  creator: "MadeBySebi",
+  publisher: "MadeBySebi",
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
     type: "website",
     url: siteUrl,
-    siteName: "Numo Digital",
-    title: "Numo Digital — Websites Built for Business Growth",
+    siteName: "MadeBySebi",
+    title: "MadeBySebi — Web Design, Development & Digital Experiences",
     description:
-      "Professional websites for businesses and companies in Ghana and worldwide.",
+      "Premium websites, web apps and digital experiences built for businesses in Ghana and worldwide.",
     images: [
       {
-        url: "/showcase/1.png",
+        url: "/brand/madebysebi-og.png",
         width: 1200,
         height: 630,
-        alt: "Numo Digital web design and development work",
+        alt: "MadeBySebi — Web Design, Development & Digital Experiences",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Numo Digital — Websites Built for Business Growth",
+    title: "MadeBySebi — Web Design, Development & Digital Experiences",
     description:
-      "Professional websites for businesses and companies in Ghana and worldwide.",
-    images: ["/showcase/1.png"],
+      "Premium websites, web apps and digital experiences built for businesses in Ghana and worldwide.",
+    images: ["/brand/madebysebi-og.png"],
+    site: "@MadeBySebi",
+    creator: "@MadeBySebi",
+  },
+  icons: {
+    icon: [
+      { url: "/brand/icon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/brand/apple-icon.png",
   },
   robots: {
     index: true,
@@ -57,19 +93,23 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Numo Digital",
+  name: "MadeBySebi",
   url: siteUrl,
+  logo: `${siteUrl}/brand/icon-512.png`,
+  image: `${siteUrl}/brand/madebysebi-og.png`,
   description:
-    "Web design and development agency building professional websites for businesses and companies worldwide.",
+    "Web design and development studio creating websites, web apps and digital experiences for businesses in Ghana and worldwide.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Accra",
     addressCountry: "GH",
   },
   areaServed: "Worldwide",
+  sameAs: socialProfiles,
   serviceType: [
     "Web Design",
     "Web Development",
+    "Web Applications",
     "UX/UI Design",
     "E-commerce Websites",
     "Booking Websites",
@@ -85,21 +125,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className="font-sans antialiased"
-        style={
-          {
-            "--font-instrument":
-              "\"Proxima Nova\", \"Helvetica Neue\", Helvetica, Arial, system-ui, -apple-system, sans-serif",
-            "--font-instrument-serif":
-              "\"Libre Baskerville\", Georgia, 'Times New Roman', serif",
-            "--font-jetbrains": "Consolas, Monaco, 'Courier New', monospace",
-          } as React.CSSProperties
-        }
+        id="top"
+        className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
         <WhatsAppButton />
         <Script
-          id="numo-digital-organization-schema"
+          id="madebysebi-organization-schema"
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

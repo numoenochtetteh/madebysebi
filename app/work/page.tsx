@@ -26,7 +26,7 @@ const projects = [
     video: "/expertise/111.mp4",
     href: "/work/pengtresses",
     liveUrl: "https://foreverpenghair.com",
-    accent: "#d9ff25",
+    accent: "#cefa74",
     layout: "featured",
     capabilities: ["Booking platform", "Payments", "Automation", "Admin dashboard"],
   },
@@ -191,7 +191,7 @@ export default function WorkPage() {
                   <span />
                 </div>
 
-                <span>devnumo.com/work</span>
+                <span>madebysebi / work</span>
 
                 <ArrowUpRight size={15} />
               </div>
@@ -235,7 +235,7 @@ export default function WorkPage() {
               <Sparkles size={17} />
 
               <div>
-                <small>DEVNUMO</small>
+                <small>MADEBYSEBI</small>
                 <strong>Made for growth.</strong>
               </div>
             </div>
@@ -479,7 +479,7 @@ export default function WorkPage() {
             width: 8px;
             height: 8px;
             border-radius: 2px;
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .work-hero h1 {
@@ -522,7 +522,7 @@ export default function WorkPage() {
           }
 
           .work-hero-bottom a svg {
-            color: #d9ff25;
+            color: #cefa74;
           }
 
           /* =====================================================
@@ -542,7 +542,7 @@ export default function WorkPage() {
             left: -100px;
             width: 480px;
             height: 480px;
-            background: rgba(217, 255, 37, 0.2);
+            background: rgba(206, 250, 116, 0.2);
           }
 
           .work-glow-blue {
@@ -667,7 +667,7 @@ export default function WorkPage() {
             height: 38px;
             place-items: center;
             border-radius: 11px;
-            background: #d9ff25;
+            background: #cefa74;
             font-family: ui-monospace, monospace;
             font-size: 9px;
           }
@@ -1052,7 +1052,7 @@ export default function WorkPage() {
             width: 480px;
             height: 480px;
             border-radius: 50%;
-            background: rgba(217, 255, 37, 0.75);
+            background: rgba(206, 250, 116, 0.75);
             filter: blur(100px);
           }
 
@@ -1097,7 +1097,7 @@ export default function WorkPage() {
             height: 54px;
             place-items: center;
             border-radius: 50%;
-            background: #d9ff25;
+            background: #cefa74;
             color: #111;
             transition: transform 0.3s ease;
           }
@@ -1182,8 +1182,8 @@ export default function WorkPage() {
 
             .work-hero h1 {
               margin-top: 30px;
-              font-size: 52px;
-              line-height: 0.89;
+              font-size: 42px;
+              line-height: 1.04;
             }
 
             .work-hero-bottom {

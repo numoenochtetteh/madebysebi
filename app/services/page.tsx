@@ -31,7 +31,7 @@ const services = [
     description:
       "Fast, responsive websites built to communicate your value clearly, build trust and turn attention into enquiries.",
     image: "/services/web-design.webp",
-    color: "#d9ff25",
+    color: "#cefa74",
     dark: false,
     icon: Code2,
     items: [
@@ -209,7 +209,7 @@ export default function ServicesPage() {
                     <span />
                   </div>
 
-                  <p>numodigital.com</p>
+                  <p>madebysebi</p>
 
                   <ArrowUpRight size={15} />
                 </div>
@@ -423,8 +423,7 @@ export default function ServicesPage() {
               <div className="visual-ring ring-c" />
 
               <div className="visual-center">
-                <strong>numo</strong>
-                <small>DIGITAL</small>
+                <strong>madebysebi</strong>
               </div>
 
               <div className="system-node node-one">
@@ -613,7 +612,7 @@ export default function ServicesPage() {
             width: 8px;
             height: 8px;
             border-radius: 2px;
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .services-hero h1 {
@@ -660,7 +659,7 @@ export default function ServicesPage() {
           }
 
           .hero-primary svg {
-            color: #d9ff25;
+            color: #cefa74;
             transition: transform 0.3s ease;
           }
 
@@ -687,7 +686,7 @@ export default function ServicesPage() {
             left: 5%;
             width: 380px;
             height: 380px;
-            background: rgba(217, 255, 37, 0.24);
+            background: rgba(206, 250, 116, 0.24);
           }
 
           .hero-orb-blue {
@@ -854,7 +853,7 @@ export default function ServicesPage() {
           }
 
           .floating-icon.lime {
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .floating-icon.purple {
@@ -1211,7 +1210,7 @@ export default function ServicesPage() {
             align-items: center;
             justify-content: center;
             border-radius: 30px;
-            background: #d9ff25;
+            background: #cefa74;
             color: #111;
             flex-direction: column;
             transform: translate(-50%, -50%);
@@ -1219,7 +1218,10 @@ export default function ServicesPage() {
           }
 
           .visual-center strong {
-            font-size: 24px;
+            max-width: 100px;
+            font-size: 13px;
+            font-weight: 750;
+            letter-spacing: -0.035em;
           }
 
           .visual-center small {
@@ -1339,7 +1341,7 @@ export default function ServicesPage() {
             margin-top: 70px;
             place-items: center;
             border-radius: 14px;
-            background: #d9ff25;
+            background: #cefa74;
           }
 
           .process-cards h3 {
@@ -1372,7 +1374,7 @@ export default function ServicesPage() {
             background:
               radial-gradient(
                 circle at 75% 40%,
-                rgba(217, 255, 37, 0.9),
+                rgba(206, 250, 116, 0.9),
                 transparent 28%
               ),
               #dedbd2;
@@ -1413,7 +1415,7 @@ export default function ServicesPage() {
             height: 50px;
             place-items: center;
             border-radius: 50%;
-            background: #d9ff25;
+            background: #cefa74;
             color: #111;
             transition: transform 0.3s ease;
           }
@@ -1491,8 +1493,8 @@ export default function ServicesPage() {
             }
 
             .services-hero h1 {
-              font-size: 48px;
-              line-height: 0.92;
+              font-size: 42px;
+              line-height: 1.04;
             }
 
             .services-hero-copy {

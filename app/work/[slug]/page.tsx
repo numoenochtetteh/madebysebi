@@ -31,12 +31,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const project = getCaseStudyProject(slug);
 
   if (!project) {
-    return { title: "Case study | DevNumo" };
+    return { title: "Case Study" };
   }
 
   return {
-    title: `${project.title} case study | DevNumo`,
+    title: `${project.title} Case Study`,
     description: project.summary,
+    alternates: { canonical: `/work/${project.slug}` },
+    openGraph: {
+      title: `${project.title} Case Study — MadeBySebi`,
+      description: project.summary,
+      url: `/work/${project.slug}`,
+      images: project.image ? [{ url: project.image, alt: `${project.title} project by MadeBySebi` }] : undefined,
+    },
   };
 }
 
@@ -112,7 +119,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 </div>
                 <div>
                   <span>Delivered by</span>
-                  <strong>DevNumo</strong>
+                  <strong>MadeBySebi</strong>
                 </div>
               </div>
             </div>
@@ -172,7 +179,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </div>
 
             <aside className={styles.servicesCard}>
-              <span>What DevNumo delivered</span>
+              <span>What MadeBySebi delivered</span>
               <ul>
                 {project.services.map((service) => (
                   <li key={service}>

@@ -80,15 +80,10 @@ export function ExpertiseSection() {
             <span>Our expertise</span>
           </div>
 
-          <h2>
-            We lead when your challenge
-            <br />
-            fits these expertise areas
-          </h2>
+          <h2>Where strategy, design and development come together.</h2>
 
           <p>
-            Building from scratch or redesigning—we combine strategy, design and
-            development to bring your vision to life.
+            From first idea to final launch, we shape digital experiences that feel distinctive, useful and built around your business.
           </p>
         </div>
 
@@ -209,15 +204,17 @@ export function ExpertiseSection() {
           height: 9px;
           flex-shrink: 0;
           border-radius: 2px;
-          background: #d9ff25;
+          background: #cefa74;
         }
 
         .expertise-heading h2 {
-          margin: 0;
-          font-size: clamp(43px, 5vw, 72px);
-          font-weight: 700;
-          line-height: 0.98;
-          letter-spacing: -0.055em;
+          max-width: 900px;
+          margin: 0 auto;
+          font-size: clamp(40px, 4.6vw, 62px);
+          font-weight: 400;
+          line-height: 1.03;
+          letter-spacing: -0.035em;
+          text-wrap: balance;
         }
 
         .expertise-heading p {
@@ -443,7 +440,9 @@ export function ExpertiseSection() {
           }
 
           .expertise-heading h2 {
-            font-size: 42px;
+            font-size: 34px;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
           }
 
           .expertise-heading p {

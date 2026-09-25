@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { caseStudyProjects } from "@/lib/projects";
 
-const baseUrl = "https://numo-digital.vercel.app";
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://numo-digital.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "/services", "/work", "/about", "/contact", "/privacy", "/terms"];

@@ -5,23 +5,51 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
 const heroCards = [
-  { src: "/showcase/header-set/01-coffee.jpg", className: "numo-arc-card numo-arc-card-1" },
-  { src: "/showcase/header-set/03-house.jpg", className: "numo-arc-card numo-arc-card-2" },
-  { src: "/showcase/header-set/04-portrait.jpg", className: "numo-arc-card numo-arc-card-3" },
-  { src: "/showcase/header-set/06-ship.jpg", className: "numo-arc-card numo-arc-card-4" },
-  { src: "/showcase/header-set/10-reference.webp", className: "numo-arc-card numo-arc-card-5" },
-  { src: "/showcase/header-set/02-yellow.jpg", className: "numo-arc-card numo-arc-card-6" },
-  { src: "/showcase/header-set/08-laptop.jpg", className: "numo-arc-card numo-arc-card-7" },
-  { src: "/showcase/header-set/09-prestige.webp", className: "numo-arc-card numo-arc-card-8" },
-  { src: "/showcase/header-set/07-hair.webp", className: "numo-arc-card numo-arc-card-9" },
-  { src: "/showcase/header-set/05-construction.jpg", className: "numo-arc-card numo-arc-card-10" },
+  {
+    src: "/showcase/header-set/03-house.jpg",
+    className: "numo-arc-card numo-arc-card-1",
+  },
+  {
+    src: "/showcase/header-set/02-yellow.jpg",
+    className: "numo-arc-card numo-arc-card-2",
+  },
+  {
+    src: "/showcase/header-set/04-portrait.jpg",
+    className: "numo-arc-card numo-arc-card-3",
+  },
+  {
+    src: "/showcase/header-set/05-construction.jpg",
+    className: "numo-arc-card numo-arc-card-4",
+  },
+  {
+    src: "/showcase/header-set/06-ship.jpg",
+    className: "numo-arc-card numo-arc-card-5",
+  },
+  {
+    src: "/showcase/header-set/10-reference.webp",
+    className: "numo-arc-card numo-arc-card-6",
+  },
+  {
+    src: "/showcase/header-set/11-water-portrait.png",
+    className: "numo-arc-card numo-arc-card-7 numo-arc-card-featured",
+  },
+  {
+    src: "/showcase/header-set/09-prestige.webp",
+    className: "numo-arc-card numo-arc-card-8",
+  },
+  {
+    src: "/showcase/header-set/08-laptop.jpg",
+    className: "numo-arc-card numo-arc-card-9",
+  },
+  {
+    src: "/showcase/header-set/07-hair.webp",
+    className: "numo-arc-card numo-arc-card-10",
+  },
 ];
 
 const desktopTabs = ["Web Design", "Development", "UI/UX", "Digital Products"];
 
 const mobileTabs = ["Web Design", "UI/UX", "Digital Products"];
-
-const pixels = Array.from({ length: 54 }, (_, index) => index);
 
 export function GalleryHero() {
   const [activeTab, setActiveTab] = useState("Web Design");
@@ -72,25 +100,6 @@ export function GalleryHero() {
       <div className="numo-hero-glow numo-hero-glow-one" />
       <div className="numo-hero-glow numo-hero-glow-two" />
 
-      {/* PIXELS */}
-
-      <div className="numo-hero-pixel-field" aria-hidden="true">
-        {pixels.map((pixel) => (
-          <span
-            key={pixel}
-            className={
-              pixel === 5 ||
-              pixel === 14 ||
-              pixel === 23 ||
-              pixel === 34 ||
-              pixel === 46
-                ? "numo-hero-pixel numo-hero-pixel-active"
-                : "numo-hero-pixel"
-            }
-          />
-        ))}
-      </div>
-
       <div className="numo-arc-inner">
         {/* =====================================================
             SERVICES BAR
@@ -134,14 +143,14 @@ export function GalleryHero() {
         <div className="numo-arc-content">
           <span className="numo-content-eyebrow">
             <Sparkles size={12} />
-            NUMO DIGITAL
+            MADEBYSEBI
           </span>
 
-          <h1>Digital products built for business growth.</h1>
+          <h1>Design that moves business.</h1>
 
           <p>
-            Modern websites and digital experiences designed to help businesses
-            look credible, communicate clearly and grow online.
+            We design and build websites, web apps and digital experiences that
+            make ambitious businesses feel clear, credible and ready to grow.
           </p>
 
           <div className="numo-arc-actions">
@@ -218,7 +227,7 @@ export function GalleryHero() {
           width: 340px;
           height: 340px;
 
-          background: rgba(217, 255, 37, 0.08);
+          background: rgba(206, 250, 116, 0.08);
 
           animation: numoGlowOne 10s ease-in-out infinite;
         }
@@ -254,67 +263,6 @@ export function GalleryHero() {
 
           50% {
             transform: translate3d(-35px, -25px, 0) scale(1.1);
-          }
-        }
-
-        /* =====================================================
-           PIXELS
-        ====================================================== */
-
-        .numo-hero-pixel-field {
-          position: absolute;
-
-          top: 376px;
-          left: 50%;
-
-          z-index: 1;
-
-          display: grid;
-
-          width: 320px;
-
-          grid-template-columns: repeat(9, 1fr);
-
-          gap: 10px;
-
-          opacity: 0.14;
-
-          transform: translateX(-50%);
-
-          pointer-events: none;
-        }
-
-        .numo-hero-pixel {
-          width: 7px;
-          height: 7px;
-
-          justify-self: center;
-
-          border-radius: 2px;
-
-          background: #8e948b;
-        }
-
-        .numo-hero-pixel-active {
-          background: #d9ff25;
-
-          opacity: 1;
-
-          animation: numoPixelPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes numoPixelPulse {
-          0%,
-          100% {
-            transform: scale(1);
-
-            opacity: 0.55;
-          }
-
-          50% {
-            transform: scale(1.5);
-
-            opacity: 1;
           }
         }
 
@@ -426,11 +374,11 @@ export function GalleryHero() {
         }
 
         .numo-company-pill.active .numo-company-dot {
-          background: #d9ff25;
+          background: #cefa74;
 
           transform: scale(1.25);
 
-          box-shadow: 0 0 12px rgba(217, 255, 37, 0.5);
+          box-shadow: 0 0 12px rgba(206, 250, 116, 0.5);
         }
 
         /* =====================================================
@@ -493,6 +441,15 @@ export function GalleryHero() {
           overflow: hidden;
 
           border-radius: inherit;
+        }
+
+        .numo-arc-card-featured {
+          z-index: 8 !important;
+          box-shadow: 0 22px 48px rgba(10, 15, 25, 0.17);
+        }
+
+        .numo-arc-card-featured img {
+          object-position: center 38%;
         }
 
         .numo-arc-card img {
@@ -668,34 +625,33 @@ export function GalleryHero() {
 
           align-items: center;
 
-          gap: 7px;
+          gap: 9px;
 
-          margin-bottom: 14px;
+          margin-bottom: 18px;
 
-          border: 1px solid rgba(255, 255, 255, 0.06);
+          border: 1px solid rgba(8, 17, 38, 0.08);
 
           border-radius: 999px;
 
           background: #0c1530;
 
-          padding: 8px 11px;
+          padding: 10px 15px;
 
           color: #ffffff;
 
-          font-family: ui-monospace, monospace;
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 
-          font-size: 7px;
+          font-size: 8px;
 
-          font-weight: 700;
+          font-weight: 800;
 
-          letter-spacing: 0.13em;
+          letter-spacing: 0.14em;
 
-          box-shadow: 0 10px 24px rgba(10, 15, 25, 0.08);
-
+          box-shadow: 0 12px 28px rgba(10, 15, 25, 0.14);
         }
 
         .numo-content-eyebrow svg {
-          color: #d9ff25;
+          color: #cefa74;
         }
 
         .numo-arc-content h1 {
@@ -712,7 +668,6 @@ export function GalleryHero() {
           line-height: 0.96;
 
           letter-spacing: -0.055em;
-
         }
 
         .numo-arc-content p {
@@ -725,7 +680,6 @@ export function GalleryHero() {
           font-size: 13.5px;
 
           line-height: 1.5;
-
         }
 
         /* =====================================================
@@ -741,7 +695,6 @@ export function GalleryHero() {
           gap: 11px;
 
           margin-top: 24px;
-
         }
 
         .numo-arc-actions a {
@@ -788,7 +741,7 @@ export function GalleryHero() {
 
           border-radius: 50%;
 
-          background: #d9ff25;
+          background: #cefa74;
 
           color: #111827;
 
@@ -986,7 +939,7 @@ export function GalleryHero() {
           }
 
           .numo-company-pill.active {
-            background: linear-gradient(135deg, #d9ff25 0%, #e9ff86 100%);
+            background: linear-gradient(135deg, #cefa74 0%, #e9ff86 100%);
 
             color: #172014;
 
@@ -1202,9 +1155,10 @@ export function GalleryHero() {
 
             font-size: 34px;
 
-            line-height: 0.97;
+            line-height: 1.04;
 
-            letter-spacing: -0.05em;
+            letter-spacing: -0.035em;
+            text-wrap: balance;
           }
 
           .numo-arc-content p {

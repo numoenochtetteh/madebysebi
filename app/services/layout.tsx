@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     "Web design, web development, UX/UI, SEO, branding and digital support for businesses and companies in Ghana and worldwide.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Web Design & Development Services | Numo Digital",
+    title: "Web Design & Development Services",
     description: "Professional website services built around business goals, trust and growth.",
     url: "/services",
   },

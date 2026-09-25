@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -64,23 +65,19 @@ export function Navigation() {
             href="/"
             onClick={closeMobileMenu}
             className="group flex items-center gap-2"
-            aria-label="Numo Digital home"
+            aria-label="MadeBySebi home"
           >
-            <span
-              className={`font-display font-semibold lowercase tracking-[-0.045em] text-black transition-all duration-500 ${
-                isScrolled ? "text-xl" : "text-2xl"
+            <Image
+              src="/brand/madebysebi-wordmark.png"
+              alt="MadeBySebi"
+              width={160}
+              height={30}
+              priority
+              className={`h-auto w-auto transition-all duration-500 ${
+                isScrolled ? "max-w-[128px]" : "max-w-[148px]"
               }`}
-            >
-              numo
-            </span>
+            />
 
-            <span
-              className={`rounded-full bg-black px-2 py-1 font-mono uppercase tracking-[0.12em] text-white transition-all duration-500 ${
-                isScrolled ? "text-[7px]" : "text-[8px]"
-              }`}
-            >
-              digital
-            </span>
           </Link>
 
           {/* Desktop navigation */}
