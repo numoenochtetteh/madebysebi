@@ -739,7 +739,7 @@ export default function WorkPage() {
           ====================================================== */
 
           .work-intro {
-            padding: 130px 28px;
+            padding: 88px 28px 56px;
           }
 
           .work-intro-inner {
@@ -789,7 +789,7 @@ export default function WorkPage() {
           ====================================================== */
 
           .project-gallery {
-            padding: 0 28px 105px;
+            padding: 0 28px 72px;
           }
 
           .project-gallery-inner {
@@ -1027,7 +1027,7 @@ export default function WorkPage() {
           ====================================================== */
 
           .work-final {
-            padding: 30px 28px 70px;
+            padding: 24px 28px 56px;
           }
 
           .work-final-inner {
@@ -1111,6 +1111,20 @@ export default function WorkPage() {
           ====================================================== */
 
           @media (max-width: 900px) {
+            .work-intro {
+              padding: 72px 20px 48px;
+            }
+
+            .project-gallery {
+              padding-right: 20px;
+              padding-bottom: 64px;
+              padding-left: 20px;
+            }
+
+            .work-final {
+              padding: 20px 20px 52px;
+            }
+
             .work-hero {
               min-height: auto;
               padding-top: 125px;

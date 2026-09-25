@@ -752,7 +752,7 @@ export default function AboutPage() {
           ===================================================== */
 
           .about-story {
-            padding: 140px 28px;
+            padding: 96px 28px 56px;
           }
 
           .about-story-inner {
@@ -805,7 +805,7 @@ export default function AboutPage() {
           ===================================================== */
 
           .about-feature {
-            padding: 0 28px 130px;
+            padding: 0 28px 64px;
           }
 
           .about-feature-inner {
@@ -923,7 +923,7 @@ export default function AboutPage() {
           ===================================================== */
 
           .about-capabilities {
-            padding: 120px 28px 150px;
+            padding: 64px 28px;
           }
 
           .about-capabilities-inner {
@@ -1000,7 +1000,7 @@ export default function AboutPage() {
           ===================================================== */
 
           .about-team {
-            padding: 70px 28px 130px;
+            padding: 48px 28px 72px;
           }
 
           .about-team-inner {
@@ -1193,7 +1193,7 @@ export default function AboutPage() {
           ===================================================== */
 
           .about-final {
-            padding: 30px 28px 70px;
+            padding: 24px 28px 56px;
           }
 
           .about-final-inner {
@@ -1313,7 +1313,7 @@ export default function AboutPage() {
             }
 
             .about-team {
-              padding: 70px 28px 110px;
+              padding: 48px 28px 72px;
             }
 
             .about-team-heading {

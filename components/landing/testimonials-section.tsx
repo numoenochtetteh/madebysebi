@@ -153,7 +153,7 @@ export function TestimonialsSection() {
           position: relative;
           overflow: hidden;
           background: #f4f4f1;
-          padding: 72px 0 78px;
+          padding: 48px 0 64px;
           color: #0d0d0d;
           font-family: var(--font-inter), Inter, Arial, sans-serif;
         }

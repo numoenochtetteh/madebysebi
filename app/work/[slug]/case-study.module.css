@@ -194,7 +194,7 @@
   display: grid;
   grid-template-columns: 170px 1fr;
   gap: 55px;
-  padding: 115px 28px 125px;
+  padding: 80px 28px 64px;
 }
 
 .sectionLabel {
@@ -278,7 +278,7 @@
   border-radius: 34px;
   background: #0a0b0b;
   color: #f4f4f0;
-  padding: 100px max(28px, calc((100vw - 1360px) / 2));
+  padding: 72px max(28px, calc((100vw - 1360px) / 2));
 }
 
 .storyBlock {
@@ -329,7 +329,7 @@
 }
 
 .proofSection {
-  padding: 125px 28px;
+  padding: 72px 28px;
 }
 
 .proofHeader {
@@ -391,7 +391,7 @@
 }
 
 .gallerySection {
-  padding: 30px 28px 130px;
+  padding: 24px 28px 64px;
 }
 
 .galleryHeading {
@@ -430,7 +430,7 @@
 }
 
 .operationsSection {
-  padding: 0 28px 130px;
+  padding: 0 28px 64px;
 }
 
 .operationsCopy {
@@ -485,7 +485,7 @@
 }
 
 .socialSection {
-  padding: 0 28px 130px;
+  padding: 0 28px 64px;
 }
 
 .socialHeading {
@@ -599,7 +599,7 @@
   line-height: 1.55;
 }
 .resultSection {
-  padding: 110px 28px 130px;
+  padding: 72px 28px 64px;
   border-top: 1px solid #d5d3cc;
 }
 
@@ -918,6 +918,33 @@
 
   .galleryWide {
     grid-column: auto;
+  }
+
+  .overview {
+    padding: 64px 20px 56px;
+  }
+
+  .darkStory {
+    padding: 64px 20px;
+  }
+
+  .proofSection {
+    padding: 64px 20px;
+  }
+
+  .gallerySection {
+    padding: 24px 20px 56px;
+  }
+
+  .operationsSection,
+  .socialSection {
+    padding-right: 20px;
+    padding-bottom: 56px;
+    padding-left: 20px;
+  }
+
+  .resultSection {
+    padding: 64px 20px 56px;
   }
 
   .caseCta {

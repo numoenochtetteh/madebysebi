@@ -922,7 +922,7 @@ export default function ServicesPage() {
           }
 
           .services-intro {
-            padding: 120px 28px;
+            padding: 88px 28px 56px;
           }
 
           .services-intro-inner {
@@ -959,7 +959,7 @@ export default function ServicesPage() {
           }
 
           .services-grid-section {
-            padding: 0 28px 120px;
+            padding: 0 28px 64px;
           }
 
           .services-grid {
@@ -1281,7 +1281,7 @@ export default function ServicesPage() {
           }
 
           .services-process {
-            padding: 120px 28px;
+            padding: 72px 28px;
           }
 
           .services-process-inner {
@@ -1358,7 +1358,7 @@ export default function ServicesPage() {
           }
 
           .services-final {
-            padding: 28px 28px 60px;
+            padding: 24px 28px 56px;
           }
 
           .services-final-inner {
@@ -1425,6 +1425,26 @@ export default function ServicesPage() {
           }
 
           @media (max-width: 900px) {
+            .services-intro {
+              padding: 72px 20px 48px;
+            }
+
+            .services-grid-section {
+              padding: 0 20px 56px;
+            }
+
+            .services-visual-break {
+              padding: 20px;
+            }
+
+            .services-process {
+              padding: 64px 20px;
+            }
+
+            .services-final {
+              padding: 20px 20px 52px;
+            }
+
             .services-hero {
               min-height: auto;
               padding-top: 120px;
@@ -1566,6 +1586,15 @@ export default function ServicesPage() {
               padding-bottom: 80px;
             }
 
+            .services-grid-section {
+              padding-bottom: 120px;
+            }
+
+            .services-visual-break {
+              padding-top: 28px;
+              padding-bottom: 28px;
+            }
+
             .services-intro h2 {
               font-size: 46px;
             }
@@ -1658,6 +1687,7 @@ export default function ServicesPage() {
             }
 
             .services-final {
+              padding-top: 28px;
               padding-bottom: 35px;
             }
 

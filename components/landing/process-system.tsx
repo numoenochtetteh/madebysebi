@@ -327,7 +327,7 @@ export function ProcessSystem() {
           position: relative;
           overflow: hidden;
           background: #f4f4f1;
-          padding: 95px 28px;
+          padding: 72px 28px 48px;
           color: #28221d;
         }
 
@@ -997,7 +997,7 @@ export function ProcessSystem() {
 
         @media (max-width: 950px) and (min-width: 621px) {
           .numo-process-system {
-            padding: 80px 18px;
+            padding: 64px 18px 48px;
           }
 
           .process-board {

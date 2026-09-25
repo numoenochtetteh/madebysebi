@@ -167,7 +167,7 @@ export function ExpertiseSection() {
       <style jsx global>{`
         .expertise-section {
           background: #f4f4f1;
-          padding: 96px 28px 110px;
+          padding: 48px 28px 64px;
           color: #111111;
         }
 
@@ -401,9 +401,9 @@ export function ExpertiseSection() {
           text-decoration: none;
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 800px) and (min-width: 481px) {
           .expertise-section {
-            padding: 80px 18px 90px;
+            padding: 48px 18px 64px;
           }
 
           .expertise-heading {
@@ -435,8 +435,7 @@ export function ExpertiseSection() {
 
         @media (max-width: 480px) {
           .expertise-section {
-            padding-right: 12px;
-            padding-left: 12px;
+            padding: 80px 12px 90px;
           }
 
           .expertise-heading h2 {

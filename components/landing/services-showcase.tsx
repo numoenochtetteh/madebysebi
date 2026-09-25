@@ -137,7 +137,7 @@ export function ServicesShowcase() {
   return (
     <section
       id="services"
-      className="overflow-hidden bg-[#f4f4f1] py-20 text-black sm:py-24 lg:py-28"
+      className="overflow-hidden bg-[#f4f4f1] py-20 text-black sm:py-16 lg:py-20"
     >
       <style jsx>{`
         /* ======================================================
@@ -254,7 +254,7 @@ export function ServicesShowcase() {
             SECTION HEADING
         ====================================================== */}
 
-        <div className="mx-auto mb-14 max-w-[1250px] text-center lg:mb-16">
+        <div className="mx-auto mb-12 max-w-[1250px] text-center lg:mb-14">
           <div className="mb-7">
             <span className="services-eyebrow">
               <span className="services-eyebrow-dot" />

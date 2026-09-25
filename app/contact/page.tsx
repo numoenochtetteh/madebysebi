@@ -583,7 +583,7 @@ export default function ContactPage() {
           ===================================================== */
 
           .contact-main {
-            padding: 30px 28px 140px;
+            padding: 30px 28px 64px;
           }
 
           .contact-main-inner {
@@ -860,7 +860,7 @@ export default function ContactPage() {
           ===================================================== */
 
           .contact-faq {
-            padding: 120px 28px 150px;
+            padding: 64px 28px 72px;
             background: #f4f4f1;
           }
 
@@ -1025,7 +1025,7 @@ export default function ContactPage() {
           ===================================================== */
 
           .contact-final {
-            padding: 100px 28px 70px;
+            padding: 48px 28px 56px;
           }
 
           .contact-final-inner {
@@ -1104,6 +1104,18 @@ export default function ContactPage() {
           ===================================================== */
 
           @media (max-width: 900px) {
+            .contact-main {
+              padding: 24px 20px 56px;
+            }
+
+            .contact-faq {
+              padding: 64px 20px;
+            }
+
+            .contact-final {
+              padding: 48px 20px 52px;
+            }
+
             .contact-hero-bottom {
               align-items: flex-start;
               flex-direction: column;

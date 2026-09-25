@@ -156,7 +156,7 @@ export function WorkSection() {
           position: relative;
           overflow: hidden;
           background: #f4f4f1;
-          padding: 110px 28px 120px;
+          padding: 48px 28px 64px;
           color: #0b0b0b;
         }
 
@@ -446,6 +446,10 @@ export function WorkSection() {
         }
 
         @media (max-width: 900px) {
+          .home-selected-work {
+            padding: 56px 20px 64px;
+          }
+
           .home-selected-header {
             max-width: 680px;
           }
