@@ -1556,6 +1556,12 @@ export function ProcessSystem() {
           }
         }
 
+        @media (max-width: 620px) {
+          .pixel-yellow {
+            animation: none;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .process-card,
           .process-pixel,

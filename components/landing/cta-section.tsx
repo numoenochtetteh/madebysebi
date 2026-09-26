@@ -106,6 +106,15 @@ export function CtaSection() {
           }
         }
 
+        @media (max-width: 620px) {
+          .cta-orb-one,
+          .cta-orb-two,
+          .cta-floating-badge,
+          .cta-dot {
+            animation: none;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .cta-orb-one,
           .cta-orb-two,

@@ -813,6 +813,9 @@ export function GalleryHero() {
         ====================================================== */
 
         @media (max-width: 620px) {
+          .numo-hero-glow {
+            animation: none;
+          }
           /*
              FULL WIDTH PHONE HERO.
              No more left/right outer gaps.
@@ -1018,12 +1021,9 @@ export function GalleryHero() {
             box-shadow: 0 14px 30px rgba(10, 15, 25, 0.12);
           }
 
-          /*
-             IMAGE MOTION STAYS ON PHONE
-          */
-
           .numo-arc-card img {
-            animation: numoMobileImageMotion 9s ease-in-out infinite;
+            animation: none;
+            transform: scale(1.08);
           }
 
           .numo-arc-card-3 img {

@@ -15,9 +15,13 @@ export function AnimatedTetrahedron() {
 
     const chars = "░▒▓█▀▄▌▐│─┤├┴┬╭╮╰╯";
     let time = 0;
+    let active = false;
+    let inView = false;
+    let lastFrame = 0;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
       canvas.width = Math.max(1, Math.round(rect.width * dpr));
       canvas.height = Math.max(1, Math.round(rect.height * dpr));
@@ -68,7 +72,14 @@ export function AnimatedTetrahedron() {
       z: point.z,
     });
 
-    const render = () => {
+    const render = (timestamp: number) => {
+      if (!active) return;
+      // The mobile canvas needs fewer frames to look smooth, saving drawing work.
+      if (window.innerWidth <= 620 && timestamp - lastFrame < 32) {
+        frameRef.current = requestAnimationFrame(render);
+        return;
+      }
+      lastFrame = timestamp;
       const rect = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
 
@@ -158,10 +169,43 @@ export function AnimatedTetrahedron() {
       frameRef.current = requestAnimationFrame(render);
     };
 
-    render();
+    const updateAnimation = () => {
+      if (reducedMotion.matches) {
+        active = false;
+        cancelAnimationFrame(frameRef.current);
+        if (inView && !document.hidden) {
+          active = true;
+          lastFrame = -100;
+          render(0);
+          active = false;
+          cancelAnimationFrame(frameRef.current);
+        }
+        return;
+      }
+      const shouldRun = inView && !document.hidden && !reducedMotion.matches;
+      if (shouldRun === active) return;
+      active = shouldRun;
+      cancelAnimationFrame(frameRef.current);
+      if (active) frameRef.current = requestAnimationFrame(render);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        updateAnimation();
+      },
+      { rootMargin: "100px" },
+    );
+    observer.observe(canvas);
+    document.addEventListener("visibilitychange", updateAnimation);
+    reducedMotion.addEventListener("change", updateAnimation);
 
     return () => {
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", updateAnimation);
+      reducedMotion.removeEventListener("change", updateAnimation);
+      observer.disconnect();
+      active = false;
       cancelAnimationFrame(frameRef.current);
     };
   }, []);
