@@ -198,6 +198,13 @@
     pointer-events: none;
     z-index: 1;
   }
+
+  /* A page-height SVG turbulence layer consumes excessive paint memory on phones. */
+  @media (max-width: 620px) {
+    .noise-overlay::after {
+      display: none;
+    }
+  }
   
   .border-sketch {
     border: 1px solid transparent;
