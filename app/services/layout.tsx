@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     title: "Web Design & Development Services",
     description: "Professional website services built around business goals, trust and growth.",
     url: "/services",
+    images: [{ url: "/brand/madebysebi-og.png", width: 1200, height: 630, alt: "MadeBySebi web design studio" }],
   },
 };
 

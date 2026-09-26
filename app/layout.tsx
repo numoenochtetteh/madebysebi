@@ -101,7 +101,7 @@ const organizationSchema = {
   image: `${siteUrl}/brand/madebysebi-og.png`,
   description:
     "Web design and development studio creating websites, web apps and digital experiences for businesses in Ghana and worldwide.",
-  email: "hello.madebysebi@gmail.com",
+  email: "hello@madebysebi.com",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Accra",

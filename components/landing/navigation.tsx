@@ -72,7 +72,7 @@ export function Navigation() {
               alt="MadeBySebi"
               width={160}
               height={30}
-              priority
+              loading="eager"
               className={`h-auto w-auto transition-all duration-500 ${
                 isScrolled ? "max-w-[128px]" : "max-w-[148px]"
               }`}

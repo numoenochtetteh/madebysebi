@@ -164,9 +164,9 @@ export function FooterSection() {
               <span>+233 54 247 0922</span>
             </a>
 
-            <a href="mailto:hello.madebysebi@gmail.com">
+            <a href="mailto:hello@madebysebi.com">
               <span aria-hidden="true">@</span>
-              <span>hello.madebysebi@gmail.com</span>
+              <span>hello@madebysebi.com</span>
             </a>
 
             <p>

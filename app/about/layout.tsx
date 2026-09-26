@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description:
       "A small web design and development team in Accra, Ghana, working with businesses worldwide.",
     url: "/about",
+    images: [{ url: "/brand/madebysebi-og.png", width: 1200, height: 630, alt: "MadeBySebi web design studio" }],
   },
 };
 

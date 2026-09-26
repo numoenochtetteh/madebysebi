@@ -137,8 +137,9 @@ export function GalleryHero() {
                   width={320}
                   height={320}
                   sizes="(max-width: 620px) 140px, 240px"
-                  quality={78}
-                  priority={card.className.includes("featured")}
+                  quality={75}
+                  loading={card.className.includes("featured") ? "eager" : "lazy"}
+                  fetchPriority={card.className.includes("featured") ? "high" : undefined}
                 />
               </div>
             </div>

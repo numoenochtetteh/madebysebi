@@ -119,7 +119,7 @@ export default function ContactPage() {
       setFormMessage(
         error instanceof Error
           ? error.message
-          : "Unable to send your enquiry. Please email hello.madebysebi@gmail.com directly.",
+          : "Unable to send your enquiry. Please email hello@madebysebi.com directly.",
       );
     }
   };
@@ -255,8 +255,8 @@ export default function ContactPage() {
               </p>
 
               <div className="direct-contact">
-                <a className="contact-email-link" href="mailto:hello.madebysebi@gmail.com">
-                  hello.madebysebi@gmail.com <ArrowUpRight size={14} />
+                <a className="contact-email-link" href="mailto:hello@madebysebi.com">
+                  hello@madebysebi.com <ArrowUpRight size={14} />
                 </a>
 
                 <span>FOLLOW MADEBYSEBI</span>

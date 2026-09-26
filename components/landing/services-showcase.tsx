@@ -136,7 +136,7 @@ export function ServicesShowcase() {
 
   return (
     <section
-      id="services"
+      id="featured-services"
       className="overflow-hidden bg-[#f4f4f1] py-20 text-black sm:py-16 lg:py-20"
     >
       <style jsx>{`
@@ -307,7 +307,6 @@ export function ServicesShowcase() {
                   src={service.image}
                   alt={`${service.name} service`}
                   fill
-                  priority={index === 0}
                   sizes="(max-width: 1024px) 100vw, 1600px"
                   className="object-cover"
                 />

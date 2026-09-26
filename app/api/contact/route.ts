@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 
 const contactEmail =
-  process.env.CONTACT_TO_EMAIL || "hello.madebysebi@gmail.com";
+  process.env.CONTACT_TO_EMAIL || "hello@madebysebi.com";
 const fromEmail =
   process.env.CONTACT_FROM_EMAIL ||
-  "MadeBySebi Website <onboarding@resend.dev>";
+  "MadeBySebi Website <hello@madebysebi.com>";
 
 function clean(value: unknown, maxLength = 2000) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Email delivery is being configured. Please contact us directly at hello.madebysebi@gmail.com.",
+            "Email delivery is being configured. Please contact us directly at hello@madebysebi.com.",
         },
         { status: 503 },
       );
@@ -150,7 +150,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "We could not send your enquiry right now. Please email hello.madebysebi@gmail.com directly.",
+            "We could not send your enquiry right now. Please email hello@madebysebi.com directly.",
         },
         { status: 502 },
       );
@@ -163,7 +163,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Something went wrong. Please email hello.madebysebi@gmail.com directly.",
+          "Something went wrong. Please email hello@madebysebi.com directly.",
       },
       { status: 500 },
     );
