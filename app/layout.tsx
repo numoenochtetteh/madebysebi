@@ -82,10 +82,7 @@ export const metadata: Metadata = {
     creator: "@MadeBySebi",
   },
   icons: {
-    icon: [
-      { url: "/brand/icon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
-    ],
+    icon: [{ url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" }],
     apple: "/brand/apple-icon.png",
   },
   robots: {
@@ -143,7 +140,9 @@ export default function RootLayout({
           id="madebysebi-organization-schema"
           type="application/ld+json"
           strategy="afterInteractive"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
         />
       </body>
     </html>
