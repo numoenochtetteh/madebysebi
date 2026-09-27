@@ -83,7 +83,7 @@ export function Navigation() {
           {/* Desktop navigation */}
           <div className="hidden items-center gap-9 md:flex lg:gap-12">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className="group relative text-sm font-medium text-black/65 transition-colors duration-300 hover:text-black"
@@ -91,22 +91,22 @@ export function Navigation() {
                 {link.name}
 
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-black transition-all duration-300 group-hover:w-full" />
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden items-center gap-4 md:flex">
-            <a
+            <Link
               href="/work"
               className={`text-black/60 transition-all duration-300 hover:text-black ${
                 isScrolled ? "text-xs" : "text-sm"
               }`}
             >
               View our work
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/contact"
               className={`group inline-flex items-center justify-center gap-2 rounded-full bg-black font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-black/80 ${
                 isScrolled ? "h-10 px-5 text-xs" : "h-12 px-6 text-sm"
@@ -114,7 +114,7 @@ export function Navigation() {
             >
               Start a project
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile button */}
@@ -153,7 +153,7 @@ export function Navigation() {
           {/* Mobile links */}
           <div className="flex flex-1 flex-col justify-center gap-3">
             {navLinks.map((link, index) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 onClick={closeMobileMenu}
@@ -169,7 +169,7 @@ export function Navigation() {
                 }}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -194,22 +194,22 @@ export function Navigation() {
 
             {/* Buttons */}
             <div className="flex w-full flex-col gap-3">
-              <a
+              <Link
                 href="/work"
                 onClick={closeMobileMenu}
                 className="inline-flex h-[52px] w-full items-center justify-center rounded-full border border-black/15 bg-white px-6 text-[13px] font-medium text-black shadow-[0_4px_14px_rgba(0,0,0,0.025)] transition-all duration-300 hover:border-black/30 hover:bg-black/[0.02]"
               >
                 View our work
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/contact"
                 onClick={closeMobileMenu}
                 className="group inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-full bg-black px-6 text-[13px] font-medium text-white shadow-[0_8px_20px_rgba(0,0,0,0.08)] transition-all duration-300 hover:bg-black/80"
               >
                 Start a project
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+              </Link>
             </div>
 
             {/* Location */}

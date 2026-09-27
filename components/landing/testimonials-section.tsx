@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
@@ -81,10 +82,10 @@ export function TestimonialsSection() {
           </p>
 
           <div className="shape-testimonials-actions">
-            <a href="/contact" className="shape-testimonials-cta">
+            <Link href="/contact" className="shape-testimonials-cta">
               <span>Start a project</span>
               <ArrowUpRight size={16} />
-            </a>
+            </Link>
 
             <div className="shape-testimonials-controls">
               <button

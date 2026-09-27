@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   ArrowUpRight,
   Code2,
@@ -315,10 +316,10 @@ export function ProcessSystem() {
             Clear process. No guesswork. Just thoughtful digital experiences.
           </p>
 
-          <a href="/contact">
+          <Link href="/contact">
             Start your project
             <ArrowUpRight size={15} />
-          </a>
+          </Link>
         </div>
       </div>
 

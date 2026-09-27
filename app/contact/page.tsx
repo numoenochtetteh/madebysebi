@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
 
 import { Navigation } from "@/components/landing/navigation";
@@ -437,7 +438,7 @@ export default function ContactPage() {
                   By sending an enquiry, you agree that MadeBySebi may use the
                   information provided to respond to your project request. See
                   our
-                  <a href="/privacy"> Privacy Policy</a>.
+                  <Link href="/privacy"> Privacy Policy</Link>.
                 </p>
               </form>
             </div>

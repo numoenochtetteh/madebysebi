@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { LazyVideo } from "@/components/media/lazy-video";
 
@@ -144,10 +145,10 @@ export function ExpertiseSection() {
                       ))}
                     </div>
 
-                    <a href="/contact">
+                    <Link href="/contact">
                       Start a project
                       <span>↗</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </article>
