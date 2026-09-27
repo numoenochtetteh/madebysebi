@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Navigation } from "@/components/landing/navigation";
-import { FooterSection } from "@/components/landing/footer-section";
 import { LazyVideo } from "@/components/media/lazy-video";
 
 import {
@@ -156,7 +154,6 @@ export default function ServicesPage() {
 
   return (
     <>
-      <Navigation />
 
       <main className="services-page">
         {/* =====================================================
@@ -1722,7 +1719,6 @@ export default function ServicesPage() {
         `}</style>
       </main>
 
-      <FooterSection />
     </>
   );
 }

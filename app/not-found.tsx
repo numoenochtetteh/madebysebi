@@ -1,14 +1,9 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
-import { Navigation } from "@/components/landing/navigation";
-import { FooterSection } from "@/components/landing/footer-section";
-
 export default function NotFound() {
   return (
     <>
-      <Navigation />
-
       <main className="not-found-page">
         <section className="not-found-card">
           <span className="not-found-code">404</span>
@@ -38,8 +33,6 @@ export default function NotFound() {
           </div>
         </section>
       </main>
-
-      <FooterSection />
 
       <style>{`
         .not-found-page {

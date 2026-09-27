@@ -12,8 +12,6 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import { Navigation } from "@/components/landing/navigation";
-import { FooterSection } from "@/components/landing/footer-section";
 import { LazyVideo } from "@/components/media/lazy-video";
 import { caseStudyProjects, getCaseStudyProject } from "@/lib/projects";
 
@@ -84,7 +82,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   return (
     <>
-      <Navigation />
 
       <main
         className={styles.page}
@@ -429,7 +426,6 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </section>
       </main>
 
-      <FooterSection />
     </>
   );
 }

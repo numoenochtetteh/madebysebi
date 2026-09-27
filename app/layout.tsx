@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { Navigation } from "@/components/landing/navigation";
+import { FooterSection } from "@/components/landing/footer-section";
 import { WhatsAppButton } from "@/components/landing/whatsapp-button";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -131,7 +133,9 @@ export default function RootLayout({
         id="top"
         className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
       >
+        <Navigation />
         {children}
+        <FooterSection />
         <WhatsAppButton />
         <Analytics />
         <SpeedInsights />

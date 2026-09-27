@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Navigation } from "@/components/landing/navigation";
-import { FooterSection } from "@/components/landing/footer-section";
 import { LazyVideo } from "@/components/media/lazy-video";
 
 import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
@@ -143,7 +141,6 @@ export default function WorkPage() {
           HEADER
       ====================================================== */}
 
-      <Navigation />
 
       <main className="work-page">
         {/* =====================================================
@@ -1546,7 +1543,6 @@ export default function WorkPage() {
           FOOTER
       ====================================================== */}
 
-      <FooterSection />
     </>
   );
 }

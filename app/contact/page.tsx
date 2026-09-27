@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState, type FormEvent } from "react";
 
-import { Navigation } from "@/components/landing/navigation";
-import { FooterSection } from "@/components/landing/footer-section";
 
 import {
   ArrowRight,
@@ -146,7 +144,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navigation />
 
       <main className="contact-page">
         {/* =====================================================
@@ -1390,7 +1387,6 @@ export default function ContactPage() {
         `}</style>
       </main>
 
-      <FooterSection />
     </>
   );
 }

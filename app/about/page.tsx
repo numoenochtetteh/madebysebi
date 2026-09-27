@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Navigation } from "@/components/landing/navigation";
-import { FooterSection } from "@/components/landing/footer-section";
 import { LazyVideo } from "@/components/media/lazy-video";
 
 import {
@@ -76,7 +74,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <Navigation />
 
       <main className="about-page">
         {/* =====================================================
@@ -1641,7 +1638,6 @@ export default function AboutPage() {
         `}</style>
       </main>
 
-      <FooterSection />
     </>
   );
 }

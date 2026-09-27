@@ -75,9 +75,9 @@ export function GalleryHero() {
   useEffect(() => {
     const availableTabs = isMobile ? mobileTabs : desktopTabs;
 
-    if (!availableTabs.includes(activeTab)) {
-      setActiveTab(availableTabs[0]);
-    }
+    setActiveTab((current) =>
+      availableTabs.includes(current) ? current : availableTabs[0],
+    );
 
     const interval = window.setInterval(() => {
       setActiveTab((current) => {
@@ -92,7 +92,7 @@ export function GalleryHero() {
     }, 3000);
 
     return () => window.clearInterval(interval);
-  }, [isMobile, activeTab]);
+  }, [isMobile]);
 
   return (
     <section className="numo-arc-hero">

@@ -9,7 +9,7 @@ import { AnimatedTetrahedron } from "./animated-tetrahedron";
 export function CtaSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
+  const spotlightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,12 +30,16 @@ export function CtaSection() {
   }, []);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    // Written straight to the DOM (no setState) so mouse movement never
+    // triggers a React re-render of this section on every pixel.
     const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
 
-    setMousePosition({
-      x: ((event.clientX - rect.left) / rect.width) * 100,
-      y: ((event.clientY - rect.top) / rect.height) * 100,
-    });
+    if (spotlightRef.current) {
+      spotlightRef.current.style.setProperty("--spot-x", `${x}%`);
+      spotlightRef.current.style.setProperty("--spot-y", `${y}%`);
+    }
   };
 
   return (
@@ -147,13 +151,11 @@ export function CtaSection() {
           ===================================================== */}
 
           <div
+            ref={spotlightRef}
             className="pointer-events-none absolute inset-0 opacity-40 transition-opacity duration-300"
             style={{
-              background: `radial-gradient(
-                500px circle at ${mousePosition.x}% ${mousePosition.y}%,
-                rgba(255,255,255,0.75),
-                transparent 45%
-              )`,
+              background:
+                "radial-gradient(500px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255,255,255,0.75), transparent 45%)",
             }}
           />
 
