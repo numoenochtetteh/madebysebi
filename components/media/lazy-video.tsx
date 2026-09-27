@@ -24,22 +24,27 @@ export function LazyVideo({
     const video = videoRef.current;
     if (!video) return;
 
-    if (eager) {
+    let nearViewport = false;
+    let unloadTimer: number | undefined;
+
+    const stop = () => {
+      video.pause();
+      window.clearTimeout(unloadTimer);
+      // Give quick scroll reversals time to reuse the loaded video.
+      unloadTimer = window.setTimeout(() => setShouldLoad(false), 2000);
+    };
+
+    const start = () => {
+      window.clearTimeout(unloadTimer);
       setShouldLoad(true);
-      return;
-    }
+      if (video.readyState >= 2) video.play().catch(() => undefined);
+    };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setShouldLoad(true);
-
-          if (video.readyState >= 2) {
-            video.play().catch(() => undefined);
-          }
-        } else if (shouldLoad) {
-          video.pause();
-        }
+        nearViewport = entry.isIntersecting;
+        if (nearViewport && !document.hidden) start();
+        else stop();
       },
       {
         rootMargin: "350px 0px",
@@ -49,15 +54,31 @@ export function LazyVideo({
 
     observer.observe(video);
 
-    return () => observer.disconnect();
-  }, [eager, shouldLoad]);
+    const onVisibilityChange = () => {
+      if (nearViewport && !document.hidden) start();
+      else stop();
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      window.clearTimeout(unloadTimer);
+    };
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !shouldLoad) return;
+    if (!video) return;
 
+    // Removing the source and resetting the element frees offscreen decoders.
     video.load();
-    video.play().catch(() => undefined);
+    if (shouldLoad && !document.hidden) {
+      const bounds = video.getBoundingClientRect();
+      if (bounds.bottom > -350 && bounds.top < window.innerHeight + 350) {
+        video.play().catch(() => undefined);
+      }
+    }
   }, [shouldLoad, src]);
 
   return (
@@ -67,7 +88,7 @@ export function LazyVideo({
       loop
       playsInline
       preload={shouldLoad ? "metadata" : "none"}
-      poster={eager || shouldLoad ? poster : undefined}
+      poster={poster}
       className={className}
       aria-label={ariaLabel}
     >
