@@ -89,11 +89,24 @@ export function ServicesShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const transitionTimeoutRef = useRef<number | null>(null);
 
   const activeService = services[activeIndex];
   const ActiveIcon = activeService.icon;
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.05 },
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const changeService = useCallback(
     (nextIndex: number) => {
@@ -115,7 +128,7 @@ export function ServicesShowcase() {
   );
 
   useEffect(() => {
-    if (isPaused || isChanging) return;
+    if (!isInView || isPaused || isChanging) return;
 
     const interval = window.setInterval(() => {
       const nextIndex = (activeIndex + 1) % services.length;
@@ -124,7 +137,7 @@ export function ServicesShowcase() {
     }, CHANGE_INTERVAL);
 
     return () => window.clearInterval(interval);
-  }, [activeIndex, changeService, isChanging, isPaused]);
+  }, [activeIndex, changeService, isChanging, isPaused, isInView]);
 
   useEffect(() => {
     return () => {
@@ -136,6 +149,7 @@ export function ServicesShowcase() {
 
   return (
     <section
+      ref={sectionRef}
       id="featured-services"
       className="overflow-hidden bg-[#f4f4f1] py-20 text-black sm:py-16 lg:py-20"
     >
