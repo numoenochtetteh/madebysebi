@@ -82,7 +82,10 @@ export const metadata: Metadata = {
     creator: "@MadeBySebi",
   },
   icons: {
-    icon: [{ url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
     apple: "/brand/apple-icon.png",
   },
   robots: {
