@@ -47,7 +47,7 @@ export function LazyVideo({
         else stop();
       },
       {
-        rootMargin: "350px 0px",
+        rootMargin: "120px 0px",
         threshold: 0.01,
       },
     );
@@ -75,7 +75,7 @@ export function LazyVideo({
     video.load();
     if (shouldLoad && !document.hidden) {
       const bounds = video.getBoundingClientRect();
-      if (bounds.bottom > -350 && bounds.top < window.innerHeight + 350) {
+      if (bounds.bottom > -120 && bounds.top < window.innerHeight + 120) {
         video.play().catch(() => undefined);
       }
     }

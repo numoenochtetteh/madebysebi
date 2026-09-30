@@ -87,6 +87,9 @@ const services = [
 
 export function ServicesShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
+  // Mount the current and upcoming backgrounds first. Keep an image mounted
+  // after it has been shown so returning to it never flashes or reloads.
+  const [loadedImageIndexes, setLoadedImageIndexes] = useState<number[]>([0, 1]);
   const [isChanging, setIsChanging] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isInView, setIsInView] = useState(false);
@@ -96,6 +99,13 @@ export function ServicesShowcase() {
 
   const activeService = services[activeIndex];
   const ActiveIcon = activeService.icon;
+
+  useEffect(() => {
+    const upcomingIndex = (activeIndex + 1) % services.length;
+    setLoadedImageIndexes((loaded) =>
+      loaded.includes(upcomingIndex) ? loaded : [...loaded, upcomingIndex],
+    );
+  }, [activeIndex]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -112,6 +122,10 @@ export function ServicesShowcase() {
     (nextIndex: number) => {
       if (nextIndex === activeIndex || isChanging) return;
 
+      // Begin loading a manually selected slide before the crossfade starts.
+      setLoadedImageIndexes((loaded) =>
+        loaded.includes(nextIndex) ? loaded : [...loaded, nextIndex],
+      );
       setIsChanging(true);
 
       if (transitionTimeoutRef.current !== null) {
@@ -317,13 +331,15 @@ export function ServicesShowcase() {
                     : "scale-[1.035] opacity-0"
                 }`}
               >
-                <Image
-                  src={service.image}
-                  alt={`${service.name} service`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 1600px"
-                  className="object-cover"
-                />
+                {loadedImageIndexes.includes(index) && (
+                  <Image
+                    src={service.image}
+                    alt={`${service.name} service`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 1600px"
+                    className="object-cover"
+                  />
+                )}
               </div>
             ))}
           </div>
