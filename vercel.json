@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "madebysebi\\.vercel\\.app" }],
+      "destination": "https://madebysebi.com/:path*",
+      "permanent": true
+    }
+  ]
+}
