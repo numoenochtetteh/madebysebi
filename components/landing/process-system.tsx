@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -323,7 +321,7 @@ export function ProcessSystem() {
         </div>
       </div>
 
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .numo-process-system {
           position: relative;
           overflow: hidden;
@@ -1575,7 +1573,7 @@ export function ProcessSystem() {
             animation: none;
           }
         }
-      `}</style>
+      ` }} />
     </section>
   );
 }

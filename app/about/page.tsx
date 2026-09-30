@@ -1,10 +1,8 @@
-"use client";
-
-import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { LazyVideo } from "@/components/media/lazy-video";
+import { RevealOnScroll } from "@/components/landing/reveal-on-scroll";
 
 import {
   ArrowRight,
@@ -51,31 +49,12 @@ const teamMembers = [
 ];
 
 export default function AboutPage() {
-  useEffect(() => {
-    const elements = document.querySelectorAll("[data-reveal]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-      },
-    );
-
-    elements.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
 
       <main className="about-page">
+        <RevealOnScroll selector=".about-page [data-reveal]" />
         {/* =====================================================
             HERO
         ===================================================== */}
@@ -420,7 +399,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <style jsx global>{`
+        <style dangerouslySetInnerHTML={{ __html: `
           .about-page {
             overflow: hidden;
             background: #f4f4f1;
@@ -1635,7 +1614,7 @@ export default function AboutPage() {
               transform: none;
             }
           }
-        `}</style>
+        ` }} />
       </main>
 
     </>

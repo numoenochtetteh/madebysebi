@@ -1,10 +1,8 @@
-"use client";
-
-import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { LazyVideo } from "@/components/media/lazy-video";
+import { RevealOnScroll } from "@/components/landing/reveal-on-scroll";
 
 import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 
@@ -114,26 +112,6 @@ const projects = [
 ========================================================= */
 
 export default function WorkPage() {
-  useEffect(() => {
-    const elements = document.querySelectorAll("[data-reveal]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-      },
-    );
-
-    elements.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
@@ -143,6 +121,7 @@ export default function WorkPage() {
 
 
       <main className="work-page">
+        <RevealOnScroll selector=".work-page [data-reveal]" />
         {/* =====================================================
             HERO
         ====================================================== */}
@@ -409,7 +388,7 @@ export default function WorkPage() {
             STYLES
         ====================================================== */}
 
-        <style jsx global>{`
+        <style dangerouslySetInnerHTML={{ __html: `
           /* =====================================================
              GLOBAL
           ====================================================== */
@@ -1536,7 +1515,7 @@ export default function WorkPage() {
               transform: none;
             }
           }
-        `}</style>
+        ` }} />
       </main>
 
       {/* =====================================================

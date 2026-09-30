@@ -1,10 +1,8 @@
-"use client";
-
-import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { LazyVideo } from "@/components/media/lazy-video";
+import { RevealOnScroll } from "@/components/landing/reveal-on-scroll";
 
 import {
   ArrowRight,
@@ -133,29 +131,12 @@ const services = [
 ];
 
 export default function ServicesPage() {
-  useEffect(() => {
-    const elements = document.querySelectorAll("[data-reveal]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          }
-        });
-      },
-      { threshold: 0.12 },
-    );
-
-    elements.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
 
       <main className="services-page">
+        <RevealOnScroll selector=".services-page [data-reveal]" />
         {/* =====================================================
             HERO
         ===================================================== */}
@@ -552,7 +533,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <style jsx global>{`
+        <style dangerouslySetInnerHTML={{ __html: `
           .services-page {
             overflow: hidden;
             background: #f4f4f1;
@@ -1716,7 +1697,7 @@ export default function ServicesPage() {
               transform: none;
             }
           }
-        `}</style>
+        ` }} />
       </main>
 
     </>

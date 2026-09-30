@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -148,7 +146,7 @@ export function WorkSection() {
         </Link>
       </div>
 
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .home-selected-work {
           position: relative;
           overflow: hidden;
@@ -561,7 +559,7 @@ export function WorkSection() {
             transition: none !important;
           }
         }
-      `}</style>
+      ` }} />
     </section>
   );
 }
