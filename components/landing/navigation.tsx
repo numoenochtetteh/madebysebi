@@ -39,7 +39,11 @@ export function Navigation() {
   }, [isMobileMenuOpen]);
 
   const closeMobileMenu = () => {
+    // Release the scroll lock before the next route begins rendering.
+    // On a slow phone the effect cleanup may otherwise wait behind navigation.
+    document.body.style.overflow = "";
     setIsMobileMenuOpen(false);
+    window.scrollTo(0, 0);
   };
 
   return (

@@ -99,7 +99,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                 <div className={styles.kicker}>
                   <span>{project.number}</span>
                   <span>{project.industry}</span>
-                  <span>{project.year}</span>
+                  {project.year ? <span>{project.year}</span> : null}
                 </div>
 
                 <h1>{project.title}</h1>

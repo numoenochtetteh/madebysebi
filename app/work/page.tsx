@@ -105,6 +105,37 @@ const projects = [
     layout: "standard",
     capabilities: ["Architecture", "Portfolio", "Frontend", "Responsive"],
   },
+  {
+    number: "07",
+    title: "eleganté",
+    industry: "Beauty & retail",
+    type: "E-commerce frontend",
+    year: "",
+    description:
+      "A beauty and accessories storefront with campaign-led presentation, product browsing and clear product detail pages.",
+    image: "/case-studies/elegante/01-home.webp",
+    video: "/case-studies/elegante/site-tour.mp4",
+    href: "/work/elegante",
+    liveUrl: "https://elegante-shop.vercel.app/",
+    accent: "#f25756",
+    layout: "standard",
+    capabilities: ["Storefront", "Product UI", "Frontend", "Responsive"],
+  },
+  {
+    number: "08",
+    title: "TourBuddy",
+    industry: "Travel",
+    type: "Tour discovery website",
+    year: "",
+    description:
+      "A Ghana travel experience that helps visitors explore regions, compare tours and find places to visit.",
+    image: "/case-studies/tourbuddy/01-home.webp",
+    href: "/work/tourbuddy",
+    liveUrl: "https://tourbuddy.onrender.com/",
+    accent: "#dc840d",
+    layout: "standard",
+    capabilities: ["Travel", "Tours", "Discovery", "Frontend"],
+  },
 ];
 
 /* =========================================================

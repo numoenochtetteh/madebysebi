@@ -448,6 +448,112 @@ export const caseStudyProjects: CaseStudyProject[] = [
       },
     ],
   },
+  {
+    slug: "elegante",
+    number: "07",
+    title: "eleganté",
+    shortTitle: "eleganté",
+    industry: "Beauty & retail",
+    type: "E-commerce frontend",
+    year: "",
+    location: "Digital",
+    summary:
+      "A beauty and accessories storefront with campaign-led presentation, product browsing and clear product detail pages.",
+    headline: "A beauty storefront designed to make browsing feel as considered as the products.",
+    intro:
+      "eleganté brings beauty products and accessories together in a visual storefront. The interface pairs a bold campaign hero with category-led shopping, a browsable product grid and individual product views, keeping the path from discovery to product detail easy to follow.",
+    image: "/case-studies/elegante/01-home.webp",
+    video: "/case-studies/elegante/site-tour.mp4",
+    accent: "#f25756",
+    liveUrl: "https://elegante-shop.vercel.app/",
+    services: [
+      "Storefront design",
+      "Frontend development",
+      "Product listing UI",
+      "Product detail UI",
+      "Responsive layouts",
+    ],
+    challengeTitle: "Give varied beauty products one clear and memorable home.",
+    challenge: [
+      "The storefront had to present beauty and accessories categories without losing the impact of the campaign visuals.",
+      "Shoppers needed a straightforward way to scan products and move into a closer product view.",
+    ],
+    solutionTitle: "We paired expressive campaign visuals with practical shopping screens.",
+    solution: [
+      "The homepage uses a strong promotional hero and category features to introduce the range before the product grid.",
+      "Product cards show imagery and pricing clearly, while individual product pages bring the item, price and add-to-cart action together.",
+      "The header keeps shopping, favorites, account and basket routes in view as people explore.",
+    ],
+    proof: [
+      { value: "4", label: "storefront screens showcased" },
+      { value: "Browse", label: "product listing and category discovery" },
+      { value: "Detail", label: "dedicated product view and cart action" },
+      { value: "Motion", label: "short site walkthrough in the case study" },
+    ],
+    outcomeTitle: "A visual frontend for beauty product discovery.",
+    outcome:
+      "The project shows how campaign imagery and simple commerce UI can work together: visitors can explore the brand, browse its selection and view products in more detail through one consistent design.",
+    gallery: [
+      "/case-studies/elegante/01-home.webp",
+      "/case-studies/elegante/02-product-grid.webp",
+      "/case-studies/elegante/04-product-detail.webp",
+      "/case-studies/elegante/03-footer.webp",
+    ],
+    wideGalleryFirst: false,
+  },
+  {
+    slug: "tourbuddy",
+    number: "08",
+    title: "TourBuddy",
+    shortTitle: "TourBuddy",
+    industry: "Travel",
+    type: "Tour discovery website",
+    year: "",
+    location: "Ghana",
+    summary:
+      "A Ghana travel experience that helps visitors explore regions, compare tours and find places to visit.",
+    headline: "An easier way to explore Ghana through places, activities and local tours.",
+    intro:
+      "TourBuddy presents Ghana as a destination to explore through local experiences. Visitors can discover regions, browse a list of tours and inspect options by location, activity, price and group size, with a clear route to learn more about the service.",
+    image: "/case-studies/tourbuddy/01-home.webp",
+    accent: "#dc840d",
+    liveUrl: "https://tourbuddy.onrender.com/",
+    services: [
+      "Travel website UI",
+      "Region discovery",
+      "Tour listing UI",
+      "Filter interface",
+      "Responsive frontend",
+    ],
+    challengeTitle: "Make a range of local experiences easy to explore.",
+    challenge: [
+      "A visitor deciding where to go needs clear destination imagery and enough information to compare different experiences.",
+      "The tour catalogue needed simple controls for narrowing options by region, activity, budget and visitor count.",
+    ],
+    solutionTitle: "We organised discovery around regions and tour choices.",
+    solution: [
+      "A visual landing page introduces the travel experience, while region cards invite visitors to explore different parts of Ghana.",
+      "The tours view combines a map, filter controls and scannable destination cards with location, rating and price details.",
+      "About and contact screens give the experience context and a clear place for questions.",
+    ],
+    proof: [
+      { value: "4", label: "regions featured in the gallery" },
+      { value: "Filters", label: "region, activity, price and visitors" },
+      { value: "Map", label: "location-oriented tour browsing UI" },
+      { value: "Tours", label: "destination cards with ratings and pricing" },
+    ],
+    outcomeTitle: "A clearer path from travel inspiration to tour exploration.",
+    outcome:
+      "TourBuddy brings destination imagery and practical tour information into one browsable experience, helping visitors discover places across Ghana and compare the kinds of activities available.",
+    gallery: [
+      "/case-studies/tourbuddy/01-home.webp",
+      "/case-studies/tourbuddy/02-regions.webp",
+      "/case-studies/tourbuddy/03-tours.webp",
+      "/case-studies/tourbuddy/04-about.webp",
+      "/case-studies/tourbuddy/05-contact.webp",
+    ],
+    wideGalleryFirst: false,
+  },
 ];
 
 export function getCaseStudyProject(slug: string) {
