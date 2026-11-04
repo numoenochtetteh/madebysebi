@@ -41,9 +41,8 @@ const teamMembers = [
   {
     name: "Bernard Numo",
     role: "Frontend Developer",
-    image:
-      "https://images.pexels.com/photos/30767586/pexels-photo-30767586.jpeg?cs=srgb&dl=pexels-uiliamnornberg-30767586.jpg&fm=jpg",
-    linkedin: "",
+    image: "/team/bernard-team.jpg",
+    linkedin: "https://www.linkedin.com/in/bernard-numo-0b9b77448/",
     imageClass: "team-image-bernard",
   },
 ];
