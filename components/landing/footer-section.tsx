@@ -41,6 +41,7 @@ const exploreLinks = [
   { name: "Home", href: "/" },
   { name: "Work", href: "/work" },
   { name: "Services", href: "/services" },
+  { name: "Pricing", href: "/pricing" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];

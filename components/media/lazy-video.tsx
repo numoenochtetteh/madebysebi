@@ -2,6 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const MOBILE_SOURCES: Record<string, string> = {
+  "/expertise/111.mp4": "/expertise/111-mobile.mp4",
+  "/expertise/03.mp4": "/expertise/03-mobile.mp4",
+  "/expertise/0001.mp4": "/expertise/0001-mobile.mp4",
+  "/expertise/1080.mp4": "/expertise/1080-mobile.mp4",
+  "/expertise/brand-experience.mp4": "/expertise/brand-experience-mobile.mp4",
+  "/case-studies/numo-sebi/hero-video.mp4": "/case-studies/numo-sebi/hero-video-mobile.mp4",
+  "/case-studies/power-electrode/hero-video.mp4": "/case-studies/power-electrode/hero-video-mobile.mp4",
+  "/case-studies/elegante/site-tour.mp4": "/case-studies/elegante/site-tour-mobile.mp4"
+};
+
 type LazyVideoProps = {
   src: string;
   poster?: string;
@@ -19,6 +30,7 @@ export function LazyVideo({
 }: LazyVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoad, setShouldLoad] = useState(eager);
+  const mobileSrc = MOBILE_SOURCES[src];
 
   useEffect(() => {
     const video = videoRef.current;
@@ -92,7 +104,12 @@ export function LazyVideo({
       className={className}
       aria-label={ariaLabel}
     >
-      {shouldLoad ? <source src={src} type="video/mp4" /> : null}
+      {shouldLoad ? (
+        <>
+          {mobileSrc ? <source media="(max-width: 767px)" src={mobileSrc} type="video/mp4" /> : null}
+          <source src={src} type="video/mp4" />
+        </>
+      ) : null}
     </video>
   );
 }
