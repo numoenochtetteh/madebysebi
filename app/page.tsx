@@ -7,7 +7,7 @@ const title = "Websites, Mobile Apps & Custom Business Software";
 const description = "MadeBySebi helps businesses get online, build custom websites, mobile apps and business tools, and grow through digital marketing and ongoing support. Based in Accra, working worldwide.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: `${title} | MadeBySebi` },
   description,
   alternates: { canonical: "/" },
   openGraph: {

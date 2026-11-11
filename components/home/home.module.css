@@ -188,3 +188,11 @@
 @media (prefers-reduced-motion: no-preference) {
   :global(html):has(.hero) { scroll-behavior: smooth; }
 }
+
+/* Keep the existing chat control clear of the service choices on short screens. */
+@media (max-height: 600px) and (min-width: 621px) and (max-width: 1023px) {
+  :global(body):has(.hero) :global(a[aria-label="Chat with MadeBySebi on WhatsApp"]) {
+    top: 100px;
+    bottom: auto;
+  }
+}
