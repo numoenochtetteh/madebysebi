@@ -1,5 +1,6 @@
 "use client";
 
+import { useMediaQuery, usePageVisible } from "@/hooks/use-browser-preferences";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -86,6 +87,8 @@ const services = [
 ];
 
 export function ServicesShowcase() {
+  const pageVisible = usePageVisible();
+  const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   const [activeIndex, setActiveIndex] = useState(0);
   // Mount the current and upcoming backgrounds first. Keep an image mounted
   // after it has been shown so returning to it never flashes or reloads.
@@ -99,13 +102,6 @@ export function ServicesShowcase() {
 
   const activeService = services[activeIndex];
   const ActiveIcon = activeService.icon;
-
-  useEffect(() => {
-    const upcomingIndex = (activeIndex + 1) % services.length;
-    setLoadedImageIndexes((loaded) =>
-      loaded.includes(upcomingIndex) ? loaded : [...loaded, upcomingIndex],
-    );
-  }, [activeIndex]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -124,7 +120,7 @@ export function ServicesShowcase() {
 
       // Begin loading a manually selected slide before the crossfade starts.
       setLoadedImageIndexes((loaded) =>
-        loaded.includes(nextIndex) ? loaded : [...loaded, nextIndex],
+        [...new Set([...loaded, nextIndex, (nextIndex + 1) % services.length])],
       );
       setIsChanging(true);
 
@@ -142,7 +138,7 @@ export function ServicesShowcase() {
   );
 
   useEffect(() => {
-    if (!isInView || isPaused || isChanging) return;
+    if (!isInView || !pageVisible || reducedMotion || isPaused || isChanging) return;
 
     const interval = window.setInterval(() => {
       const nextIndex = (activeIndex + 1) % services.length;
@@ -151,7 +147,7 @@ export function ServicesShowcase() {
     }, CHANGE_INTERVAL);
 
     return () => window.clearInterval(interval);
-  }, [activeIndex, changeService, isChanging, isPaused, isInView]);
+  }, [activeIndex, changeService, isChanging, isPaused, isInView, pageVisible, reducedMotion]);
 
   useEffect(() => {
     return () => {
@@ -181,13 +177,11 @@ export function ServicesShowcase() {
           from {
             opacity: 0;
             transform: translateY(22px);
-            filter: blur(5px);
           }
 
           to {
             opacity: 1;
             transform: translateY(0);
-            filter: blur(0);
           }
         }
 

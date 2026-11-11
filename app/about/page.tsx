@@ -52,7 +52,7 @@ export default function AboutPage() {
   return (
     <>
 
-      <main className="about-page">
+      <main id="main-content" tabIndex={-1} className="about-page">
         <RevealOnScroll selector=".about-page [data-reveal]" />
         {/* =====================================================
             HERO
@@ -328,7 +328,10 @@ export default function AboutPage() {
                   data-reveal
                 >
                   <div className="about-team-photo">
-                    <img
+                    <Image
+                      width={640}
+                      height={800}
+                      sizes="(max-width: 767px) 100vw, 33vw"
                       src={member.image}
                       alt={`${member.name} — ${member.role}`}
                       loading="lazy"

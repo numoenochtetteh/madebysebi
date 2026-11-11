@@ -145,7 +145,7 @@ export default function ContactPage() {
   return (
     <>
 
-      <main className="contact-page">
+      <main id="main-content" tabIndex={-1} className="contact-page">
         {/* =====================================================
             HERO
         ===================================================== */}

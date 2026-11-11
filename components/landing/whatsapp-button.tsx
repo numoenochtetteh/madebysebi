@@ -1,9 +1,24 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export function WhatsAppButton() {
+  const linkRef = useRef<HTMLAnchorElement>(null);
+  useEffect(() => {
+    const footer = document.getElementById("site-footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (linkRef.current) linkRef.current.hidden = entry.isIntersecting;
+    });
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
   const whatsappUrl =
     "https://wa.me/233542470922?text=Hello%20MadeBySebi%2C%20I%27d%20like%20to%20discuss%20a%20project.";
 
   return (
     <a
+      ref={linkRef}
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"

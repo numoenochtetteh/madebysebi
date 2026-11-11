@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
@@ -356,20 +357,20 @@ export function DevelopersSection() {
               ================================================= */}
 
               <div className="mt-7 flex flex-wrap items-center gap-3">
-                <a
+                <Link
                   href="/work"
                   className="group inline-flex h-12 items-center gap-4 rounded-full bg-black px-6 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.025]"
                 >
                   View our work
                   <ArrowUpRight className="h-4 w-4 text-[#cefa74] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="/contact"
                   className="inline-flex h-12 items-center rounded-full border border-black/15 bg-white/40 px-6 text-sm font-medium transition-all duration-300 hover:border-black/30 hover:bg-white"
                 >
                   Start a project
-                </a>
+                </Link>
               </div>
 
               {/* =================================================

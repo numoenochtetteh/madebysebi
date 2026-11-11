@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { SectionHeading } from "@/components/site/primitives";
 import Link from "next/link";
+import { websitePackages } from "@/lib/pricing";
 import { ArrowUpRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -8,25 +10,21 @@ export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
 };
 
-const packages = [
-  { name: "Landing Page", price: "GH₵3,000", description: "A focused online presence for one offer, product or campaign.", features: ["Custom responsive design", "One conversion-focused page", "Contact or enquiry call-to-action", "Basic SEO setup"] },
-  { name: "Business Website", price: "GH₵6,500", description: "A complete website built to help customers find and trust your business.", featured: true, features: ["Multi-page website", "Mobile-friendly design", "Enquiry/contact integration", "SEO foundations", "Performance-focused implementation"] },
-  { name: "Online Store", price: "GH₵12,000", description: "An e-commerce experience for showcasing products and accepting orders.", features: ["Product catalogue", "Cart and checkout setup", "Mobile-friendly storefront", "Payment integration planning", "Product and order management setup"] },
-];
+
 
 export default function PricingPage() {
-  return <main className="min-h-screen bg-[#f7f7f3] text-[#111]">
+  return <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#f7f7f3] text-[#111]">
     <section className="mx-auto max-w-[1250px] px-6 pb-16 pt-40 sm:px-10 lg:pb-24">
-      <p className="mb-6 inline-flex items-center gap-[9px] rounded-[6px] border border-[#d4cec1] px-3 py-2 font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-[#5f574f]"><span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-[2px] bg-[#cefa74]" />Clear starting points</p>
-      <h1 className="max-w-[950px] font-display text-[clamp(3.3rem,8vw,7.8rem)] font-semibold leading-[0.98] tracking-[-0.07em]">Good design. <span className="text-[#637a3d]">Real value.</span></h1>
-      <p className="mt-8 max-w-[720px] text-lg leading-relaxed text-black/65">Every business is different. These packages give you a starting point, and we tailor the final scope to your goals.</p>
+      <SectionHeading level={1} eyebrow="Clear starting points"
+        title={<>Good design. <span className="text-[#637a3d]">Real value.</span></>}
+        description="Every business is different. These packages give you a starting point, and we tailor the final scope to your goals." />
     </section>
     <section className="mx-auto grid max-w-[1250px] grid-cols-1 items-stretch gap-5 px-6 pb-24 sm:px-10 lg:grid-cols-3" aria-label="Website packages">
-      {packages.map((plan) => (
+      {websitePackages.map((plan) => (
         <article
           key={plan.name}
           className={`group flex h-full flex-col rounded-[26px] border px-7 py-8 transition-[border-color,box-shadow,transform] duration-200 motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-[0_18px_45px_-28px_rgba(0,0,0,0.28)] sm:px-8 sm:py-9 ${
-            plan.featured
+            ("featured" in plan && plan.featured)
               ? "border-[#b0df54] bg-[#cefa74] text-[#111]"
               : "border-black/10 bg-white text-[#111] hover:border-black/20"
           }`}

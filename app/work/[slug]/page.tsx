@@ -83,7 +83,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   return (
     <>
 
-      <main
+      <main id="main-content" tabIndex={-1}
         className={styles.page}
         style={{ "--case-accent": project.accent } as React.CSSProperties}
       >

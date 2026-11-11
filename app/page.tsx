@@ -9,7 +9,7 @@ import { CtaSection } from "@/components/landing/cta-section";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden noise-overlay">
+    <main id="main-content" tabIndex={-1} className="relative min-h-screen overflow-x-hidden noise-overlay">
       <GalleryHero />
       <ProcessSystem />
       <ExpertiseSection />

@@ -46,7 +46,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <>
-      <main className="min-h-screen bg-[#f4f4f1] px-5 pb-24 pt-32 text-[#0b0b0b] sm:px-8 lg:pt-40">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#f4f4f1] px-5 pb-24 pt-32 text-[#0b0b0b] sm:px-8 lg:pt-40">
         <div className="mx-auto max-w-[1180px]">
           <Link href="/" className="mb-10 inline-flex items-center gap-2 text-sm text-black/55 transition hover:text-black">
             <ArrowLeft size={15} /> Back home

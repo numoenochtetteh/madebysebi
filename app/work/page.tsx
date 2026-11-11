@@ -151,7 +151,7 @@ export default function WorkPage() {
       ====================================================== */}
 
 
-      <main className="work-page">
+      <main id="main-content" tabIndex={-1} className="work-page">
         <RevealOnScroll selector=".work-page [data-reveal]" />
         {/* =====================================================
             HERO

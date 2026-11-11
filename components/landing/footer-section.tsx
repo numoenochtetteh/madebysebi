@@ -72,7 +72,7 @@ function SocialIcon({ icon }: { icon: (typeof socialLinks)[number]["icon"] }) {
 
 export function FooterSection() {
   return (
-    <footer className="mbs-footer-wrap">
+    <footer id="site-footer" className="mbs-footer-wrap">
       <div className="mbs-footer-shell">
         {/* MOBILE SOCIAL ICONS */}
         <div

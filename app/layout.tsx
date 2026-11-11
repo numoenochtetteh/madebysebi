@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import "./foundation.css";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { WhatsAppButton } from "@/components/landing/whatsapp-button";
@@ -133,6 +134,7 @@ export default function RootLayout({
         id="top"
         className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
       >
+        <a className="mbs-skip-link" href="#main-content">Skip to content</a>
         <Navigation />
         {children}
         <FooterSection />

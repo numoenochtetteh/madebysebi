@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import posters from "@/lib/video-posters.json";
 
 const MOBILE_SOURCES: Record<string, string> = {
   "/expertise/111.mp4": "/expertise/111-mobile.mp4",
@@ -29,69 +30,65 @@ export function LazyVideo({
   eager = false,
 }: LazyVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [shouldLoad, setShouldLoad] = useState(eager);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const nearViewport = useRef(false);
+  const autoAllowed = useRef(false);
+  const manualPlayback = useRef(false);
+  const userPaused = useRef(false);
   const mobileSrc = MOBILE_SOURCES[src];
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    let nearViewport = false;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const connection = (navigator as Navigator & {
+      connection?: EventTarget & { saveData?: boolean; effectiveType?: string };
+    }).connection;
     let unloadTimer: number | undefined;
 
-    const stop = () => {
-      video.pause();
+    const update = () => {
       window.clearTimeout(unloadTimer);
-      // Give quick scroll reversals time to reuse the loaded video.
-      unloadTimer = window.setTimeout(() => setShouldLoad(false), 2000);
+      autoAllowed.current = !motion.matches && !connection?.saveData &&
+        !/^(slow-)?2g$/.test(connection?.effectiveType ?? "");
+      if (nearViewport.current && !document.hidden && (autoAllowed.current || manualPlayback.current)) {
+        setShouldLoad(true);
+        if (!userPaused.current && video.readyState >= 2) video.play().catch(() => undefined);
+      } else {
+        video.pause();
+        unloadTimer = window.setTimeout(() => setShouldLoad(false), 2000);
+      }
     };
-
-    const start = () => {
-      window.clearTimeout(unloadTimer);
-      setShouldLoad(true);
-      if (video.readyState >= 2) video.play().catch(() => undefined);
-    };
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        nearViewport = entry.isIntersecting;
-        if (nearViewport && !document.hidden) start();
-        else stop();
-      },
-      {
-        rootMargin: "120px 0px",
-        threshold: 0.01,
-      },
-    );
-
+    const observer = new IntersectionObserver(([entry]) => {
+      nearViewport.current = entry.isIntersecting;
+      update();
+    }, { rootMargin: eager ? "240px 0px" : "120px 0px", threshold: 0.01 });
     observer.observe(video);
-
-    const onVisibilityChange = () => {
-      if (nearViewport && !document.hidden) start();
-      else stop();
-    };
-    document.addEventListener("visibilitychange", onVisibilityChange);
-
+    document.addEventListener("visibilitychange", update);
+    motion.addEventListener("change", update);
+    connection?.addEventListener("change", update);
     return () => {
       observer.disconnect();
-      document.removeEventListener("visibilitychange", onVisibilityChange);
+      document.removeEventListener("visibilitychange", update);
+      motion.removeEventListener("change", update);
+      connection?.removeEventListener("change", update);
       window.clearTimeout(unloadTimer);
     };
-  }, []);
+  }, [eager]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-
-    // Removing the source and resetting the element frees offscreen decoders.
     video.load();
-    if (shouldLoad && !document.hidden) {
-      const bounds = video.getBoundingClientRect();
-      if (bounds.bottom > -120 && bounds.top < window.innerHeight + 120) {
-        video.play().catch(() => undefined);
-      }
-    }
+    if (shouldLoad && nearViewport.current && !document.hidden && !userPaused.current &&
+      (autoAllowed.current || manualPlayback.current)) video.play().catch(() => undefined);
   }, [shouldLoad, src]);
+
+  const requestPlayback = () => {
+    manualPlayback.current = true;
+    userPaused.current = false;
+    setShouldLoad(true);
+  };
 
   return (
     <video
@@ -99,8 +96,18 @@ export function LazyVideo({
       muted
       loop
       playsInline
+      controls
+      onPointerDown={requestPlayback}
+      onKeyDown={(event) => {
+        if (event.key === " " || event.key === "Enter") requestPlayback();
+      }}
+      onPlay={() => { userPaused.current = false; }}
+      onPause={() => {
+        if (nearViewport.current && !document.hidden && (videoRef.current?.readyState ?? 0) >= 2)
+          userPaused.current = true;
+      }}
       preload={shouldLoad ? "metadata" : "none"}
-      poster={poster}
+      poster={poster ? (posters as Record<string, string>)[poster] ?? poster : undefined}
       className={className}
       aria-label={ariaLabel}
     >

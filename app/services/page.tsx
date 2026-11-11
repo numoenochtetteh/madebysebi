@@ -135,7 +135,7 @@ export default function ServicesPage() {
   return (
     <>
 
-      <main className="services-page">
+      <main id="main-content" tabIndex={-1} className="services-page">
         <RevealOnScroll selector=".services-page [data-reveal]" />
         {/* =====================================================
             HERO
