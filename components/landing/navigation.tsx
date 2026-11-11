@@ -67,20 +67,20 @@ export function Navigation() {
 
   return (
     <header
-      className={`fixed inset-x-0 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 z-50 motion-reduce:transition-none transition-all duration-500 ${
         isScrolled ? "top-4 px-4" : "top-0 px-0"
       }`}
     >
       <nav
         aria-label="Main navigation"
-        className={`relative z-50 mx-auto transition-all duration-500 ${
+        className={`relative z-50 mx-auto motion-reduce:transition-none transition-all duration-500 ${
           isScrolled || isMobileMenuOpen
             ? "max-w-[1300px] rounded-[22px] border border-black/10 bg-white/85 shadow-[0_18px_55px_rgba(0,0,0,0.10)] backdrop-blur-xl"
             : "max-w-[1500px] border-transparent bg-[#f7f7f3]/95"
         }`}
       >
         <div
-          className={`flex items-center justify-between px-6 transition-all duration-500 lg:px-10 ${
+          className={`flex items-center justify-between px-6 motion-reduce:transition-none transition-all duration-500 lg:px-10 ${
             isScrolled ? "h-16" : "h-20"
           }`}
         >
@@ -97,7 +97,7 @@ export function Navigation() {
               width={160}
               height={30}
               loading="eager"
-              className={`h-auto w-auto transition-all duration-500 ${
+              className={`h-auto w-auto motion-reduce:transition-none transition-all duration-500 ${
                 isScrolled ? "max-w-[128px]" : "max-w-[148px]"
               }`}
             />
@@ -115,7 +115,7 @@ export function Navigation() {
               >
                 {link.name}
 
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-black transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-black motion-reduce:transition-none transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </div>
@@ -124,7 +124,7 @@ export function Navigation() {
           <div className="hidden items-center gap-4 lg:flex">
             <Link
               href="/work"
-              className={`text-black/60 transition-all duration-300 hover:text-black ${
+              className={`text-black/60 motion-reduce:transition-none transition-all duration-300 hover:text-black ${
                 isScrolled ? "text-xs" : "text-sm"
               }`}
             >
@@ -133,12 +133,12 @@ export function Navigation() {
 
             <Link
               href="/contact"
-              className={`group inline-flex items-center justify-center gap-2 rounded-full bg-black font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-black/80 ${
+              className={`group inline-flex items-center justify-center gap-2 rounded-full bg-black font-medium text-white motion-reduce:transition-none transition-all duration-300 hover:scale-[1.02] hover:bg-black/80 ${
                 isScrolled ? "h-10 px-5 text-xs" : "h-12 px-6 text-sm"
               }`}
             >
               Start a project
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="h-4 w-4 motion-reduce:transition-none transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </div>
 

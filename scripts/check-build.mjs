@@ -62,10 +62,34 @@ for (const file of htmlFiles) {
 const sitemap = await readFile(path.join(root, "sitemap.xml.body"), "utf8");
 if (!sitemap.includes("https://madebysebi.com/pricing"))
   errors.push("Pricing missing from sitemap");
+
+// Check the delivered homepage contract, including server-rendered content and
+// real fragment destinations. These guards protect the three customer journeys.
+const home = await readFile(path.join(root, "index.html"), "utf8");
+const pillarIds = ["online-presence", "build-your-solution", "grow-your-business"];
+const sectionIds = [...home.matchAll(/<section\b[^>]*\bid="([^"]+)"/g)].map(match => match[1]);
+if (JSON.stringify(sectionIds.slice(0, 3)) !== JSON.stringify(pillarIds))
+  errors.push("Homepage must put the three service sections directly after the hero, in business-document order");
+for (const id of pillarIds) {
+  if ((home.match(new RegExp(`id="${id}"`, "g")) ?? []).length !== 1)
+    errors.push(`Homepage needs one unique ${id} destination`);
+  if (!home.includes(`href="#${id}"`)) errors.push(`Missing homepage service link #${id}`);
+}
+const homeMediaCount = [...home.matchAll(/<(?:video|canvas)\b/g)].length;
+if (homeMediaCount)
+  errors.push("Homepage must remain free of background video/canvas loading");
+if (home.includes("numo-company-bar") || home.includes("noise-overlay"))
+  errors.push("Legacy floating hero selector or noise overlay returned");
+for (const slug of ["pengtresses", "power-electrode-ltd", "numo-sebi"])
+  if (!home.includes(`href="/work/${slug}"`)) errors.push(`Homepage lost real project link ${slug}`);
+if (!home.includes('href="/contact"') || !home.includes('href="/pricing"'))
+  errors.push("Homepage contact or current pricing CTA is missing");
 const result = {
   htmlPages: htmlFiles.length,
   internalLinksChecked: links,
   imageReferencesChecked: images,
+  homepageServiceAnchors: pillarIds.length,
+  homepageBackgroundMedia: homeMediaCount,
   errors,
 };
 console.log(JSON.stringify(result));
