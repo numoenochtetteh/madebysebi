@@ -1,6 +1,10 @@
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 const root = path.resolve(".next/server/app");
+const pageManifest = JSON.parse(await readFile(".next/server/app-paths-manifest.json", "utf8"));
+const builtPageRoutes = new Map(Object.entries(pageManifest)
+  .filter(([route]) => route.endsWith("/page"))
+  .map(([route, output]) => [route.slice(0, -5) || "/", output]));
 const htmlFiles = [];
 async function walk(dir) {
   for (const item of await readdir(dir, { withFileTypes: true })) {
@@ -43,7 +47,8 @@ for (const file of htmlFiles) {
         root,
         route === "/" ? "index.html" : route.replace(/^\//, "") + ".html",
       );
-      if (!(await exists(target)))
+      const dynamicOutput = builtPageRoutes.get(route);
+      if (!(await exists(target)) && !(dynamicOutput && await exists(path.join(".next/server", dynamicOutput))))
         errors.push(
           `Missing internal route ${url.pathname} from ${path.relative(root, file)}`,
         );
@@ -90,7 +95,9 @@ const result = {
   imageReferencesChecked: images,
   homepageServiceAnchors: pillarIds.length,
   homepageBackgroundMedia: homeMediaCount,
+  pricingServerRoute: builtPageRoutes.has("/pricing"),
   errors,
 };
+if (!result.pricingServerRoute) errors.push("Pricing server route was not built");
 console.log(JSON.stringify(result));
 if (errors.length) process.exit(1);

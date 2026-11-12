@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, type FormEvent } from "react";
-
+import { Suspense, useEffect, useState, type FormEvent } from "react";
+import { EnquiryServiceFields, PricingEnquiry } from "@/components/contact/pricing-enquiry";
+import { pricingEnquiryMessage } from "@/lib/pricing-enquiry";
 
 import {
   ArrowRight,
@@ -10,16 +11,6 @@ import {
   Check,
   MessageSquare,
 } from "lucide-react";
-
-const services = [
-  "Web Design & Development",
-  "UX/UI & Product Design",
-  "Branding & Visual Design",
-  "SEO & GEO",
-  "Digital Marketing",
-  "Website Consultation",
-  "Other",
-];
 
 const faqs = [
   {
@@ -97,7 +88,7 @@ export default function ContactPage() {
           service: formData.get("service"),
           budget: formData.get("budget"),
           timeline: formData.get("timeline"),
-          message: formData.get("message"),
+          message: pricingEnquiryMessage(formData),
           businessWebsite: formData.get("businessWebsite"),
         }),
       });
@@ -337,21 +328,9 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="form-field">
-                  <label htmlFor="service">WHAT DO YOU NEED HELP WITH? *</label>
-
-                  <select id="service" name="service" required defaultValue="">
-                    <option value="" disabled>
-                      Select a service
-                    </option>
-
-                    {services.map((service) => (
-                      <option value={service} key={service}>
-                        {service}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                <Suspense fallback={<EnquiryServiceFields />}>
+                  <PricingEnquiry />
+                </Suspense>
 
                 <div className="form-row">
                   <div className="form-field">
@@ -810,6 +789,7 @@ export default function ContactPage() {
           ===================================================== */
 
           .contact-form-card {
+            scroll-margin-top: 7rem;
             border: 1px solid #d5d1c9;
             border-radius: 28px;
             background: #ebe9e3;
