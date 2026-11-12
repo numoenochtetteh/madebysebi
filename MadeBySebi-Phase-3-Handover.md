@@ -10,7 +10,8 @@ Phase 3 of five: complete Pricing rebuild. Verified 12 November 2026, Africa/Acc
 - Initial Phase 3 implementation: `461e99c1877b4a758c4526f7a0d8c4e884f61dc3`.
 - **Final tested implementation: `245ff15bfab21f48f37d25a778dc11315b50bbc8`.**
 - Final implementation tree: `edb8f01b105483a1c2ee750b7f96250e7a5f8132`, verified identical to the local source tree that passed the final checks.
-- Handover creation commit: recorded in the follow-up provenance entry after GitHub assigns the commit hash.
+- **Handover creation commit: `583bec63a83705c20dfc3c1302a822fc9f966780`.**
+- This later documentation-only provenance entry records the verified handover creation hash. It does not change the tested executable implementation.
 - Continuing draft PR: https://github.com/numoenochtetteh/madebysebi/pull/2
 - **Verified READY preview:** https://madebysebi-pgy0e0ldw-numoenochtettehkent-9218s-projects.vercel.app/pricing?category=business-websites
 - Deployment: `dpl_3pH5yQdaginQ8JdgNKGmGpcbkLPz`; Vercel metadata identifies the feature branch and exact final implementation commit above. This is a preview, not a production deployment.
