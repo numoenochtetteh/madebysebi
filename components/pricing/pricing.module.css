@@ -140,3 +140,7 @@
 @media (prefers-reduced-motion: reduce) {
   .page *, .page *::before, .page *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
+/* Match the homepage safeguard without changing the shared chat control. */
+@media (max-width: 480px) and (max-height: 500px) {
+  :global(body):has(.page) :global(a[aria-label="Chat with MadeBySebi on WhatsApp"]) { top: 6.25rem; bottom: auto; }
+}

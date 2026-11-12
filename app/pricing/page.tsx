@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { ArrowDownRight, Check, Plus } from "lucide-react";
 import { ActionLink, Container, Eyebrow, Section, SectionHeading } from "@/components/site/primitives";
 import { PricingExplorer } from "@/components/pricing/pricing-explorer";
-import { PricingResults } from "@/components/pricing/pricing-results";
-import { getPricingSelection } from "@/lib/pricing-catalog";
 import styles from "@/components/pricing/pricing.module.css";
 
 export const metadata: Metadata = {
@@ -25,14 +22,9 @@ const faqs = [
 ];
 
 export default async function PricingPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
-  // Direct query URLs deliver the right comparison in the initial server HTML.
-  const raw = await searchParams;
-  const params = new URLSearchParams();
-  for (const name of ["category", "q", "pillar"]) {
-    const value = raw[name];
-    if (value !== undefined) params.set(name, Array.isArray(value) ? value[0] : value);
-  }
-  const selection = getPricingSelection(params);
+  // Resolve the request before rendering: useSearchParams is available during
+  // the explorer's initial server render. No duplicate card fallback is needed.
+  await searchParams;
 
   return <main id="main-content" tabIndex={-1} className={styles.page}>
     <section className={styles.hero} aria-labelledby="pricing-title">
@@ -55,7 +47,7 @@ export default async function PricingPage({ searchParams }: { searchParams: Prom
       </Container>
     </section>
     <section id="pricing-explorer" className={styles.explorerSection} aria-label="Find and compare service packages">
-      <Container><Suspense fallback={<PricingResults category={selection.category} />}><PricingExplorer /></Suspense></Container>
+      <Container><PricingExplorer /></Container>
     </section>
     <Section aria-labelledby="pricing-scope-title">
       <Container><div className={styles.scopePanel}>
