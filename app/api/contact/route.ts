@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     }
 
     const rawBody = await request.text();
-    if (rawBody.length > 16_000) {
+    if (new TextEncoder().encode(rawBody).byteLength > 16_000) {
       return NextResponse.json(
         { error: "Your enquiry is too long. Please shorten the message and try again." },
         { status: 413 },
@@ -120,6 +120,7 @@ export async function POST(request: Request) {
 
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
+      signal: AbortSignal.timeout(10_000),
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",

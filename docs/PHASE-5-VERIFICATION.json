@@ -1,0 +1,672 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "implementationCommit": "05e88ae3bf82bd59f990110c43788d80520e6e1a",
+  "implementationTree": "8cb2f7b7e55a18befc965b561af7e94ed83a21ae",
+  "branch": "feat/business-repositioning-rebuild",
+  "pr": "https://github.com/numoenochtetteh/madebysebi/pull/2",
+  "preview": {
+    "url": "https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app",
+    "deploymentId": "dpl_BoR5aAwstHQuRTVK9nN9f9H1mv9k",
+    "status": "READY",
+    "gitCommit": "05e88ae3bf82bd59f990110c43788d80520e6e1a",
+    "target": "preview"
+  },
+  "production": {
+    "changed": false,
+    "deploymentId": "dpl_GjugdLr23SM4ngSsLUfJugyXvedN",
+    "commit": "36ce97c3524fd683efa8c2072b920641b6db0b65"
+  },
+  "commands": {
+    "commit": "05e88ae3bf82bd59f990110c43788d80520e6e1a",
+    "tree": "8cb2f7b7e55a18befc965b561af7e94ed83a21ae",
+    "node": "v24.22.1",
+    "pnpm": "11.25.0",
+    "started": "2026-11-13T17:11:42Z",
+    "checks": [
+      {
+        "command": "pnpm install --frozen-lockfile",
+        "exitCode": 0,
+        "durationMs": 11395,
+        "output": "? Verifying lockfile against supply-chain policies (474 entries)...\nLockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +375\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 375, reused 0, downloaded 0, added 0\nProgress: resolved 375, reused 0, downloaded 1, added 0\nPackages are hard linked from the content-addressable store to the virtual store.\n  Content-addressable store is at: /workspace/.pnpm-store/v11\n  Virtual store is at:             node_modules/.pnpm\n\n   \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n   \u2502                                                                      \u2502\n   \u2502                 Update available! 11.25.0 \u2192 12.18.0.                 \u2502\n   \u2502                 Changelog: https://pnpm.io/v/12.18.0                 \u2502\n   \u2502   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   \u2502\n   \u2502                                                                      \u2502\n   \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n\nProgress: resolved 375, reused 0, downloaded 110, added 106\nProgress: resolved 375, reused 0, downloaded 208, added 208\nProgress: resolved 375, reused 0, downloaded 340, added 340\nProgress: resolved 375, reused 0, downloaded 373, added 372\n\u2713 Lockfile passes supply-chain policies (474 entries in 9.3s)\nProgress: resolved 375, reused 0, downloaded 374, added 374\nProgress: resolved 375, reused 0, downloaded 375, added 375, done\n.../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.28.2/node_modules/esbuild postinstall: Done\n\ndependencies:\n+ @radix-ui/react-slot 1.1.1\n+ @vercel/analytics 1.3.1\n+ @vercel/speed-insights 2.0.0\n+ autoprefixer 10.5.4\n+ class-variance-authority 0.7.1\n+ clsx 2.1.1\n+ geist 1.7.0\n+ lucide-react 0.454.0\n+ next 16.4.6\n+ react 19.3.1\n+ react-dom 19.3.1\n+ sharp 0.35.5\n+ tailwind-merge 3.6.0\n+ tailwindcss-animate 1.0.7\n\ndevDependencies:\n+ @tailwindcss/postcss 4.3.3\n+ @types/node 22.20.1\n+ @types/react 19.2.18\n+ @types/react-dom 19.2.4\n+ eslint 9.39.5\n+ eslint-config-next 16.4.6\n+ postcss 8.5.26\n+ tailwindcss 4.3.3\n+ tsx 4.23.15\n+ tw-animate-css 1.3.3\n+ typescript 5.9.3\n\nDone in 11.2s using pnpm v11.25.0\n"
+      },
+      {
+        "command": "pnpm lint",
+        "exitCode": 0,
+        "durationMs": 4860,
+        "output": "$ eslint .\n"
+      },
+      {
+        "command": "pnpm exec next typegen",
+        "exitCode": 0,
+        "durationMs": 844,
+        "output": "Generating route types...\n\u2713 Types generated successfully\n"
+      },
+      {
+        "command": "pnpm typecheck",
+        "exitCode": 0,
+        "durationMs": 4040,
+        "output": "$ tsc --noEmit --incremental false\n"
+      },
+      {
+        "command": "pnpm test",
+        "exitCode": 0,
+        "durationMs": 899,
+        "output": "$ node --import tsx --test tests/*.test.ts\n\u2714 invalid and incomplete enquiries are rejected before calling the email provider (8.207228ms)\n\u2714 oversized payloads are rejected (0.662645ms)\n\u2714 the payload limit counts UTF-8 bytes even without a content-length header (0.661903ms)\n\u2714 honeypot accepts silently without sending mail (1.411028ms)\n\u2714 missing mail configuration returns the direct-contact fallback (0.771618ms)\n\u2714 provider request preserves enquiry fields and escapes untrusted content (1.263977ms)\n\u2714 provider failure surfaces a recoverable error (0.986681ms)\n\u2714 a stalled provider is bounded and returns the direct-email fallback (0.89291ms)\n\u2714 repositioning retains all three ordered service pillars and stable section anchors (1.669385ms)\n\u2714 published package prices are preserved during the foundation changes (0.1599ms)\n\u2714 sitemap covers pricing, legal pages and every retained case study (0.505579ms)\n\u2714 recovered video posters exist and are smaller than the original delivery assets (0.301603ms)\n\u2714 original project images and videos remain available (0.270365ms)\n\u2714 an offscreen video does not make the HTML preload scanner request its poster or source (16.911493ms)\n\u2714 company and team preserve the published names, roles, profiles and photos (2.469296ms)\n\u2714 service explanations cover all eight categories and retain the six legacy destinations (0.479129ms)\n\u2714 eight original case studies have complete circular project navigation without self links (0.749064ms)\n\u2714 project images, original galleries, operations views, videos and poster files remain available (1.518559ms)\n\u2714 contact payload preserves nine API fields, pricing context, original choices and spam field (0.926921ms)\n\u2714 contact submission uses the existing same-origin POST contract once with a mock transport (2.486842ms)\n\u2714 contact API validation and provider errors remain visible and never report success (1.069065ms)\n\u2714 network failures, non-JSON errors and malformed success retain a direct email fallback (1.319535ms)\n\u2714 eight categories cover every existing service ID, with three distinct options each (1.625409ms)\n\u2714 only the three approved offers have prices and all published content stays exact (0.246991ms)\n\u2714 direct URLs select all eight categories; unknown, empty and repeated values are graceful (1.319941ms)\n\u2714 pillar filters preserve the three business directions and fall back from conflicting categories (0.266991ms)\n\u2714 search matches services and proposed features, ignores case and spacing, and supports no results (0.423486ms)\n\u2714 category history URLs round-trip selection and filters without arbitrary external navigation (1.166ms)\n\u2714 every Get Started destination round-trips the service and the correct package (0.947862ms)\n\u2714 contact ignores tampered, mismatched and unknown package context (0.223836ms)\n\u2714 validated pricing context reaches the existing message without losing the user's brief (0.664207ms)\n\u2714 no brochure control can point at an absent or unapproved PDF (0.322333ms)\n\u2714 pricing selection reaches the unchanged Resend contract using a mock provider (4.82084ms)\n\u2139 tests 33\n\u2139 suites 0\n\u2139 pass 33\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 386.876939\n"
+      },
+      {
+        "command": "pnpm build",
+        "exitCode": 0,
+        "durationMs": 42128,
+        "output": "$ next build --webpack\n\u25b2 Next.js 16.4.6 (webpack)\n\u2713 Running next.config.mjs took 13ms\nAttention: Next.js now collects completely anonymous telemetry regarding usage.\nThis information is used to shape Next.js' roadmap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n\n  Creating an optimized production build ...\n\u2713 Compiled successfully in 24.1s\n  Running TypeScript ...\n  Finished TypeScript in 3.8s ...\n  Collecting page data using 8 workers ...\n  Generating static pages using 8 workers (0/21) ...\n  Generating static pages using 8 workers (5/21) \n  Generating static pages using 8 workers (10/21) \n  Generating static pages using 8 workers (15/21) \n\u2713 Generating static pages using 8 workers (21/21) in 848ms\n  Finalizing page optimization ...\n  Collecting build traces ...\n\nRoute (app)\n\u250c \u25cb /\n\u251c \u25cb /_not-found\n\u251c \u25cb /about\n\u251c \u0192 /api/contact\n\u251c \u25cb /contact\n\u251c \u0192 /pricing\n\u251c \u25cb /privacy\n\u251c \u25cb /robots.txt\n\u251c \u25cb /services\n\u251c \u25cb /sitemap.xml\n\u251c \u25cb /terms\n\u251c \u25cb /work\n\u2514   /work/[slug]\n  \u251c \u25cf /work/pengtresses\n  \u251c \u25cf /work/power-electrode-ltd\n  \u251c \u25cf /work/total-logistics\n  \u2514 \u25cf [+5 more paths]\n\n\n\u25cb  (Static)   prerendered as static content\n\u25cf  (SSG)      prerendered as static HTML (uses generateStaticParams)\n\u0192  (Dynamic)  server-rendered on demand\n\n"
+      },
+      {
+        "command": "pnpm check:build",
+        "exitCode": 0,
+        "durationMs": 551,
+        "output": "$ node scripts/check-build.mjs\n{\"caseStudiesChecked\":8,\"rebuiltPagesChecked\":4,\"htmlPages\":17,\"internalLinksChecked\":707,\"imageReferencesChecked\":88,\"homepageServiceAnchors\":3,\"homepageBackgroundMedia\":0,\"pricingServerRoute\":true,\"errors\":[]}\n"
+      },
+      {
+        "command": "pnpm audit --json",
+        "exitCode": 0,
+        "durationMs": 5297,
+        "output": "{\n  \"advisories\": {},\n  \"metadata\": {\n    \"vulnerabilities\": {\n      \"info\": 0,\n      \"low\": 0,\n      \"moderate\": 0,\n      \"high\": 0,\n      \"critical\": 0\n    },\n    \"dependencies\": 76,\n    \"devDependencies\": 361,\n    \"optionalDependencies\": 108,\n    \"totalDependencies\": 474\n  }\n}\n"
+      }
+    ],
+    "finished": "2026-11-13T17:12:52Z",
+    "lockfileSha256": "f01b47b0e602950f62afa8183222892e95072568a071d2f0461f35726b0a8cb3"
+  },
+  "unitTests": 33,
+  "browser": {
+    "checks": {
+      "passed": 18,
+      "failed": 0
+    },
+    "extraChecks": [
+      {
+        "name": "robots and sitemap contain production destinations and all retained routes",
+        "passed": true
+      },
+      {
+        "name": "social image paths exist in the preview build",
+        "passed": true
+      },
+      {
+        "name": "a short smooth-scroll lab sample completes without horizontal overflow",
+        "passed": true
+      },
+      {
+        "name": "emulated touch switches Pricing and carries context to Contact",
+        "passed": true
+      }
+    ],
+    "routes": 16,
+    "layoutChecks": 128,
+    "viewports": [
+      [
+        320,
+        640
+      ],
+      [
+        360,
+        800
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        820,
+        1180
+      ],
+      [
+        1366,
+        768
+      ],
+      [
+        1920,
+        1080
+      ],
+      [
+        740,
+        390
+      ]
+    ],
+    "axeVersion": "4.14.0",
+    "violations": [],
+    "renderedMainImageInstances": 72,
+    "javaScriptErrors": [],
+    "supplementConsoleErrors": [],
+    "requestAbortReasons": [
+      "net::ERR_ABORTED"
+    ],
+    "physicalDevices": false,
+    "safari": false,
+    "screenReader": false,
+    "interactiveBrowser": "Native controls unavailable; cloud browser reached Vercel sign-in. Authenticated isolated Chromium tests completed with temporary owner-authorized preview access."
+  },
+  "lighthouse": {
+    "version": "13.6.0",
+    "chrome": "157.0.8103.78",
+    "finalAudits": 42,
+    "hardware": "Vercel Sandbox iad1, 2 vCPU, 4096 MB RAM",
+    "profiles": {
+      "mobile": {
+        "formFactor": "mobile",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        }
+      },
+      "desktop": {
+        "formFactor": "desktop",
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0,
+          "cpuSlowdownMultiplier": 1
+        },
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        }
+      }
+    },
+    "performance": {
+      "mobile": {
+        "minimum": 90,
+        "maximum": 99
+      },
+      "desktop": {
+        "minimum": 99,
+        "maximum": 100
+      }
+    },
+    "accessibilityAll100": true,
+    "bestPracticesAll100": true,
+    "seoScores": [
+      69
+    ],
+    "seoExplanation": "Vercel preview X-Robots-Tag: noindex intentionally retained",
+    "consoleAuditErrors": 0,
+    "INP": "No real-user field data for the unreleased rebuild; not inferred from TBT or scripted interactions",
+    "core": {
+      "/": {
+        "mobile": {
+          "reference": {
+            "runs": 3,
+            "performance": 98,
+            "performanceRange": [
+              93,
+              99,
+              98
+            ],
+            "FCPms": 980.7978,
+            "LCPms": 1026.4499,
+            "TBTms": 140,
+            "CLSmax": 0
+          },
+          "final": {
+            "runs": 3,
+            "performance": 92,
+            "performanceRange": [
+              99,
+              92,
+              90
+            ],
+            "FCPms": 958.3566,
+            "LCPms": 3136.1759,
+            "TBTms": 156,
+            "CLSmax": 0
+          }
+        },
+        "desktop": {
+          "reference": {
+            "runs": 1,
+            "performance": 99,
+            "performanceRange": [
+              99
+            ],
+            "FCPms": 277.19489999999996,
+            "LCPms": 845.2354,
+            "TBTms": 5,
+            "CLSmax": 0.0004284972127367715
+          },
+          "final": {
+            "runs": 1,
+            "performance": 100,
+            "performanceRange": [
+              100
+            ],
+            "FCPms": 296.626,
+            "LCPms": 529.626,
+            "TBTms": 20,
+            "CLSmax": 0.0004284972127367715
+          }
+        }
+      },
+      "/pricing": {
+        "mobile": {
+          "reference": {
+            "runs": 3,
+            "performance": 89,
+            "performanceRange": [
+              87,
+              89,
+              96
+            ],
+            "FCPms": 925.3377,
+            "LCPms": 3430.9906,
+            "TBTms": 223.5,
+            "CLSmax": 0
+          },
+          "final": {
+            "runs": 3,
+            "performance": 96,
+            "performanceRange": [
+              91,
+              96,
+              97
+            ],
+            "FCPms": 924.5644,
+            "LCPms": 924.5644,
+            "TBTms": 231.00000000000023,
+            "CLSmax": 0
+          }
+        },
+        "desktop": {
+          "reference": {
+            "runs": 1,
+            "performance": 100,
+            "performanceRange": [
+              100
+            ],
+            "FCPms": 304.998,
+            "LCPms": 304.998,
+            "TBTms": 29.000000000000057,
+            "CLSmax": 0
+          },
+          "final": {
+            "runs": 1,
+            "performance": 100,
+            "performanceRange": [
+              100
+            ],
+            "FCPms": 270.86670000000004,
+            "LCPms": 488.86670000000004,
+            "TBTms": 27,
+            "CLSmax": 0.0004284972127367715
+          }
+        }
+      }
+    },
+    "media": {
+      "/work/total-logistics": {
+        "before": {
+          "runs": 1,
+          "performance": 75,
+          "performanceRange": [
+            75
+          ],
+          "FCPms": 922.0528,
+          "LCPms": 5737.4911999999995,
+          "TBTms": 223.9999999999999,
+          "CLSmax": 0
+        },
+        "final": {
+          "runs": 3,
+          "performance": 96,
+          "performanceRange": [
+            90,
+            98,
+            96
+          ],
+          "FCPms": 933.2304,
+          "LCPms": 2331.8408,
+          "TBTms": 180,
+          "CLSmax": 0
+        }
+      },
+      "/work/lucenex": {
+        "before": {
+          "runs": 1,
+          "performance": 81,
+          "performanceRange": [
+            81
+          ],
+          "FCPms": 927.1199,
+          "LCPms": 4318.1199,
+          "TBTms": 232.49999999999966,
+          "CLSmax": 0
+        },
+        "final": {
+          "runs": 3,
+          "performance": 91,
+          "performanceRange": [
+            91,
+            98,
+            91
+          ],
+          "FCPms": 926.794,
+          "LCPms": 3118.4966,
+          "TBTms": 167,
+          "CLSmax": 0
+        }
+      },
+      "/work/elegante": {
+        "before": {
+          "runs": 1,
+          "performance": 87,
+          "performanceRange": [
+            87
+          ],
+          "FCPms": 912.6262,
+          "LCPms": 3521.6368,
+          "TBTms": 237,
+          "CLSmax": 0
+        },
+        "final": {
+          "runs": 3,
+          "performance": 92,
+          "performanceRange": [
+            91,
+            92,
+            98
+          ],
+          "FCPms": 914.8496,
+          "LCPms": 3135.9088,
+          "TBTms": 158,
+          "CLSmax": 0
+        }
+      }
+    },
+    "limitations": [
+      "Lab simulations, not physical devices",
+      "Three mobile samples for homepage, pricing and the three affected case studies; one desktop sample per route",
+      "Before media comparison has one sample per case; interpret as indicative",
+      "Cold browser HTTP cache; CDN state and cloud host load not controlled",
+      "Initial baseline ran before VM restoration; reference controls ran in the final audit environment",
+      "Homepage reference median 98 versus final 92; no homepage speed improvement is claimed; initial baseline median was 93"
+    ]
+  },
+  "seo": {
+    "routes": 16,
+    "oneH1AndMain": true,
+    "canonicalOrigin": "https://madebysebi.com",
+    "pricingInSitemap": true,
+    "sitemapEntries": 16,
+    "robotsFetched": true,
+    "previewNoindexAllRoutes": true,
+    "structuredData": "ProfessionalService parsed on all 16 routes",
+    "socialImages": [
+      {
+        "path": "/brand/madebysebi-og.png",
+        "status": 200,
+        "bytes": 487139,
+        "contentType": "image/png",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "/media/posters/3.webp",
+        "status": 200,
+        "bytes": 69074,
+        "contentType": "image/webp",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "/media/posters/03-values.webp",
+        "status": 200,
+        "bytes": 86938,
+        "contentType": "image/webp",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "/media/posters/total-logistics-ship.webp",
+        "status": 200,
+        "bytes": 129610,
+        "contentType": "image/webp",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "/case-studies/numo-sebi/04-editorial.webp",
+        "status": 200,
+        "bytes": 130952,
+        "contentType": "image/webp",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "/media/posters/kent-modern-villa.webp",
+        "status": 200,
+        "bytes": 123314,
+        "contentType": "image/webp",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "/media/posters/lucenex-home.webp",
+        "status": 200,
+        "bytes": 36130,
+        "contentType": "image/webp",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "/case-studies/elegante/01-home.webp",
+        "status": 200,
+        "bytes": 62018,
+        "contentType": "image/webp",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      },
+      {
+        "path": "/case-studies/tourbuddy/01-home.webp",
+        "status": 200,
+        "bytes": 168692,
+        "contentType": "image/webp",
+        "cacheControl": "public, max-age=0, must-revalidate"
+      }
+    ],
+    "productionIndexingRequested": false
+  },
+  "analytics": {
+    "scripts": [
+      {
+        "src": "https://vercel.live/_next-live/feedback/feedback.js"
+      },
+      {
+        "src": "https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app/_vercel/insights/script.js",
+        "sdkn": "@vercel/analytics/next",
+        "sdkv": "1.3.1"
+      },
+      {
+        "src": "https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app/0926bb32a08f29f0/script.js",
+        "sdkn": "@vercel/speed-insights/next",
+        "sdkv": "2.0.0"
+      }
+    ],
+    "responses": [
+      {
+        "url": "https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app/_vercel/insights/script.js",
+        "status": 200
+      },
+      {
+        "url": "https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app/0926bb32a08f29f0/script.js",
+        "status": 200
+      },
+      {
+        "url": "https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app/_vercel/insights/script.js",
+        "status": 200
+      },
+      {
+        "url": "https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app/0926bb32a08f29f0/script.js",
+        "status": 200
+      },
+      {
+        "url": "https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app/_vercel/insights/script.js",
+        "status": 200
+      },
+      {
+        "url": "https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app/0926bb32a08f29f0/script.js",
+        "status": 200
+      }
+    ],
+    "collectionVerified": false,
+    "fieldStatisticsClaimed": false
+  },
+  "contact": {
+    "realEmailsSent": 0,
+    "providerMockTests": true,
+    "browserRequestsIntercepted": true,
+    "packageContexts": 24,
+    "categories": 8,
+    "legacyServiceLinks": 6,
+    "payloadFields": 9,
+    "requiredValidation": true,
+    "honeypot": true,
+    "htmlEscaping": true,
+    "directEmailFallback": true,
+    "utf8LimitBytes": 16000,
+    "providerTimeoutMs": 10000,
+    "envPresence": {
+      "keys": [
+        "RESEND_API_KEY",
+        "CONTACT_FROM_EMAIL",
+        "CONTACT_TO_EMAIL"
+      ],
+      "scope": [
+        "production"
+      ],
+      "valuesInspected": false,
+      "validityVerified": false
+    }
+  },
+  "security": {
+    "dependencyAudit": "0 known vulnerabilities at final pnpm audit",
+    "initialFinding": "1 moderate dev-only minimatch advisory GHSA-g3hv-75wg-m249",
+    "fix": "Scoped @typescript-eslint/typescript-estree>minimatch override to 11.0.6; lint/typecheck/tests/build passed",
+    "secretScan": "Tracked textual source scanned for private key, Resend, GitHub, Stripe and AWS credential patterns: no findings; not a penetration test",
+    "legalCopyUnchanged": true
+  },
+  "externalProjects": {
+    "checkedAt": "2026-11-13T11:36:44.925Z",
+    "method": "GET",
+    "timeoutMs": 12000,
+    "results": [
+      {
+        "url": "https://foreverpenghair.com",
+        "status": 200,
+        "finalUrl": "https://foreverpenghair.com/"
+      },
+      {
+        "url": "https://foreverpenghair.com/booking",
+        "status": 200,
+        "finalUrl": "https://foreverpenghair.com/booking"
+      },
+      {
+        "url": "https://www.powerelectrodeltd.com/",
+        "status": 200,
+        "finalUrl": "https://www.powerelectrodeltd.com/"
+      },
+      {
+        "url": "https://totallog.org",
+        "status": 200,
+        "finalUrl": "https://totallog.org/"
+      },
+      {
+        "url": "https://jewelry-store-numo-sebi-two.vercel.app",
+        "status": 200,
+        "finalUrl": "https://jewelry-store-numo-sebi-two.vercel.app/"
+      },
+      {
+        "url": "https://kent-architects.vercel.app",
+        "status": 200,
+        "finalUrl": "https://kent-architects.vercel.app/"
+      },
+      {
+        "url": "https://elegante-shop.vercel.app/",
+        "status": 200,
+        "finalUrl": "https://elegante-shop.vercel.app/"
+      },
+      {
+        "url": "https://tourbuddy.onrender.com/",
+        "status": 200,
+        "finalUrl": "https://tourbuddy.onrender.com/"
+      }
+    ]
+  },
+  "evidence": {
+    "starting": "docs/phase5/baseline-audits.json.gz",
+    "final": "docs/phase5/final-audits.json.gz",
+    "finalSha256": "23d05d6c090b43b64d27d3d8d69d9b4de918d1c52f36b0820e006023288ccf6d",
+    "contains": {
+      "finalAudits": 42,
+      "referenceControls": 8,
+      "preMediaAudits": 36
+    },
+    "fullTracesRetained": false
+  },
+  "readiness": {
+    "knownCriticalIssues": [],
+    "important": [
+      "Real email provider acceptance and inbox delivery remain untested; separate limited sending authorization and recipient confirmation required",
+      "Physical Android/iPhone, Safari, screen-reader and native browser zoom checks remain unverified",
+      "Some simulated mobile LCP medians remain around 3.1 seconds; verify on real devices and monitor field data; homepage improvement is not established"
+    ],
+    "minor": [
+      "Preview SEO 69 reflects deliberate noindex; verify production indexability only after authorization",
+      "Scoped development-only minimatch override and deprecated ESLint 9 require routine upstream follow-up",
+      "Sitemap lastmod remains build-time rather than content-derived"
+    ],
+    "assessment": "Ready for owner launch review with important release checks pending or requiring explicit risk acceptance; not an unconditional production approval",
+    "productionAuthorization": false
+  },
+  "completionReview": {
+    "date": "2026-11-13",
+    "cleanCheckout": true,
+    "reviewedCommit": "05e88ae3bf82bd59f990110c43788d80520e6e1a",
+    "reviewedTree": "8cb2f7b7e55a18befc965b561af7e94ed83a21ae",
+    "phase4ImplementationIsAncestor": true,
+    "remoteFeatureHeadMatched": true,
+    "remoteMainUnchanged": true,
+    "exactPreviewRechecked": {
+      "status": 200,
+      "path": "/pricing?category=ecommerce",
+      "expectedCategoryAndPublishedStorePricePresent": true,
+      "previewRobots": "noindex"
+    },
+    "credentialPatternScan": {
+      "trackedTextFindings": 0,
+      "unredactedAccessURLsInAuditBundles": 0
+    },
+    "legalContentUnchanged": true,
+    "productionDeploymentReconfirmed": "dpl_GjugdLr23SM4ngSsLUfJugyXvedN",
+    "note": "Saved audit data from the exact final implementation was validated; all eight local checks were rerun successfully in a new clean checkout. No physical-device, Safari, screen-reader or real-email success is inferred."
+  },
+  "evidenceChecksums": {
+    "docs/phase5/baseline-audits.json.gz": "b209582b807798d616bc6dbe26d1a2adc008a5ca609c7e6b9486ec8a0184e97a",
+    "docs/phase5/final-audits.json.gz": "23d05d6c090b43b64d27d3d8d69d9b4de918d1c52f36b0820e006023288ccf6d",
+    "docs/phase5/local-checks.json": "2874ffa350383c1c7f0d97603533788047e99ccb2190094f063aad5462eb58cc",
+    "scripts/audit-preview.mjs": "f22426a6b08f3155efdcc65d1fa89b81e24e4ecad32683c795df4333712382a0",
+    "scripts/phase5-browser-qa.mjs": "089d5a2821df204a33012302d21143ebe465945ab5330d898256a0557ff9275e"
+  },
+  "handoverCreationCommit": "5d96d945ac81f2c88bf7281fec4292dd6e4225c2"
+}

@@ -1,2 +1,7 @@
 allowBuilds:
+  esbuild: true
   sharp: true
+
+overrides:
+  source-map-js: 1.2.2
+  '@typescript-eslint/typescript-estree>minimatch': 11.0.6

@@ -11,6 +11,7 @@ export function GalleryHero() {
 
         .numo-arc-hero {
           position: relative;
+          padding-top: 80px;
           width: 100%;
           max-width: 100%;
           overflow: hidden;

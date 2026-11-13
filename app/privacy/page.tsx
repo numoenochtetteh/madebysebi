@@ -46,7 +46,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <>
-      <main className="min-h-screen bg-[#f4f4f1] px-5 pb-24 pt-32 text-[#0b0b0b] sm:px-8 lg:pt-40">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#f4f4f1] px-5 pb-24 pt-32 text-[#0b0b0b] sm:px-8 lg:pt-40">
         <div className="mx-auto max-w-[1180px]">
           <Link href="/" className="mb-10 inline-flex items-center gap-2 text-sm text-black/55 transition hover:text-black">
             <ArrowLeft size={15} /> Back home
@@ -54,19 +54,19 @@ export default function PrivacyPage() {
 
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">LEGAL · PRIVACY</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/60">LEGAL · PRIVACY</span>
               <h1 className="mt-5 text-[clamp(3.2rem,7vw,7rem)] font-semibold leading-[0.88] tracking-[-0.07em]">Privacy<br />Policy.</h1>
               <p className="mt-7 max-w-[430px] text-[15px] leading-7 text-black/60">
                 A clear summary of what information this website may collect and how MadeBySebi uses it.
               </p>
-              <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-black/35">Last updated · 21 September 2026</p>
+              <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-black/60">Last updated · 21 September 2026</p>
             </div>
 
             <div className="space-y-3">
               {sections.map((section, index) => (
                 <section key={section.title} className="rounded-[24px] border border-black/10 bg-white/55 p-6 sm:p-8">
                   <div className="mb-5 flex items-center justify-between gap-5">
-                    <span className="font-mono text-[9px] text-black/35">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="font-mono text-[9px] text-black/60">{String(index + 1).padStart(2, "0")}</span>
                     <span className="h-2.5 w-2.5 rounded-[3px] bg-[#cefa74]" />
                   </div>
                   <h2 className="text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">{section.title}</h2>

@@ -1,0 +1,18 @@
+{
+  "baselineCommit": "3c97eb80644019a9fd437e0d4a3cd5c01bc74465",
+  "baseline": {
+    "scriptCount": 12,
+    "bytes": 705730,
+    "gzipBytes": 217458,
+    "htmlBytes": 267527
+  },
+  "phase2": {
+    "scriptCount": 11,
+    "bytes": 625277,
+    "gzipBytes": 194238,
+    "htmlBytes": 94155,
+    "backgroundVideos": 0,
+    "canvasElements": 0
+  },
+  "note": "External JavaScript referenced by prerendered homepage HTML, gzip per file. Build artifact sizes, not a Lighthouse/network/INP measurement. Same Next.js version and shared integrations."
+}
