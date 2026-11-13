@@ -667,5 +667,6 @@
     "docs/phase5/local-checks.json": "2874ffa350383c1c7f0d97603533788047e99ccb2190094f063aad5462eb58cc",
     "scripts/audit-preview.mjs": "f22426a6b08f3155efdcc65d1fa89b81e24e4ecad32683c795df4333712382a0",
     "scripts/phase5-browser-qa.mjs": "089d5a2821df204a33012302d21143ebe465945ab5330d898256a0557ff9275e"
-  }
+  },
+  "handoverCreationCommit": "5d96d945ac81f2c88bf7281fec4292dd6e4225c2"
 }

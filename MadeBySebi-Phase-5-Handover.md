@@ -11,7 +11,7 @@ The rebuild is implemented and ready for owner launch review. Automated checks a
 | Feature branch | feat/business-repositioning-rebuild |
 | Final application implementation | 05e88ae3bf82bd59f990110c43788d80520e6e1a |
 | Tested implementation tree | 8cb2f7b7e55a18befc965b561af7e94ed83a21ae |
-| Handover creation commit | Recorded in the follow-up provenance commit |
+| Handover creation commit | 5d96d945ac81f2c88bf7281fec4292dd6e4225c2 |
 | Existing draft PR | https://github.com/numoenochtetteh/madebysebi/pull/2 |
 | Tested final preview | https://madebysebi-2058wcikj-numoenochtettehkent-9218s-projects.vercel.app/ |
 | Vercel deployment | dpl_BoR5aAwstHQuRTVK9nN9f9H1mv9k — READY, preview target; Git SHA matches the tested implementation |
