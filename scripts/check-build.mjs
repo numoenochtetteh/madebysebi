@@ -29,6 +29,8 @@ async function exists(file) {
 for (const file of htmlFiles) {
   const html = await readFile(file, "utf8");
   htmlCache.set(file, html);
+  const pagePath = path.relative(root, file).replaceAll(path.sep, "/").replace(/\.html$/, "");
+  const pageUrl = "https://madebysebi.com" + (pagePath === "index" ? "/" : "/" + pagePath);
   const headings = [...html.matchAll(/<h1(?:\s|>)/g)];
   if (headings.length !== 1)
     errors.push(`${file}: ${headings.length} h1 elements`);
@@ -38,7 +40,7 @@ for (const file of htmlFiles) {
     const tag = match[1];
     const url = new URL(
       match[2].replaceAll("&amp;", "&"),
-      "https://madebysebi.com",
+      pageUrl,
     );
     if (url.origin !== "https://madebysebi.com") continue;
     if (tag === "a") {
