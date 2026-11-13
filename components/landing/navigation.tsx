@@ -183,7 +183,7 @@ export function Navigation() {
               aria-current={pathname.startsWith(link.href) ? "page" : undefined}>{link.name}</Link>)}
           </nav>
           <div className="mbs-mobile-bottom">
-            <p>Have a project in mind? Let’s create a website that supports your business growth.</p>
+            <p>A website, mobile app or better business workflow? Let’s shape your next move.</p>
             <Link href="/work" onClick={closeMobileMenu} className="mbs-action mbs-action-secondary">View our work</Link>
             <Link href="/contact" onClick={closeMobileMenu} className="mbs-action mbs-action-primary">Start a project <ArrowUpRight size={18} aria-hidden="true" /></Link>
             <p>Accra, Ghana · Worldwide</p>

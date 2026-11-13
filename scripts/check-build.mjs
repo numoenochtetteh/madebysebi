@@ -15,6 +15,7 @@ async function walk(dir) {
 }
 await walk(root);
 const errors = [];
+const htmlCache = new Map();
 let links = 0;
 let images = 0;
 async function exists(file) {
@@ -27,6 +28,7 @@ async function exists(file) {
 }
 for (const file of htmlFiles) {
   const html = await readFile(file, "utf8");
+  htmlCache.set(file, html);
   const headings = [...html.matchAll(/<h1(?:\s|>)/g)];
   if (headings.length !== 1)
     errors.push(`${file}: ${headings.length} h1 elements`);
@@ -42,12 +44,21 @@ for (const file of htmlFiles) {
     if (tag === "a") {
       links++;
       const route = url.pathname;
-      if (route.startsWith("/_next/") || route.startsWith("/media/")) continue;
+      if (route.startsWith("/_next/")) continue;
+      if (/\.(?:png|jpe?g|webp|avif|svg|pdf|mp4)$/i.test(route)) {
+        if (!(await exists(path.join("public", decodeURIComponent(route))))) errors.push(`Missing linked asset ${route}`);
+        continue;
+      }
       const target = path.join(
         root,
         route === "/" ? "index.html" : route.replace(/^\//, "") + ".html",
       );
       const dynamicOutput = builtPageRoutes.get(route);
+      if (url.hash && await exists(target)) {
+        const destination = htmlCache.get(target) ?? await readFile(target, "utf8");
+        const fragment = decodeURIComponent(url.hash.slice(1));
+        if (!destination.includes(`id="${fragment}"`)) errors.push(`Missing fragment ${url.pathname}${url.hash} from ${path.relative(root, file)}`);
+      }
       if (!(await exists(target)) && !(dynamicOutput && await exists(path.join(".next/server", dynamicOutput))))
         errors.push(
           `Missing internal route ${url.pathname} from ${path.relative(root, file)}`,
@@ -89,7 +100,39 @@ for (const slug of ["pengtresses", "power-electrode-ltd", "numo-sebi"])
   if (!home.includes(`href="/work/${slug}"`)) errors.push(`Homepage lost real project link ${slug}`);
 if (!home.includes('href="/contact"') || !home.includes('href="/pricing"'))
   errors.push("Homepage contact or current pricing CTA is missing");
+
+const services = await readFile(path.join(root, "services.html"), "utf8");
+const work = await readFile(path.join(root, "work.html"), "utf8");
+const contact = await readFile(path.join(root, "contact.html"), "utf8");
+const legacyAnchors = ["web-design-development", "ux-ui-product-design", "branding-visual-design", "seo-geo-visibility", "digital-marketing-growth", "consultation-audits"];
+const categories = ["business-websites", "ecommerce", "booking", "business-launch", "web-applications", "business-systems", "mobile-applications", "maintenance-growth"];
+const slugs = ["pengtresses", "power-electrode-ltd", "total-logistics", "numo-sebi", "kent-architects", "lucenex", "elegante", "tourbuddy"];
+for (const id of [...pillarIds, ...legacyAnchors]) {
+  if ((services.match(new RegExp(`id="${id}"`, "g")) ?? []).length !== 1) errors.push(`Services needs one unique ${id} destination`);
+}
+for (const category of categories) if (!services.includes(`href="/pricing?category=${category}"`)) errors.push(`Services missing category link ${category}`);
+for (const slug of slugs) {
+  if (!work.includes(`data-project="${slug}"`)) errors.push(`Work missing case study ${slug}`);
+  const page = await readFile(path.join(root, "work", `${slug}.html`), "utf8");
+  if (!page.includes('aria-label="Case study navigation"')) errors.push(`Case study navigation missing: ${slug}`);
+  if (!/<img[^>]*fetchPriority="high"/i.test(page)) errors.push(`Prioritized still image missing: ${slug}`);
+  if (/<source[^>]*mp4/i.test(page) || /<video[^>]*\ssrc=/i.test(page)) errors.push(`Case study loads initial video sources: ${slug}`);
+}
+for (const route of ["services", "about", "work", "contact"]) {
+  const page = await readFile(path.join(root, `${route}.html`), "utf8");
+  if (/data-reveal|<canvas|hero-orb|marquee/i.test(page)) errors.push(`Heavy legacy effect returned to ${route}`);
+  for (const id of pillarIds) if (!page.includes(`href="/services#${id}"`)) errors.push(`Footer pillar link missing from ${route}: ${id}`);
+}
+for (const name of ["name", "email", "company", "website", "service", "budget", "timeline", "message", "businessWebsite"]) {
+  const field = [...contact.matchAll(/<(?:input|select|textarea)\b[^>]*>/g)].find(match => match[0].includes(`name="${name}"`));
+  if (!field) errors.push(`Contact field missing: ${name}`);
+  if (["name", "email", "service", "message"].includes(name) && !field?.[0].includes("required")) errors.push(`Contact required validation missing: ${name}`);
+}
+if (!contact.includes('href="mailto:hello@madebysebi.com"')) errors.push("Contact email fallback missing");
+
 const result = {
+  caseStudiesChecked: slugs.length,
+  rebuiltPagesChecked: 4,
   htmlPages: htmlFiles.length,
   internalLinksChecked: links,
   imageReferencesChecked: images,

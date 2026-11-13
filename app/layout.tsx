@@ -9,6 +9,8 @@ import { WhatsAppButton } from "@/components/landing/whatsapp-button";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { getSiteUrl } from "@/lib/site-url";
+import { company } from "@/lib/company";
+import { contactServices } from "@/lib/services";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,11 +36,11 @@ const socialProfiles = [
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "MadeBySebi — Web Design, Development & Digital Experiences",
+    default: "MadeBySebi — Websites, Mobile Apps & Business Software",
     template: "%s | MadeBySebi",
   },
   description:
-    "MadeBySebi is an Accra-based web design and development studio creating premium websites, web apps and digital experiences for businesses in Ghana and worldwide.",
+    company.description,
   keywords: [
     "web design Ghana",
     "web development Ghana",
@@ -46,6 +48,10 @@ export const metadata: Metadata = {
     "business websites Ghana",
     "website design agency Ghana",
     "web apps Ghana",
+    "mobile applications Ghana",
+    "custom business software",
+    "business management systems",
+    "workflow automation",
     "UI UX design Ghana",
     "SEO Ghana",
     "MadeBySebi",
@@ -61,23 +67,23 @@ export const metadata: Metadata = {
     type: "website",
     url: siteUrl,
     siteName: "MadeBySebi",
-    title: "MadeBySebi — Web Design, Development & Digital Experiences",
+    title: "MadeBySebi — Websites, Mobile Apps & Business Software",
     description:
-      "Premium websites, web apps and digital experiences built for businesses in Ghana and worldwide.",
+      company.description,
     images: [
       {
         url: "/brand/madebysebi-og.png",
         width: 1200,
         height: 630,
-        alt: "MadeBySebi — Web Design, Development & Digital Experiences",
+        alt: "MadeBySebi — Websites, Mobile Apps & Business Software",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MadeBySebi — Web Design, Development & Digital Experiences",
+    title: "MadeBySebi — Websites, Mobile Apps & Business Software",
     description:
-      "Premium websites, web apps and digital experiences built for businesses in Ghana and worldwide.",
+      company.description,
     images: ["/brand/madebysebi-og.png"],
     site: "@MadeBySebi",
     creator: "@MadeBySebi",
@@ -103,7 +109,7 @@ const organizationSchema = {
   logo: `${siteUrl}/brand/icon-512.png`,
   image: `${siteUrl}/brand/madebysebi-og.png`,
   description:
-    "Web design and development studio creating websites, web apps and digital experiences for businesses in Ghana and worldwide.",
+    company.description,
   email: "hello@madebysebi.com",
   address: {
     "@type": "PostalAddress",
@@ -112,15 +118,7 @@ const organizationSchema = {
   },
   areaServed: "Worldwide",
   sameAs: socialProfiles,
-  serviceType: [
-    "Web Design",
-    "Web Development",
-    "Web Applications",
-    "UX/UI Design",
-    "E-commerce Websites",
-    "Booking Websites",
-    "SEO",
-  ],
+  serviceType: contactServices.filter(service => service !== "Other"),
 };
 
 export default function RootLayout({
