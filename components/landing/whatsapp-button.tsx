@@ -23,7 +23,7 @@ export function WhatsAppButton() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="WhatsApp — chat with MadeBySebi on 054 247 0922"
+      aria-label="WhatsApp 054 247 0922 — chat with MadeBySebi"
       className="group fixed bottom-5 right-5 z-[70] inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-black/10 bg-[#cefa74] px-3.5 text-black shadow-[0_14px_35px_rgba(0,0,0,0.16)] motion-reduce:transition-none motion-reduce:transform-none transition-all duration-300 hover:-translate-y-1 hover:bg-white sm:bottom-6 sm:right-6 sm:h-13 sm:px-4"
     >
       <svg

@@ -52,8 +52,8 @@ try {
   await page.setViewport({width:1366,height:900,deviceScaleFactor:1});
   await page.addScriptTag({path:require.resolve("axe-core/axe.min.js")});
   item.axe=await page.evaluate(async()=>{const r=await window.axe.run(document,{runOnly:{type:"tag",values:["wcag2a","wcag2aa","wcag21a","wcag21aa","wcag22aa","best-practice"]}});return {version:r.testEngine.version,passes:r.passes.length,incomplete:r.incomplete.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.length})),violations:r.violations.map(v=>({id:v.id,impact:v.impact,description:v.description,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))};});
-  for(const image of await page.$("main img")){await image.evaluate(e=>e.scrollIntoView({block:"center"}));await page.waitForFunction(e=>e.complete&&e.naturalWidth>0,{timeout:20000},image);}
-  item.images=await page.$eval("main img",imgs=>imgs.map(i=>({src:i.currentSrc,loaded:i.complete&&i.naturalWidth>0,alt:i.getAttribute("alt")})));
+  for(const image of await page.$$("main img")){await image.evaluate(e=>e.scrollIntoView({block:"center"}));await page.waitForFunction(e=>e.complete&&e.naturalWidth>0,{timeout:20000},image);}
+  item.images=await page.$$eval("main img",imgs=>imgs.map(i=>({src:i.currentSrc,loaded:i.complete&&i.naturalWidth>0,alt:i.getAttribute("alt")})));
   item.links=await page.evaluate(()=>[...document.querySelectorAll("a[href]")].map(a=>a.getAttribute("href")));
   report.pages.push(item);
   fs.writeFileSync(path.join(output,"browser-qa-progress.json"),JSON.stringify(report,null,2));
@@ -146,14 +146,14 @@ try {
     await media.goto(origin+"/work/numo-sebi",{waitUntil:"networkidle2"});
     const actual=await media.evaluate(()=>({reduce:matchMedia("(prefers-reduced-motion: reduce)").matches,saveData:navigator.connection?.saveData,effectiveType:navigator.connection?.effectiveType}));
     assert.equal(actual.reduce,pref.motion==="reduce");assert.equal(actual.saveData,pref.saveData);assert.equal(actual.effectiveType,pref.effectiveType);
-    assert.equal(await media.$eval("video source",a=>a.length),0);
+    assert.equal(await media.$$eval("video source",a=>a.length),0);
     await media.click("details summary");await media.$eval("video",v=>v.scrollIntoView({block:"center"}));await pause(2300);
-    assert.equal(await media.$eval("video source",a=>a.length),0);assert.equal(mediaResponses.length,0);
+    assert.equal(await media.$$eval("video source",a=>a.length),0);assert.equal(mediaResponses.length,0);
     await media.focus("video");await media.keyboard.press("Enter");await media.waitForFunction(()=>document.querySelector("video").readyState>=2,{timeout:45000});
     if(await media.$eval("video",v=>v.paused))await media.keyboard.press("Space");
     await media.waitForFunction(()=>!document.querySelector("video").paused);
     const currentSrc=await media.$eval("video",v=>v.currentSrc);assert.match(currentSrc,/-mobile\.mp4$/);
-    await media.click("details summary");await pause(2400);assert.equal(await media.$eval("video source",a=>a.length),0);assert.equal(await media.$eval("video",v=>v.paused),true);
+    await media.click("details summary");await pause(2400);assert.equal(await media.$$eval("video source",a=>a.length),0);assert.equal(await media.$eval("video",v=>v.paused),true);
     return {actual,currentSrc,mediaResponses};
    }finally{await media.close();}
   });
