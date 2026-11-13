@@ -1,0 +1,287 @@
+{
+  "date": "2026-11-13",
+  "timezone": "Africa/Accra",
+  "repository": "numoenochtetteh/madebysebi",
+  "branch": "feat/business-repositioning-rebuild",
+  "implementationCommit": "b4b416635faf98ad255e06bedc9bf8864462007a",
+  "implementationTree": "656e573982c89eafc63f9a8741d410703adc36a0",
+  "verificationRuntime": {
+    "node": "24.22.3",
+    "pnpm": "11.25.0",
+    "environment": "Ephemeral isolated Vercel Sandbox, stopped after verification",
+    "productionEnvironmentValuesImported": false
+  },
+  "checks": [
+    {
+      "command": "pnpm install --frozen-lockfile",
+      "result": "passed",
+      "observedOutput": "Already up to date; Done in 645ms using pnpm v11.25.0"
+    },
+    {
+      "command": "pnpm lint",
+      "result": "passed",
+      "observedOutput": "eslint .; exit 0"
+    },
+    {
+      "command": "pnpm typecheck",
+      "result": "passed",
+      "observedOutput": "tsc --noEmit --incremental false; exit 0"
+    },
+    {
+      "command": "pnpm test",
+      "result": "passed",
+      "tests": 30,
+      "pass": 30,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 861.883796
+    },
+    {
+      "command": "pnpm build",
+      "result": "passed",
+      "generatedOutputs": 21
+    },
+    {
+      "command": "pnpm check:build",
+      "result": "passed",
+      "caseStudiesChecked": 8,
+      "rebuiltPagesChecked": 4,
+      "htmlPages": 17,
+      "internalLinksChecked": 707,
+      "imageReferencesChecked": 88,
+      "homepageServiceAnchors": 3,
+      "homepageBackgroundMedia": 0,
+      "pricingServerRoute": true,
+      "errors": []
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "preview": {
+    "url": "https://madebysebi-nmzyco57z-numoenochtettehkent-9218s-projects.vercel.app/services",
+    "deploymentId": "dpl_DYRNncfaT3qE3wDjNMVsLqUdHYCn",
+    "state": "READY",
+    "target": null,
+    "gitSha": "b4b416635faf98ad255e06bedc9bf8864462007a",
+    "authentication": "Vercel protection retained; temporary approved share access used for QA"
+  },
+  "viewportChecks": {
+    "routes": [
+      "/services",
+      "/about",
+      "/work",
+      "/contact"
+    ],
+    "sizes": [
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 820,
+        "height": 1180
+      },
+      {
+        "width": 740,
+        "height": 390
+      },
+      {
+        "width": 340,
+        "height": 740
+      },
+      {
+        "width": 320,
+        "height": 400
+      }
+    ],
+    "checksCompleted": 20,
+    "observedHttpStatuses": [
+      200
+    ],
+    "horizontalOverflow": false,
+    "textRangeOverflow": false,
+    "headerHeadingOverlap": false,
+    "whatsAppHeadingOverlap": false,
+    "pageErrors": []
+  },
+  "navigation": {
+    "servicesPillars": [
+      "online-presence",
+      "build-your-solution",
+      "grow-your-business"
+    ],
+    "observedAnchorTop": 112,
+    "observedScrolledHeaderBottom": 82,
+    "legacyAnchors": [
+      "web-design-development",
+      "ux-ui-product-design",
+      "branding-visual-design",
+      "seo-geo-visibility",
+      "digital-marketing-growth",
+      "consultation-audits"
+    ],
+    "menu": {
+      "viewport": {
+        "width": 340,
+        "height": 400
+      },
+      "scrollHeight": 746,
+      "clientHeight": 400,
+      "observedScrollTop": 346,
+      "focusContained": true,
+      "escapeClosed": true,
+      "focusReturnedTo": "Open navigation menu",
+      "bodyScrollRestored": true,
+      "desktopResizeClosed": true,
+      "menuLinkNavigationPassed": true
+    }
+  },
+  "pricing": {
+    "categories": 8,
+    "optionsPerCategory": 3,
+    "totalOptions": 24,
+    "allDirectCategoryUrlsRendered": true,
+    "search": "inventory -> 2 of 8 service categories",
+    "browserHistory": {
+      "back": "E-commerce & Online Stores",
+      "forward": "Booking Websites"
+    },
+    "publishedPricesRetained": [
+      "Landing Page: GH₵3,000",
+      "Business Website: GH₵6,500",
+      "Online Store: GH₵12,000"
+    ]
+  },
+  "contact": {
+    "publishedSelection": "Professional — Business Website; GH₵6,500",
+    "customSelection": "Professional — Business Mobile App; Custom Quote",
+    "legacySelection": "Web Design & Development",
+    "formTop": 112,
+    "headerBottom": 82,
+    "emptySubmitRejected": true,
+    "invalidFocus": "name",
+    "apiRequestsIntercepted": 2,
+    "mockedStatuses": [
+      503,
+      200
+    ],
+    "errorPreservedInput": true,
+    "successResetInput": true,
+    "payloadFields": [
+      "name",
+      "email",
+      "company",
+      "website",
+      "service",
+      "budget",
+      "timeline",
+      "message",
+      "businessWebsite"
+    ],
+    "selectedPackageInMessage": true,
+    "serviceChangeClearedContext": true,
+    "realEmailsSent": false
+  },
+  "portfolio": {
+    "slugs": [
+      "pengtresses",
+      "power-electrode-ltd",
+      "total-logistics",
+      "numo-sebi",
+      "kent-architects",
+      "lucenex",
+      "elegante",
+      "tourbuddy"
+    ],
+    "finalPreviewExpectedTitlesRendered": true,
+    "adjacentLinksPerCase": 2,
+    "originalProjectDataAndMediaPreserved": true
+  },
+  "media": {
+    "initialClosedWalkthroughSources": 0,
+    "manualPlaybackReadyState": 4,
+    "manualPlaybackPaused": false,
+    "afterClosing": {
+      "paused": true,
+      "sources": 0
+    },
+    "videoTest": "Forever Peng Hair walkthrough on final preview; Enter loads media, Space starts playback"
+  },
+  "contrast": [
+    {
+      "label": "Primary text on cream",
+      "foreground": "#171717",
+      "background": "#f7f7f3",
+      "ratio": 16.69
+    },
+    {
+      "label": "Supporting text on cream",
+      "foreground": "#5f625b",
+      "background": "#f7f7f3",
+      "ratio": 5.78
+    },
+    {
+      "label": "Green label on white",
+      "foreground": "#496124",
+      "background": "#ffffff",
+      "ratio": 6.96
+    },
+    {
+      "label": "Charcoal text on lime",
+      "foreground": "#171717",
+      "background": "#cefa74",
+      "ratio": 14.98
+    },
+    {
+      "label": "Footer supporting text",
+      "foreground": "#d8ddd0",
+      "background": "#171717",
+      "ratio": 12.95
+    },
+    {
+      "label": "Form placeholder",
+      "foreground": "#6b6e65",
+      "background": "#f7f7f3",
+      "ratio": 4.84
+    },
+    {
+      "label": "Form error",
+      "foreground": "#8c2525",
+      "background": "#fff5f5",
+      "ratio": 8.16
+    },
+    {
+      "label": "Form success",
+      "foreground": "#2f4a1f",
+      "background": "#eff8e8",
+      "ratio": 9.09
+    }
+  ],
+  "console": {
+    "nativeFinalApplicationOriginWarningsOrErrors": 0,
+    "otherOrUnattributedNativeLogEntries": 49,
+    "earlierAutomationNotes": [
+      "Firecrawl browser blocked /_vercel/insights/script.js with ERR_BLOCKED_BY_CLIENT",
+      "Rapid navigations aborted some Pricing prefetch requests"
+    ],
+    "scope": "No blanket zero-console-error claim"
+  },
+  "unverified": [
+    "Physical devices and Safari",
+    "Complete WCAG/screen-reader audit",
+    "Full Lighthouse/Web Vitals performance audit",
+    "Reliable forced reduced-motion and data-saving emulation; guards preserved and source reviewed",
+    "Unblocked analytics delivery",
+    "Real email delivery; explicit permission required"
+  ],
+  "production": {
+    "mainCommit": "36ce97c3524fd683efa8c2072b920641b6db0b65",
+    "deploymentId": "dpl_GjugdLr23SM4ngSsLUfJugyXvedN",
+    "merged": false,
+    "promoted": false,
+    "productionEnvironmentVariablesChanged": false,
+    "domainsChanged": false
+  }
+}
