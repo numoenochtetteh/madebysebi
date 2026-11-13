@@ -1,0 +1,59 @@
+{
+  "commit": "05e88ae3bf82bd59f990110c43788d80520e6e1a",
+  "tree": "8cb2f7b7e55a18befc965b561af7e94ed83a21ae",
+  "node": "v24.22.1",
+  "pnpm": "11.25.0",
+  "started": "2026-11-13T17:11:42Z",
+  "checks": [
+    {
+      "command": "pnpm install --frozen-lockfile",
+      "exitCode": 0,
+      "durationMs": 11395,
+      "output": "? Verifying lockfile against supply-chain policies (474 entries)...\nLockfile is up to date, resolution step is skipped\nProgress: resolved 1, reused 0, downloaded 0, added 0\nPackages: +375\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\nProgress: resolved 375, reused 0, downloaded 0, added 0\nProgress: resolved 375, reused 0, downloaded 1, added 0\nPackages are hard linked from the content-addressable store to the virtual store.\n  Content-addressable store is at: /workspace/.pnpm-store/v11\n  Virtual store is at:             node_modules/.pnpm\n\n   \u256d\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256e\n   \u2502                                                                      \u2502\n   \u2502                 Update available! 11.25.0 \u2192 12.18.0.                 \u2502\n   \u2502                 Changelog: https://pnpm.io/v/12.18.0                 \u2502\n   \u2502   To update, run: curl -fsSL https://get.pnpm.io/install.sh | sh -   \u2502\n   \u2502                                                                      \u2502\n   \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\n\nProgress: resolved 375, reused 0, downloaded 110, added 106\nProgress: resolved 375, reused 0, downloaded 208, added 208\nProgress: resolved 375, reused 0, downloaded 340, added 340\nProgress: resolved 375, reused 0, downloaded 373, added 372\n\u2713 Lockfile passes supply-chain policies (474 entries in 9.3s)\nProgress: resolved 375, reused 0, downloaded 374, added 374\nProgress: resolved 375, reused 0, downloaded 375, added 375, done\n.../esbuild@0.28.2/node_modules/esbuild postinstall$ node install.js\n.../esbuild@0.28.2/node_modules/esbuild postinstall: Done\n\ndependencies:\n+ @radix-ui/react-slot 1.1.1\n+ @vercel/analytics 1.3.1\n+ @vercel/speed-insights 2.0.0\n+ autoprefixer 10.5.4\n+ class-variance-authority 0.7.1\n+ clsx 2.1.1\n+ geist 1.7.0\n+ lucide-react 0.454.0\n+ next 16.4.6\n+ react 19.3.1\n+ react-dom 19.3.1\n+ sharp 0.35.5\n+ tailwind-merge 3.6.0\n+ tailwindcss-animate 1.0.7\n\ndevDependencies:\n+ @tailwindcss/postcss 4.3.3\n+ @types/node 22.20.1\n+ @types/react 19.2.18\n+ @types/react-dom 19.2.4\n+ eslint 9.39.5\n+ eslint-config-next 16.4.6\n+ postcss 8.5.26\n+ tailwindcss 4.3.3\n+ tsx 4.23.15\n+ tw-animate-css 1.3.3\n+ typescript 5.9.3\n\nDone in 11.2s using pnpm v11.25.0\n"
+    },
+    {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "durationMs": 4860,
+      "output": "$ eslint .\n"
+    },
+    {
+      "command": "pnpm exec next typegen",
+      "exitCode": 0,
+      "durationMs": 844,
+      "output": "Generating route types...\n\u2713 Types generated successfully\n"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "durationMs": 4040,
+      "output": "$ tsc --noEmit --incremental false\n"
+    },
+    {
+      "command": "pnpm test",
+      "exitCode": 0,
+      "durationMs": 899,
+      "output": "$ node --import tsx --test tests/*.test.ts\n\u2714 invalid and incomplete enquiries are rejected before calling the email provider (8.207228ms)\n\u2714 oversized payloads are rejected (0.662645ms)\n\u2714 the payload limit counts UTF-8 bytes even without a content-length header (0.661903ms)\n\u2714 honeypot accepts silently without sending mail (1.411028ms)\n\u2714 missing mail configuration returns the direct-contact fallback (0.771618ms)\n\u2714 provider request preserves enquiry fields and escapes untrusted content (1.263977ms)\n\u2714 provider failure surfaces a recoverable error (0.986681ms)\n\u2714 a stalled provider is bounded and returns the direct-email fallback (0.89291ms)\n\u2714 repositioning retains all three ordered service pillars and stable section anchors (1.669385ms)\n\u2714 published package prices are preserved during the foundation changes (0.1599ms)\n\u2714 sitemap covers pricing, legal pages and every retained case study (0.505579ms)\n\u2714 recovered video posters exist and are smaller than the original delivery assets (0.301603ms)\n\u2714 original project images and videos remain available (0.270365ms)\n\u2714 an offscreen video does not make the HTML preload scanner request its poster or source (16.911493ms)\n\u2714 company and team preserve the published names, roles, profiles and photos (2.469296ms)\n\u2714 service explanations cover all eight categories and retain the six legacy destinations (0.479129ms)\n\u2714 eight original case studies have complete circular project navigation without self links (0.749064ms)\n\u2714 project images, original galleries, operations views, videos and poster files remain available (1.518559ms)\n\u2714 contact payload preserves nine API fields, pricing context, original choices and spam field (0.926921ms)\n\u2714 contact submission uses the existing same-origin POST contract once with a mock transport (2.486842ms)\n\u2714 contact API validation and provider errors remain visible and never report success (1.069065ms)\n\u2714 network failures, non-JSON errors and malformed success retain a direct email fallback (1.319535ms)\n\u2714 eight categories cover every existing service ID, with three distinct options each (1.625409ms)\n\u2714 only the three approved offers have prices and all published content stays exact (0.246991ms)\n\u2714 direct URLs select all eight categories; unknown, empty and repeated values are graceful (1.319941ms)\n\u2714 pillar filters preserve the three business directions and fall back from conflicting categories (0.266991ms)\n\u2714 search matches services and proposed features, ignores case and spacing, and supports no results (0.423486ms)\n\u2714 category history URLs round-trip selection and filters without arbitrary external navigation (1.166ms)\n\u2714 every Get Started destination round-trips the service and the correct package (0.947862ms)\n\u2714 contact ignores tampered, mismatched and unknown package context (0.223836ms)\n\u2714 validated pricing context reaches the existing message without losing the user's brief (0.664207ms)\n\u2714 no brochure control can point at an absent or unapproved PDF (0.322333ms)\n\u2714 pricing selection reaches the unchanged Resend contract using a mock provider (4.82084ms)\n\u2139 tests 33\n\u2139 suites 0\n\u2139 pass 33\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 386.876939\n"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "durationMs": 42128,
+      "output": "$ next build --webpack\n\u25b2 Next.js 16.4.6 (webpack)\n\u2713 Running next.config.mjs took 13ms\nAttention: Next.js now collects completely anonymous telemetry regarding usage.\nThis information is used to shape Next.js' roadmap and prioritize features.\nYou can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\nhttps://nextjs.org/telemetry\n\n\n  Creating an optimized production build ...\n\u2713 Compiled successfully in 24.1s\n  Running TypeScript ...\n  Finished TypeScript in 3.8s ...\n  Collecting page data using 8 workers ...\n  Generating static pages using 8 workers (0/21) ...\n  Generating static pages using 8 workers (5/21) \n  Generating static pages using 8 workers (10/21) \n  Generating static pages using 8 workers (15/21) \n\u2713 Generating static pages using 8 workers (21/21) in 848ms\n  Finalizing page optimization ...\n  Collecting build traces ...\n\nRoute (app)\n\u250c \u25cb /\n\u251c \u25cb /_not-found\n\u251c \u25cb /about\n\u251c \u0192 /api/contact\n\u251c \u25cb /contact\n\u251c \u0192 /pricing\n\u251c \u25cb /privacy\n\u251c \u25cb /robots.txt\n\u251c \u25cb /services\n\u251c \u25cb /sitemap.xml\n\u251c \u25cb /terms\n\u251c \u25cb /work\n\u2514   /work/[slug]\n  \u251c \u25cf /work/pengtresses\n  \u251c \u25cf /work/power-electrode-ltd\n  \u251c \u25cf /work/total-logistics\n  \u2514 \u25cf [+5 more paths]\n\n\n\u25cb  (Static)   prerendered as static content\n\u25cf  (SSG)      prerendered as static HTML (uses generateStaticParams)\n\u0192  (Dynamic)  server-rendered on demand\n\n"
+    },
+    {
+      "command": "pnpm check:build",
+      "exitCode": 0,
+      "durationMs": 551,
+      "output": "$ node scripts/check-build.mjs\n{\"caseStudiesChecked\":8,\"rebuiltPagesChecked\":4,\"htmlPages\":17,\"internalLinksChecked\":707,\"imageReferencesChecked\":88,\"homepageServiceAnchors\":3,\"homepageBackgroundMedia\":0,\"pricingServerRoute\":true,\"errors\":[]}\n"
+    },
+    {
+      "command": "pnpm audit --json",
+      "exitCode": 0,
+      "durationMs": 5297,
+      "output": "{\n  \"advisories\": {},\n  \"metadata\": {\n    \"vulnerabilities\": {\n      \"info\": 0,\n      \"low\": 0,\n      \"moderate\": 0,\n      \"high\": 0,\n      \"critical\": 0\n    },\n    \"dependencies\": 76,\n    \"devDependencies\": 361,\n    \"optionalDependencies\": 108,\n    \"totalDependencies\": 474\n  }\n}\n"
+    }
+  ],
+  "finished": "2026-11-13T17:12:52Z",
+  "lockfileSha256": "f01b47b0e602950f62afa8183222892e95072568a071d2f0461f35726b0a8cb3"
+}
