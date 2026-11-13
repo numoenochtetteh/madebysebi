@@ -75,7 +75,17 @@ for (const file of htmlFiles) {
     }
   }
 }
-const sitemap = await readFile(path.join(root, "sitemap.xml.body"), "utf8");
+// Vercel's Next adapter can relocate prerendered metadata after next build.
+const sitemapCandidates = [
+  path.join(root, "sitemap.xml.body"),
+  path.join(root, "sitemap.xml", "route.body"),
+  path.join(".vercel/output/static", "sitemap.xml"),
+];
+let sitemap = "";
+for (const candidate of sitemapCandidates) {
+  if (await exists(candidate)) { sitemap = await readFile(candidate, "utf8"); break; }
+}
+if (!sitemap) errors.push(`Generated sitemap unavailable; app output entries: ${(await readdir(root)).join(", ")}`);
 if (!sitemap.includes("https://madebysebi.com/pricing"))
   errors.push("Pricing missing from sitemap");
 
