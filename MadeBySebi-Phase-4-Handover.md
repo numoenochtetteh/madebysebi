@@ -13,7 +13,7 @@ Phase 4 implementation is committed and previewed. Services, About, Work, all ei
 | Starting Phase 3 head | `ed14ca4179f3986b70f04950d91c573b14ccad61` |
 | Final tested implementation | `b4b416635faf98ad255e06bedc9bf8864462007a` |
 | Implementation Git tree | `656e573982c89eafc63f9a8741d410703adc36a0` |
-| Handover creation commit | Recorded in the documentation-only provenance update after this file is committed. |
+| Handover creation commit | `4c03b22a25b419c313553ef3df235ca9f6e7dee1` |
 | Existing draft PR | https://github.com/numoenochtetteh/madebysebi/pull/2 |
 | Verified implementation preview | https://madebysebi-nmzyco57z-numoenochtettehkent-9218s-projects.vercel.app/services |
 | Preview deployment | `dpl_DYRNncfaT3qE3wDjNMVsLqUdHYCn` — READY, preview target, Git SHA matches the tested implementation |
