@@ -31,6 +31,7 @@ export function LazyVideo({
 }: LazyVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
+  const [posterVisible, setPosterVisible] = useState(false);
   const nearViewport = useRef(false);
   const autoAllowed = useRef(false);
   const manualPlayback = useRef(false);
@@ -49,6 +50,9 @@ export function LazyVideo({
 
     const update = () => {
       window.clearTimeout(unloadTimer);
+      // Browsers fetch a poster even inside a closed <details>. Defer it until
+      // the video is visible, independently of consent to automatic playback.
+      setPosterVisible(nearViewport.current && !document.hidden);
       autoAllowed.current = !motion.matches && !connection?.saveData &&
         !/^(slow-)?2g$/.test(connection?.effectiveType ?? "");
       if (nearViewport.current && !document.hidden && (autoAllowed.current || manualPlayback.current)) {
@@ -107,7 +111,7 @@ export function LazyVideo({
           userPaused.current = true;
       }}
       preload={shouldLoad ? "metadata" : "none"}
-      poster={poster ? (posters as Record<string, string>)[poster] ?? poster : undefined}
+      poster={posterVisible && poster ? (posters as Record<string, string>)[poster] ?? poster : undefined}
       className={className}
       aria-label={ariaLabel}
     >
