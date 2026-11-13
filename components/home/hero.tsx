@@ -50,7 +50,7 @@ export function HomeHero() {
             <ArrowUpRight size={22} aria-hidden="true" />
           </div>
           <Link href="/work/pengtresses" className={styles.browser}
-            aria-label="Explore the Forever Peng Hair booking platform case study">
+            aria-label="foreverpenghair.com — explore the Forever Peng Hair booking platform case study">
             <div className={styles.browserBar} aria-hidden="true">
               <span /><span /><span /><small>foreverpenghair.com</small>
             </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 import "./foundation.css";
@@ -16,6 +17,18 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
+});
+
+// The cedi glyph otherwise downloads Inter's entire Latin Extended font.
+// Keep the same variable Inter glyph, subset to U+20B5 and loaded only when used.
+const currency = localFont({
+  src: "../public/fonts/madebysebi-currency.woff2",
+  variable: "--font-currency",
+  weight: "100 900",
+  display: "swap",
+  preload: false,
+  adjustFontFallback: false,
+  declarations: [{ prop: "unicode-range", value: "U+20B5" }],
 });
 
 const geistMono = Geist_Mono({
@@ -130,7 +143,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         id="top"
-        className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${currency.variable} ${inter.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <a className="mbs-skip-link" href="#main-content">Skip to content</a>
         <Navigation />

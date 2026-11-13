@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Services, Pricing & Packages",
   description: "Compare MadeBySebi services across eight categories: business websites, online stores, booking, business launches, custom software, mobile apps and ongoing growth. Published website prices and custom quotes in Ghana.",
   alternates: { canonical: "/pricing" },
-  openGraph: { title: "Services, Pricing & Packages | MadeBySebi", description: "Find the right scope for your website, application or next business improvement.", url: "/pricing" },
+  openGraph: { title: "Services, Pricing & Packages | MadeBySebi", description: "Find the right scope for your website, application or next business improvement.", url: "/pricing", images: [{ url: "/brand/madebysebi-og.png", width: 1200, height: 630, alt: "MadeBySebi — Services, Pricing & Packages" }] },
 };
 
 const faqs = [

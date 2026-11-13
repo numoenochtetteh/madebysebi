@@ -25,7 +25,7 @@ export default function ContactPage() {
       <aside className={styles.details}><SectionHeading eyebrow="START A PROJECT" title="A little context goes a long way." description="Share the business goal, the people you’re building for and anything you already have in place. We can shape the next step together." />
         <ul className={styles.points}><li><Check size={17} aria-hidden="true" />Website projects start from {websitePackages[0].price}</li><li><Check size={17} aria-hidden="true" />50% deposit to begin a project</li><li><Check size={17} aria-hidden="true" />Scope, responsibilities and milestones agreed together</li><li><Check size={17} aria-hidden="true" />{company.location} · Working worldwide</li></ul>
         <div className={styles.direct}><h3>Prefer a direct conversation?</h3><a href={`mailto:${company.email}`}>{company.email}<ArrowUpRight size={16} aria-hidden="true" /></a><a href={whatsappUrl} target="_blank" rel="noreferrer">{company.phone} · WhatsApp<ArrowUpRight size={16} aria-hidden="true" /></a><p>International projects are welcome. Location is not a barrier; projects can be quoted in USD or GBP where appropriate.</p></div>
-        <nav className={styles.socials} aria-label="MadeBySebi social media">{socialLinks.map(link => <a href={link.href} key={link.name} target="_blank" rel="noreferrer">{link.name}<ArrowUpRight size={14} aria-hidden="true" /></a>)}</nav>
+        <nav className={styles.socials} aria-label="Contact social profiles">{socialLinks.map(link => <a href={link.href} key={link.name} target="_blank" rel="noreferrer">{link.name}<ArrowUpRight size={14} aria-hidden="true" /></a>)}</nav>
       </aside>
       <ContactForm />
     </div></Container></Section>

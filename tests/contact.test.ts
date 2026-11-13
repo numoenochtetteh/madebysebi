@@ -46,6 +46,17 @@ test("oversized payloads are rejected", async () =>
     (await POST(request({ ...valid, message: "a".repeat(17000) }))).status,
     413,
   ));
+test("the payload limit counts UTF-8 bytes even without a content-length header", async (context) => {
+  let calls = 0;
+  context.mock.method(globalThis, "fetch", async () => {
+    calls++;
+    throw new Error("Unexpected provider call");
+  });
+  const enquiry = request({ ...valid, message: "\u{1f680}".repeat(4100) });
+  assert.equal(enquiry.headers.get("content-length"), null);
+  assert.equal((await POST(enquiry)).status, 413);
+  assert.equal(calls, 0);
+});
 test("honeypot accepts silently without sending mail", async (context) => {
   let calls = 0;
   context.mock.method(globalThis, "fetch", async () => {
@@ -78,6 +89,8 @@ test("provider request preserves enquiry fields and escapes untrusted content", 
     "fetch",
     async (url: string, init: RequestInit) => {
       assert.equal(url, "https://api.resend.com/emails");
+      assert.ok(init.signal instanceof AbortSignal);
+      assert.equal(init.signal.aborted, false);
       payload = JSON.parse(init.body as string);
       return Response.json({ id: "mock-email" });
     },
@@ -112,6 +125,34 @@ test("provider failure surfaces a recoverable error", async (context) => {
   try {
     const response = await POST(request(valid));
     assert.equal(response.status, 502);
+    assert.match((await response.json()).error, /hello@madebysebi.com/);
+  } finally {
+    if (oldKey) process.env.RESEND_API_KEY = oldKey;
+    else delete process.env.RESEND_API_KEY;
+  }
+});
+
+test("a stalled provider is bounded and returns the direct-email fallback", async (context) => {
+  const oldKey = process.env.RESEND_API_KEY;
+  process.env.RESEND_API_KEY = "test-only-placeholder";
+  const controller = new AbortController();
+  let timeoutMs: number | undefined;
+  context.mock.method(AbortSignal, "timeout", (ms: number) => {
+    timeoutMs = ms;
+    return controller.signal;
+  });
+  context.mock.method(console, "error", () => {});
+  context.mock.method(globalThis, "fetch", async (_url: string, init: RequestInit) => {
+    assert.equal(init.signal, controller.signal);
+    return new Promise<Response>((_resolve, reject) => {
+      init.signal!.addEventListener("abort", () => reject(init.signal!.reason), { once: true });
+      queueMicrotask(() => controller.abort(new DOMException("Provider timed out", "TimeoutError")));
+    });
+  });
+  try {
+    const response = await POST(request(valid));
+    assert.equal(timeoutMs, 10_000);
+    assert.equal(response.status, 500);
     assert.match((await response.json()).error, /hello@madebysebi.com/);
   } finally {
     if (oldKey) process.env.RESEND_API_KEY = oldKey;

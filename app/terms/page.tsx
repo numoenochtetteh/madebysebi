@@ -62,19 +62,19 @@ export default function TermsPage() {
 
           <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/45">LEGAL · TERMS</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-black/60">LEGAL · TERMS</span>
               <h1 className="mt-5 text-[clamp(3.2rem,7vw,7rem)] font-semibold leading-[0.88] tracking-[-0.07em]">Terms &amp;<br />Conditions.</h1>
               <p className="mt-7 max-w-[430px] text-[15px] leading-7 text-black/60">
                 The general website and project terms that support clear expectations when working with MadeBySebi.
               </p>
-              <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-black/35">Last updated · 21 September 2026</p>
+              <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.12em] text-black/60">Last updated · 21 September 2026</p>
             </div>
 
             <div className="space-y-3">
               {sections.map((section, index) => (
                 <section key={section.title} className="rounded-[24px] border border-black/10 bg-white/55 p-6 sm:p-8">
                   <div className="mb-5 flex items-center justify-between gap-5">
-                    <span className="font-mono text-[9px] text-black/35">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="font-mono text-[9px] text-black/60">{String(index + 1).padStart(2, "0")}</span>
                     <span className="h-2.5 w-2.5 rounded-[3px] bg-[#cefa74]" />
                   </div>
                   <h2 className="text-2xl font-semibold tracking-[-0.04em] sm:text-3xl">{section.title}</h2>

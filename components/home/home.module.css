@@ -1,5 +1,5 @@
 .hero {
-  padding: 128px 0 0;
+  padding: max(128px, 8rem) 0 0;
   background: var(--mbs-canvas);
   color: var(--mbs-ink);
 }
@@ -101,7 +101,7 @@
   .servicePath strong { font-size: 15px; }
 }
 @media (max-width: 1023px) {
-  .hero { padding-top: 116px; }
+  .hero { padding-top: max(116px, 7.25rem); }
   .heroGrid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .heroTitle { font-size: clamp(2.75rem, 6vw, 4rem); }
   .heroDescription { font-size: 15px; }
@@ -123,7 +123,7 @@
   .workHeading { align-items: start; flex-direction: column; gap: 20px; }
 }
 @media (max-width: 767px) {
-  .hero { padding-top: 108px; }
+  .hero { padding-top: max(108px, 6.75rem); }
   .heroGrid { display: flex; flex-direction: column; gap: 28px; align-items: stretch; }
   .heroCopy { order: 1; }
   .heroCopy :global(.mbs-eyebrow) { margin-bottom: 18px; }
@@ -157,7 +157,7 @@
   .ctaPanel > div > p { font-size: 15px; }
 }
 @media (max-width: 380px) {
-  .hero { padding-top: 100px; }
+  .hero { padding-top: max(100px, 6.25rem); }
   .heroCopy :global(.mbs-eyebrow) { font-size: 9px; padding-inline: 9px; }
   .actions { gap: 8px 20px; }
   .actions :global(.mbs-action) { width: 100%; font-size: 13px; }
@@ -166,7 +166,7 @@
   .visualTopline { font-size: 10px; }
 }
 @media (max-height: 600px) and (min-width: 621px) and (max-width: 1023px) {
-  .hero { padding-top: 100px; }
+  .hero { padding-top: max(100px, 6.25rem); }
   .heroGrid { grid-template-columns: 1fr; grid-template-areas: "copy" "paths"; gap: 20px; }
   .heroVisual { display: none; }
   .heroCopy :global(.mbs-eyebrow) { display: none; }
@@ -191,7 +191,7 @@
 
 /* Keep the existing chat control clear of the service choices on short screens. */
 @media (max-height: 600px) and (min-width: 621px) and (max-width: 1023px) {
-  :global(body):has(.hero) :global(a[aria-label="Chat with MadeBySebi on WhatsApp"]) {
+  :global(body):has(.hero) :global(a[data-whatsapp-link]) {
     top: 100px;
     bottom: auto;
   }
