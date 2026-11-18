@@ -575,3 +575,59 @@
 .orbitVideo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .projectsInspiredHero .carouselControls .orbitVideoToggle { width: auto; min-width: 52px; padding-inline: 11px; border-radius: 99px; font-size: 11px; font-weight: 650; }
 .projectsInspiredHero .carouselControls .orbitVideoToggle:disabled { opacity: .55; cursor: not-allowed; }
+
+/* Continuous curved motion inspired by the supplied moving-project reference. */
+.driftingShowcase .orbitStage {
+  height: clamp(345px, 35vw, 470px);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.driftingShowcase .orbitStage::before {
+  top: 12%;
+  height: 83%;
+  border-top-color: #a9c69b42;
+}
+.driftingShowcase .orbitCard {
+  top: 13%;
+  width: clamp(190px, 26.5vw, 358px);
+  height: clamp(205px, 25vw, 335px);
+  transform: translate(-50%, 0);
+  transition: none;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.driftingShowcase .orbitCard::after { z-index: 1; }
+.driftingShowcase .orbitCardLabel { z-index: 2; }
+.driftingShowcase .orbitFooter { margin-top: -7px; }
+.projectsInspiredHero .carouselControls .orbitMotionToggle {
+  width: 36px;
+  height: 36px;
+}
+.projectsInspiredHero .carouselControls .orbitVideoToggle {
+  width: auto;
+  min-width: 52px;
+  padding-inline: 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 650;
+}
+.projectsInspiredHero .carouselControls button:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+@media (max-width: 767px) {
+  .driftingShowcase .orbitStage { height: clamp(270px, 72vw, 385px); }
+  .driftingShowcase .orbitCard {
+    top: 11%;
+    width: clamp(175px, 54vw, 275px);
+    height: clamp(195px, 57vw, 280px);
+  }
+}
+@media (max-width: 380px) {
+  .driftingShowcase .orbitStage { height: 255px; }
+  .driftingShowcase .orbitCard { width: 175px; height: 190px; }
+  .driftingShowcase .orbitFooter { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .driftingShowcase .orbitCard { transition: none; will-change: auto; }
+}
