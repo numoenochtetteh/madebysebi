@@ -1,8 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { ActionLink, Container, Eyebrow } from "@/components/site/primitives";
+import { caseStudyProjects } from "@/lib/projects";
 import { serviceGroups } from "@/lib/services";
+import posters from "@/lib/video-posters.json";
+import { FeaturedCarousel } from "./featured-carousel";
 import styles from "./home.module.css";
 
 const summaries = [
@@ -10,6 +12,17 @@ const summaries = [
   "Custom software & mobile apps",
   "Marketing, improvements & support",
 ];
+const featuredSlugs = ["pengtresses", "power-electrode-ltd", "numo-sebi"];
+const featuredProjects = featuredSlugs.map(slug => {
+  const project = caseStudyProjects.find(item => item.slug === slug)!;
+  return {
+    slug: project.slug,
+    title: project.title,
+    industry: project.industry,
+    type: project.type,
+    image: (posters as Record<string, string>)[project.image] ?? project.image,
+  };
+});
 
 export function HomeHero() {
   return (
@@ -18,9 +31,12 @@ export function HomeHero() {
         <div className={styles.heroCopy}>
           <Eyebrow>Made for your next move</Eyebrow>
           <h1 id="home-title" className={styles.heroTitle}>
-            Get online.<br />
-            Build smarter.<br />
-            <span>Keep growing.</span>
+            <span>Full Services</span>
+            <span><em>Agency</em> For</span>
+            <span className={styles.headlineWords} aria-hidden="true">
+              <span>Startups.</span><span>Apps.</span><span>Brands.</span>
+            </span>
+            <span className={styles.screenReaderOnly}>Startups, Apps and Brands.</span>
           </h1>
           <p className={styles.heroDescription}>
             Websites, mobile apps and custom software that help you reach
@@ -44,31 +60,7 @@ export function HomeHero() {
           ))}
         </nav>
 
-        <div className={styles.heroVisual}>
-          <div className={styles.visualTopline}>
-            <span>From first impression to everyday action</span>
-            <ArrowUpRight size={22} aria-hidden="true" />
-          </div>
-          <Link href="/work/pengtresses" className={styles.browser}
-            aria-label="foreverpenghair.com — explore the Forever Peng Hair booking platform case study">
-            <div className={styles.browserBar} aria-hidden="true">
-              <span /><span /><span /><small>foreverpenghair.com</small>
-            </div>
-            <div className={styles.heroImage}>
-              <Image src="/media/posters/3.webp" fill
-                alt="Forever Peng Hair website and booking platform built by MadeBySebi"
-                sizes="(max-width: 767px) 90vw, (max-width: 1023px) 80vw, 44vw"
-                loading="eager" fetchPriority="high" />
-            </div>
-          </Link>
-          <div className={styles.heroCaption}>
-            <div><span>Selected work / Beauty & booking</span><strong>Forever Peng Hair</strong></div>
-            <Link href="/work/pengtresses" className={styles.roundLink}
-              aria-label="Read the Forever Peng Hair case study">
-              <ArrowUpRight size={22} aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
+        <FeaturedCarousel projects={featuredProjects} />
       </Container>
     </section>
   );

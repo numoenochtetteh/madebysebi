@@ -94,6 +94,7 @@ if (!sitemap.includes("https://madebysebi.com/pricing"))
 // Check the delivered homepage contract, including server-rendered content and
 // real fragment destinations. These guards protect the three customer journeys.
 const home = await readFile(path.join(root, "index.html"), "utf8");
+const renderedMain = home.match(/<main id="main-content" tabindex="-1">[\s\S]*?<\/main>/)?.[0] ?? "";
 const pillarIds = ["online-presence", "build-your-solution", "grow-your-business"];
 const sectionIds = [...home.matchAll(/<section\b[^>]*\bid="([^"]+)"/g)].map(match => match[1]);
 if (JSON.stringify(sectionIds.slice(0, 3)) !== JSON.stringify(pillarIds))
@@ -112,6 +113,19 @@ for (const slug of ["pengtresses", "power-electrode-ltd", "numo-sebi"])
   if (!home.includes(`href="/work/${slug}"`)) errors.push(`Homepage lost real project link ${slug}`);
 if (!home.includes('href="/contact"') || !home.includes('href="/pricing"'))
   errors.push("Homepage contact or current pricing CTA is missing");
+for (const phrase of ["Full Services", "Agency", "Startups.", "Apps.", "Brands."])
+  if (!home.includes(phrase)) errors.push(`Homepage headline missing ${phrase}`);
+if (!home.includes('aria-roledescription="carousel"') || !home.includes('aria-label="Next project"') || !home.includes('aria-label="Previous project"'))
+  errors.push("Homepage featured carousel or controls missing from rendered HTML");
+if ((renderedMain.match(/explore pricing and scope/g) ?? []).length !== 10)
+  errors.push("Homepage service cards must retain ten real Pricing destinations");
+const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] ?? "";
+if (!header.includes('href="/work"') || header.includes("View our work"))
+  errors.push("Header should keep Work navigation without the secondary View our work link");
+if ((renderedMain.match(/View case study/g) ?? []).length !== 3)
+  errors.push("Selected Work must link all three featured case studies");
+if (!(await exists("public/media/growth-texture.webp")))
+  errors.push("Grow section optimized still background missing");
 
 const services = await readFile(path.join(root, "services.html"), "utf8");
 const work = await readFile(path.join(root, "work.html"), "utf8");

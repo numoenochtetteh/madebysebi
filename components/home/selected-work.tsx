@@ -19,17 +19,21 @@ export function HomeSelectedWork() {
           <Link className={styles.textLink} href="/work">Explore all our work <ArrowUpRight size={18} aria-hidden="true" /></Link>
         </div>
         <div className={styles.projectGrid}>
-          {projects.map(project => (
+          {projects.map((project, index) => (
             <article key={project.slug} className={styles.projectCard}>
               <Link href={`/work/${project.slug}`} aria-label={`Read the ${project.title} case study`} className={styles.projectImage}>
                 <Image src={(posters as Record<string, string>)[project.image] ?? project.image}
-                  alt={`${project.title} website built by MadeBySebi`} fill loading="lazy"
-                  sizes="(max-width: 620px) 90vw, (max-width: 1023px) 44vw, 30vw" />
+                  alt={`${project.title} project preview`} fill loading="lazy"
+                  sizes="(max-width: 620px) 90vw, (max-width: 1023px) 44vw, 44vw" />
+                <span className={styles.projectNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
                 <span className={styles.projectArrow} aria-hidden="true"><ArrowUpRight size={20} /></span>
               </Link>
-              <p className={styles.projectType}>{project.industry} / {project.type}</p>
-              <h3><Link href={`/work/${project.slug}`}>{project.title}</Link></h3>
-              <p>{project.summary}</p>
+              <div className={styles.projectBody}>
+                <p className={styles.projectType}>{project.industry} / {project.type}</p>
+                <h3><Link href={`/work/${project.slug}`}>{project.title}</Link></h3>
+                <p>{project.summary}</p>
+                <Link className={styles.caseStudyLink} href={`/work/${project.slug}`}>View case study <ArrowUpRight size={16} aria-hidden="true" /></Link>
+              </div>
             </article>
           ))}
         </div>

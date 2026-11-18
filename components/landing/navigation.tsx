@@ -121,16 +121,7 @@ export function Navigation() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden items-center gap-4 lg:flex">
-            <Link
-              href="/work"
-              className={`text-black/60 motion-reduce:transition-none transition-all duration-300 hover:text-black ${
-                isScrolled ? "text-xs" : "text-sm"
-              }`}
-            >
-              View our work
-            </Link>
-
+          <div className="hidden items-center lg:flex">
             <Link
               href="/contact"
               className={`group inline-flex items-center justify-center gap-2 rounded-full bg-black font-medium text-white motion-reduce:transition-none transition-all duration-300 hover:scale-[1.02] hover:bg-black/80 ${
@@ -184,7 +175,6 @@ export function Navigation() {
           </nav>
           <div className="mbs-mobile-bottom">
             <p>A website, mobile app or better business workflow? Let’s shape your next move.</p>
-            <Link href="/work" onClick={closeMobileMenu} className="mbs-action mbs-action-secondary">View our work</Link>
             <Link href="/contact" onClick={closeMobileMenu} className="mbs-action mbs-action-primary">Start a project <ArrowUpRight size={18} aria-hidden="true" /></Link>
             <p>Accra, Ghana · Worldwide</p>
           </div>
