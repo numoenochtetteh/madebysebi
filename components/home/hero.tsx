@@ -29,7 +29,7 @@ export function HomeHero() {
     <section className={styles.hero} aria-labelledby="home-title">
       <Container className={styles.heroGrid}>
         <div className={styles.heroCopy}>
-          <Eyebrow>Made for your next move</Eyebrow>
+          <div className={styles.heroKicker}><Eyebrow>Made for your next move</Eyebrow><span className={styles.heroKickerLine} aria-hidden="true" /><span className={styles.heroKickerNote}>Digital solutions · Accra & beyond</span></div>
           <h1 id="home-title" className={styles.heroTitle}>
             <span>Full Services</span>
             <span><em>Agency</em> For</span>
@@ -48,6 +48,7 @@ export function HomeHero() {
               See our work <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
           </div>
+          <div className={styles.heroFootnote}><span className={styles.heroFootnoteDot} aria-hidden="true" /> From first idea to what comes next.</div>
         </div>
 
         <nav className={styles.serviceNav} aria-label="Choose how we can help">
