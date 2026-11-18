@@ -12,9 +12,17 @@ const summaries = [
   "Custom software & mobile apps",
   "Marketing, improvements & support",
 ];
-const featuredSlugs = ["pengtresses", "power-electrode-ltd", "numo-sebi"];
-const featuredProjects = featuredSlugs.map(slug => {
-  const project = caseStudyProjects.find(item => item.slug === slug)!;
+
+const featuredSlugs = [
+  "pengtresses",
+  "power-electrode-ltd",
+  "numo-sebi",
+  "total-logistics",
+  "lucenex",
+];
+
+const featuredProjects = featuredSlugs.map((slug) => {
+  const project = caseStudyProjects.find((item) => item.slug === slug)!;
   return {
     slug: project.slug,
     title: project.title,
@@ -26,10 +34,10 @@ const featuredProjects = featuredSlugs.map(slug => {
 
 export function HomeHero() {
   return (
-    <section className={styles.hero} aria-labelledby="home-title">
-      <Container className={styles.heroGrid}>
-        <div className={styles.heroCopy}>
-          <div className={styles.heroKicker}><Eyebrow>Made for your next move</Eyebrow><span className={styles.heroKickerLine} aria-hidden="true" /><span className={styles.heroKickerNote}>Digital solutions · Accra & beyond</span></div>
+    <section className={`${styles.hero} ${styles.projectsInspiredHero}`} aria-labelledby="home-title">
+      <Container className={styles.projectsHeroInner}>
+        <div className={styles.projectsHeroIntro}>
+          <Eyebrow>MadeBySebi · Digital solutions</Eyebrow>
           <h1 id="home-title" className={styles.heroTitle}>
             <span>Full Services</span>
             <span><em>Agency</em> For</span>
@@ -39,17 +47,18 @@ export function HomeHero() {
             <span className={styles.screenReaderOnly}>Startups, Apps and Brands.</span>
           </h1>
           <p className={styles.heroDescription}>
-            Websites, mobile apps and custom software that help you reach
-            customers, simplify everyday work and move your business forward.
+            Websites, mobile apps and custom software that help you reach customers,
+            simplify everyday work and move your business forward.
           </p>
           <div className={styles.actions}>
             <ActionLink href="/contact">Let’s build your next move</ActionLink>
             <Link className={styles.textLink} href="/work">
-              See our work <ArrowUpRight size={17} aria-hidden="true" />
+              Explore our projects <ArrowUpRight size={17} aria-hidden="true" />
             </Link>
           </div>
-          <div className={styles.heroFootnote}><span className={styles.heroFootnoteDot} aria-hidden="true" /> From first idea to what comes next.</div>
         </div>
+
+        <FeaturedCarousel projects={featuredProjects} />
 
         <nav className={styles.serviceNav} aria-label="Choose how we can help">
           {serviceGroups.map((group, index) => (
@@ -60,8 +69,6 @@ export function HomeHero() {
             </a>
           ))}
         </nav>
-
-        <FeaturedCarousel projects={featuredProjects} />
       </Container>
     </section>
   );
