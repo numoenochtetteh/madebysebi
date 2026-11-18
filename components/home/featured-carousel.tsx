@@ -52,7 +52,7 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
   }, []);
 
   useEffect(() => {
-    if (!regionRef.current || !('IntersectionObserver' in window)) return;
+    if (!regionRef.current || !("IntersectionObserver" in window)) return;
     const observer = new IntersectionObserver(([entry]) => setOnscreen(entry.isIntersecting), { threshold: 0.1 });
     observer.observe(regionRef.current);
     return () => observer.disconnect();
@@ -60,12 +60,17 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
 
   useEffect(() => {
     if (projects.length < 2 || hovered || focused || !visible || !onscreen || reducedMotion || saveData) return;
-    const timer = window.setInterval(() => setActive(current => nextSlide(current, 1, projects.length)), CAROUSEL_INTERVAL);
+    const timer = window.setInterval(
+      () => setActive(current => nextSlide(current, 1, projects.length)),
+      CAROUSEL_INTERVAL
+    );
     return () => window.clearInterval(timer);
   }, [projects.length, hovered, focused, visible, onscreen, reducedMotion, saveData]);
 
-  const move = (direction: number) => setActive(current => nextSlide(current, direction, projects.length));
-  const project = projects[active];
+  if (!projects.length) return null;
+  const current = projects[active];
+
+  const move = (direction: number) => setActive(currentIndex => nextSlide(currentIndex, direction, projects.length));
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();
@@ -85,39 +90,70 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
   };
 
   return (
-    <div className={styles.heroVisual} ref={regionRef} role="region" aria-roledescription="carousel"
+    <div className={`${styles.heroVisual} ${styles.orbitShowcase}`}
+      ref={regionRef} role="region" aria-roledescription="carousel"
       aria-label="Featured MadeBySebi projects" tabIndex={0} onKeyDown={onKeyDown}
-      onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} onTouchCancel={() => { touchStart.current = null; }}
+      onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}
+      onTouchCancel={() => { touchStart.current = null; }}
       onPointerEnter={() => setHovered(true)} onPointerLeave={() => setHovered(false)}
-      onFocusCapture={() => setFocused(true)} onBlurCapture={onBlur}>
-      <div className={styles.visualTopline}>
-        <span>From first impression to everyday action</span>
-        <span>{String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span>
+      onFocusCapture={() => setFocused(true)} onBlurCapture={onBlur}
+    >
+      <div className={styles.orbitHeading}>
+        <span className={styles.orbitEyebrow}>SELECTED PROJECTS / 2026</span>
+        <span className={styles.orbitCount}>{String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span>
       </div>
-      <Link key={project.slug} href={`/work/${project.slug}`} className={`${styles.browser} ${styles.carouselReveal}`}
-        aria-label={`Explore the ${project.title} case study`}>
-        <div className={styles.browserBar} aria-hidden="true">
-          <span /><span /><span /><small>{project.title}</small>
+
+      <div className={styles.orbitStage} aria-label="Explore featured project previews">
+        {projects.map((project, index) => {
+          const difference = (index - active + projects.length) % projects.length;
+          const position = difference > Math.floor(projects.length / 2) ? difference - projects.length : difference;
+          const content = (
+            <>
+              <Image src={project.image} fill alt={`${project.title} project preview`}
+                sizes="(max-width: 600px) 65vw, (max-width: 1023px) 40vw, 27vw"
+                loading={position === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"} />
+              <span className={styles.orbitCardLabel}>{project.title}</span>
+            </>
+          );
+          return position === 0 ? (
+            <Link key={project.slug} href={`/work/${project.slug}`}
+              className={styles.orbitCard} data-position={position}
+              aria-label={`Explore the ${project.title} case study`}>
+              {content}
+            </Link>
+          ) : (
+            <button key={project.slug} type="button" className={styles.orbitCard}
+              data-position={position} onClick={() => setActive(index)}
+              aria-label={`Show ${project.title}`}>{content}</button>
+          );
+        })}
+      </div>
+
+      <div className={styles.orbitFooter}>
+        <div className={styles.orbitProjectInfo}>
+          <span>{current.industry} / {current.type}</span>
+          <strong>{current.title}</strong>
         </div>
-        <div className={styles.heroImage}>
-          <Image src={project.image} fill alt={`${project.title} project preview`}
-            sizes="(max-width: 767px) 90vw, (max-width: 1023px) 80vw, 44vw"
-            loading="eager" fetchPriority={active === 0 ? "high" : "auto"} />
-        </div>
-      </Link>
-      <div className={styles.heroCaption}>
-        <div><span>Selected work / {project.industry} · {project.type}</span><strong>{project.title}</strong></div>
         <div className={styles.carouselControls}>
-          <button type="button" onClick={() => move(-1)} aria-label="Previous project"><ArrowLeft size={19} aria-hidden="true" /></button>
-          <button type="button" onClick={() => move(1)} aria-label="Next project"><ArrowRight size={19} aria-hidden="true" /></button>
-          <Link href={`/work/${project.slug}`} className={styles.roundLink} aria-label={`Read the ${project.title} case study`}>
+          <button type="button" onClick={() => move(-1)} aria-label="Previous project">
+            <ArrowLeft size={19} aria-hidden="true" />
+          </button>
+          <button type="button" onClick={() => move(1)} aria-label="Next project">
+            <ArrowRight size={19} aria-hidden="true" />
+          </button>
+          <Link href={`/work/${current.slug}`} className={styles.roundLink}
+            aria-label={`Read the ${current.title} case study`}>
             <ArrowUpRight size={20} aria-hidden="true" />
           </Link>
         </div>
       </div>
       <div className={styles.carouselDots} aria-label="Choose a featured project">
-        {projects.map((item, index) => <button type="button" key={item.slug} onClick={() => setActive(index)}
-          aria-label={`Show ${item.title}`} aria-current={active === index ? "true" : undefined} />)}
+        {projects.map((project, index) => (
+          <button type="button" key={project.slug} onClick={() => setActive(index)}
+            aria-label={`Show ${project.title}`}
+            aria-current={active === index ? "true" : undefined} />
+        ))}
       </div>
     </div>
   );
