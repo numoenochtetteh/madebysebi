@@ -37,6 +37,7 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
   const progressRef = useRef(0);
   const lastActiveRef = useRef(0);
   const swipeRef = useRef<{ x: number; y: number } | null>(null);
+  const didSwipeRef = useRef(false);
   const count = projects.length;
   const paused = hovered || focused || !visible || !onscreen || reducedMotion || saveData || !playing;
 
@@ -104,11 +105,11 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
         setActive(current);
         setPlayPreview(false);
       }
-      frame = window.requestAnimationFrame(tick);
+      if (!paused) frame = window.requestAnimationFrame(tick);
     };
     frame = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frame);
-  }, [count, paused]);
+  }, [count, paused, active]);
 
   if (!count) return null;
   const currentProject = projects[active];
@@ -126,6 +127,7 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
   };
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
     if (event.pointerType !== "touch") return;
+    didSwipeRef.current = false;
     swipeRef.current = { x: event.clientX, y: event.clientY };
   };
   const onPointerUp = (event: PointerEvent<HTMLDivElement>) => {
@@ -133,7 +135,10 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
     const deltaX = event.clientX - swipeRef.current.x;
     const deltaY = event.clientY - swipeRef.current.y;
     swipeRef.current = null;
-    if (Math.abs(deltaX) >= 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) move(deltaX < 0 ? 1 : -1);
+    if (Math.abs(deltaX) >= 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.25) {
+      didSwipeRef.current = true;
+      move(deltaX < 0 ? 1 : -1);
+    }
   };
   const onBlur = (event: FocusEvent<HTMLDivElement>) => {
     if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
@@ -147,7 +152,9 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
       tabIndex={0} onKeyDown={onKeyDown}
       onPointerDown={onPointerDown} onPointerUp={onPointerUp}
       onPointerCancel={() => { swipeRef.current = null; }}
-      onPointerEnter={() => setHovered(true)} onPointerLeave={() => setHovered(false)}
+      onClickCapture={event => {
+        if (didSwipeRef.current) { event.preventDefault(); event.stopPropagation(); didSwipeRef.current = false; }
+      }}
       onFocusCapture={() => setFocused(true)} onBlurCapture={onBlur}>
       <div className={styles.orbitHeading}>
         <span className={styles.orbitEyebrow}>SELECTED PROJECTS / DIGITAL EXPERIENCES</span>
@@ -161,7 +168,9 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
               ref={element => { cardsRef.current[index] = element; }}
               className={styles.orbitCard} data-active={isActive}
               aria-label={`Explore the ${project.title} case study`}
-              tabIndex={isActive ? 0 : -1}>
+              tabIndex={isActive ? 0 : -1}
+              onPointerEnter={() => setHovered(true)}
+              onPointerLeave={() => setHovered(false)}>
               <Image src={project.image} fill alt={`${project.title} website preview`}
                 sizes="(max-width: 600px) 55vw, (max-width: 1023px) 42vw, 27vw"
                 loading={index === 0 ? "eager" : "lazy"}
