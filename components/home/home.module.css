@@ -344,3 +344,230 @@
 @media (prefers-reduced-motion: reduce) {
   .servicePath:hover, .servicePath:focus-visible { transform: none; }
 }
+
+
+/* Cinematic, projects-led hero. Uses MadeBySebi project imagery, not reference-site assets. */
+.projectsInspiredHero {
+  padding: clamp(120px, 11vw, 160px) 0 clamp(40px, 5vw, 72px);
+  overflow: hidden;
+  color: #f8faf4;
+  background:
+    radial-gradient(ellipse 53% 28% at 50% 70%, #43542a55, transparent 85%),
+    linear-gradient(165deg, #101511 8%, #171d16 60%, #201c16 100%);
+}
+.projectsHeroInner { display: flex; flex-direction: column; gap: 0; }
+.projectsHeroIntro { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.projectsHeroIntro :global(.mbs-eyebrow) {
+  margin-bottom: 0;
+  border: 1px solid #678455;
+  background: #d0edb50d;
+  color: #d1e8b8;
+}
+.projectsHeroIntro .heroTitle {
+  margin: clamp(23px, 3.4vw, 46px) 0 0;
+  max-width: 1020px;
+  color: #f8faf4;
+  font-size: clamp(3.25rem, 7.5vw, 7.15rem);
+  font-weight: 620;
+  line-height: .98;
+  letter-spacing: -.079em;
+}
+.projectsHeroIntro .heroTitle em { color: #f8faf4; }
+.projectsHeroIntro .headlineWords { color: #cefa74; }
+.projectsHeroIntro .heroDescription {
+  margin-top: clamp(22px, 2.4vw, 32px);
+  max-width: 635px;
+  color: #cad5c8;
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.65;
+}
+.projectsHeroIntro .actions { justify-content: center; margin-top: 28px; }
+.projectsHeroIntro :global(.mbs-action-primary) {
+  background: #cefa74;
+  color: #182219;
+}
+.projectsHeroIntro :global(.mbs-action-primary):hover { background: #dcff9a; }
+.projectsHeroIntro .textLink { color: #f8faf4; }
+.projectsInspiredHero :is(a,button):focus-visible, .projectsInspiredHero .heroVisual:focus-visible {
+  outline: 2px solid #cefa74;
+  outline-offset: 4px;
+}
+.projectsInspiredHero .orbitShowcase {
+  position: relative;
+  display: block;
+  grid-area: auto;
+  min-height: 0;
+  width: 100%;
+  margin: clamp(28px, 3.6vw, 52px) 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.orbitHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-inline: 4px;
+  color: #d7e8c9;
+}
+.orbitEyebrow {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+}
+.orbitCount {
+  color: #cefa74;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+}
+.orbitStage {
+  position: relative;
+  width: 100%;
+  height: clamp(305px, 34vw, 435px);
+  overflow: hidden;
+  margin-top: 15px;
+  border-radius: 20px;
+  isolation: isolate;
+}
+.orbitStage::before {
+  position: absolute;
+  top: 4%;
+  left: 9%;
+  right: 9%;
+  height: 70%;
+  border-top: 1px dashed #b7d69d55;
+  border-radius: 50% 50% 0 0;
+  content: "";
+  pointer-events: none;
+}
+.orbitCard {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  display: block;
+  width: clamp(170px, 26vw, 345px);
+  height: clamp(196px, 25vw, 318px);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #b2c49d;
+  border-radius: 16px;
+  background: #2d3b31;
+  color: #fff;
+  box-shadow: 0 22px 40px -20px #0009;
+  cursor: pointer;
+  transform-origin: center bottom;
+  transition: transform .55s cubic-bezier(.2,.76,.19,1), filter .55s ease, opacity .4s ease;
+}
+.orbitCard img { object-fit: cover; object-position: top center; }
+.orbitCard::after {
+  position: absolute;
+  inset: 36% 0 0;
+  background: linear-gradient(transparent, #050c08b8);
+  content: "";
+  pointer-events: none;
+}
+.orbitCardLabel {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  z-index: 1;
+  overflow: hidden;
+  color: #fff;
+  font-size: clamp(12px, 1.3vw, 17px);
+  font-weight: 650;
+  letter-spacing: -.025em;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.orbitCard[data-position="-2"] { z-index: 1; opacity: .65; filter: brightness(.72); transform: translate(-185%, 19%) rotate(-21deg) scale(.83); }
+.orbitCard[data-position="-1"] { z-index: 2; opacity: .95; transform: translate(-117%, 6%) rotate(-10deg) scale(.94); }
+.orbitCard[data-position="0"] { z-index: 5; transform: translate(-50%, -4%) rotate(0) scale(1.08); }
+.orbitCard[data-position="1"] { z-index: 2; opacity: .95; transform: translate(17%, 6%) rotate(10deg) scale(.94); }
+.orbitCard[data-position="2"] { z-index: 1; opacity: .65; filter: brightness(.72); transform: translate(85%, 19%) rotate(21deg) scale(.83); }
+.orbitCard[data-position="0"]:hover { transform: translate(-50%, -7%) rotate(0) scale(1.10); }
+.orbitFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 72px);
+  margin-top: -14px;
+  position: relative;
+  z-index: 6;
+}
+.orbitProjectInfo { display: grid; gap: 6px; min-width: 0; }
+.orbitProjectInfo > span { color: #b7cdb2; font-size: 11px; }
+.orbitProjectInfo strong { color: #fff; font-size: clamp(19px, 2.2vw, 28px); letter-spacing: -.045em; }
+.projectsInspiredHero .carouselControls button {
+  background: #202d22;
+  border-color: #677b5d;
+  color: #f8faf4;
+}
+.projectsInspiredHero .carouselControls button:hover { background: #395039; }
+.projectsInspiredHero .roundLink { background: #cefa74; color: #182219; border-color: #cefa74; }
+.projectsInspiredHero .carouselDots { justify-content: center; margin-top: 17px; }
+.projectsInspiredHero .carouselDots button::before { background: #64795a; }
+.projectsInspiredHero .carouselDots button[aria-current="true"]::before { background: #cefa74; }
+.projectsInspiredHero .serviceNav {
+  display: grid;
+  grid-area: auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: clamp(28px, 4vw, 50px);
+  border: 0;
+}
+.projectsInspiredHero .servicePath, .projectsInspiredHero .servicePath:first-child {
+  min-height: 104px;
+  padding: 20px;
+  border: 1px solid #4e644b;
+  border-radius: 16px;
+  background: #ffffff0a;
+  color: #f8faf4;
+}
+.projectsInspiredHero .servicePath + .servicePath { border-left: 1px solid #4e644b; }
+.projectsInspiredHero .servicePath:hover, .projectsInspiredHero .servicePath:focus-visible {
+  background: #cefa7419;
+  border-color: #a9cb88;
+}
+.projectsInspiredHero .servicePath strong { color: #fff; }
+.projectsInspiredHero .servicePath div > span { color: #b9c5b5; }
+.projectsInspiredHero .pathNumber, .projectsInspiredHero .servicePath > svg { color: #cefa74; }
+@media (max-width: 767px) {
+  .projectsInspiredHero { padding-top: max(112px, 7rem); }
+  .projectsHeroIntro .heroTitle { font-size: clamp(2.35rem, 8.7vw, 4.1rem); }
+  .projectsHeroIntro .heroDescription { font-size: 15px; }
+  .projectsInspiredHero .orbitShowcase { order: 2; margin-top: 30px; }
+  .orbitStage { height: clamp(245px, 60vw, 350px); }
+  .orbitCard { top: 10%; width: clamp(170px, 52vw, 275px); height: clamp(170px, 49vw, 255px); }
+  .orbitCard[data-position="-2"], .orbitCard[data-position="2"] { opacity: .3; }
+  .orbitFooter { justify-content: space-between; gap: 12px; margin-top: -3px; }
+  .orbitProjectInfo strong { font-size: 18px; }
+  .projectsInspiredHero .serviceNav { order: 3; grid-template-columns: 1fr; gap: 9px; margin-top: 35px; }
+  .projectsInspiredHero .servicePath, .projectsInspiredHero .servicePath:first-child { min-height: 80px; padding: 17px; }
+  .projectsInspiredHero .servicePath + .servicePath { border-top: 1px solid #4e644b; }
+}
+@media (max-width: 380px) {
+  .projectsHeroIntro .heroTitle { font-size: clamp(2rem, 8.7vw, 2.7rem); }
+  .projectsHeroIntro .heroTitle > span { white-space: normal; }
+  .orbitStage { height: 225px; }
+  .orbitCard { width: 170px; height: 171px; }
+  .orbitEyebrow { font-size: 9px; }
+  .orbitProjectInfo > span { font-size: 9px; }
+  .projectsInspiredHero .carouselControls { gap: 3px; }
+}
+@media (max-height: 600px) and (min-width: 621px) and (max-width: 1023px) {
+  .projectsInspiredHero { padding-top: 100px; }
+  .projectsHeroIntro .heroTitle { margin-top: 8px; font-size: clamp(33px, 5vw, 50px); }
+  .projectsInspiredHero .orbitShowcase { display: none; }
+  .projectsInspiredHero .serviceNav { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 22px; }
+  .projectsInspiredHero .servicePath, .projectsInspiredHero .servicePath:first-child { min-height: 74px; padding: 13px; }
+  .projectsInspiredHero .servicePath + .servicePath { border-top: 1px solid #4e644b; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbitCard, .projectsInspiredHero .servicePath { transition: none; }
+  .orbitCard[data-position="0"]:hover { transform: translate(-50%, -4%) rotate(0) scale(1.08); }
+}
