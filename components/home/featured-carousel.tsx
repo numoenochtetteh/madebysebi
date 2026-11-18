@@ -149,7 +149,7 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
         </div>
         <div className={styles.carouselControls}>
           {current.video ? (
-            <button type="button" onClick={() => setPreviewRequested(value => !value)}
+            <button type="button" className={styles.orbitVideoToggle} onClick={() => setPreviewRequested(value => !value)}
               aria-label={previewRequested ? "Stop project video preview" : "Play project video preview"}
               aria-pressed={previewRequested} disabled={reducedMotion || saveData}>
               {previewRequested ? "Pause" : "Play"}
