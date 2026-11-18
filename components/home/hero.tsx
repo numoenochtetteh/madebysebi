@@ -29,6 +29,7 @@ const featuredProjects = featuredSlugs.map((slug) => {
     industry: project.industry,
     type: project.type,
     image: (posters as Record<string, string>)[project.image] ?? project.image,
+    video: project.video,
   };
 });
 
