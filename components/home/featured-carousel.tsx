@@ -14,6 +14,7 @@ export type FeaturedProject = {
   industry: string;
   type: string;
   image: string;
+  video?: string;
 };
 
 export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) {
@@ -24,6 +25,7 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
   const [onscreen, setOnscreen] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [saveData, setSaveData] = useState(false);
+  const [previewRequested, setPreviewRequested] = useState(false);
   const regionRef = useRef<HTMLDivElement>(null);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
 
@@ -69,8 +71,12 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
 
   if (!projects.length) return null;
   const current = projects[active];
+  const showVideo = Boolean(current.video && (hovered || previewRequested) && visible && onscreen && !reducedMotion && !saveData);
 
-  const move = (direction: number) => setActive(currentIndex => nextSlide(currentIndex, direction, projects.length));
+  const move = (direction: number) => {
+    setPreviewRequested(false);
+    setActive(currentIndex => nextSlide(currentIndex, direction, projects.length));
+  };
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();
@@ -113,6 +119,12 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
                 sizes="(max-width: 600px) 65vw, (max-width: 1023px) 40vw, 27vw"
                 loading={position === 0 ? "eager" : "lazy"}
                 fetchPriority={index === 0 ? "high" : "auto"} />
+              {position === 0 && showVideo && project.video ? (
+                <video className={styles.orbitVideo} autoPlay loop muted playsInline preload="none" poster={project.image}
+                  aria-hidden="true" key={project.slug}>
+                  <source src={project.video} type="video/mp4" />
+                </video>
+              ) : null}
               <span className={styles.orbitCardLabel}>{project.title}</span>
             </>
           );
@@ -124,7 +136,7 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
             </Link>
           ) : (
             <button key={project.slug} type="button" className={styles.orbitCard}
-              data-position={position} onClick={() => setActive(index)}
+              data-position={position} onClick={() => { setPreviewRequested(false); setActive(index); }}
               aria-label={`Show ${project.title}`}>{content}</button>
           );
         })}
@@ -136,6 +148,13 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
           <strong>{current.title}</strong>
         </div>
         <div className={styles.carouselControls}>
+          {current.video ? (
+            <button type="button" onClick={() => setPreviewRequested(value => !value)}
+              aria-label={previewRequested ? "Stop project video preview" : "Play project video preview"}
+              aria-pressed={previewRequested} disabled={reducedMotion || saveData}>
+              {previewRequested ? "Pause" : "Play"}
+            </button>
+          ) : null}
           <button type="button" onClick={() => move(-1)} aria-label="Previous project">
             <ArrowLeft size={19} aria-hidden="true" />
           </button>
@@ -150,7 +169,7 @@ export function FeaturedCarousel({ projects }: { projects: FeaturedProject[] }) 
       </div>
       <div className={styles.carouselDots} aria-label="Choose a featured project">
         {projects.map((project, index) => (
-          <button type="button" key={project.slug} onClick={() => setActive(index)}
+          <button type="button" key={project.slug} onClick={() => { setPreviewRequested(false); setActive(index); }}
             aria-label={`Show ${project.title}`}
             aria-current={active === index ? "true" : undefined} />
         ))}
