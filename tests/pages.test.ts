@@ -27,8 +27,8 @@ test("service explanations cover all eight categories and retain the six legacy 
   assert.deepEqual(anchors.sort(), ["branding-visual-design", "consultation-audits", "digital-marketing-growth", "seo-geo-visibility", "ux-ui-product-design", "web-design-development"].sort());
 });
 
-test("eight original case studies have complete circular project navigation without self links", () => {
-  assert.deepEqual(caseStudyProjects.map(project => project.slug), ["pengtresses", "power-electrode-ltd", "total-logistics", "numo-sebi", "kent-architects", "lucenex", "elegante", "tourbuddy"]);
+test("eight original cases remain accessible alongside the two new visual studies", () => {
+  assert.deepEqual(caseStudyProjects.map(project => project.slug), ["pengtresses", "power-electrode-ltd", "total-logistics", "numo-sebi", "kent-architects", "lucenex", "elegante", "tourbuddy", "femmora", "gas-safety-plumbing"]);
   for (const project of caseStudyProjects) {
     const navigation = adjacentProjects(project.slug)!;
     assert.notEqual(navigation.previous.slug, project.slug);
@@ -38,6 +38,18 @@ test("eight original case studies have complete circular project navigation with
     assert.ok(navigation.related.every(item => item.slug !== project.slug));
   }
   assert.equal(adjacentProjects("missing-project"), undefined);
+});
+
+test("featured work uses the supplied mockups without unsupported external links", () => {
+  assert.deepEqual(
+    ["femmora", "pengtresses", "gas-safety-plumbing", "lucenex"].map(slug => caseStudyProjects.find(project => project.slug === slug)?.image),
+    ["/project-mockups/femmora.webp", "/project-mockups/forever-peng-hair.webp", "/project-mockups/gas-safety-plumbing.webp", "/project-mockups/lucenex-corp.webp"],
+  );
+  for (const slug of ["femmora", "gas-safety-plumbing"]) {
+    const project = caseStudyProjects.find(item => item.slug === slug)!;
+    assert.equal(project.liveUrl, undefined);
+    assert.equal(project.video, undefined);
+  }
 });
 
 test("project images, original galleries, operations views, videos and poster files remain available", () => {

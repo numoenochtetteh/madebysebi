@@ -11,7 +11,7 @@ export const company = {
 // Existing published team information; roles and profile URLs are retained.
 export const teamMembers = [
   { name: "Numo Nanortey Francis", role: "WordPress Engineer | Full Stack", image: "/team/francis-team.jpg", linkedin: "https://www.linkedin.com/in/numofrancis/", position: "center 35%" },
-  { name: "Enoch Numo Tetteh", role: "Frontend Engineer", image: "/team/enoch-team.jpg", linkedin: "https://www.linkedin.com/in/enoch-numo-tetteh-993432358/", position: "center 32%" },
+  { name: "Enoch Numo Tetteh", role: "Frontend Engineer", image: "/team/enoch-team.png", linkedin: "https://www.linkedin.com/in/enoch-numo-tetteh-993432358/", position: "center 32%" },
   { name: "Bernard Numo", role: "Frontend Developer", image: "/team/bernard-team.jpg", linkedin: "https://www.linkedin.com/in/bernard-numo-0b9b77448/", position: "center 42%" },
 ] as const;
 

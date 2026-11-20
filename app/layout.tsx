@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 import "./foundation.css";
+import "./menoa.css";
 import { Navigation } from "@/components/landing/navigation";
 import { FooterSection } from "@/components/landing/footer-section";
 import { WhatsAppButton } from "@/components/landing/whatsapp-button";

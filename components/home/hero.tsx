@@ -1,76 +1,47 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { ActionLink, Container, Eyebrow } from "@/components/site/primitives";
-import { caseStudyProjects } from "@/lib/projects";
-import { serviceGroups } from "@/lib/services";
-import posters from "@/lib/video-posters.json";
-import { FeaturedCarousel } from "./featured-carousel";
-import styles from "./home.module.css";
+import { ArrowUpRight } from "lucide-react";
+import { BookCallLink } from "@/components/site/contact-actions";
 
-const summaries = [
-  "Websites, stores & booking",
-  "Custom software & mobile apps",
-  "Marketing, improvements & support",
+const clientMarks = ["FEMMORA", "Forever Peng Hair", "Gas Safety & Plumbing", "Lucenex Corp", "Power Electrode Ltd"];
+
+const previews = [
+  { src: "/project-mockups/femmora.webp", name: "FEMMORA" },
+  { src: "/project-mockups/forever-peng-hair.webp", name: "Forever Peng Hair" },
+  { src: "/project-mockups/gas-safety-plumbing.webp", name: "Gas Safety & Plumbing Engineering Ltd" },
+  { src: "/project-mockups/lucenex-corp.webp", name: "Lucenex Corp" },
 ];
-
-const featuredSlugs = [
-  "pengtresses",
-  "power-electrode-ltd",
-  "numo-sebi",
-  "total-logistics",
-  "lucenex",
-];
-
-const featuredProjects = featuredSlugs.map((slug) => {
-  const project = caseStudyProjects.find((item) => item.slug === slug)!;
-  return {
-    slug: project.slug,
-    title: project.title,
-    industry: project.industry,
-    type: project.type,
-    image: (posters as Record<string, string>)[project.image] ?? project.image,
-    video: project.video,
-  };
-});
 
 export function HomeHero() {
-  return (
-    <section className={`${styles.hero} ${styles.projectsInspiredHero}`} aria-labelledby="home-title">
-      <Container className={styles.projectsHeroInner}>
-        <div className={styles.projectsHeroIntro}>
-          <Eyebrow>MadeBySebi · Digital solutions</Eyebrow>
-          <h1 id="home-title" className={styles.heroTitle}>
-            <span>Full Services</span>
-            <span><em>Agency</em> For</span>
-            <span className={styles.headlineWords} aria-hidden="true">
-              <span>Startups.</span><span>Apps.</span><span>Brands.</span>
-            </span>
-            <span className={styles.screenReaderOnly}>Startups, Apps and Brands.</span>
-          </h1>
-          <p className={styles.heroDescription}>
-            Websites, mobile apps and custom software that help you reach customers,
-            simplify everyday work and move your business forward.
-          </p>
-          <div className={styles.actions}>
-            <ActionLink href="/contact">Let’s build your next move</ActionLink>
-            <Link className={styles.textLink} href="/work">
-              Explore our projects <ArrowUpRight size={17} aria-hidden="true" />
-            </Link>
+  return <>
+    <section className="ms-homehero" aria-labelledby="home-title">
+      <div className="mbs-container ms-homehero-inner">
+        <p className="ms-pill ms-agency-label"><span className="ms-dot" aria-hidden="true" />MadeBySebi · Web Design Agency</p>
+        <h1 id="home-title">
+          <span>Websites that drive results,</span>
+          <span>digital retainers that deliver growth.</span>
+        </h1>
+        <p className="ms-homehero-copy">Helping companies and businesses grow revenue and stand out in crowded markets through brand and product design.</p>
+        <div className="ms-hero-actions">
+          <BookCallLink />
+          <Link className="ms-soft-button" href="/work">Explore our work <ArrowUpRight size={17} aria-hidden="true" /></Link>
+        </div>
+        <div className="ms-client-strip" role="group" aria-label="Selected MadeBySebi projects">
+          <div className="ms-client-track">
+            {[0, 1].map(copy => <div className="ms-client-set" key={copy} aria-hidden={copy === 1}>
+              {clientMarks.map((name, index) => <span className={`ms-client-mark ms-client-mark-${index}`} key={name}>{name}</span>)}
+            </div>)}
           </div>
         </div>
-
-        <FeaturedCarousel projects={featuredProjects} />
-
-        <nav className={styles.serviceNav} aria-label="Choose how we can help">
-          {serviceGroups.map((group, index) => (
-            <a key={group.id} href={`#${group.id}`} className={styles.servicePath}>
-              <span className={styles.pathNumber}>{group.number}</span>
-              <div><strong>{group.title}</strong><span>{summaries[index]}</span></div>
-              <ArrowDown size={19} aria-hidden="true" />
-            </a>
-          ))}
-        </nav>
-      </Container>
+      </div>
     </section>
-  );
+    <div className="ms-preview-strip" aria-hidden="true">
+      <div className="ms-preview-track">
+        {[...previews, ...previews].map((preview, index) =>
+          <div className="ms-preview-card" key={preview.name + index}>
+            <Image src={preview.src} alt="" fill sizes="420px" priority={index < 2} />
+          </div>)}
+      </div>
+    </div>
+  </>;
 }

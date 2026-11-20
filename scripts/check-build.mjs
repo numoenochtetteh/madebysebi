@@ -91,48 +91,50 @@ if (!sitemap) errors.push(`Generated sitemap unavailable; app output entries: ${
 if (!sitemap.includes("https://madebysebi.com/pricing"))
   errors.push("Pricing missing from sitemap");
 
-// Check the delivered homepage contract, including server-rendered content and
-// real fragment destinations. These guards protect the three customer journeys.
+// Verify the delivered redesign, real project routes, source assets and service paths.
 const home = await readFile(path.join(root, "index.html"), "utf8");
-const renderedMain = home.match(/<main id="main-content" tabindex="-1">[\s\S]*?<\/main>/)?.[0] ?? "";
 const pillarIds = ["online-presence", "build-your-solution", "grow-your-business"];
-const sectionIds = [...home.matchAll(/<section\b[^>]*\bid="([^"]+)"/g)].map(match => match[1]);
-if (JSON.stringify(sectionIds.slice(0, 3)) !== JSON.stringify(pillarIds))
-  errors.push("Homepage must put the three service sections directly after the hero, in business-document order");
 for (const id of pillarIds) {
-  if ((home.match(new RegExp(`id="${id}"`, "g")) ?? []).length !== 1)
-    errors.push(`Homepage needs one unique ${id} destination`);
-  if (!home.includes(`href="#${id}"`)) errors.push(`Missing homepage service link #${id}`);
+  if ((home.match(new RegExp('id="' + id + '"', "g")) ?? []).length !== 1)
+    errors.push("Homepage needs one unique " + id + " service destination");
 }
 const homeMediaCount = [...home.matchAll(/<(?:video|canvas)\b/g)].length;
-if (homeMediaCount)
-  errors.push("Homepage must remain free of background video/canvas loading");
-if (home.includes("numo-company-bar") || home.includes("noise-overlay"))
-  errors.push("Legacy floating hero selector or noise overlay returned");
-for (const slug of ["pengtresses", "power-electrode-ltd", "numo-sebi"])
-  if (!home.includes(`href="/work/${slug}"`)) errors.push(`Homepage lost real project link ${slug}`);
-if (!home.includes('href="/contact"') || !home.includes('href="/pricing"'))
-  errors.push("Homepage contact or current pricing CTA is missing");
-for (const phrase of ["Full Services", "Agency", "Startups.", "Apps.", "Brands."])
-  if (!home.includes(phrase)) errors.push(`Homepage headline missing ${phrase}`);
-if (!home.includes('aria-roledescription="carousel"') || !home.includes('aria-label="Next project"') || !home.includes('aria-label="Previous project"'))
-  errors.push("Homepage featured carousel or controls missing from rendered HTML");
-if ((renderedMain.match(/explore pricing and scope/g) ?? []).length !== 10)
-  errors.push("Homepage service cards must retain ten real Pricing destinations");
+if (homeMediaCount) errors.push("Homepage should not load video or canvas");
+for (const [slug, image] of [
+  ["femmora", "femmora.webp"],
+  ["pengtresses", "forever-peng-hair.webp"],
+  ["gas-safety-plumbing", "gas-safety-plumbing.webp"],
+  ["lucenex", "lucenex-corp.webp"],
+]) {
+  if (!home.includes('data-project="' + slug + '"')) errors.push("Featured project missing: " + slug);
+  if (!home.includes(image)) errors.push("Featured mockup missing: " + image);
+  if (!home.includes('href="/work/' + slug + '"')) errors.push("Case study link missing: " + slug);
+}
+if (!home.includes("Websites that drive results,") || !home.includes("digital retainers that deliver growth."))
+  errors.push("MadeBySebi hero headline missing");
+if (!home.includes("MadeBySebi · Web Design Agency") || !home.includes("Helping companies and businesses grow revenue"))
+  errors.push("MadeBySebi hero description or agency label missing");
+if (!home.includes('href="/contact?service=Other&amp;intent=call#contact-form"') || !home.includes('href="/work"'))
+  errors.push("Homepage call and work actions missing");
+if (!home.includes('aria-label="Selected MadeBySebi projects"') || !home.includes('ms-client-track'))
+  errors.push("Homepage client marquee missing");
+if (!home.includes("Before you decide") || !home.includes("Have a project") || home.includes("How it works"))
+  errors.push("Homepage FAQ replacement missing");
+if (!home.includes("ms-service-pill-track") || !home.includes("ms-service-cards"))
+  errors.push("Homepage services presentation missing");
+if (home.includes("ms-hero-location"))
+  errors.push("Homepage location line remains");
+if (home.includes("Based in Accra · Worldwide"))
+  errors.push("Navigation location subtitle remains");
 const header = home.match(/<header\b[\s\S]*?<\/header>/)?.[0] ?? "";
-if (!header.includes('href="/work"') || header.includes("View our work"))
-  errors.push("Header should keep Work navigation without the secondary View our work link");
-if ((renderedMain.match(/View case study/g) ?? []).length !== 3)
-  errors.push("Selected Work must link all three featured case studies");
-if (!(await exists("public/media/growth-texture.webp")))
-  errors.push("Grow section optimized still background missing");
-
+if (!header.includes('href="/work"') || !header.includes('href="/about"'))
+  errors.push("Sticky header navigation missing");
 const services = await readFile(path.join(root, "services.html"), "utf8");
 const work = await readFile(path.join(root, "work.html"), "utf8");
 const contact = await readFile(path.join(root, "contact.html"), "utf8");
 const legacyAnchors = ["web-design-development", "ux-ui-product-design", "branding-visual-design", "seo-geo-visibility", "digital-marketing-growth", "consultation-audits"];
 const categories = ["business-websites", "ecommerce", "booking", "business-launch", "web-applications", "business-systems", "mobile-applications", "maintenance-growth"];
-const slugs = ["pengtresses", "power-electrode-ltd", "total-logistics", "numo-sebi", "kent-architects", "lucenex", "elegante", "tourbuddy"];
+const slugs = ["pengtresses", "power-electrode-ltd", "total-logistics", "numo-sebi", "kent-architects", "lucenex", "elegante", "tourbuddy", "femmora", "gas-safety-plumbing"];
 for (const id of [...pillarIds, ...legacyAnchors]) {
   if ((services.match(new RegExp(`id="${id}"`, "g")) ?? []).length !== 1) errors.push(`Services needs one unique ${id} destination`);
 }

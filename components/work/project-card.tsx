@@ -3,11 +3,16 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { CaseStudyProject } from "@/lib/projects";
 import { projectPoster } from "@/lib/portfolio";
-import styles from "@/components/site/content.module.css";
 
 export function ProjectCard({ project }: { project: CaseStudyProject }) {
-  return <article className={styles.projectCard} data-project={project.slug}>
-    <Link href={`/work/${project.slug}`} className={styles.projectImage} tabIndex={-1} aria-hidden="true"><Image src={projectPoster(project)} alt="" fill sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1280px) 46vw, 580px" /></Link>
-    <div className={styles.projectCopy}><small>{project.industry} · {project.type}</small><h3><Link href={`/work/${project.slug}`}>{project.title}</Link></h3><p>{project.summary}</p><Link href={`/work/${project.slug}`}>Explore the project <ArrowUpRight size={17} aria-hidden="true" /></Link></div>
+  const featuredMockup = project.image.startsWith("/project-mockups/");
+  return <article className="ms-project-card" data-project={project.slug}>
+    <Link href={"/work/" + project.slug} className={"ms-project-media" + (featuredMockup ? " ms-project-mockup" : "")}
+      aria-label={"View " + project.title + " case study"}>
+      <Image src={projectPoster(project)} alt={project.title + " project preview"} fill
+        sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 46vw, 505px" />
+      <span className="ms-project-arrow" aria-hidden="true"><ArrowUpRight size={19} /></span>
+    </Link>
+    <div className="ms-project-caption"><div><h3><Link href={"/work/" + project.slug}>{project.title}</Link></h3><p>{project.industry} · {project.type}</p></div><span aria-hidden="true">↗</span></div>
   </article>;
 }

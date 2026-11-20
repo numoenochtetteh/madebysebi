@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Suspense, useState, type FormEvent } from "react";
 import { ArrowRight } from "lucide-react";
 import { EnquiryServiceFields, PricingEnquiry } from "./pricing-enquiry";
+import { ContactMessageField } from "./contact-message-field";
 import { budgetOptions, submitContactEnquiry, timelineOptions } from "@/lib/contact-form";
 import styles from "./contact-form.module.css";
 
@@ -38,7 +39,7 @@ export function ContactForm() {
         <div className="form-field"><label htmlFor="budget">PROJECT BUDGET</label><select id="budget" name="budget" defaultValue=""><option value="" disabled>Select budget</option>{budgetOptions.map(option => <option key={option}>{option}</option>)}</select></div>
         <div className="form-field"><label htmlFor="timeline">IDEAL TIMELINE</label><select id="timeline" name="timeline" defaultValue=""><option value="" disabled>Select timeline</option>{timelineOptions.map(option => <option key={option}>{option}</option>)}</select></div>
       </div>
-      <div className="form-field"><label htmlFor="message">TELL US ABOUT THE PROJECT *</label><textarea id="message" name="message" rows={6} placeholder="What are you trying to build or improve?" required /></div>
+      <div className="form-field"><label htmlFor="message">TELL US ABOUT THE PROJECT *</label><Suspense fallback={<textarea id="message" name="message" rows={6} placeholder="What are you trying to build or improve?" required />}><ContactMessageField /></Suspense></div>
       <div className={styles.honeypot} aria-hidden="true"><label htmlFor="businessWebsite">Leave this field empty</label><input id="businessWebsite" name="businessWebsite" type="text" tabIndex={-1} autoComplete="off" /></div>
       <button type="submit" disabled={status === "submitting"} className={styles.submit}>{status === "submitting" ? "Sending…" : "Send enquiry"}<ArrowRight size={18} aria-hidden="true" /></button>
       {message ? <p className={status === "error" ? styles.error : styles.success} role={status === "error" ? "alert" : "status"}>{message}</p> : null}

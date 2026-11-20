@@ -1,21 +1,39 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/site/primitives";
+import { BookCallLink, ChatLink } from "@/components/site/contact-actions";
 import { company } from "@/lib/company";
-import { serviceGroups, socialLinks, whatsappUrl } from "@/lib/services";
+import { serviceGroups, socialLinks } from "@/lib/services";
 import styles from "./footer.module.css";
 
-const exploreLinks = [{ name: "Home", href: "/" }, { name: "Services", href: "/services" }, { name: "Pricing", href: "/pricing" }, { name: "Work", href: "/work" }, { name: "About", href: "/about" }, { name: "Contact", href: "/contact" }];
+const pages = [
+  { label: "Home", href: "/" }, { label: "Work", href: "/work" },
+  { label: "About", href: "/about" }, { label: "Services", href: "/services" },
+  { label: "Pricing", href: "/pricing" }, { label: "Contact", href: "/contact" },
+];
 
 export function FooterSection() {
-  return <footer id="site-footer" className={styles.footer}><Container><div className={styles.shell}>
-    <div className={styles.top}><div><p className={styles.eyebrow}>HAVE SOMETHING IN MIND?</p><h2>Let’s make your<br />next move useful.</h2><Link className={styles.cta} href="/contact">Discuss your project<ArrowUpRight size={18} aria-hidden="true" /></Link></div><p className={styles.description}>{company.description}</p></div>
-    <div className={styles.columns}>
-      <nav aria-label="Footer navigation"><h3>Explore</h3>{exploreLinks.map(link => <Link href={link.href} key={link.href}>{link.name}</Link>)}</nav>
-      <nav aria-label="Footer service pillars"><h3>What we do</h3>{serviceGroups.map(group => <Link href={`/services#${group.id}`} key={group.id}>{group.title}</Link>)}</nav>
-      <div><h3>Get in touch</h3><a href={`mailto:${company.email}`}>{company.email}</a><a href={whatsappUrl} target="_blank" rel="noreferrer"><MessageCircle size={16} aria-hidden="true" />{company.phone}</a><p>{company.location}<br />Working worldwide</p></div>
-      <nav aria-label="MadeBySebi social media"><h3>Follow along</h3>{socialLinks.map(link => <a href={link.href} key={link.name} target="_blank" rel="noreferrer">{link.name}<ArrowUpRight size={13} aria-hidden="true" /></a>)}</nav>
-    </div>
-    <div className={styles.bottom}><Link href="/" aria-label="MadeBySebi home" className={styles.wordmark}>madebysebi.</Link><span>© 2026 MadeBySebi</span><nav aria-label="Legal navigation"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><a href="#top">Back to top ↑</a></nav></div>
-  </div></Container></footer>;
+  return <footer id="site-footer" className={styles.footer}>
+    <Container>
+      <div className={styles.invite}>
+        <p className="ms-pill ms-available"><span className="ms-dot" aria-hidden="true" /> Available for projects</p>
+        <h2>Have a project in mind?<br />Let&apos;s make it real.</h2>
+        <p>Tell us what your business needs, from a new website to a custom tool. We&apos;ll help shape the next step.</p>
+        <div className={styles.actions}><BookCallLink /><ChatLink /></div>
+      </div>
+      <div className={styles.columns}>
+        <div className={styles.identity}>
+          <Image src="/brand/madebysebi-wordmark.png" alt="MadeBySebi" width={160} height={30} />
+          <p>{company.description}</p>
+          <a href={"mailto:" + company.email}>{company.email}</a>
+          <span>{company.location} · Working worldwide</span>
+        </div>
+        <nav aria-label="Footer pages"><h3>Pages</h3>{pages.map(page => <Link key={page.href} href={page.href}>{page.label}</Link>)}</nav>
+        <nav aria-label="Footer services"><h3>What we do</h3>{serviceGroups.map(group => <Link key={group.id} href={"/services#" + group.id}>{group.title}</Link>)}</nav>
+        <nav aria-label="Social profiles"><h3>Socials</h3>{socialLinks.map(link => <a key={link.name} href={link.href} target="_blank" rel="noreferrer">{link.name} <ArrowUpRight size={13} aria-hidden="true" /></a>)}</nav>
+      </div>
+      <div className={styles.bottom}><span>© 2026 MadeBySebi. All rights reserved.</span><div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><a href="#top">Back to top ↑</a></div></div>
+    </Container>
+  </footer>;
 }

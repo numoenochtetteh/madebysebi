@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ArrowDownRight, Check, Plus } from "lucide-react";
 import { ActionLink, Container, Eyebrow, Section, SectionHeading } from "@/components/site/primitives";
 import { PricingExplorer } from "@/components/pricing/pricing-explorer";
+import { pricingFaqs } from "@/lib/pricing-faqs";
 import styles from "@/components/pricing/pricing.module.css";
 
 export const metadata: Metadata = {
@@ -10,16 +11,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
   openGraph: { title: "Services, Pricing & Packages | MadeBySebi", description: "Find the right scope for your website, application or next business improvement.", url: "/pricing", images: [{ url: "/brand/madebysebi-og.png", width: 1200, height: 630, alt: "MadeBySebi — Services, Pricing & Packages" }] },
 };
-
-const faqs = [
-  { question: "Are all of these fixed-price packages?", answer: "No. Landing Page (GH₵3,000), Business Website (GH₵6,500) and Online Store (GH₵12,000) retain their published starting prices and inclusions. Every other option is an illustrative scope level for consultation, with a custom quote. Starter, Professional and Premium help compare the direction of a project; they do not promise a fixed set of deliverables." },
-  { question: "What determines my final quote?", answer: "We discuss your goals, content, functionality, integrations and existing tools, then agree a written scope and price. Proposed scope items are conversation starters. They become deliverables only when included in the agreed proposal." },
-  { question: "Are hosting, domains and third-party fees included?", answer: "Do not assume these are included. Domain registration, hosting, payment-provider charges, paid tools and ongoing support requirements are discussed and confirmed in your proposal. Recurring costs and renewals should be clear before you proceed." },
-  { question: "Can I combine services or start with a smaller scope?", answer: "Yes. Tell us your priorities and we can discuss a suitable starting point, or combine a website, bookings, custom software and growth support in one proposal. A combined scope is quoted individually." },
-  { question: "What does Maintenance & Growth cover?", answer: "We discuss website maintenance, technical support, social media marketing and improvements to existing websites or applications. The work, support arrangement and any ongoing fees depend on your needs and are agreed in a quote; no response-time or marketing-result guarantee is implied." },
-  { question: "How are timing and payments agreed?", answer: "We agree a schedule based on the actual scope, content and dependencies. No delivery deadline is guaranteed by these comparisons. Our usual starting payment is a 50% deposit, with the balance handled according to the agreed milestones or before final delivery." },
-  { question: "What happens when I choose Get Started?", answer: "Your selected service and package are carried into the Contact form. You can review the selection, choose a different service, add your project details and send an enquiry when you are ready. Selecting a package does not place an order or take a payment." },
-];
 
 export default async function PricingPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   // Resolve the request before rendering: useSearchParams is available during
@@ -62,7 +53,7 @@ export default async function PricingPage({ searchParams }: { searchParams: Prom
     <Section className={styles.faqSection} aria-labelledby="pricing-faq-title">
       <Container className={styles.faqLayout}>
         <div><SectionHeading id="pricing-faq-title" eyebrow="Before you decide" title={<>A little more<br />clarity.</>} description="Good projects begin with the right questions. Here are a few to get you started." /><ActionLink href="/contact" variant="secondary">Ask us a question</ActionLink></div>
-        <div className={styles.faqList}>{faqs.map(faq => <details key={faq.question}><summary>{faq.question}<Plus size={19} aria-hidden="true" /></summary><p>{faq.answer}</p></details>)}</div>
+        <div className={styles.faqList}>{pricingFaqs.map(faq => <details key={faq.question}><summary>{faq.question}<Plus size={19} aria-hidden="true" /></summary><p>{faq.answer}</p></details>)}</div>
       </Container>
     </Section>
     <Section aria-labelledby="pricing-cta-title"><Container><div className={styles.finalCta}><div><span className={styles.smallLabel}>Let’s find your next step</span><h2 id="pricing-cta-title">You bring the idea.<br />We’ll help shape the scope.</h2><p>You don’t need a finished brief to start a useful conversation.</p></div><ActionLink href="/contact">Plan your project</ActionLink></div></Container></Section>

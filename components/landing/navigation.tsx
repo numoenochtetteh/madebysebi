@@ -1,185 +1,66 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
-const navLinks = [
-  { name: "Services", href: "/services" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Work", href: "/work" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+const links = [
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navigation() {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const previousOverflow = useRef("");
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-    };
-
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (!isMobileMenuOpen) return;
     const dialog = dialogRef.current;
-    if (!dialog) return;
-    previousOverflow.current = document.body.style.overflow;
+    if (!dialog || !open) return;
+    const previousOverflow = document.body.style.overflow;
     dialog.showModal();
     document.body.style.overflow = "hidden";
-    const desktop = window.matchMedia("(min-width: 1024px)");
-    const onResize = () => {
-      if (desktop.matches) {
-        dialog.close();
-        setIsMobileMenuOpen(false);
-      }
-    };
-    desktop.addEventListener("change", onResize);
+    const query = window.matchMedia("(min-width: 900px)");
+    const onDesktop = () => { if (query.matches) setOpen(false); };
+    query.addEventListener("change", onDesktop);
     return () => {
-      document.body.style.overflow = previousOverflow.current;
-      desktop.removeEventListener("change", onResize);
+      query.removeEventListener("change", onDesktop);
+      document.body.style.overflow = previousOverflow;
       if (dialog.open) dialog.close();
     };
-  }, [isMobileMenuOpen]);
+  }, [open]);
 
-  const closeMobileMenu = () => {
-    if (dialogRef.current?.open) {
-      dialogRef.current.close();
-      document.body.style.overflow = previousOverflow.current;
-    }
-    setIsMobileMenuOpen(false);
-  };
-
-  return (
-    <header
-      className={`fixed inset-x-0 z-50 motion-reduce:transition-none transition-all duration-500 ${
-        isScrolled ? "top-4 px-4" : "top-0 px-0"
-      }`}
-    >
-      <nav
-        aria-label="Main navigation"
-        className={`relative z-50 mx-auto motion-reduce:transition-none transition-all duration-500 ${
-          isScrolled || isMobileMenuOpen
-            ? "max-w-[1300px] rounded-[22px] border border-black/10 bg-white/85 shadow-[0_18px_55px_rgba(0,0,0,0.10)] backdrop-blur-xl"
-            : "max-w-[1500px] border-transparent bg-[#f7f7f3]/95"
-        }`}
-      >
-        <div
-          className={`flex items-center justify-between px-6 motion-reduce:transition-none transition-all duration-500 lg:px-10 ${
-            isScrolled ? "h-16" : "h-20"
-          }`}
-        >
-          {/* Logo */}
-          <Link
-            href="/"
-            onClick={closeMobileMenu}
-            className="group flex items-center gap-2"
-            aria-label="MadeBySebi home"
-          >
-            <Image
-              src="/brand/madebysebi-wordmark.png"
-              alt="MadeBySebi"
-              width={160}
-              height={30}
-              loading="eager"
-              className={`h-auto w-auto motion-reduce:transition-none transition-all duration-500 ${
-                isScrolled ? "max-w-[128px]" : "max-w-[148px]"
-              }`}
-            />
-
-          </Link>
-
-          {/* Desktop navigation */}
-          <div className="hidden items-center gap-9 lg:flex lg:gap-12">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                aria-current={pathname.startsWith(link.href) ? "page" : undefined}
-                className="group relative text-sm font-medium text-black/65 transition-colors duration-300 hover:text-black"
-              >
-                {link.name}
-
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-black motion-reduce:transition-none transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
-          </div>
-
-          {/* Desktop CTA */}
-          <div className="hidden items-center lg:flex">
-            <Link
-              href="/contact"
-              className={`group inline-flex items-center justify-center gap-2 rounded-full bg-black font-medium text-white motion-reduce:transition-none transition-all duration-300 hover:scale-[1.02] hover:bg-black/80 ${
-                isScrolled ? "h-10 px-5 text-xs" : "h-12 px-6 text-sm"
-              }`}
-            >
-              Start a project
-              <ArrowUpRight className="h-4 w-4 motion-reduce:transition-none transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-          </div>
-
-          {/* Mobile button */}
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen((current) => !current)}
-            className="relative z-[60] flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-black transition-colors hover:bg-black hover:text-white lg:hidden"
-            aria-label={
-              isMobileMenuOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
-            }
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-navigation"
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </button>
+  return <header className="ms-header">
+    <nav className="ms-nav mbs-container" aria-label="Main navigation">
+      <Link href="/" className="ms-brand" onClick={() => setOpen(false)} aria-label="MadeBySebi home">
+        <Image src="/brand/madebysebi-wordmark.png" alt="MadeBySebi" width={155} height={30} priority />
+      </Link>
+      <div className="ms-navlinks">
+        {links.map(link => <Link href={link.href} key={link.href}
+          aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined}>{link.label}</Link>)}
+      </div>
+      <Link className="ms-nav-cta" href="/contact">Let&apos;s talk <ArrowUpRight size={16} aria-hidden="true" /></Link>
+      <button className="ms-menu-trigger" type="button" aria-label="Open navigation menu"
+        aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(true)}><Menu size={21} /></button>
+    </nav>
+    <dialog ref={dialogRef} id="mobile-navigation" className="ms-menu" aria-label="Navigation menu"
+      onClose={() => setOpen(false)} onClick={event => { if (event.target === dialogRef.current) setOpen(false); }}>
+      <div className="ms-menu-inner">
+        <div className="ms-menu-top">
+          <Image src="/brand/madebysebi-wordmark.png" alt="MadeBySebi" width={145} height={27} />
+          <button type="button" aria-label="Close navigation menu" onClick={() => setOpen(false)}><X size={22} /></button>
         </div>
-      </nav>
-
-      <dialog
-        id="mobile-navigation"
-        ref={dialogRef}
-        className="mbs-mobile-dialog"
-        aria-label="Navigation menu"
-        onClose={() => setIsMobileMenuOpen(false)}
-      >
-        <div className="mbs-mobile-inner">
-          <div className="mbs-mobile-top">
-            <span>MADEBYSEBI / MENU</span>
-            <button type="button" onClick={closeMobileMenu} aria-label="Close navigation menu" className="mbs-mobile-close">
-              <X size={22} aria-hidden="true" />
-            </button>
-          </div>
-          <nav className="mbs-mobile-links" aria-label="Mobile navigation">
-            {navLinks.map((link) => <Link key={link.href} href={link.href} onClick={closeMobileMenu}
-              aria-current={pathname.startsWith(link.href) ? "page" : undefined}>{link.name}</Link>)}
-          </nav>
-          <div className="mbs-mobile-bottom">
-            <p>A website, mobile app or better business workflow? Let’s shape your next move.</p>
-            <Link href="/contact" onClick={closeMobileMenu} className="mbs-action mbs-action-primary">Start a project <ArrowUpRight size={18} aria-hidden="true" /></Link>
-            <p>Accra, Ghana · Worldwide</p>
-          </div>
-        </div>
-      </dialog>
-    </header>
-  );
+        <nav aria-label="Mobile navigation">
+          {links.map(link => <Link key={link.href} href={link.href} onClick={() => setOpen(false)}
+            aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined}>{link.label}<ArrowUpRight size={22} /></Link>)}
+        </nav>
+        <p>MadeBySebi · Accra, Ghana<br />Working worldwide</p>
+      </div>
+    </dialog>
+  </header>;
 }

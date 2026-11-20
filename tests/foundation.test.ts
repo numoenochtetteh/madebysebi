@@ -27,7 +27,7 @@ test("sitemap covers pricing, legal pages and every retained case study", () => 
   for (const path of ["/pricing", "/contact", "/privacy", "/terms", ...caseStudyProjects.map((p) => `/work/${p.slug}`)])
     assert.ok(paths.includes(path), `Missing ${path}`);
   assert.equal(new Set(paths).size, paths.length);
-  assert.equal(caseStudyProjects.length, 8);
+  assert.equal(caseStudyProjects.length, 10);
 });
 
 test("recovered video posters exist and are smaller than the original delivery assets", () => {

@@ -1,75 +1,77 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Blocks, CalendarDays, Check, Globe2, Layers3, Megaphone, RefreshCw, Rocket, ShoppingBag, Smartphone, Wrench, Workflow } from "lucide-react";
-import { ActionLink, Container, Eyebrow, Section } from "@/components/site/primitives";
+import { Boxes, CalendarDays, Globe2, PanelsTopLeft, Rocket, ShoppingBag, Smartphone, Wrench } from "lucide-react";
+import { ActionLink, Container, SectionHeading } from "@/components/site/primitives";
+import { FaqList } from "@/components/site/content-layout";
+import { BookCallLink, ChatLink } from "@/components/site/contact-actions";
+import { company, teamMembers } from "@/lib/company";
+import { pricingCategories } from "@/lib/pricing-catalog";
+import { pricingFaqs } from "@/lib/pricing-faqs";
 import { serviceGroups } from "@/lib/services";
-import styles from "./home.module.css";
 
-const serviceIcons = [
-  [Globe2, ShoppingBag, CalendarDays, Rocket],
-  [Blocks, Workflow, Smartphone],
-  [Megaphone, Wrench, Layers3],
-];
+const serviceIcons = {
+  "business-websites": Globe2,
+  ecommerce: ShoppingBag,
+  booking: CalendarDays,
+  "business-launch": Rocket,
+  "web-applications": PanelsTopLeft,
+  "business-systems": Boxes,
+  "mobile-applications": Smartphone,
+  "maintenance-growth": Wrench,
+} as const;
+const serviceRows = [pricingCategories.slice(0, 4), pricingCategories.slice(4)];
 
 export function HomeServiceSections() {
-  return serviceGroups.map((group, index) => (
-    <Section key={group.id} id={group.id} tabIndex={-1}
-      aria-labelledby={`${group.id}-title`}
-      className={`${styles.serviceSection} ${index === 1 ? styles.solutionSection : ""} ${index === 2 ? styles.growthSection : ""}`}>
-      <Container className={styles.serviceLayout}>
-        <div className={styles.serviceIntro}>
-          <div className={styles.introHeading}>
-            <Eyebrow>{`${group.number} / ${group.shortName}`}</Eyebrow>
-            <h2 id={`${group.id}-title`} className={styles.sectionTitle}>{group.title}</h2>
+  return <>
+    <section className="ms-section ms-about-preview" aria-labelledby="home-about-title">
+      <Container>
+        <div className="ms-about-preview-grid">
+          <div>
+            <SectionHeading id="home-about-title" eyebrow="About MadeBySebi" title={<>A small team for<br /> ambitious ideas.</>} />
+            <p>We are a digital solutions agency in Accra, Ghana. We bring design and development together to make useful tools for businesses and the people they serve.</p>
+            <ActionLink href="/about" variant="secondary">Meet the team</ActionLink>
           </div>
-          <div className={styles.introDetails}>
-            <p className={styles.serviceDescription}>{group.description}</p>
-            <ActionLink href={index === 0 ? "/pricing" : "/contact"}
-              variant={index === 1 ? "primary" : "secondary"}>{group.cta}</ActionLink>
-            {index === 0 && (
-            <Link href="/work/pengtresses" className={styles.caseNote}>
-              <div className={styles.caseImage}>
-                <Image src="/media/posters/3.webp" fill loading="lazy"
-                  sizes="(max-width: 767px) 90vw, 38vw"
-                  alt="A real online booking website: Forever Peng Hair" />
-              </div>
-              <span>See it in practice: Forever Peng Hair <ArrowUpRight size={16} aria-hidden="true" /></span>
-            </Link>
-            )}
-            {index === 1 && (
-            <div className={styles.solutionVisual} aria-label="Custom software connects your customers, team and tools">
-              <div className={styles.solutionCore}><Layers3 size={27} aria-hidden="true" /><strong>Your business</strong></div>
-              <div className={styles.connections}><span>Customers</span><span>Your team</span><span>Your tools</span></div>
-              <p>Built around the way you work.</p>
-            </div>
-            )}
-            {index === 2 && (
-            <div className={styles.growthVisual}>
-              <RefreshCw size={26} aria-hidden="true" />
-              <strong>A launch is just the beginning.</strong>
-              <ul>{["Keep your website running well", "Connect with your customers", "Improve as your business evolves"].map(item =>
-                <li key={item}><Check size={16} aria-hidden="true" />{item}</li>)}</ul>
-            </div>
-            )}
+          <div className="ms-about-panel">
+            <div className="ms-portraits">{teamMembers.map(member => <Image key={member.name} src={member.image} alt={member.name} width={78} height={78} style={{ objectPosition: member.position }} />)}</div>
+            <p>From a first website to the software behind everyday operations, we look for the clearest way to make each business idea work.</p>
+            <span>{company.location} · Working worldwide</span>
           </div>
-        </div>
-        <div className={`${styles.serviceCards} ${group.services.length === 3 ? styles.threeCards : ""}`}>
-          {group.services.map((service, serviceIndex) => {
-            const Icon = serviceIcons[index][serviceIndex];
-            return (
-              <Link key={service.title} href={`/pricing?category=${service.category}`} className={styles.serviceCard}
-                aria-label={`${service.title} — explore pricing and scope`}>
-                <div className={styles.cardTop}>
-                  <span className={styles.serviceIcon}><Icon size={24} strokeWidth={1.7} aria-hidden="true" /></span>
-                  <span className={styles.serviceNumber}>{group.number}.{serviceIndex + 1}</span>
-                </div>
-                <div className={styles.cardCopy}><h3>{service.title}</h3><p>{service.description}</p></div>
-                <span className={styles.cardArrow} aria-hidden="true"><ArrowUpRight size={18} /></span>
-              </Link>
-            );
-          })}
         </div>
       </Container>
-    </Section>
-  ));
+    </section>
+    <section className="ms-section ms-services-preview" aria-labelledby="home-services-title">
+      <Container>
+        <div className="ms-center-heading"><SectionHeading id="home-services-title" eyebrow="What we do" title={<>Everything your business needs<br className="ms-desktop-break" /> to show up and work better.</>} /></div>
+        <div className="ms-service-pills" role="group" aria-label="Explore MadeBySebi services">
+          {serviceRows.map((row, rowIndex) => <div className="ms-service-pill-window" key={rowIndex}>
+            <div className={`ms-service-pill-track ${rowIndex === 1 ? "ms-service-pill-reverse" : ""}`}>
+              {[0, 1].map(copy => <div className="ms-service-pill-set" key={copy} aria-hidden={copy === 1}>
+                {row.map(category => { const Icon = serviceIcons[category.id]; return <Link href={`/pricing?category=${category.id}`} key={category.id} tabIndex={copy === 1 ? -1 : undefined} className="ms-service-pill"><Icon size={20} strokeWidth={1.7} aria-hidden="true" />{category.name}</Link>; })}
+              </div>)}
+            </div>
+          </div>)}
+        </div>
+        <div className="ms-service-cards">
+          <svg className="ms-service-arrow ms-service-arrow-top" viewBox="0 0 84 50" aria-hidden="true"><path d="M3 43C9 6 43 6 75 28M57 12l18 16-21 2" /></svg>
+          {serviceGroups.map(group => <article key={group.id} id={group.id} className="ms-service-card">
+            <Link href={`/services#${group.id}`} aria-label={`Explore ${group.shortName} services`}>
+              <span className="ms-index">{group.number}</span>
+              <h3>{group.shortName}</h3>
+              <p>{group.description}</p>
+            </Link>
+          </article>)}
+          <svg className="ms-service-arrow ms-service-arrow-bottom" viewBox="0 0 84 50" aria-hidden="true"><path d="M3 7c6 37 40 37 72 15M57 38l18-16-21-2" /></svg>
+        </div>
+        <div className="ms-section-end"><ActionLink href="/services" variant="secondary">Explore all services</ActionLink></div>
+      </Container>
+    </section>
+    <section className="ms-section ms-home-faq" aria-labelledby="home-faq-title">
+      <Container>
+        <div className="ms-home-faq-layout">
+          <div className="ms-home-faq-intro"><p className="ms-pill ms-available"><span className="ms-dot" aria-hidden="true" /> Before you decide · Available for projects</p><SectionHeading id="home-faq-title" title={<>Have a project<br />in mind? Let&apos;s<br />make it real.</>} description="Good projects begin with the right questions. Here are a few useful answers before we talk." /><div className="ms-home-faq-actions"><BookCallLink /><ChatLink /></div></div>
+          <FaqList items={pricingFaqs} />
+        </div>
+      </Container>
+    </section>
+  </>;
 }

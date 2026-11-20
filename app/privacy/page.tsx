@@ -46,7 +46,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <>
-      <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#f4f4f1] px-5 pb-24 pt-32 text-[#0b0b0b] sm:px-8 lg:pt-40">
+      <main id="main-content" tabIndex={-1} className="ms-legal min-h-screen bg-white px-5 pb-24 pt-32 text-[#0b0b0b] sm:px-8 lg:pt-40">
         <div className="mx-auto max-w-[1180px]">
           <Link href="/" className="mb-10 inline-flex items-center gap-2 text-sm text-black/55 transition hover:text-black">
             <ArrowLeft size={15} /> Back home
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
                 </section>
               ))}
 
-              <section className="rounded-[24px] bg-[#cefa74] p-6 sm:p-8">
+              <section className="rounded-[24px] bg-[#f7f7f7] p-6 sm:p-8">
                 <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-black/55">Questions about privacy?</span>
                 <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                   <h2 className="max-w-[650px] text-3xl font-semibold leading-[1] tracking-[-0.05em] sm:text-4xl">Contact us and we&apos;ll help with your request.</h2>

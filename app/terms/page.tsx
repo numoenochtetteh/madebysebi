@@ -54,7 +54,7 @@ const sections = [
 export default function TermsPage() {
   return (
     <>
-      <main id="main-content" tabIndex={-1} className="min-h-screen bg-[#f4f4f1] px-5 pb-24 pt-32 text-[#0b0b0b] sm:px-8 lg:pt-40">
+      <main id="main-content" tabIndex={-1} className="ms-legal min-h-screen bg-white px-5 pb-24 pt-32 text-[#0b0b0b] sm:px-8 lg:pt-40">
         <div className="mx-auto max-w-[1180px]">
           <Link href="/" className="mb-10 inline-flex items-center gap-2 text-sm text-black/55 transition hover:text-black">
             <ArrowLeft size={15} /> Back home
@@ -82,11 +82,11 @@ export default function TermsPage() {
                 </section>
               ))}
 
-              <section className="rounded-[24px] bg-[#0b0b0b] p-6 text-white sm:p-8">
-                <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-white/45">Project-specific terms</span>
+              <section className="rounded-[24px] bg-[#f7f7f7] p-6 text-[#0b0b0b] sm:p-8">
+                <span className="font-mono text-[9px] uppercase tracking-[0.15em] text-black/55">Project-specific terms</span>
                 <div className="mt-4 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                   <h2 className="max-w-[650px] text-3xl font-semibold leading-[1] tracking-[-0.05em] sm:text-4xl">Every project gets a clear scope before work begins.</h2>
-                  <Link href="/contact" className="inline-flex items-center gap-2 font-semibold text-[#cefa74]">Start a project <ArrowUpRight size={16} /></Link>
+                  <Link href="/contact" className="inline-flex items-center gap-2 font-semibold text-black">Start a project <ArrowUpRight size={16} /></Link>
                 </div>
               </section>
             </div>

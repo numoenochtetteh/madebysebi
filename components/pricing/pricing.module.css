@@ -89,13 +89,14 @@
 .faqLayout { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(2rem, 6vw, 6rem); }
 .faqLayout :global(.mbs-description) { font-size: 1rem; }
 .faqLayout :global(.mbs-action) { margin-top: 1.5rem; }
-.faqList { border-top: 1px solid var(--mbs-line); }
-.faqList details { border-bottom: 1px solid var(--mbs-line); padding-block: 1.4rem; }
-.faqList summary { display: flex; align-items: start; justify-content: space-between; gap: 1rem; cursor: pointer; list-style: none; font-size: .95rem; font-weight: 550; line-height: 1.5; }
+.faqList { display: grid; align-content: start; gap: .65rem; }
+.faqList details { padding: 0; border-radius: .65rem; background: #f8f8f8; transition: background .2s ease; }
+.faqList details:hover, .faqList details[open] { background: #f3f3f3; }
+.faqList summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.9rem; padding: 1.1rem 1.25rem; cursor: pointer; list-style: none; font-size: .95rem; font-weight: 550; line-height: 1.5; }
 .faqList summary::-webkit-details-marker { display: none; }
-.faqList summary svg { flex-shrink: 0; margin-top: .15rem; }
+.faqList summary svg { flex-shrink: 0; transition: transform .2s ease; }
 .faqList details[open] summary svg { transform: rotate(45deg); }
-.faqList details > p { margin-top: 1rem; color: var(--mbs-muted); font-size: .875rem; line-height: 1.8; }
+.faqList details > p { padding: 0 1.25rem 1.25rem; color: var(--mbs-muted); font-size: .875rem; line-height: 1.8; }
 .finalCta { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: clamp(1.5rem, 5vw, 4rem); border-radius: var(--mbs-radius); background: var(--mbs-lime); }
 .finalCta .smallLabel { color: #38482a; }
 .finalCta h2 { margin-block: 1rem; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 550; line-height: 1.1; letter-spacing: -.05em; }
