@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "@/hooks/use-browser-preferences";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 
 const heroCards = [
@@ -54,48 +55,40 @@ const mobileTabs = ["Web Design", "UI/UX", "Digital Products"];
 
 export function GalleryHeroContent() {
   const [activeTab, setActiveTab] = useState("Web Design");
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 620px)");
+  const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 620px)");
-
-    const updateDevice = () => {
-      setIsMobile(media.matches);
+    const hero = heroRef.current;
+    if (!hero) return;
+    const tabs = isMobile ? mobileTabs : desktopTabs;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    let interval: number | undefined;
+    const update = () => {
+      window.clearInterval(interval);
+      if (!visible || document.hidden || motion.matches) return;
+      interval = window.setInterval(() => {
+        setActiveTab((current) => tabs[(tabs.indexOf(current) + 1) % tabs.length]);
+      }, 3000);
     };
-
-    updateDevice();
-
-    media.addEventListener("change", updateDevice);
-
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      update();
+    });
+    observer.observe(hero);
+    document.addEventListener("visibilitychange", update);
+    motion.addEventListener("change", update);
     return () => {
-      media.removeEventListener("change", updateDevice);
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", update);
+      motion.removeEventListener("change", update);
+      window.clearInterval(interval);
     };
-  }, []);
-
-  useEffect(() => {
-    const availableTabs = isMobile ? mobileTabs : desktopTabs;
-
-    setActiveTab((current) =>
-      availableTabs.includes(current) ? current : availableTabs[0],
-    );
-
-    const interval = window.setInterval(() => {
-      setActiveTab((current) => {
-        const currentIndex = availableTabs.indexOf(current);
-
-        if (currentIndex === -1) {
-          return availableTabs[0];
-        }
-
-        return availableTabs[(currentIndex + 1) % availableTabs.length];
-      });
-    }, 3000);
-
-    return () => window.clearInterval(interval);
   }, [isMobile]);
 
   return (
-    <section className="numo-arc-hero">
+    <section ref={heroRef} className="numo-arc-hero">
       {/* BACKGROUND GLOW */}
 
       <div className="numo-hero-glow numo-hero-glow-one" />
@@ -138,7 +131,8 @@ export function GalleryHeroContent() {
                   height={320}
                   sizes="(max-width: 620px) 128px, 160px"
                   quality={75}
-                  priority={card.className.includes("featured")}
+                  loading={card.className.includes("featured") ? "eager" : "lazy"}
+                  fetchPriority={card.className.includes("featured") ? "high" : "auto"}
                 />
               </div>
             </div>

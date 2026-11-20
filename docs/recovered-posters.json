@@ -1,0 +1,38 @@
+[
+  {
+    "source": "/case-studies/power-electrode/03-values.png",
+    "delivery": "/media/posters/03-values.webp",
+    "sourceBytes": 848909,
+    "deliveryBytes": 86938
+  },
+  {
+    "source": "/showcase/3.png",
+    "delivery": "/media/posters/3.webp",
+    "sourceBytes": 670172,
+    "deliveryBytes": 69074
+  },
+  {
+    "source": "/showcase/creative-workspace.jpg",
+    "delivery": "/media/posters/creative-workspace.webp",
+    "sourceBytes": 973447,
+    "deliveryBytes": 153450
+  },
+  {
+    "source": "/expertise/product-experience.png",
+    "delivery": "/media/posters/product-experience.webp",
+    "sourceBytes": 144664,
+    "deliveryBytes": 47196
+  },
+  {
+    "source": "/expertise/fintech-solutions.png",
+    "delivery": "/media/posters/fintech-solutions.webp",
+    "sourceBytes": 85133,
+    "deliveryBytes": 26114
+  },
+  {
+    "source": "/expertise/tech-websites.png",
+    "delivery": "/media/posters/tech-websites.webp",
+    "sourceBytes": 89814,
+    "deliveryBytes": 36890
+  }
+]

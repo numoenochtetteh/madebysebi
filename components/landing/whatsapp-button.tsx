@@ -1,14 +1,28 @@
-export function WhatsAppButton() {
-  const whatsappUrl =
-    "https://wa.me/233542470922?text=Hello%20MadeBySebi%2C%20I%27d%20like%20to%20discuss%20a%20project.";
+"use client";
 
+import { useEffect, useRef } from "react";
+import { whatsappUrl } from "@/lib/services";
+
+export function WhatsAppButton() {
+  const contactRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const footer = document.getElementById("site-footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (contactRef.current) contactRef.current.hidden = entry.isIntersecting;
+    });
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
   return (
+    <aside ref={contactRef} aria-label="Quick contact">
     <a
+      data-whatsapp-link
+      aria-label="Chat with MadeBySebi on WhatsApp"
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chat with MadeBySebi on WhatsApp"
-      className="group fixed bottom-5 right-5 z-[70] inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-black/10 bg-[#cefa74] px-3.5 text-black shadow-[0_14px_35px_rgba(0,0,0,0.16)] transition-all duration-300 hover:-translate-y-1 hover:bg-white sm:bottom-6 sm:right-6 sm:h-13 sm:px-4"
+      className="group fixed bottom-5 right-5 z-[70] inline-flex h-12 items-center justify-center gap-2.5 rounded-full border border-[#1eab50] bg-[#25D366] px-3.5 text-white shadow-[0_14px_35px_rgba(18,133,65,0.23)] motion-reduce:transition-none motion-reduce:transform-none transition-all duration-300 hover:-translate-y-1 hover:bg-[#1eac52] sm:bottom-6 sm:right-6 sm:h-13 sm:px-4"
     >
       <svg
         viewBox="0 0 24 24"
@@ -22,9 +36,10 @@ export function WhatsAppButton() {
         WhatsApp
       </span>
 
-      <span className="hidden font-mono text-[9px] tracking-[0.08em] text-black/55 lg:inline">
+      <span className="hidden font-mono text-[9px] tracking-[0.08em] text-white/80 lg:inline">
         054 247 0922
       </span>
     </a>
+    </aside>
   );
 }

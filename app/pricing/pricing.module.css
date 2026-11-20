@@ -1,0 +1,28 @@
+
+/* Shared Menoa visual treatment; explorer behaviour and package data remain intact. */
+.hero { padding-block: clamp(95px,9vw,123px) 60px; border: 0; }
+.heroInner { display: flex; align-items: center; flex-direction: column; text-align: center; }
+.hero h1 { max-width: 950px; margin-inline: auto; font-size: clamp(48px,6vw,78px); line-height: 1.04; }
+.hero h1 > span { color: #111; }
+.heroCopy { max-width: 670px; margin: 22px auto; font-size: 17px; }
+.heroNote { display: none; }
+.explorerSection { padding-top: 32px; }
+.pillars a { background: #f8f8f8; border-color: #eee; }
+.pillars a[aria-current] { color: #fff; background: #111; border-color: #111; }
+.pillars a[aria-current] > span { color: #fff; }
+.categories a { background: #f7f7f7; border-color: #f7f7f7; }
+.categories a[aria-current] { color: #fff; background: #111; border-color: #111; }
+.categoryHeading { background: #f8f8f8; border-color: #f8f8f8; }
+.packageCard { background: #f8f8f8; border: 0; }
+.featured { background: #efefef !important; }
+.featured .features { border-color: #d8d8d8; }
+.featured .cardLabels > span, .featured .priceBasis, .featured .packageDescription { color: #555; }
+.features svg { color: #111; }
+.tableWrap { border-color: #e8e8e8; }
+.tableWrap thead th { background: #f8f8f8; }
+.scopePanel { background: #f7f7f7; color: #111; }
+.scopePanel .smallLabel, .scopePanel li > span { color: #777; }
+.scopePanel p { color: #666; }
+.finalCta { background: #f7f7f7; }
+.finalCta .smallLabel, .finalCta p { color: #666; }
+@media (max-width:760px) { .hero { padding-top: 82px; } }

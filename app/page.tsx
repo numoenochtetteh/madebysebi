@@ -1,25 +1,26 @@
-import { GalleryHero } from "@/components/landing/gallery-hero";
-import { ProcessSystem } from "@/components/landing/process-system";
-import { ExpertiseSection } from "@/components/landing/expertise-section";
-import { ServicesShowcase } from "@/components/landing/services-showcase";
-import { WorkSection } from "@/components/landing/work-section";
-// import { DevelopersSection } from "@/components/landing/developers-section";
-import { TestimonialsSection } from "@/components/landing/testimonials-section";
-import { CtaSection } from "@/components/landing/cta-section";
+import type { Metadata } from "next";
+import { HomeHero } from "@/components/home/hero";
+import { HomeSelectedWork } from "@/components/home/selected-work";
+import { HomeServiceSections } from "@/components/home/service-sections";
+
+const title = "Websites that drive results, digital retainers that deliver growth";
+const description = "MadeBySebi helps companies and businesses grow revenue and stand out in crowded markets through brand and product design.";
+
+export const metadata: Metadata = {
+  title: { absolute: title + " | MadeBySebi" },
+  description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: title + " | MadeBySebi", description, url: "/",
+    images: [{ url: "/brand/madebysebi-og.png", width: 1200, height: 630, alt: "MadeBySebi" }],
+  },
+  twitter: { title: title + " | MadeBySebi", description, images: ["/brand/madebysebi-og.png"] },
+};
 
 export default function Home() {
-  return (
-    <main className="relative min-h-screen overflow-x-hidden noise-overlay">
-      <GalleryHero />
-      <ProcessSystem />
-      <ExpertiseSection />
-      <ServicesShowcase />
-      <WorkSection />
-
-      {/* <DevelopersSection /> */}
-
-      <TestimonialsSection />
-      <CtaSection />
-    </main>
-  );
+  return <main id="main-content" tabIndex={-1} className="ms-home">
+    <HomeHero />
+    <HomeSelectedWork />
+    <HomeServiceSections />
+  </main>;
 }

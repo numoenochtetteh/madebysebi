@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 export default function NotFound() {
   return (
     <>
-      <main className="not-found-page">
+      <main id="main-content" tabIndex={-1} className="not-found-page">
         <section className="not-found-card">
           <span className="not-found-code">404</span>
 

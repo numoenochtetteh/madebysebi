@@ -1,0 +1,15 @@
+.layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: start; gap: clamp(2rem, 5vw, 4rem); }
+.details { min-width: 0; }
+.details :global(.mbs-heading) { font-size: clamp(2rem, 4vw, 3.4rem); }
+.points { display: grid; gap: 1rem; margin-block: 2.5rem; }
+.points li { display: flex; align-items: flex-start; gap: .8rem; font-size: .95rem; line-height: 1.7; }
+.points svg { flex-shrink: 0; margin-top: .3rem; color: var(--mbs-lime-ink); }
+.direct { padding-top: 2rem; border-top: 1px solid var(--mbs-line); }
+.direct h3 { font-size: 1.15rem; margin-bottom: 1rem; font-weight: 600; }
+.direct a { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; font-size: 1rem; font-weight: 600; padding-block: .5rem; overflow-wrap: anywhere; }
+.direct p { max-width: 32rem; color: var(--mbs-muted); font-size: .9rem; line-height: 1.8; margin-top: 1rem; }
+.socials { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+.socials a { display: flex; align-items: center; gap: .3rem; font-size: .8rem; padding-block: .5rem; }
+.faqLayout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.faqLayout :global(.mbs-heading) { font-size: clamp(2.3rem, 4vw, 3.5rem); }
+@media (max-width: 1023px) { .layout, .faqLayout { grid-template-columns: minmax(0, 1fr); } }

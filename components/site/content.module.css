@@ -1,0 +1,74 @@
+.page { background: #fff; color: var(--mbs-ink); }
+.page :is(a, button, summary, input, select, textarea):focus-visible { outline: 2px solid #111; outline-offset: 3px; }
+.page :is(section, [id]) { scroll-margin-top: 105px; }
+.hero { padding-block: clamp(100px,9vw,125px) clamp(60px,7vw,93px); text-align: center; }
+.hero > :global(.mbs-container) { max-width: 1120px; }
+.hero h1 { max-width: 1030px; margin-inline: auto; font-size: clamp(50px,6vw,80px); line-height: 1.03; letter-spacing: -.068em; font-weight: 600; text-wrap: balance; }
+.heroGrid { display: block; }
+.heroNote { max-width: 620px; margin: 25px auto 0; padding: 24px; background: #f8f8f8; border-radius: 16px; text-align: center; }
+.heroNote strong { font-size: 18px; font-weight: 550; }
+.heroNote p { color: #666; line-height: 1.65; margin-top: 8px; }
+.lead { max-width: 680px; margin: 22px auto 0; font-size: clamp(16px,1.5vw,18px); line-height: 1.6; color: #666; }
+.actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.pillarNav { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; width: 100%; margin-top: 34px; text-align: left; }
+.pillarNav a { display: flex; gap: 12px; align-items: center; border-radius: 12px; padding: 18px; background: #f8f8f8; font-size: 14px; font-weight: 550; line-height: 1.4; transition: background .2s; }
+.pillarNav a:hover { background: #eee; }
+.pillarNav span { color: #888; font-size: 12px; }
+.serviceSection { border-top: 1px solid #eee; position: relative; }
+.alias { position: absolute; top: 0; }
+.serviceGrid, .workGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin-top: 38px; }
+.serviceGrid h3 { font-size: clamp(22px,2.4vw,28px); letter-spacing: -.045em; line-height: 1.15; }
+.serviceGrid p, .serviceGrid ul { color: #666; line-height: 1.6; }
+.serviceGrid ul { display: grid; gap: 7px; margin-left: 18px; padding-left: 0; list-style: disc; font-size: 14px; }
+.serviceGrid a { align-self: flex-start; margin-top: auto; }
+.serviceIndex { color: #888; font-size: 13px; }
+.steps { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 14px; margin-top: 40px; counter-reset: steps; }
+.step { min-width: 0; padding: 26px; background: #f8f8f8; border-radius: 16px; }
+.step::before { counter-increment: steps; content: "0" counter(steps); font-size: 13px; color: #777; }
+.step h3 { margin: 30px 0 12px; font-size: 22px; font-weight: 550; line-height: 1.2; letter-spacing: -.035em; }
+.step p { color: #666; line-height: 1.65; font-size: 14px; }
+.split { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(30px,6vw,75px); }
+.copy { color: #555; font-size: 18px; line-height: 1.7; }
+.copy p + p { margin-top: 18px; }
+.pillarCards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin-top: 38px; }
+.pillarCards h3 { font-size: 24px; font-weight: 550; line-height: 1.2; letter-spacing: -.04em; }
+.pillarCards p { color: #666; font-size: 14px; line-height: 1.65; }
+.pillarCards a { margin-top: auto; align-self: flex-start; }
+.teamGrid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; margin-top: 40px; }
+.teamPhoto { position: relative; aspect-ratio: 4/4.7; overflow: hidden; background: #f7f7f7; border-radius: 16px; }
+.teamPhoto img { object-fit: cover; }
+.teamGrid h3 { margin-top: 18px; font-size: 20px; font-weight: 550; letter-spacing: -.03em; }
+.teamGrid p { margin-top: 5px; color: #777; font-size: 14px; }
+.teamGrid a { display: inline-flex; gap: 7px; align-items: center; margin-top: 10px; padding: 6px 0; font-size: 14px; font-weight: 550; }
+.projectCard { min-width: 0; }
+.projectImage { display: block; position: relative; aspect-ratio: 1.25; border-radius: 16px; overflow: hidden; background: #f7f7f7; }
+.projectImage img { object-fit: cover; }
+.projectCopy { padding-top: 17px; }
+.projectCopy small { display: block; margin-bottom: 6px; color: #777; font-size: 14px; }
+.projectCopy h3 { font-size: 19px; letter-spacing: -.03em; }
+.projectCopy p { margin: 10px 0; color: #666; line-height: 1.55; }
+.projectCopy > a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+.cta { display: flex; align-items: center; justify-content: space-between; gap: 35px; border-radius: 16px; padding: clamp(30px,5vw,60px); background: #f7f7f7; }
+.cta h2 { max-width: 650px; font-size: clamp(37px,4.5vw,58px); line-height: 1.07; letter-spacing: -.055em; font-weight: 600; }
+.cta p:last-child { margin-top: 16px; max-width: 590px; color: #666; line-height: 1.6; }
+.cta > a { flex: none; }
+.faqs { display: grid; align-content: start; gap: 10px; }
+.faqs details { border-radius: 10px; background: #f8f8f8; transition: background .2s ease; }
+.faqs details:hover, .faqs details[open] { background: #f3f3f3; }
+.faqs summary { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 62px; padding: 18px 20px; cursor: pointer; font-size: 16px; font-weight: 550; line-height: 1.4; list-style: none; }
+.faqs summary::-webkit-details-marker { display: none; }
+.faqs summary svg { flex: none; transition: transform .2s ease; }
+.faqs details[open] summary svg { transform: rotate(45deg); }
+.faqs details > p { padding: 0 20px 20px; color: #666; font-size: 14px; line-height: 1.7; animation: faq-answer-in .2s ease-out; }
+@keyframes faq-answer-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (max-width: 1000px) { .steps { grid-template-columns: repeat(2,minmax(0,1fr)); } .split { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  .hero { padding-block: 83px 58px; }
+  .hero h1 { font-size: clamp(43px,10vw,64px); }
+  .pillarNav, .serviceGrid, .workGrid, .pillarCards, .teamGrid { grid-template-columns: 1fr; }
+  .pillarNav { gap: 8px; }
+  .teamPhoto { aspect-ratio: 1.1; }
+  .cta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 520px) { .hero h1 { font-size: clamp(40px,10vw,52px); } .steps { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .faqs details, .faqs summary svg { transition: none; } .faqs details > p { animation: none; } }

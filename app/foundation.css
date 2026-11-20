@@ -1,0 +1,51 @@
+/* Shared rebuild tokens. Scoped component classes leave existing page layouts intact. */
+:root {
+  --mbs-canvas: #f7f7f3;
+  --mbs-surface: #ffffff;
+  --mbs-ink: #171717;
+  --mbs-muted: #5f625b;
+  --mbs-lime: var(--brand-lime);
+  --mbs-lime-ink: #496124;
+  --mbs-line: #d7d9d1;
+  --mbs-radius: 1.5rem;
+  --mbs-container: 78.125rem;
+  --mbs-gutter: clamp(1.5rem, 4vw, 2.5rem);
+  --mbs-section-space: clamp(4rem, 8vw, 7rem);
+  --mbs-heading-size: clamp(2.25rem, 5vw, 4.75rem);
+  --mbs-display-size: clamp(3.3rem, 8vw, 7.8rem);
+  --mbs-duration: 180ms;
+}
+
+.mbs-container { width: 100%; max-width: var(--mbs-container); margin-inline: auto; padding-inline: var(--mbs-gutter); }
+.mbs-section { padding-block: var(--mbs-section-space); scroll-margin-top: 7rem; }
+.mbs-heading { color: var(--mbs-ink); font-size: var(--mbs-heading-size); font-weight: 600; line-height: 1.05; letter-spacing: -.055em; }
+.mbs-heading-display { font-size: var(--mbs-display-size); line-height: .98; letter-spacing: -.07em; }
+.mbs-description { max-width: 45rem; margin-top: 2rem; color: var(--mbs-muted); font-size: 1.125rem; line-height: 1.7; }
+.mbs-eyebrow { display: inline-flex; align-items: center; gap: .6rem; margin-bottom: 1.5rem; border: 1px solid var(--mbs-line); border-radius: .375rem; padding: .5rem .75rem; font-family: var(--font-geist-mono), monospace; font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mbs-muted); }
+.mbs-eyebrow > span { width: .5rem; height: .5rem; border-radius: .125rem; background: var(--mbs-lime); }
+.mbs-action { display: inline-flex; min-height: 3rem; align-items: center; justify-content: center; gap: .65rem; padding: .8rem 1.5rem; border: 1px solid transparent; border-radius: 999px; font-size: .875rem; font-weight: 600; text-align: center; transition: background-color var(--mbs-duration), color var(--mbs-duration); }
+.mbs-action-primary { background: var(--mbs-ink); color: #fff; }
+.mbs-action-primary:hover { background: #343831; }
+.mbs-action-secondary { background: var(--mbs-surface); border-color: var(--mbs-line); color: var(--mbs-ink); }
+.mbs-action-secondary:hover { background: var(--mbs-canvas); }
+.mbs-action:focus-visible, .mbs-mobile-dialog a:focus-visible, .mbs-mobile-dialog button:focus-visible { outline: 2px solid var(--mbs-ink); outline-offset: 4px; }
+.mbs-card { height: 100%; display: flex; flex-direction: column; gap: 1.5rem; padding: clamp(1.5rem, 3vw, 2.25rem); border: 1px solid var(--mbs-line); border-radius: var(--mbs-radius); background: var(--mbs-surface); color: var(--mbs-ink); }
+.mbs-card-featured { background: var(--mbs-lime); border-color: #b0df54; }
+.mbs-skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 100; transform: translateY(-200%); padding: .75rem 1rem; border-radius: .5rem; background: var(--mbs-ink); color: #fff; }
+.mbs-skip-link:focus { transform: none; }
+
+/* Native modal focus containment, Escape dismissal and independent short-screen scrolling. */
+.mbs-mobile-dialog { position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: 100dvh; margin: 0; padding: 0; border: 0; overflow-y: auto; overscroll-behavior: contain; background: var(--mbs-canvas); color: var(--mbs-ink); }
+.mbs-mobile-dialog::backdrop { background: #17171766; }
+.mbs-mobile-inner { min-height: 100%; display: flex; flex-direction: column; gap: 2rem; padding: 1.5rem var(--mbs-gutter) 2rem; }
+.mbs-mobile-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.mbs-mobile-top > span { font-family: var(--font-geist-mono), monospace; font-size: .75rem; }
+.mbs-mobile-close { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border: 1px solid var(--mbs-line); border-radius: 50%; background: #fff; }
+.mbs-mobile-links { display: flex; flex-direction: column; }
+.mbs-mobile-links > a { padding-block: 1rem; border-bottom: 1px solid var(--mbs-line); font-size: clamp(2rem, 7vw, 3.5rem); line-height: 1.1; letter-spacing: -.04em; }
+.mbs-mobile-bottom { display: grid; gap: 1rem; margin-top: auto; }
+.mbs-mobile-bottom > p { max-width: 24rem; color: var(--mbs-muted); }
+@media (prefers-reduced-motion: reduce) {
+  .mbs-action, .mbs-skip-link { transition: none; }
+  html { scroll-behavior: auto !important; }
+}
