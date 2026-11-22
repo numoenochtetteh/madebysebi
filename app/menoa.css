@@ -59,7 +59,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .ms-homehero-inner { max-width: 1280px; }
 .ms-pill { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 16px; border-radius: 999px; background: #f8f8f8; font-size: 14px; font-weight: 550; }
 .ms-dot { display: inline-block; width: 9px; height: 9px; flex: none; border-radius: 50%; background: #10ba51; box-shadow: 0 0 0 4px #e5f6e9; }
-.ms-homehero h1 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr); align-items: center; gap: clamp(22px, 3.5vw, 58px); margin: 29px auto 27px; max-width: 1220px; font-size: clamp(42px, 3.8vw, 64px); font-weight: 600; line-height: 1.06; letter-spacing: -.064em; text-wrap: balance; }
+.ms-homehero h1 { display: grid; grid-template-columns: minmax(0, 7.6em) minmax(0, 10.25em); justify-content: center; align-items: center; gap: clamp(18px, 2vw, 30px); margin: 29px auto 27px; max-width: 1220px; font-size: clamp(42px, 3.8vw, 64px); font-weight: 600; line-height: 1.06; letter-spacing: -.064em; text-wrap: balance; }
 .ms-homehero h1 > span { min-width: 0; }
 .ms-homehero-copy { max-width: 650px; margin: 0 auto; color: #666; font-size: clamp(16px, 1.42vw, 18px); line-height: 1.55; }
 .ms-hero-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 31px; }
