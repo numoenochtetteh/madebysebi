@@ -11,7 +11,7 @@ export function HomeSelectedWork() {
   return <section id="selected-work" className="ms-featured ms-section" aria-labelledby="selected-work-title">
     <Container>
       <div className="ms-center-heading">
-        <SectionHeading id="selected-work-title" eyebrow="Selected projects" title={<>Projects built on strategy,<br /> finished with craft.</>} />
+        <SectionHeading id="selected-work-title" eyebrow="Selected work" title={<>Projects built on strategy,<br /> finished with craft.</>} />
       </div>
       <div className="ms-project-grid">{projects.map(project => <ProjectCard project={project} key={project.slug} />)}</div>
       <div className="ms-section-end"><Link className="ms-soft-button" href="/work">See all our work <ArrowUpRight size={17} aria-hidden="true" /></Link></div>

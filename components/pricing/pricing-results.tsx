@@ -22,16 +22,5 @@ export function PricingResults({ category }: { category?: PricingCategory }) {
         <div className={styles.cardActions}><ActionLink href={pricingContactHref(category, option)} aria-label={`Get started with ${option.name} — ${category.name}`}>Get Started</ActionLink>{option.brochure?.approved ? <a href={option.brochure.href} download>Package brochure <Download size={15} aria-hidden="true" /></a> : null}</div>
       </Card>)}
     </div>
-    <div className={styles.comparison}>
-      <div className={styles.comparisonHeading}><h3>Compare at a glance</h3><p>Illustrative items remain subject to an agreed proposal.</p></div>
-      <p className={styles.tableHint}>Scroll within the comparison to see all three options.</p>
-      <div className={styles.tableWrap} role="region" aria-label={`${category.name} package comparison`} tabIndex={0}>
-        <table><caption className={styles.srOnly}>{category.name}: price, scope basis and key differences across three options</caption><thead><tr><th scope="col">Your priorities</th>{category.packages.map(option => <th key={option.id} scope="col">{option.tier}<span>{option.name}</span></th>)}</tr></thead><tbody>
-          <tr><th scope="row">Price</th>{category.packages.map(option => <td key={option.id}>{option.price ?? "Custom Quote"}<span>{option.basis === "published" ? "Starting price" : "Quoted after consultation"}</span></td>)}</tr>
-          <tr><th scope="row">Scope basis</th>{category.packages.map(option => <td key={option.id}>{option.basis === "published" ? "Published inclusions" : "Illustrative scope"}</td>)}</tr>
-          {category.comparisonLabels.map((label, index) => <tr key={label}><th scope="row">{label}</th>{category.packages.map(option => <td key={option.id}>{option.comparison[index]}</td>)}</tr>)}
-        </tbody></table>
-      </div>
-    </div>
   </div>;
 }

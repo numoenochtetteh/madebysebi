@@ -388,7 +388,7 @@ export const caseStudyProjects: CaseStudyProject[] = [
     headline: "A cleaner digital presence for a company focused on data, analytics and AI solutions.",
     intro:
       "Lucenex needed a business website that explains its value simply: helping companies use data, analytics and AI to make smarter decisions. The experience had to present the brand clearly, organise its service offer, and create a more professional path for potential clients to understand the company and reach out.",
-    image: "/project-mockups/lucenex-corp.webp",
+    image: "/project-mockups/lucenex-services.png",
     video: "/expertise/03.mp4",
     accent: "#ffd66b",
     services: [

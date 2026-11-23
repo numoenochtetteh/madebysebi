@@ -9,7 +9,7 @@ const previews = [
   { src: "/project-mockups/femmora.webp", name: "FEMMORA" },
   { src: "/project-mockups/forever-peng-hair.webp", name: "Forever Peng Hair" },
   { src: "/project-mockups/gas-safety-plumbing.webp", name: "Gas Safety & Plumbing Engineering Ltd" },
-  { src: "/project-mockups/lucenex-corp.webp", name: "Lucenex Corp" },
+  { src: "/project-mockups/lucenex-services.png", name: "Lucenex Corp" },
 ];
 
 export function HomeHero() {
@@ -18,13 +18,13 @@ export function HomeHero() {
       <div className="mbs-container ms-homehero-inner">
         <p className="ms-pill ms-agency-label"><span className="ms-dot" aria-hidden="true" />MadeBySebi · Web Design Agency</p>
         <h1 id="home-title">
-          <span>Websites that drive results,</span>
-          <span>digital retainers that deliver growth.</span>
+          <span>Design that makes</span>{" "}
+          <span>people trust and buy</span>
         </h1>
-        <p className="ms-homehero-copy">Helping companies and businesses grow revenue and stand out in crowded markets through brand and product design.</p>
+        <p className="ms-homehero-copy">Helping companies stand out in crowded markets through thoughtful brand and product design</p>
         <div className="ms-hero-actions">
           <BookCallLink />
-          <Link className="ms-soft-button" href="/work">Explore our work <ArrowUpRight size={17} aria-hidden="true" /></Link>
+          <Link className="ms-soft-button" href="/work"><span className="ms-explore-icon" aria-hidden="true">💻</span>Explore our work <ArrowUpRight size={17} aria-hidden="true" /></Link>
         </div>
         <div className="ms-client-strip" role="group" aria-label="Selected MadeBySebi projects">
           <div className="ms-client-track">

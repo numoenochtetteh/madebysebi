@@ -73,7 +73,7 @@ The owner can carry out these dashboard/GitHub steps manually. No CLI credential
 
 - Check `/`, `/services`, `/pricing`, `/about`, `/work`, `/contact`, `/privacy`, `/terms`, all eight existing `/work/[slug]` case studies, and a nonexistent route returning a real 404.
 - Exercise the three homepage anchors; desktop navigation; mobile menu scrolling, Escape, focus restoration and resize cleanup; WhatsApp and footer links.
-- Exercise all eight Pricing categories and three options per category, search, comparisons, unknown categories, direct URLs and browser back/forward. Confirm GH₵3,000 / GH₵6,500 / GH₵12,000 remain correctly assigned and Business Website remains recommended.
+- Exercise all eight Pricing categories and three options per category, search, unknown categories, direct URLs and browser back/forward. Confirm GH₵3,000 / GH₵6,500 / GH₵12,000 remain correctly assigned and Business Website remains recommended.
 - Follow Get Started to Contact. Confirm visible service/package context and native validation. Only send a real enquiry if the limited email test was separately authorized.
 - Inspect images, optional videos, reduced motion/data saving, narrow-phone layout and horizontal overflow.
 - Check production console/runtime errors and both Vercel monitoring scripts. Do not interpret a blocked extension request as an application failure.

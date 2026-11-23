@@ -43,7 +43,7 @@ test("eight original cases remain accessible alongside the two new visual studie
 test("featured work uses the supplied mockups without unsupported external links", () => {
   assert.deepEqual(
     ["femmora", "pengtresses", "gas-safety-plumbing", "lucenex"].map(slug => caseStudyProjects.find(project => project.slug === slug)?.image),
-    ["/project-mockups/femmora.webp", "/project-mockups/forever-peng-hair.webp", "/project-mockups/gas-safety-plumbing.webp", "/project-mockups/lucenex-corp.webp"],
+    ["/project-mockups/femmora.webp", "/project-mockups/forever-peng-hair.webp", "/project-mockups/gas-safety-plumbing.webp", "/project-mockups/lucenex-services.png"],
   );
   for (const slug of ["femmora", "gas-safety-plumbing"]) {
     const project = caseStudyProjects.find(item => item.slug === slug)!;

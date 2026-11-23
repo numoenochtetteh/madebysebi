@@ -104,15 +104,15 @@ for (const [slug, image] of [
   ["femmora", "femmora.webp"],
   ["pengtresses", "forever-peng-hair.webp"],
   ["gas-safety-plumbing", "gas-safety-plumbing.webp"],
-  ["lucenex", "lucenex-corp.webp"],
+  ["lucenex", "lucenex-services.png"],
 ]) {
   if (!home.includes('data-project="' + slug + '"')) errors.push("Featured project missing: " + slug);
   if (!home.includes(image)) errors.push("Featured mockup missing: " + image);
   if (!home.includes('href="/work/' + slug + '"')) errors.push("Case study link missing: " + slug);
 }
-if (!home.includes("Websites that drive results,") || !home.includes("digital retainers that deliver growth."))
+if (!home.includes("Design that makes") || !home.includes("people trust and buy"))
   errors.push("MadeBySebi hero headline missing");
-if (!home.includes("MadeBySebi · Web Design Agency") || !home.includes("Helping companies and businesses grow revenue"))
+if (!home.includes("MadeBySebi · Web Design Agency") || !home.includes("Helping companies stand out in crowded markets through thoughtful brand and product design"))
   errors.push("MadeBySebi hero description or agency label missing");
 if (!home.includes('href="/contact?service=Other&amp;intent=call#contact-form"') || !home.includes('href="/work"'))
   errors.push("Homepage call and work actions missing");
@@ -133,12 +133,13 @@ const services = await readFile(path.join(root, "services.html"), "utf8");
 const work = await readFile(path.join(root, "work.html"), "utf8");
 const contact = await readFile(path.join(root, "contact.html"), "utf8");
 const legacyAnchors = ["web-design-development", "ux-ui-product-design", "branding-visual-design", "seo-geo-visibility", "digital-marketing-growth", "consultation-audits"];
-const categories = ["business-websites", "ecommerce", "booking", "business-launch", "web-applications", "business-systems", "mobile-applications", "maintenance-growth"];
 const slugs = ["pengtresses", "power-electrode-ltd", "total-logistics", "numo-sebi", "kent-architects", "lucenex", "elegante", "tourbuddy", "femmora", "gas-safety-plumbing"];
 for (const id of [...pillarIds, ...legacyAnchors]) {
   if ((services.match(new RegExp(`id="${id}"`, "g")) ?? []).length !== 1) errors.push(`Services needs one unique ${id} destination`);
 }
-for (const category of categories) if (!services.includes(`href="/pricing?category=${category}"`)) errors.push(`Services missing category link ${category}`);
+for (const image of ["web-design-custom.png", "ui-ux.jpg", "branding-custom.png", "seo-custom.png", "marketing.webp", "consultation.webp"]) {
+  if (!services.includes(image)) errors.push(`Services gallery missing ${image}`);
+}
 for (const slug of slugs) {
   if (!work.includes(`data-project="${slug}"`)) errors.push(`Work missing case study ${slug}`);
   const page = await readFile(path.join(root, "work", `${slug}.html`), "utf8");

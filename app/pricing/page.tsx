@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { ArrowDownRight, Check, Plus } from "lucide-react";
-import { ActionLink, Container, Eyebrow, Section, SectionHeading } from "@/components/site/primitives";
+import { ArrowDownRight, Check } from "lucide-react";
+import { Container, Eyebrow, Section } from "@/components/site/primitives";
 import { PricingExplorer } from "@/components/pricing/pricing-explorer";
-import { pricingFaqs } from "@/lib/pricing-faqs";
 import styles from "@/components/pricing/pricing.module.css";
 
 export const metadata: Metadata = {
@@ -50,12 +49,5 @@ export default async function PricingPage({ searchParams }: { searchParams: Prom
         </ol>
       </div></Container>
     </Section>
-    <Section className={styles.faqSection} aria-labelledby="pricing-faq-title">
-      <Container className={styles.faqLayout}>
-        <div><SectionHeading id="pricing-faq-title" eyebrow="Before you decide" title={<>A little more<br />clarity.</>} description="Good projects begin with the right questions. Here are a few to get you started." /><ActionLink href="/contact" variant="secondary">Ask us a question</ActionLink></div>
-        <div className={styles.faqList}>{pricingFaqs.map(faq => <details key={faq.question}><summary>{faq.question}<Plus size={19} aria-hidden="true" /></summary><p>{faq.answer}</p></details>)}</div>
-      </Container>
-    </Section>
-    <Section aria-labelledby="pricing-cta-title"><Container><div className={styles.finalCta}><div><span className={styles.smallLabel}>Let’s find your next step</span><h2 id="pricing-cta-title">You bring the idea.<br />We’ll help shape the scope.</h2><p>You don’t need a finished brief to start a useful conversation.</p></div><ActionLink href="/contact">Plan your project</ActionLink></div></Container></Section>
   </main>;
 }

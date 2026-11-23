@@ -44,7 +44,7 @@ export function Navigation() {
         {links.map(link => <Link href={link.href} key={link.href}
           aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined}>{link.label}</Link>)}
       </div>
-      <Link className="ms-nav-cta" href="/contact">Let&apos;s talk <ArrowUpRight size={16} aria-hidden="true" /></Link>
+      <Link className="ms-nav-cta" href="/contact">Book a consultation <ArrowUpRight size={16} aria-hidden="true" /></Link>
       <button className="ms-menu-trigger" type="button" aria-label="Open navigation menu"
         aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(true)}><Menu size={21} /></button>
     </nav>

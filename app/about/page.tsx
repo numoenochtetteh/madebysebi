@@ -1,56 +1,139 @@
 import Image from "next/image";
-import { Linkedin } from "lucide-react";
-import { ActionLink, Card, Container, Section, SectionHeading } from "@/components/site/primitives";
-import { ConsultationCta, PageHero, PageShell } from "@/components/site/content-layout";
+import { Circle, Github, Handshake, Lightbulb, PenTool, Search, Target, TestTube2, Wrench } from "lucide-react";
+import { PageShell } from "@/components/site/content-layout";
 import { company, projectApproach, teamMembers } from "@/lib/company";
-import { serviceGroups } from "@/lib/services";
-import styles from "@/components/site/content.module.css";
+import styles from "./about.module.css";
 
-const capabilities = [
-  "Website design & development",
-  "E-commerce & booking",
-  "Web applications",
-  "Mobile applications",
-  "Internal business systems",
-  "Maintenance & growth",
-];
+const processIcons = [Search, Target, PenTool, Wrench];
+
+const toolRows = [
+  [
+    { name: "Figma", mark: "", tone: "figma" },
+    { name: "Next.js", mark: "N", tone: "next" },
+    { name: "React", mark: "", tone: "react" },
+    { name: "TypeScript", mark: "TS", tone: "typescript" },
+    { name: "Tailwind CSS", mark: "", tone: "tailwind" },
+    { name: "WordPress", mark: "W", tone: "wordpress" },
+  ],
+  [
+    { name: "Supabase", mark: "", tone: "supabase" },
+    { name: "Vercel", mark: "", tone: "vercel" },
+    { name: "GitHub", mark: "", tone: "github" },
+    { name: "Playwright", mark: "", tone: "playwright" },
+    { name: "Stripe", mark: "S", tone: "stripe" },
+    { name: "Resend", mark: "R", tone: "resend" },
+  ],
+] as const;
+
+type Tool = (typeof toolRows)[number][number];
+
+function ToolLogo({ tool }: { tool: Tool }) {
+  switch (tool.name) {
+    case "Figma":
+      return <svg className={styles.brandSvg} viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M10 2h6v10h-6a5 5 0 0 1 0-10Z" fill="#f24e1e" /><path d="M16 2h6a5 5 0 0 1 0 10h-6Z" fill="#ff7262" />
+        <path d="M10 12h6v10h-6a5 5 0 0 1 0-10Z" fill="#a259ff" /><circle cx="21" cy="17" r="5" fill="#1abcfe" />
+        <path d="M10 22h6v5a5 5 0 1 1-6-5Z" fill="#0acf83" />
+      </svg>;
+    case "React":
+      return <svg className={styles.brandSvg} viewBox="0 0 36 36" fill="none" stroke="#59c4da" strokeWidth="1.8" aria-hidden="true">
+        <ellipse cx="18" cy="18" rx="15" ry="5.8" /><ellipse cx="18" cy="18" rx="15" ry="5.8" transform="rotate(60 18 18)" />
+        <ellipse cx="18" cy="18" rx="15" ry="5.8" transform="rotate(120 18 18)" /><circle cx="18" cy="18" r="2.6" fill="#59c4da" stroke="none" />
+      </svg>;
+    case "Tailwind CSS":
+      return <svg className={styles.brandSvg} viewBox="0 0 32 32" fill="#38bdf8" aria-hidden="true">
+        <path d="M16 7c-5.3 0-8.7 2.7-10 8 2-2.7 4.3-3.7 7-3 1.5.4 2.5 1.5 3.7 2.8 1.8 1.9 3.7 4 8.3 4 5.3 0 8.7-2.7 10-8-2 2.7-4.3 3.7-7 3-1.5-.4-2.5-1.5-3.7-2.8C22.5 9.1 20.6 7 16 7ZM10 17c-5.3 0-8.7 2.7-10 8 2-2.7 4.3-3.7 7-3 1.5.4 2.5 1.5 3.7 2.8 1.8 1.9 3.7 4 8.3 4 5.3 0 8.7-2.7 10-8-2 2.7-4.3 3.7-7 3-1.5-.4-2.5-1.5-3.7-2.8C16.5 19.1 14.6 17 10 17Z" />
+      </svg>;
+    case "Supabase":
+      return <svg className={styles.brandSvg} viewBox="0 0 32 32" fill="#3ecf8e" aria-hidden="true">
+        <path d="M19 2 4 19h12l-3 11 15-17H16l3-11Z" />
+      </svg>;
+    case "Vercel":
+      return <svg className={styles.brandSvg} viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 30 28H2L16 4Z" fill="#111" /></svg>;
+    case "GitHub":
+      return <Github className={styles.brandSvg} strokeWidth={2} aria-hidden="true" />;
+    case "Playwright":
+      return <TestTube2 className={styles.brandSvg + " " + styles.testIcon} strokeWidth={2} aria-hidden="true" />;
+    default:
+      return <span className={styles.toolMark + " " + styles[tool.tone]} aria-hidden="true">{tool.mark}</span>;
+  }
+}
+
+const principles = [
+  { title: "Clarity over complexity", icon: Circle },
+  { title: "Strategy over trends", icon: Lightbulb },
+  { title: "Partnerships that last", icon: Handshake },
+] as const;
 
 export default function AboutPage() {
   return <PageShell>
-    <PageHero eyebrow="About MadeBySebi" title={<>The team behind<br /> the work.</>}
-      description="A digital solutions agency in Accra building websites, applications and business tools for clients in Ghana and worldwide.">
-      <ActionLink href="/contact">Start a conversation</ActionLink>
-      <ActionLink href="/work" variant="secondary">Explore our work</ActionLink>
-    </PageHero>
-    <Section aria-labelledby="purpose-title"><Container><div className={styles.split}>
-      <SectionHeading id="purpose-title" eyebrow="Who we are" title="A practical team for digital ideas." />
-      <div className={styles.copy}><p>{company.description}</p><p>Some businesses need a clear place to present their services. Others need customers to book appointments, browse products or use an application. Teams may need an internal system that makes everyday work easier.</p><p>We listen to the business, clarify the requirements and build around the people who will use the result.</p></div>
-    </div></Container></Section>
-    <Section aria-labelledby="team-title"><Container>
-      <SectionHeading id="team-title" eyebrow="The people" title="Meet MadeBySebi." description="The team bringing our design and development work together." />
-      <div className={styles.teamGrid}>{teamMembers.map(member =>
-        <article key={member.name}>
-          <div className={styles.teamPhoto}><Image src={member.image} alt={member.name} fill sizes="(max-width:760px) calc(100vw - 40px), 340px" style={{ objectPosition: member.position }} /></div>
-          <h3>{member.name}</h3><p>{member.role}</p>
-          <a href={member.linkedin} target="_blank" rel="noreferrer" aria-label={member.name + " on LinkedIn"}><Linkedin size={16} aria-hidden="true" />LinkedIn</a>
-        </article>)}</div>
-    </Container></Section>
-    <Section aria-labelledby="build-title"><Container>
-      <SectionHeading id="build-title" eyebrow="What we do" title="From first presence to better systems." />
-      <div className={styles.pillarCards}>{serviceGroups.map(group =>
-        <Card key={group.id}><span className={styles.serviceIndex}>{group.number}</span><h3>{group.title}</h3><p>{group.description}</p><ActionLink variant="secondary" href={"/services#" + group.id}>Explore services</ActionLink></Card>)}</div>
-    </Container></Section>
-    <Section aria-labelledby="approach-title"><Container>
-      <SectionHeading id="approach-title" eyebrow="Our approach" title="A clear way to build together." description="We agree the problem, scope and priorities before we move into delivery." />
-      <div className={styles.steps}>{projectApproach.map(step =>
-        <article className={styles.step} key={step.title}><h3>{step.title}</h3><p>{step.description}</p></article>)}</div>
-    </Container></Section>
-    <Section aria-labelledby="capabilities-title"><Container><div className={styles.split}>
-      <SectionHeading id="capabilities-title" eyebrow="Technology & capabilities" title="The right tools for the job." />
-      <div className={styles.copy}><p>Our work includes responsive websites, online stores, booking flows, customer-facing applications and internal dashboards. The source project uses Next.js, React and TypeScript, and the Forever Peng Hair case study includes a Stripe deposit flow.</p>
-        <ul className="ms-capability-list">{capabilities.map(item => <li key={item}>{item}</li>)}</ul>
-        <p>We make decisions around the business need and agree the technical scope for each project.</p></div>
-    </div></Container></Section>
-    <ConsultationCta title="Let’s talk about what you need." />
+    <section className={styles.about} aria-labelledby="about-title">
+      <div className={styles.container}>
+        <header className={styles.intro}>
+          <p className={styles.eyebrow}><span className={styles.dot} aria-hidden="true" />About us</p>
+          <h1 id="about-title">The team<br />behind the work.</h1>
+          <p>{company.description}</p>
+        </header>
+
+        <div className={styles.grid}>
+          <article className={styles.card + " " + styles.teamCard} aria-labelledby="team-heading">
+            <div className={styles.portraits} aria-label="The MadeBySebi team">
+              {teamMembers.map(member => <a className={styles.portrait} href={member.linkedin} target="_blank" rel="noreferrer"
+                key={member.name} aria-label={member.name + " on LinkedIn"} title={member.name}>
+                <Image src={member.image} alt="" fill sizes="(max-width: 700px) 78px, 92px" style={{ objectPosition: member.position }} />
+              </a>)}
+            </div>
+            <div className={styles.teamCopy}>
+              <div className={styles.chips}><span>Accra, Ghana</span><span>Three-person team</span></div>
+              <h2 id="team-heading">We turn business ideas into websites, digital products and useful systems people trust and enjoy using.</h2>
+              <p>Francis · Enoch · Bernard</p>
+            </div>
+          </article>
+
+          <article className={styles.card + " " + styles.processCard} aria-labelledby="process-heading">
+            <ul className={styles.pillList}>{projectApproach.map((step, index) => {
+              const Icon = processIcons[index];
+              return <li key={step.title}><Icon size={18} strokeWidth={1.8} aria-hidden="true" /><span>{step.title}</span></li>;
+            })}</ul>
+            <div className={styles.cardCopy}><h2 id="process-heading">How we work</h2>
+              <p>We understand your business, agree the scope, then build and refine together.</p>
+            </div>
+          </article>
+
+          <article className={styles.card + " " + styles.toolsCard} aria-labelledby="tools-heading">
+            <div className={styles.toolCarousel}>
+              {toolRows.map((row, rowIndex) => <div className={styles.toolWindow} key={rowIndex}>
+                <div className={styles.toolTrack + (rowIndex === 1 ? " " + styles.toolTrackReverse : "")}>
+                  {[0, 1].map(copy => <div className={styles.toolSet} key={copy} aria-hidden={copy === 1}>
+                    {row.map(tool => <span className={styles.toolTile} role={copy === 0 ? "img" : undefined}
+                      aria-label={copy === 0 ? tool.name : undefined} title={tool.name} key={tool.name}>
+                      <ToolLogo tool={tool} />
+                    </span>)}
+                  </div>)}
+                </div>
+              </div>)}
+            </div>
+            <div className={styles.cardCopy}><h2 id="tools-heading">Tools we use daily</h2>
+              <p>The tools we use to bring your ideas to life.</p>
+            </div>
+          </article>
+
+          <article className={styles.card + " " + styles.valuesCard} aria-labelledby="values-heading">
+            <ul className={styles.pillList}>{principles.map(principle => {
+              const Icon = principle.icon;
+              return <li key={principle.title}><Icon size={18} strokeWidth={1.8} aria-hidden="true" /><span>{principle.title}</span></li>;
+            })}</ul>
+            <div className={styles.cardCopy}><h2 id="values-heading">What we stand for</h2>
+              <p>Good design solves a real problem first and makes the result feel effortless.</p>
+            </div>
+          </article>
+
+          <div className={styles.imageCard}>
+            <Image src="/showcase/creative-workspace.jpg" alt="A creative workspace with a laptop and design tools" fill
+              sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) 45vw, 400px" />
+          </div>
+        </div>
+      </div>
+    </section>
   </PageShell>;
 }

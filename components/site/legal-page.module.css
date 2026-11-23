@@ -1,0 +1,19 @@
+.page { background: #fff; color: #0b0b0b; padding-bottom: clamp(80px,9vw,126px); }
+.page :is(a, button):focus-visible { outline: 2px solid #111; outline-offset: 4px; }
+.page :global(.mbs-eyebrow) > span { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #10ba51; box-shadow: 0 0 0 4px #e5f6e9; }
+.hero { position: relative; padding: clamp(76px,7vw,108px) 0 clamp(65px,7vw,90px); text-align: center; }
+.back { position: absolute; top: 28px; left: 0; display: inline-flex; align-items: center; gap: 7px; color: #666; font-size: 13px; }
+.back:hover { color: #111; }
+.hero h1 { max-width: 900px; margin: 0 auto; font-size: clamp(56px,6.3vw,86px); line-height: .98; letter-spacing: -.065em; font-weight: 600; text-wrap: balance; }
+.lead { max-width: 630px; margin: 24px auto 0; color: #666; font-size: clamp(16px,1.5vw,19px); line-height: 1.55; }
+.updated { display: inline-flex; margin-top: 27px; padding: 8px 14px; border-radius: 999px; background: #f8f8f8; color: #666; font-size: 13px; }
+.grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.card { min-width: 0; padding: clamp(27px,3vw,39px); border-radius: 16px; background: #f8f8f8; }
+.number { display: inline-grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; background: #fff; color: #777; font-size: 13px; }
+.card h2 { margin-top: 34px; font-size: clamp(23px,2.2vw,29px); line-height: 1.18; letter-spacing: -.045em; font-weight: 550; }
+.card p { margin-top: 14px; max-width: 65ch; color: #666; font-size: 15px; line-height: 1.7; }
+.cta { display: flex; align-items: end; justify-content: space-between; gap: 35px; margin-top: clamp(65px,7vw,96px); padding: clamp(34px,5vw,65px); border-radius: 16px; background: #f8f8f8; }
+.cta h2 { max-width: 680px; font-size: clamp(32px,4.4vw,56px); line-height: 1.08; letter-spacing: -.055em; font-weight: 600; }
+.cta > a { flex: none; }
+@media (max-width: 760px) { .hero { padding: 80px 0 58px; } .hero h1 { font-size: clamp(43px,10vw,64px); } .grid { grid-template-columns: 1fr; } .cta { align-items: start; flex-direction: column; } }
+@media (max-width: 520px) { .hero h1 { font-size: clamp(40px,10vw,52px); } .back { top: 24px; } .card h2 { margin-top: 24px; } }

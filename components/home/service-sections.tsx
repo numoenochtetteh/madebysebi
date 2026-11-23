@@ -32,7 +32,7 @@ export function HomeServiceSections() {
             <ActionLink href="/about" variant="secondary">Meet the team</ActionLink>
           </div>
           <div className="ms-about-panel">
-            <div className="ms-portraits">{teamMembers.map(member => <Image key={member.name} src={member.image} alt={member.name} width={78} height={78} style={{ objectPosition: member.position }} />)}</div>
+            <div className="ms-portraits">{teamMembers.map(member => <Image key={member.name} src={member.image} alt={member.name} width={84} height={84} style={{ objectPosition: member.position }} />)}</div>
             <p>From a first website to the software behind everyday operations, we look for the clearest way to make each business idea work.</p>
             <span>{company.location} · Working worldwide</span>
           </div>

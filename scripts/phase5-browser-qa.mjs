@@ -95,8 +95,8 @@ try {
  });
  const categories=["business-websites","ecommerce","booking","business-launch","web-applications","business-systems","mobile-applications","maintenance-growth"];
  const contactLinks=[];
- await check("all eight direct pricing URLs render three packages and valid comparisons",async()=>{
-  for(const id of categories){await go("/pricing?category="+id);await page.waitForSelector('[data-pricing-category="'+id+'"]');assert.equal(await page.$$eval("[data-package]",a=>a.length),3);assert.equal(await page.$$eval("#pricing-packages thead th",a=>a.length),4);contactLinks.push(...await page.$$eval('[data-package] a[aria-label^="Get started"]',a=>a.map(x=>({href:x.getAttribute("href"),label:x.getAttribute("aria-label")}))));}
+ await check("all eight direct pricing URLs render three packages without comparison tables",async()=>{
+  for(const id of categories){await go("/pricing?category="+id);await page.waitForSelector('[data-pricing-category="'+id+'"]');assert.equal(await page.$$eval("[data-package]",a=>a.length),3);assert.equal(await page.$$eval("#pricing-packages table",a=>a.length),0);contactLinks.push(...await page.$$eval('[data-package] a[aria-label^="Get started"]',a=>a.map(x=>({href:x.getAttribute("href"),label:x.getAttribute("aria-label")}))));}
   return {categories:8,options:contactLinks.length};
  });
  await check("category clicks, browser back/forward, live search and graceful unknown categories",async()=>{

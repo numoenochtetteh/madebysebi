@@ -1,24 +1,26 @@
-.card { min-width: 0; padding: clamp(1.5rem, 4vw, 2.75rem); border: 1px solid var(--mbs-line); border-radius: var(--mbs-radius); background: var(--mbs-surface); scroll-margin-top: 7rem; }
-.label { font: .7rem var(--font-geist-mono), monospace; color: var(--mbs-lime-ink); letter-spacing: .08em; }
-.card h2 { margin-top: 1rem; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.1; letter-spacing: -.045em; font-weight: 600; }
-.intro { color: var(--mbs-muted); line-height: 1.7; margin-top: 1rem; font-size: .95rem; }
-.form { display: grid; gap: 1.5rem; margin-top: 2rem; }
-.form :global(.form-field) { display: flex; flex-direction: column; min-width: 0; gap: .65rem; }
-.form label { color: var(--mbs-muted); font: .65rem var(--font-geist-mono), monospace; font-weight: 600; letter-spacing: .07em; line-height: 1.5; }
-.form :is(input, select, textarea) { width: 100%; min-width: 0; border: 1px solid var(--mbs-line); border-radius: .75rem; background: var(--mbs-canvas); color: var(--mbs-ink); padding: .9rem 1rem; font: inherit; font-size: 16px; }
-.form :is(input, select) { min-height: 3.25rem; }
-.form textarea { resize: vertical; min-height: 10rem; }
-.form input::placeholder, .form textarea::placeholder { color: #6b6e65; }
-.row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.card { min-width: 0; padding: clamp(28px,3.6vw,44px); border-radius: 16px; background: #f8f8f8; scroll-margin-top: 7rem; }
+.label { display: inline-flex; padding: 9px 15px; border-radius: 999px; background: #fff; color: #333; font-size: 13px; font-weight: 550; }
+.card h2 { margin-top: 22px; font-size: clamp(32px,3.5vw,48px); line-height: 1.08; letter-spacing: -.055em; font-weight: 600; }
+.intro { color: #666; line-height: 1.65; margin-top: 12px; font-size: 15px; }
+.form { display: grid; gap: 22px; margin-top: 30px; }
+.form :global(.form-field) { display: flex; flex-direction: column; min-width: 0; gap: 9px; }
+.form label { color: #333; font-size: 13px; font-weight: 550; line-height: 1.4; }
+.form :is(input,select,textarea) { width: 100%; min-width: 0; border: 1px solid #e8e8e8; border-radius: 12px; background: #fff; color: #111; padding: 14px 16px; font: inherit; font-size: 16px; transition: border-color .2s ease; }
+.form :is(input,select,textarea):hover { border-color: #ccc; }
+.form :is(input,select,textarea):focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+.form :is(input,select) { min-height: 52px; }
+.form textarea { resize: vertical; min-height: 155px; }
+.form input::placeholder, .form textarea::placeholder { color: #888; }
+.row { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
 .honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-.submit { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; min-height: 3.5rem; padding: 1rem 1.4rem; border-radius: 999px; background: var(--mbs-ink); color: #fff; font-weight: 600; cursor: pointer; transition: transform .25s ease, background .25s ease; }
+.submit { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; min-height: 52px; padding: 14px 20px; border-radius: 999px; background: #0b0b0b; color: #fff; font-size: 15px; font-weight: 550; cursor: pointer; transition: transform .25s ease, background .25s ease; }
 .submit:hover:not(:disabled) { background: #292929; transform: translateY(-2px); }
 .submit:active:not(:disabled) { transform: translateY(0) scale(.985); }
 .submit:disabled { opacity: .7; cursor: wait; }
-.note { color: var(--mbs-muted); font-size: .8rem; line-height: 1.75; overflow-wrap: anywhere; }
-.note a { color: var(--mbs-ink); text-decoration: underline; text-underline-offset: 3px; }
-.error, .success { border: 1px solid; border-radius: .75rem; padding: 1rem; line-height: 1.7; font-size: .9rem; }
+.note { color: #666; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
+.note a { color: #111; text-decoration: underline; text-underline-offset: 3px; }
+.error, .success { border: 1px solid; border-radius: 12px; padding: 15px; line-height: 1.6; font-size: 14px; }
 .error { color: #8c2525; background: #fff5f5; border-color: #e7b4b4; }
 .success { color: #2f4a1f; background: #eff8e8; border-color: #bfd6ae; }
-@media (max-width: 600px) { .row { grid-template-columns: minmax(0, 1fr); } }
-@media (prefers-reduced-motion: reduce) { .submit { transition: none; } }
+@media (max-width: 600px) { .card { padding: 26px 22px; } .row { grid-template-columns: minmax(0,1fr); } }
+@media (prefers-reduced-motion: reduce) { .submit, .form :is(input,select,textarea) { transition: none; } }
