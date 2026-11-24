@@ -21,7 +21,7 @@ const faqs = [
 
 export default function ContactPage() {
   return <PageShell>
-    <PageHero eyebrow="LET’S TALK" title="Your next step starts with a conversation." description="Tell us what you’re building, what feels stuck or where your business needs to go next. We’ll help you turn that into a clear, useful project."><ActionLink href="#contact-form">Start an enquiry</ActionLink><ActionLink href={whatsappUrl} variant="secondary" target="_blank" rel="noreferrer">Chat on WhatsApp</ActionLink></PageHero>
+    <PageHero eyebrow="LET’S TALK" title="Tell us what you’re working on." description="Tell us what you’re building, what feels stuck or where your business needs to go next. We’ll help you turn that into a clear, useful project."><ActionLink href="#contact-form">Start an enquiry</ActionLink><ActionLink href={whatsappUrl} variant="secondary" target="_blank" rel="noreferrer">Chat on WhatsApp</ActionLink></PageHero>
     <Section className={styles.enquirySection} aria-label="Project enquiry"><Container><div className={styles.layout}>
       <aside className={styles.details}><SectionHeading eyebrow="START A PROJECT" title="A little context goes a long way." description="Share the business goal, the people you’re building for and anything you already have in place. We can shape the next step together." />
         <ul className={styles.points}><li><Check size={17} aria-hidden="true" />Website projects start from {websitePackages[0].price}</li><li><Check size={17} aria-hidden="true" />50% deposit to begin a project</li><li><Check size={17} aria-hidden="true" />Scope, responsibilities and milestones agreed together</li><li><Check size={17} aria-hidden="true" />{company.location} · Working worldwide</li></ul>

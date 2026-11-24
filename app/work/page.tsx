@@ -8,7 +8,7 @@ const projects = [...featured.map(slug => caseStudyProjects.find(project => proj
 
 export default function WorkPage() {
   return <PageShell>
-    <PageHero eyebrow="Selected work" title="Projects we've worked on" description="Websites, booking experiences, storefront concepts and business tools." />
+    <PageHero eyebrow="Selected work" title="Selected projects." description="Websites, booking experiences, storefront concepts and business tools." />
     <section className="ms-work-list ms-section" aria-labelledby="projects-title"><Container>
       <h2 id="projects-title" className="ms-visually-hidden">MadeBySebi projects</h2>
       <div className="ms-project-grid">{projects.map(project => <ProjectCard project={project} key={project.slug} />)}</div>

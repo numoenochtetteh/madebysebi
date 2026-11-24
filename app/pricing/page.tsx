@@ -21,7 +21,7 @@ export default async function PricingPage({ searchParams }: { searchParams: Prom
       <Container className={styles.heroInner}>
         <div>
           <Eyebrow>Services & pricing</Eyebrow>
-          <h1 id="pricing-title">The right scope.<br /><span>A clear starting point.</span></h1>
+          <h1 id="pricing-title">Find the right<br /><span>place to start.</span></h1>
           <p className={styles.heroCopy}>Get online, build something useful or keep your business growing. Choose a service and compare three ways to move forward.</p>
           <a href="#pricing-explorer" className={styles.textLink}>Explore your options <ArrowDownRight size={19} aria-hidden="true" /></a>
         </div>

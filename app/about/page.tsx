@@ -71,7 +71,7 @@ export default function AboutPage() {
       <div className={styles.container}>
         <header className={styles.intro}>
           <p className={styles.eyebrow}><span className={styles.dot} aria-hidden="true" />About us</p>
-          <h1 id="about-title">The team<br />behind the work.</h1>
+          <h1 id="about-title">The people<br />behind MadeBySebi.</h1>
           <p>{company.description}</p>
         </header>
 

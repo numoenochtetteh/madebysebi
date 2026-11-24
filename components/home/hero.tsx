@@ -18,10 +18,10 @@ export function HomeHero() {
       <div className="mbs-container ms-homehero-inner">
         <p className="ms-pill ms-agency-label"><span className="ms-dot" aria-hidden="true" />MadeBySebi · Web Design Agency</p>
         <h1 id="home-title">
-          <span>Design that makes</span>{" "}
-          <span>people trust and buy</span>
+          <span>Websites that win customers</span>{" "}
+          <span>and grow revenue.</span>
         </h1>
-        <p className="ms-homehero-copy">Helping companies stand out in crowded markets through thoughtful brand and product design</p>
+        <p className="ms-homehero-copy">We design and build websites that make it easier for people to enquire, book or buy.</p>
         <div className="ms-hero-actions">
           <BookCallLink />
           <Link className="ms-soft-button" href="/work"><span className="ms-explore-icon" aria-hidden="true">💻</span>Explore our work <ArrowUpRight size={17} aria-hidden="true" /></Link>

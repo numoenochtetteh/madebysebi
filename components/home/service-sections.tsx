@@ -32,7 +32,7 @@ export function HomeServiceSections() {
       <Container>
         <div className="ms-about-preview-grid">
           <div>
-            <SectionHeading id="home-about-title" eyebrow="About MadeBySebi" title={<>A small team for<br /> ambitious ideas.</>} />
+            <SectionHeading id="home-about-title" eyebrow="About MadeBySebi" title={<>Meet the people<br /> doing the work.</>} />
             <p>We are a digital solutions agency in Accra, Ghana. We bring design and development together to make useful tools for businesses and the people they serve.</p>
             <ActionLink href="/about" variant="secondary">Meet the team</ActionLink>
           </div>

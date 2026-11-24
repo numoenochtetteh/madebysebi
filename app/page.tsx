@@ -3,8 +3,8 @@ import { HomeHero } from "@/components/home/hero";
 import { HomeSelectedWork } from "@/components/home/selected-work";
 import { HomeServiceSections } from "@/components/home/service-sections";
 
-const title = "Websites that drive results, digital retainers that deliver growth";
-const description = "MadeBySebi helps companies and businesses grow revenue and stand out in crowded markets through brand and product design.";
+const title = "Websites that win customers and grow revenue";
+const description = "MadeBySebi designs and builds websites that help businesses turn visits into enquiries, bookings and sales.";
 
 export const metadata: Metadata = {
   title: { absolute: title + " | MadeBySebi" },
