@@ -106,6 +106,8 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .ms-project-media { position: relative; display: block; aspect-ratio: 1.25; overflow: hidden; border-radius: 16px; background: #f6f6f6; isolation: isolate; }
 .ms-project-media img { object-fit: cover; object-position: top center; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
 .ms-project-mockup img { object-fit: cover; object-position: center top; }
+.ms-project-card[data-project="power-electrode-ltd"] .ms-project-media { background: #f2e9d4; }
+.ms-project-card[data-project="power-electrode-ltd"] .ms-project-media img { object-fit: contain; }
 .ms-project-media:hover img, .ms-project-media:focus-visible img { transform: scale(1.035); }
 .ms-project-arrow { position: absolute; right: 20px; top: 20px; z-index: 2; display: grid; place-items: center; width: 39px; height: 39px; border-radius: 50%; background: #fff; opacity: 0; transform: translateY(8px); transition: opacity .3s, transform .3s; }
 .ms-project-media:hover .ms-project-arrow, .ms-project-media:focus-visible .ms-project-arrow { opacity: 1; transform: translateY(0); }

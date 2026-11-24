@@ -40,21 +40,19 @@ test("eight original cases remain accessible alongside the two new visual studie
   assert.equal(adjacentProjects("missing-project"), undefined);
 });
 
-test("featured work uses the supplied mockups without unsupported external links", () => {
+test("featured work keeps the mockups and links to the supplied project sites", () => {
   assert.deepEqual(
     ["femmora", "pengtresses", "gas-safety-plumbing", "lucenex"].map(slug => caseStudyProjects.find(project => project.slug === slug)?.image),
     ["/project-mockups/femmora.webp", "/project-mockups/forever-peng-hair.webp", "/project-mockups/gas-safety-plumbing.webp", "/project-mockups/lucenex-services.png"],
   );
-  for (const slug of ["femmora", "gas-safety-plumbing"]) {
-    const project = caseStudyProjects.find(item => item.slug === slug)!;
-    assert.equal(project.liveUrl, undefined);
-    assert.equal(project.video, undefined);
-  }
+  assert.equal(caseStudyProjects.find(item => item.slug === "femmora")?.liveUrl, "https://femmora-gh.vercel.app/");
+  assert.equal(caseStudyProjects.find(item => item.slug === "gas-safety-plumbing")?.liveUrl, "https://gassafetyandplumbingengineeringltd.com/");
+  assert.equal(caseStudyProjects.find(item => item.slug === "power-electrode-ltd")?.image, "/case-studies/power-electrode/00-cover.webp");
 });
 
 test("project images, original galleries, operations views, videos and poster files remain available", () => {
   for (const project of caseStudyProjects) {
-    for (const asset of [project.image, projectPoster(project), ...project.gallery, project.operationsImage, project.video].filter(Boolean)) assert.ok(existsSync(`public${asset}`), asset);
+    for (const asset of [project.image, project.detailHero, projectPoster(project), ...project.gallery, project.operationsImage, project.video].filter(Boolean)) assert.ok(existsSync(`public${asset}`), asset);
     for (const asset of project.gallery) assert.ok(projectImageLabel(asset).length > 0);
   }
   assert.equal(projectImageLabel("/case-studies/test/02-product-grid.webp"), "product grid");

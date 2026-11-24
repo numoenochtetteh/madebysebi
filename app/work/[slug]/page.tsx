@@ -19,11 +19,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const project = getCaseStudyProject(slug);
   if (!project) return { title: "Project not found" };
-  return { title: `${project.title} — Case Study`, description: projectStories[slug]?.lead ?? project.summary, alternates: { canonical: `/work/${project.slug}` }, openGraph: { title: `${project.title} | MadeBySebi`, description: projectStories[slug]?.lead ?? project.summary, url: `/work/${project.slug}`, images: [{ url: projectPoster(project), alt: project.title }] } };
+  return { title: `${project.title} — Case Study`, description: projectStories[slug]?.lead ?? project.summary, alternates: { canonical: `/work/${project.slug}` }, openGraph: { title: `${project.title} | MadeBySebi`, description: projectStories[slug]?.lead ?? project.summary, url: `/work/${project.slug}`, images: [{ url: project.detailHero ?? projectPoster(project), alt: project.title }] } };
 }
 
 function ProjectVisual({ src, title }: { src: string; title: string }) {
-  return <figure className={styles.visual}>
+  const siteCapture = /\/case-studies\/(femmora|gas-safety-plumbing)\//.test(src);
+  return <figure className={`${styles.visual}${siteCapture ? ` ${styles.siteCapture}` : ""}`}>
     <a href={src} target="_blank" rel="noreferrer" aria-label={`Open ${title} ${projectImageLabel(src)} image`}>
       <Image src={src} alt={`${title}: ${projectImageLabel(src)}`} fill sizes="(max-width: 920px) calc(100vw - 36px), 870px" />
       <span className={styles.openImage} aria-hidden="true"><ArrowUpRight size={18} /></span>
@@ -37,11 +38,12 @@ export default async function CaseStudyPage({ params }: Props) {
   if (!project) notFound();
   const story = projectStories[slug];
   const navigation = adjacentProjects(slug)!;
-  const heroImage = projectPoster(project);
+  const heroImage = project.detailHero ?? projectPoster(project);
   const gallery = project.gallery.filter((src, index, images) => src !== heroImage && src !== project.image && images.indexOf(src) === index);
   const [overviewImage, challengeImage, approachImage, ...moreImages] = gallery;
   const projectLinks = project.socialChannels?.filter(channel => channel.url) ?? [];
-  const concept = project.slug === "femmora" || project.slug === "gas-safety-plumbing" || project.slug === "numo-sebi";
+  const concept = project.slug === "femmora" || project.slug === "numo-sebi";
+  const wideHero = Boolean(project.detailHero) || project.slug === "power-electrode-ltd";
 
   return <PageShell>
     <article className={styles.caseStudy}>
@@ -50,7 +52,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <Link className={styles.back} href="/work"><ArrowLeft size={16} aria-hidden="true" /> All projects</Link>
           <h1>{project.title}</h1>
           <p className={styles.lead}>{story?.lead ?? project.summary}</p>
-          <div className={styles.heroImage}><Image src={heroImage} alt={`${project.title} project preview`} fill sizes="(max-width: 920px) calc(100vw - 36px), 870px" loading="eager" fetchPriority="high" /></div>
+          <div className={`${styles.heroImage}${wideHero ? ` ${styles.wideHeroImage}` : ""}`}><Image src={heroImage} alt={`${project.title} project preview`} fill sizes="(max-width: 920px) calc(100vw - 36px), 870px" loading="eager" fetchPriority="high" /></div>
           <dl className={styles.facts}>
             <div><dt>Project</dt><dd>{project.shortTitle}</dd></div>
             <div><dt>Sector</dt><dd>{project.industry}</dd></div>

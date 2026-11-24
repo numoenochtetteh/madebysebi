@@ -22,7 +22,7 @@ const selectedProjects = [
     year: "2026",
     description:
       "A clearer digital presence for a Ghanaian welding electrode manufacturer, built to explain products clearly, build trust and support easier buyer enquiries.",
-    image: "/case-studies/power-electrode/03-values.png",
+    image: "/case-studies/power-electrode/00-cover.webp",
     video: "/case-studies/power-electrode/hero-video.mp4",
     href: "/work/power-electrode-ltd",
   },

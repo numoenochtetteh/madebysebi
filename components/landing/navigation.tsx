@@ -8,8 +8,8 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const links = [
   { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
   { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },
 ];
