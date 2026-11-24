@@ -19,7 +19,7 @@ export function PageHero({ eyebrow, title, description, children, aside }: {
 export function ConsultationCta({ title = "Let’s build something useful.", description = "Tell us what your business needs. We’ll help you shape a practical next step.", href = "/contact", label = "Discuss your project" }: {
   title?: string; description?: string; href?: string; label?: string;
 }) {
-  return <Section aria-labelledby="consultation-title"><Container><div className={styles.cta}><div><Eyebrow>YOUR NEXT STEP</Eyebrow><h2 id="consultation-title">{title}</h2><p>{description}</p></div><ActionLink href={href}>{label}</ActionLink></div></Container></Section>;
+  return <Section className={styles.ctaSection} aria-labelledby="consultation-title"><Container><div className={styles.cta}><div><Eyebrow>YOUR NEXT STEP</Eyebrow><h2 id="consultation-title">{title}</h2><p>{description}</p></div><ActionLink href={href}>{label}</ActionLink></div></Container></Section>;
 }
 
 export function FaqList({ items }: { items: readonly { question: string; answer: string }[] }) {

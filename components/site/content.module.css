@@ -53,6 +53,7 @@
 .projectCopy p { margin: 10px 0; color: #666; line-height: 1.55; }
 .projectCopy > a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
 .cta { display: flex; align-items: center; justify-content: space-between; gap: 35px; border-radius: 18px; padding: clamp(34px,5vw,65px); background: #f7f7f7; }
+.ctaSection:global(.mbs-section) { padding-top: 0; }
 .cta h2 { max-width: 650px; font-size: clamp(37px,4.5vw,58px); line-height: 1.07; letter-spacing: -.055em; font-weight: 600; }
 .cta p:last-child { margin-top: 16px; max-width: 590px; color: #666; line-height: 1.6; }
 .cta > a { flex: none; }

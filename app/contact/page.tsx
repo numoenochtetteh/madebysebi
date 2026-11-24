@@ -22,7 +22,7 @@ const faqs = [
 export default function ContactPage() {
   return <PageShell>
     <PageHero eyebrow="LET’S TALK" title="Your next step starts with a conversation." description="Tell us what you’re building, what feels stuck or where your business needs to go next. We’ll help you turn that into a clear, useful project."><ActionLink href="#contact-form">Start an enquiry</ActionLink><ActionLink href={whatsappUrl} variant="secondary" target="_blank" rel="noreferrer">Chat on WhatsApp</ActionLink></PageHero>
-    <Section aria-label="Project enquiry"><Container><div className={styles.layout}>
+    <Section className={styles.enquirySection} aria-label="Project enquiry"><Container><div className={styles.layout}>
       <aside className={styles.details}><SectionHeading eyebrow="START A PROJECT" title="A little context goes a long way." description="Share the business goal, the people you’re building for and anything you already have in place. We can shape the next step together." />
         <ul className={styles.points}><li><Check size={17} aria-hidden="true" />Website projects start from {websitePackages[0].price}</li><li><Check size={17} aria-hidden="true" />50% deposit to begin a project</li><li><Check size={17} aria-hidden="true" />Scope, responsibilities and milestones agreed together</li><li><Check size={17} aria-hidden="true" />{company.location} · Working worldwide</li></ul>
         <div className={styles.direct}><h3>Prefer a direct conversation?</h3><a href={`mailto:${company.email}`}>{company.email}<ArrowUpRight size={16} aria-hidden="true" /></a><a href={whatsappUrl} target="_blank" rel="noreferrer">{company.phone} · WhatsApp<ArrowUpRight size={16} aria-hidden="true" /></a><p>International projects are welcome. Location is not a barrier; projects can be quoted in USD or GBP where appropriate.</p></div>
@@ -30,6 +30,6 @@ export default function ContactPage() {
       </aside>
       <ContactForm />
     </div></Container></Section>
-    <Section aria-labelledby="faqs-title"><Container><div className={styles.faqLayout}><SectionHeading id="faqs-title" eyebrow="BEFORE WE BEGIN" title="A few useful answers." description="Have another question? Include it in your enquiry or send us an email." /><FaqList items={faqs} /></div></Container></Section>
+    <Section className={styles.faqSection} aria-labelledby="faqs-title"><Container><div className={styles.faqLayout}><SectionHeading id="faqs-title" eyebrow="BEFORE WE BEGIN" title="A few useful answers." description="Have another question? Include it in your enquiry or send us an email." /><FaqList items={faqs} /></div></Container></Section>
   </PageShell>;
 }
