@@ -2,7 +2,7 @@
 .page *, .page *::before, .page *::after { box-sizing: border-box; }
 .page a:focus-visible, .page button:focus-visible, .page input:focus-visible { outline: 2px solid var(--mbs-ink); outline-offset: 4px; }
 .page :global(.mbs-eyebrow) > span { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #10ba51; box-shadow: 0 0 0 4px #e5f6e9; }
-.hero { padding-block: clamp(76px,7vw,108px) clamp(40px,5vw,64px); text-align: center; }
+.hero { padding-block: var(--ms-page-top) clamp(40px,5vw,64px); text-align: center; }
 .heroInner { display: flex; align-items: center; flex-direction: column; }
 .hero h1 { max-width: 900px; margin-inline: auto; font-size: clamp(56px,6.3vw,86px); font-weight: 600; line-height: .98; letter-spacing: -.065em; text-wrap: balance; }
 .hero h1 > span { color: #0b0b0b; }
@@ -76,7 +76,6 @@
   .scopePanel { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
-  .hero { padding-top: 70px; }
   .hero h1 { font-size: clamp(43px,10vw,64px); }
   .packageGrid { grid-template-columns: 1fr; gap: 1rem; }
   .packageCard { padding: 1.5rem; }

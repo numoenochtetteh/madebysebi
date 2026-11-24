@@ -13,6 +13,7 @@
   --mbs-section-space: clamp(85px, 10vw, 135px);
   --mbs-heading-size: clamp(38px, 5.3vw, 66px);
   --mbs-display-size: clamp(50px, 6.3vw, 82px);
+  --ms-page-top: clamp(70px, 6vw, 82px);
 }
 html { scroll-behavior: smooth; }
 html, body { background: #fff !important; }
@@ -56,7 +57,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .ms-menu nav a[aria-current] { color: #777; }
 .ms-menu p { margin-top: auto; padding-top: 45px; color: #666; line-height: 1.7; }
 
-.ms-homehero { padding-top: clamp(70px, 6vw, 82px); text-align: center; }
+.ms-homehero { padding-top: var(--ms-page-top); text-align: center; }
 .ms-homehero-inner { max-width: 1280px; }
 .ms-pill { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 16px; border-radius: 999px; background: #f8f8f8; font-size: 14px; font-weight: 550; }
 .ms-dot { display: inline-block; width: 9px; height: 9px; flex: none; border-radius: 50%; background: #10ba51; box-shadow: 0 0 0 4px #e5f6e9; }
@@ -174,7 +175,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
   .ms-menu-trigger { display: grid; }
 }
 @media (max-width: 700px) {
-  .ms-homehero { padding-top: 60px; }
+  :root { --ms-page-top: 60px; }
   .ms-homehero h1 { font-size: clamp(40px, 7.3vw, 50px); }
   .ms-homehero h1 > span { display: inline; white-space: normal; }
   .ms-homehero-copy { max-width: 510px; }
@@ -194,7 +195,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
   .ms-about-panel { min-height: 280px; }
 }
 @media (max-width: 520px) {
-  .ms-homehero { padding-top: 50px; }
+  :root { --ms-page-top: 50px; }
   .ms-homehero h1 { margin-top: 23px; font-size: clamp(34px, 8vw, 42px); }
   .ms-homehero-copy { font-size: 15px; }
   .ms-pill { font-size: 12px; }
