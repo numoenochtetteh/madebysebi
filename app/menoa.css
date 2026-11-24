@@ -46,8 +46,9 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .ms-nav-cta, .ms-soft-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 11px 19px; background: #f7f7f7; border-radius: 999px; font-size: 14px; font-weight: 550; white-space: nowrap; transition: transform .25s ease, background .25s ease; }
 .ms-nav-cta:hover, .ms-soft-button:hover { background: #ececec; transform: translateY(-2px); }
 .ms-nav-cta:active, .ms-soft-button:active { transform: translateY(0) scale(.985); }
-.ms-menu-trigger { display: none; width: 44px; height: 44px; border-radius: 50%; place-items: center; background: #f7f7f7; }
-.ms-menu { position: fixed; inset: 0; margin: 0; width: 100%; max-width: none; height: 100dvh; max-height: 100dvh; background: #fff; border: 0; overflow: auto; }
+.ms-menu-trigger { display: none; width: 44px; height: 44px; border-radius: 50%; place-items: center; background: #f7f7f7; cursor: pointer; touch-action: manipulation; }
+.ms-menu-trigger:focus-visible, .ms-menu button:focus-visible, .ms-menu a:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
+.ms-menu { position: fixed; inset: 0; margin: 0; padding: 0; width: 100%; max-width: none; height: 100dvh; max-height: 100dvh; background: #fff; border: 0; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .ms-menu::backdrop { background: rgba(0,0,0,.22); }
 .ms-menu-inner { min-height: 100%; display: flex; flex-direction: column; padding: 22px var(--mbs-gutter) 42px; }
 .ms-menu-top { display: flex; align-items: center; justify-content: space-between; }
