@@ -19,6 +19,11 @@ const serviceIcons = {
   "mobile-applications": Smartphone,
   "maintenance-growth": Wrench,
 } as const;
+const serviceCardIcons = {
+  "online-presence": "/icons/service-globe.png",
+  "build-your-solution": "/icons/service-puzzle.png",
+  "grow-your-business": "/icons/service-trending-up.png",
+} as const;
 const serviceRows = [pricingCategories.slice(0, 4), pricingCategories.slice(4)];
 
 export function HomeServiceSections() {
@@ -55,7 +60,7 @@ export function HomeServiceSections() {
           <svg className="ms-service-arrow ms-service-arrow-top" viewBox="0 0 84 50" aria-hidden="true"><path d="M3 43C9 6 43 6 75 28M57 12l18 16-21 2" /></svg>
           {serviceGroups.map(group => <article key={group.id} id={group.id} className="ms-service-card">
             <Link href={`/services#${group.id}`} aria-label={`Explore ${group.shortName} services`}>
-              <span className="ms-index">{group.number}</span>
+              <Image className="ms-service-card-icon" src={serviceCardIcons[group.id]} alt="" width={24} height={24} />
               <h3>{group.shortName}</h3>
               <p>{group.description}</p>
             </Link>

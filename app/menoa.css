@@ -56,13 +56,13 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .ms-menu nav a[aria-current] { color: #777; }
 .ms-menu p { margin-top: auto; padding-top: 45px; color: #666; line-height: 1.7; }
 
-.ms-homehero { padding-top: clamp(92px, 7.5vw, 102px); text-align: center; }
+.ms-homehero { padding-top: clamp(70px, 6vw, 82px); text-align: center; }
 .ms-homehero-inner { max-width: 1280px; }
 .ms-pill { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 8px 16px; border-radius: 999px; background: #f8f8f8; font-size: 14px; font-weight: 550; }
 .ms-dot { display: inline-block; width: 9px; height: 9px; flex: none; border-radius: 50%; background: #10ba51; box-shadow: 0 0 0 4px #e5f6e9; }
-.ms-homehero h1 { max-width: 9.5em; margin: 25px auto 24px; font-size: clamp(64px, 5.87vw, 80px); font-weight: 600; line-height: 1; letter-spacing: -.04em; text-align: center; text-wrap: balance; }
+.ms-homehero h1 { max-width: 9.5em; margin: 25px auto 24px; font-size: clamp(60px, 5.35vw, 73px); font-weight: 600; line-height: 1; letter-spacing: -.04em; text-align: center; text-wrap: balance; }
 .ms-homehero h1 > span { display: block; white-space: nowrap; }
-.ms-homehero-copy { max-width: 600px; margin: 0 auto; color: #666; font-size: clamp(16px, 1.32vw, 22px); line-height: 1.5; letter-spacing: -.02em; }
+.ms-homehero-copy { max-width: 600px; margin: 0 auto; color: #666; font-size: clamp(16px, 1.18vw, 19px); line-height: 1.5; letter-spacing: -.02em; }
 .ms-hero-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
 .ms-book-call { display: inline-flex; justify-content: center; align-items: center; gap: 10px; min-height: 48px; padding: 11px 21px; border-radius: 999px; background: #050505; color: #fff; font-size: 14px; font-weight: 600; white-space: nowrap; transition: transform .25s ease, background .25s ease; }
 .ms-book-call:hover { transform: translateY(-2px); background: #242424; }
@@ -91,7 +91,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .ms-preview-strip::after { right: 0; background: linear-gradient(270deg,#fff,transparent); }
 .ms-preview-track { display: flex; gap: 20px; width: max-content; animation: ms-drift 52s linear infinite; }
 .ms-preview-strip:hover .ms-preview-track { animation-play-state: paused; }
-.ms-preview-card { position: relative; width: clamp(285px, 35vw, 465px); aspect-ratio: 1.39; flex: none; background: #f6f4f1; border-radius: 16px; overflow: hidden; }
+.ms-preview-card { position: relative; width: clamp(340px, 42vw, 560px); aspect-ratio: 1.39; flex: none; background: #f6f4f1; border-radius: 16px; overflow: hidden; }
 .ms-preview-card img { object-fit: cover; object-position: center top; }
 .ms-preview-card img[src*="lucenex-services"], .ms-project-mockup img[src*="lucenex-services"] { object-position: center -7px; }
 @keyframes ms-drift { to { transform: translateX(calc(-50% - 10px)); } }
@@ -145,7 +145,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .ms-service-card:hover, .ms-service-card:focus-within { transform: translateY(-5px) rotate(0); background: #f3f3f3; }
 .ms-service-card a { display: flex; flex-direction: column; min-height: inherit; height: 100%; padding: clamp(23px,2.6vw,32px); border-radius: inherit; }
 .ms-service-card a:focus-visible { outline: 2px solid #111; outline-offset: 4px; }
-.ms-service-card .ms-index { font-size: 20px; color: #555; }
+.ms-service-card-icon { width: 24px; height: 24px; flex: none; object-fit: contain; }
 .ms-service-card h3 { max-width: 260px; margin-top: 18px; font-size: clamp(27px,3vw,37px); font-weight: 550; line-height: 1.09; letter-spacing: -.055em; }
 .ms-service-card p { margin-top: auto; padding-top: 55px; color: #666; font-size: 15px; line-height: 1.55; }
 .ms-service-arrow { position: absolute; z-index: 2; width: 84px; height: 50px; fill: none; stroke: #111; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
@@ -165,7 +165,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .ms-legal section:last-child { border-radius: 16px; }
 
 @media (max-width: 1000px) {
-  .ms-homehero h1 { font-size: clamp(54px, 6.4vw, 64px); }
+  .ms-homehero h1 { font-size: clamp(50px, 5.9vw, 60px); }
   .ms-home-faq-layout { grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 30px; }
 }
 @media (max-width: 899px) {
@@ -174,13 +174,13 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
   .ms-menu-trigger { display: grid; }
 }
 @media (max-width: 700px) {
-  .ms-homehero { padding-top: 78px; }
-  .ms-homehero h1 { font-size: clamp(42px, 7.7vw, 54px); }
+  .ms-homehero { padding-top: 60px; }
+  .ms-homehero h1 { font-size: clamp(40px, 7.3vw, 50px); }
   .ms-homehero h1 > span { display: inline; white-space: normal; }
   .ms-homehero-copy { max-width: 510px; }
   .ms-client-strip { margin-top: 36px; }
   .ms-preview-strip { margin-top: 70px; }
-  .ms-preview-card { width: 290px; }
+  .ms-preview-card { width: min(330px, calc(100vw - 44px)); }
   .ms-center-heading { margin-bottom: 34px; }
   .ms-project-grid, .ms-about-preview-grid, .ms-home-faq-layout { grid-template-columns: 1fr; }
   .ms-project-grid { gap: 32px; }
@@ -194,9 +194,9 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
   .ms-about-panel { min-height: 280px; }
 }
 @media (max-width: 520px) {
-  .ms-homehero { padding-top: 64px; }
-  .ms-homehero h1 { margin-top: 23px; font-size: clamp(34px, 8.5vw, 46px); }
-  .ms-homehero-copy { font-size: 16px; }
+  .ms-homehero { padding-top: 50px; }
+  .ms-homehero h1 { margin-top: 23px; font-size: clamp(34px, 8vw, 42px); }
+  .ms-homehero-copy { font-size: 15px; }
   .ms-pill { font-size: 12px; }
   .ms-hero-actions { gap: 9px; }
   .ms-hero-actions > * { padding-inline: 15px; font-size: 13px; }

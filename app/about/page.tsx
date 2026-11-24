@@ -84,7 +84,7 @@ export default function AboutPage() {
               </a>)}
             </div>
             <div className={styles.teamCopy}>
-              <div className={styles.chips}><span>Accra, Ghana</span><span>Three-person team</span></div>
+              <div className={styles.chips}><span>Accra, Ghana</span><span>Design &amp; development</span></div>
               <h2 id="team-heading">We turn business ideas into websites, digital products and useful systems people trust and enjoy using.</h2>
               <p>Francis · Enoch · Bernard</p>
             </div>
@@ -129,7 +129,7 @@ export default function AboutPage() {
           </article>
 
           <div className={styles.imageCard}>
-            <Image src="/showcase/creative-workspace.jpg" alt="A creative workspace with a laptop and design tools" fill
+            <Image src="/showcase/work-laptop.jpg" alt="Laptop displaying a portfolio of creative work" fill
               sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1100px) 45vw, 400px" />
           </div>
         </div>

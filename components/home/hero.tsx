@@ -39,7 +39,7 @@ export function HomeHero() {
       <div className="ms-preview-track">
         {[...previews, ...previews].map((preview, index) =>
           <div className="ms-preview-card" key={preview.name + index}>
-            <Image src={preview.src} alt="" fill sizes="420px" priority={index < 2} />
+            <Image src={preview.src} alt="" fill sizes="(max-width: 700px) 330px, (max-width: 1200px) 42vw, 560px" priority={index < 2} />
           </div>)}
       </div>
     </div>
