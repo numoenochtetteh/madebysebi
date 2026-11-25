@@ -21,7 +21,7 @@ export function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export function BookCallLink({ className }: { className?: string }) {
-  return <Link className={cn("ms-book-call", className)} href="/contact?service=Other&intent=call#contact-form"><MeetIcon />Book a free call</Link>;
+  return <Link className={cn("ms-book-call", className)} href="/consultation"><MeetIcon />Book a free call</Link>;
 }
 
 export function ChatLink({ className, label = "Let's chat" }: { className?: string; label?: string }) {

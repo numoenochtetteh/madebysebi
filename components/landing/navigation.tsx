@@ -58,7 +58,7 @@ export function Navigation() {
         {links.map(link => <Link href={link.href} key={link.href}
           aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined}>{link.label}</Link>)}
       </div>
-      <a className="ms-nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfo-xt2St5St_F5Ym_4-hr3qRwlxY7UtYXejBLgWzID8DNZeg/viewform" target="_blank" rel="noopener noreferrer">Book a consultation <ArrowUpRight size={16} aria-hidden="true" /></a>
+      <Link className="ms-nav-cta" href="/consultation" aria-current={pathname === "/consultation" ? "page" : undefined}>Book a consultation <ArrowUpRight size={16} aria-hidden="true" /></Link>
       <button className="ms-menu-trigger" type="button" aria-label="Open navigation menu"
         aria-expanded={open} aria-controls="mobile-navigation" onClick={openMenu}><Menu size={21} /></button>
     </nav>
@@ -74,6 +74,7 @@ export function Navigation() {
           {links.map(link => <Link key={link.href} href={link.href} onClick={closeMenu}
             aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined}>{link.label}<ArrowUpRight size={22} /></Link>)}
         </nav>
+        <Link className="ms-menu-cta" href="/consultation" onClick={closeMenu}>Book a consultation <ArrowUpRight size={17} aria-hidden="true" /></Link>
         <p>MadeBySebi · Accra, Ghana<br />Working worldwide</p>
       </div>
     </dialog></>;

@@ -80,6 +80,48 @@ test("missing mail configuration returns the direct-contact fallback", async () 
     if (key) process.env.RESEND_API_KEY = key;
   }
 });
+
+test("review site forwards validated enquiries to the existing mail endpoint", async (context) => {
+  const oldKey = process.env.RESEND_API_KEY;
+  const oldRelay = process.env.CONTACT_RELAY_ENABLED;
+  delete process.env.RESEND_API_KEY;
+  process.env.CONTACT_RELAY_ENABLED = "true";
+  let calls = 0;
+  context.mock.method(globalThis, "fetch", async (url: string, init: RequestInit) => {
+    calls++;
+    assert.equal(url, "https://madebysebi.com/api/contact");
+    assert.equal(init.method, "POST");
+    assert.equal(JSON.parse(String(init.body)).message, valid.message);
+    return Response.json({ ok: true });
+  });
+  try {
+    assert.deepEqual(await (await POST(request(valid))).json(), { ok: true });
+    assert.equal(calls, 1);
+  } finally {
+    if (oldKey) process.env.RESEND_API_KEY = oldKey;
+    else delete process.env.RESEND_API_KEY;
+    if (oldRelay) process.env.CONTACT_RELAY_ENABLED = oldRelay;
+    else delete process.env.CONTACT_RELAY_ENABLED;
+  }
+});
+
+test("review site reports mail delivery failures rather than claiming success", async (context) => {
+  const oldKey = process.env.RESEND_API_KEY;
+  const oldRelay = process.env.CONTACT_RELAY_ENABLED;
+  delete process.env.RESEND_API_KEY;
+  process.env.CONTACT_RELAY_ENABLED = "true";
+  context.mock.method(globalThis, "fetch", async () => Response.json({ error: "Mail service unavailable" }, { status: 502 }));
+  try {
+    const response = await POST(request(valid));
+    assert.equal(response.status, 502);
+    assert.deepEqual(await response.json(), { error: "Mail service unavailable" });
+  } finally {
+    if (oldKey) process.env.RESEND_API_KEY = oldKey;
+    else delete process.env.RESEND_API_KEY;
+    if (oldRelay) process.env.CONTACT_RELAY_ENABLED = oldRelay;
+    else delete process.env.CONTACT_RELAY_ENABLED;
+  }
+});
 test("provider request preserves enquiry fields and escapes untrusted content", async (context) => {
   const oldKey = process.env.RESEND_API_KEY;
   process.env.RESEND_API_KEY = "test-only-placeholder";

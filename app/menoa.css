@@ -56,6 +56,8 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 .ms-menu nav { display: grid; margin-top: 60px; }
 .ms-menu nav a { display: flex; align-items: center; justify-content: space-between; padding: 17px 0; border-bottom: 1px solid #e8e8e8; font-size: clamp(30px, 7vw, 47px); font-weight: 550; letter-spacing: -.055em; }
 .ms-menu nav a[aria-current] { color: #777; }
+.ms-menu-cta { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: fit-content; min-height: 50px; margin-top: 30px; padding: 12px 20px; border-radius: 999px; background: #111; color: #fff; font-size: 15px; font-weight: 550; }
+.ms-menu-cta:hover { background: #303030; }
 .ms-menu p { margin-top: auto; padding-top: 45px; color: #666; line-height: 1.7; }
 
 .ms-homehero { padding-top: var(--ms-page-top); text-align: center; }

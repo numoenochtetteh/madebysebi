@@ -86,6 +86,33 @@ export async function POST(request: Request) {
 
     const apiKey = process.env.RESEND_API_KEY;
 
+    // The separate review site has no mail credential. It forwards validated
+    // enquiries to the existing MadeBySebi endpoint, which owns email delivery.
+    if (!apiKey && process.env.CONTACT_RELAY_ENABLED === "true") {
+      try {
+        const relay = await fetch("https://madebysebi.com/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: rawBody,
+          signal: AbortSignal.timeout(10_000),
+        });
+        const result: unknown = await relay.json().catch(() => null);
+        if (relay.ok && result && typeof result === "object" && "ok" in result && result.ok === true) {
+          return NextResponse.json({ ok: true });
+        }
+        const error = result && typeof result === "object" && "error" in result && typeof result.error === "string"
+          ? result.error
+          : "We could not send your enquiry right now. Please email hello@madebysebi.com directly.";
+        return NextResponse.json({ error }, { status: relay.ok ? 502 : relay.status });
+      } catch (error) {
+        console.error("Contact relay error:", error);
+        return NextResponse.json(
+          { error: "We could not send your enquiry right now. Please email hello@madebysebi.com directly." },
+          { status: 502 },
+        );
+      }
+    }
+
     if (!apiKey) {
       return NextResponse.json(
         {
