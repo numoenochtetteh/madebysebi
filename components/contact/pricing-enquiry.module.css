@@ -1,0 +1,5 @@
+.summary { min-width: 0; padding: 1rem 1.25rem; border: 1px solid #a1c15f; border-radius: .85rem; background: var(--mbs-lime); color: var(--mbs-ink); overflow-wrap: anywhere; }
+.summary > span { display: block; margin-bottom: .5rem; font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.summary strong { display: block; font-size: 1rem; line-height: 1.5; }
+.summary p { margin-top: .45rem; font-size: .8rem; line-height: 1.7; }
+.summary p:last-child { margin-top: .75rem; color: #38482a; }

@@ -2,17 +2,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Work & Case Studies",
-  description:
-    "Explore MadeBySebi website projects for beauty, logistics, manufacturing, e-commerce, architecture and data businesses.",
+  description: "Explore MadeBySebi’s eight portfolio case studies: websites, booking platforms, storefront interfaces and business-focused digital experiences.",
   alternates: { canonical: "/work" },
   openGraph: {
-    title: "Website Work & Case Studies",
-    description: "Business websites designed and developed around real company needs.",
+    title: "Work & Case Studies | MadeBySebi",
+    description: "Explore MadeBySebi’s eight portfolio case studies: websites, booking platforms, storefront interfaces and business-focused digital experiences.",
     url: "/work",
-    images: [{ url: "/brand/madebysebi-og.png", width: 1200, height: 630, alt: "MadeBySebi web design studio" }],
+    images: [{ url: "/brand/madebysebi-og.png", width: 1200, height: 630, alt: "MadeBySebi — websites, mobile apps and business software" }],
   },
 };
-
-export default function WorkLayout({ children }: { children: React.ReactNode }) {
-  return children;
-}
+export default function WorkLayout({ children }: { children: React.ReactNode }) { return children; }

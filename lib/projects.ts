@@ -11,6 +11,7 @@ export type CaseStudyProject = {
   headline: string;
   intro: string;
   image: string;
+  detailHero?: string;
   video?: string;
   accent: string;
   liveUrl?: string;
@@ -54,7 +55,7 @@ export const caseStudyProjects: CaseStudyProject[] = [
     headline: "A beauty business experience built around booking, not just browsing.",
     intro:
       "Forever Peng needed more than a polished website. The digital experience had to help clients understand services, choose an available slot, complete a consultation and secure the appointment with a deposit — while giving the owner a practical way to manage availability and incoming bookings.",
-    image: "/showcase/3.png",
+    image: "/project-mockups/forever-peng-hair.webp",
     video: "/expertise/111.mp4",
     accent: "#ff5b2c",
     liveUrl: "https://foreverpenghair.com",
@@ -132,7 +133,7 @@ export const caseStudyProjects: CaseStudyProject[] = [
     headline: "A clearer digital presence for a Ghanaian welding electrode manufacturer.",
     intro:
       "Power Electrode Ltd needed a website that could do more than look professional. It had to explain what the company manufactures, why its electrodes are dependable, and how welders, fabricators, contractors and industrial buyers can quickly move from first impression to enquiry.",
-    image: "/case-studies/power-electrode/03-values.png",
+    image: "/case-studies/power-electrode/00-cover.webp",
     video: "/case-studies/power-electrode/hero-video.mp4",
     accent: "#ff6a00",
     liveUrl: "https://www.powerelectrodeltd.com/",
@@ -388,7 +389,7 @@ export const caseStudyProjects: CaseStudyProject[] = [
     headline: "A cleaner digital presence for a company focused on data, analytics and AI solutions.",
     intro:
       "Lucenex needed a business website that explains its value simply: helping companies use data, analytics and AI to make smarter decisions. The experience had to present the brand clearly, organise its service offer, and create a more professional path for potential clients to understand the company and reach out.",
-    image: "/case-studies/lucenex/01-home.png",
+    image: "/project-mockups/lucenex-services.png",
     video: "/expertise/03.mp4",
     accent: "#ffd66b",
     services: [
@@ -553,6 +554,67 @@ export const caseStudyProjects: CaseStudyProject[] = [
       "/case-studies/tourbuddy/05-contact.webp",
     ],
     wideGalleryFirst: false,
+  },
+  {
+    slug: "femmora",
+    number: "09",
+    title: "FEMMORA",
+    shortTitle: "FEMMORA",
+    industry: "Fashion",
+    type: "Storefront concept",
+    year: "",
+    location: "",
+    summary: "A fashion storefront preview with collection, category and product pages.",
+    headline: "A clear storefront for browsing the FEMMORA collection.",
+    intro: "FEMMORA brings its collection into a clean storefront preview with categories, upcoming drops and individual product pages.",
+    image: "/project-mockups/femmora.webp",
+    detailHero: "/case-studies/femmora/01-categories.webp",
+    accent: "#eee8e3",
+    liveUrl: "https://femmora-gh.vercel.app/",
+    services: ["Storefront concept", "Category browsing", "Product pages"],
+    challengeTitle: "Make the collection easy to browse.",
+    challenge: ["Clothing categories and individual pieces needed to be easy to find without crowding the page."],
+    solutionTitle: "Keep the clothes in focus.",
+    solution: ["The preview uses a category grid, upcoming collection pages and focused product details."],
+    proof: [{ value: "03", label: "storefront views shown" }],
+    outcomeTitle: "A browsable collection preview.",
+    outcome: "The preview shows the path from category browsing to a product page.",
+    gallery: [
+      "/case-studies/femmora/01-categories.webp",
+      "/case-studies/femmora/02-coming-soon.webp",
+      "/case-studies/femmora/03-product.webp",
+    ],
+  },
+  {
+    slug: "gas-safety-plumbing",
+    number: "10",
+    title: "Gas Safety & Plumbing Engineering Ltd",
+    shortTitle: "Gas Safety & Plumbing",
+    industry: "Engineering services",
+    type: "Service website",
+    year: "",
+    location: "United Kingdom",
+    summary: "A service website for gas, heating, plumbing and emergency work.",
+    headline: "A clear route to the right engineering service.",
+    intro: "The site brings the company's gas, heating, plumbing and emergency services into clear sections with direct contact options.",
+    image: "/project-mockups/gas-safety-plumbing.webp",
+    detailHero: "/case-studies/gas-safety-plumbing/01-home.webp",
+    accent: "#e4e9f1",
+    liveUrl: "https://gassafetyandplumbingengineeringltd.com/",
+    services: ["Website design & development", "Service pages", "Project gallery"],
+    challengeTitle: "Help visitors find the right engineering service quickly.",
+    challenge: ["The site needed to cover several service types while keeping emergency help and contact options easy to find."],
+    solutionTitle: "A direct introduction with scannable service choices.",
+    solution: ["The homepage leads into service pages and a project gallery, with a call action kept visible."],
+    proof: [{ value: "Live", label: "company website" }],
+    outcomeTitle: "Services and recent work in one place.",
+    outcome: "Visitors can explore a service, view recent jobs and contact the team from the site.",
+    gallery: [
+      "/case-studies/gas-safety-plumbing/01-home.webp",
+      "/case-studies/gas-safety-plumbing/02-services.webp",
+      "/case-studies/gas-safety-plumbing/03-portfolio.webp",
+      "/case-studies/gas-safety-plumbing/04-boilers.webp",
+    ],
   },
 ];
 

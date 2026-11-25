@@ -1,231 +1,81 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
-const navLinks = [
-  { name: "Services", href: "/services" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Work", href: "/work" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+const links = [
+  { label: "Work", href: "/work" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-    };
-
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMobileMenuOpen]);
-
-  const closeMobileMenu = () => {
-    // Release the scroll lock before the next route begins rendering.
-    // On a slow phone the effect cleanup may otherwise wait behind navigation.
-    document.body.style.overflow = "";
-    setIsMobileMenuOpen(false);
-    window.scrollTo(0, 0);
+  const closeMenu = () => {
+    dialogRef.current?.close();
+    setOpen(false);
   };
 
-  return (
-    <header
-      className={`fixed inset-x-0 z-50 transition-all duration-500 ${
-        isScrolled ? "top-4 px-4" : "top-0 px-0"
-      }`}
-    >
-      <nav
-        className={`relative z-50 mx-auto transition-all duration-500 ${
-          isScrolled || isMobileMenuOpen
-            ? "max-w-[1300px] rounded-[22px] border border-black/10 bg-white/85 shadow-[0_18px_55px_rgba(0,0,0,0.10)] backdrop-blur-xl"
-            : "max-w-[1500px] border-transparent bg-transparent"
-        }`}
-      >
-        <div
-          className={`flex items-center justify-between px-6 transition-all duration-500 lg:px-10 ${
-            isScrolled ? "h-16" : "h-20"
-          }`}
-        >
-          {/* Logo */}
-          <Link
-            href="/"
-            onClick={closeMobileMenu}
-            className="group flex items-center gap-2"
-            aria-label="MadeBySebi home"
-          >
-            <Image
-              src="/brand/madebysebi-wordmark.png"
-              alt="MadeBySebi"
-              width={160}
-              height={30}
-              loading="eager"
-              className={`h-auto w-auto transition-all duration-500 ${
-                isScrolled ? "max-w-[128px]" : "max-w-[148px]"
-              }`}
-            />
+  const openMenu = () => {
+    const dialog = dialogRef.current;
+    if (!dialog || dialog.open) return;
+    dialog.showModal();
+    setOpen(true);
+  };
 
-          </Link>
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const query = window.matchMedia("(min-width: 900px)");
+    const onDesktop = () => {
+      if (query.matches) {
+        dialogRef.current?.close();
+        setOpen(false);
+      }
+    };
+    query.addEventListener("change", onDesktop);
+    return () => {
+      query.removeEventListener("change", onDesktop);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
 
-          {/* Desktop navigation */}
-          <div className="hidden items-center gap-9 md:flex lg:gap-12">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="group relative text-sm font-medium text-black/65 transition-colors duration-300 hover:text-black"
-              >
-                {link.name}
-
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-black transition-all duration-300 group-hover:w-full" />
-              </Link>
-            ))}
-          </div>
-
-          {/* Desktop CTA */}
-          <div className="hidden items-center gap-4 md:flex">
-            <Link
-              href="/work"
-              className={`text-black/60 transition-all duration-300 hover:text-black ${
-                isScrolled ? "text-xs" : "text-sm"
-              }`}
-            >
-              View our work
-            </Link>
-
-            <Link
-              href="/contact"
-              className={`group inline-flex items-center justify-center gap-2 rounded-full bg-black font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-black/80 ${
-                isScrolled ? "h-10 px-5 text-xs" : "h-12 px-6 text-sm"
-              }`}
-            >
-              Start a project
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-          </div>
-
-          {/* Mobile button */}
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen((current) => !current)}
-            className="relative z-[60] flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-white text-black transition-colors hover:bg-black hover:text-white md:hidden"
-            aria-label={
-              isMobileMenuOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
-            }
-            aria-expanded={isMobileMenuOpen}
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </button>
-        </div>
-      </nav>
-
-      {/* =====================================================
-          MOBILE MENU
-      ====================================================== */}
-
-      <div
-        className={`fixed inset-0 z-40 bg-[#f7f7f3] transition-all duration-500 md:hidden ${
-          isMobileMenuOpen
-            ? "pointer-events-auto visible opacity-100"
-            : "pointer-events-none invisible opacity-0"
-        }`}
-      >
-        <div className="flex min-h-[100dvh] flex-col px-6 pb-7 pt-28 sm:px-8">
-          {/* Mobile links */}
-          <div className="flex flex-1 flex-col justify-center gap-3">
-            {navLinks.map((link, index) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={closeMobileMenu}
-                className={`border-b border-black/10 py-4 font-display text-[clamp(2.8rem,12vw,5rem)] font-medium leading-none tracking-[-0.05em] text-black transition-all duration-500 hover:pl-3 ${
-                  isMobileMenuOpen
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-6 opacity-0"
-                }`}
-                style={{
-                  transitionDelay: isMobileMenuOpen
-                    ? `${index * 70 + 100}ms`
-                    : "0ms",
-                }}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* =====================================================
-              MOBILE BOTTOM AREA
-          ====================================================== */}
-
-          <div
-            className={`border-t border-black/10 pt-6 transition-all duration-500 ${
-              isMobileMenuOpen
-                ? "translate-y-0 opacity-100"
-                : "translate-y-5 opacity-0"
-            }`}
-            style={{
-              transitionDelay: isMobileMenuOpen ? "380ms" : "0ms",
-            }}
-          >
-            <p className="mb-6 max-w-[320px] text-[13px] leading-[1.65] text-black/55">
-              Have a project in mind? Let&apos;s create a website that supports
-              your business growth.
-            </p>
-
-            {/* Buttons */}
-            <div className="flex w-full flex-col gap-3">
-              <Link
-                href="/work"
-                onClick={closeMobileMenu}
-                className="inline-flex h-[52px] w-full items-center justify-center rounded-full border border-black/15 bg-white px-6 text-[13px] font-medium text-black shadow-[0_4px_14px_rgba(0,0,0,0.025)] transition-all duration-300 hover:border-black/30 hover:bg-black/[0.02]"
-              >
-                View our work
-              </Link>
-
-              <Link
-                href="/contact"
-                onClick={closeMobileMenu}
-                className="group inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-full bg-black px-6 text-[13px] font-medium text-white shadow-[0_8px_20px_rgba(0,0,0,0.08)] transition-all duration-300 hover:bg-black/80"
-              >
-                Start a project
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </div>
-
-            {/* Location */}
-            <div className="mt-7 flex items-center justify-end border-t border-black/[0.06] pt-5">
-              <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-black/40">
-                Accra, Ghana · Worldwide
-              </span>
-            </div>
-          </div>
-        </div>
+  return <><header className="ms-header">
+    <nav className="ms-nav mbs-container" aria-label="Main navigation">
+      <Link href="/" className="ms-brand" aria-label="MadeBySebi home">
+        <Image src="/brand/madebysebi-wordmark.png" alt="MadeBySebi" width={155} height={30} priority />
+      </Link>
+      <div className="ms-navlinks">
+        {links.map(link => <Link href={link.href} key={link.href}
+          aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined}>{link.label}</Link>)}
       </div>
-    </header>
-  );
+      <Link className="ms-nav-cta" href="/consultation" aria-current={pathname === "/consultation" ? "page" : undefined}>Book a consultation <ArrowUpRight size={16} aria-hidden="true" /></Link>
+      <button className="ms-menu-trigger" type="button" aria-label="Open navigation menu"
+        aria-expanded={open} aria-controls="mobile-navigation" onClick={openMenu}><Menu size={21} /></button>
+    </nav>
+  </header>
+    <dialog ref={dialogRef} id="mobile-navigation" className="ms-menu" aria-label="Navigation menu"
+      onClose={() => setOpen(false)} onClick={event => { if (event.target === dialogRef.current) closeMenu(); }}>
+      <div className="ms-menu-inner">
+        <div className="ms-menu-top">
+          <Image src="/brand/madebysebi-wordmark.png" alt="MadeBySebi" width={145} height={27} />
+          <button type="button" aria-label="Close navigation menu" onClick={closeMenu}><X size={22} /></button>
+        </div>
+        <nav aria-label="Mobile navigation">
+          {links.map(link => <Link key={link.href} href={link.href} onClick={closeMenu}
+            aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined}>{link.label}<ArrowUpRight size={22} /></Link>)}
+        </nav>
+        <Link className="ms-menu-cta" href="/consultation" onClick={closeMenu}>Book a consultation <ArrowUpRight size={17} aria-hidden="true" /></Link>
+        <p>MadeBySebi · Accra, Ghana<br />Working worldwide</p>
+      </div>
+    </dialog></>;
 }
