@@ -58,7 +58,7 @@ export function Navigation() {
         {links.map(link => <Link href={link.href} key={link.href}
           aria-current={pathname === link.href || pathname.startsWith(link.href + "/") ? "page" : undefined}>{link.label}</Link>)}
       </div>
-      <Link className="ms-nav-cta" href="/contact">Book a consultation <ArrowUpRight size={16} aria-hidden="true" /></Link>
+      <a className="ms-nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfo-xt2St5St_F5Ym_4-hr3qRwlxY7UtYXejBLgWzID8DNZeg/viewform" target="_blank" rel="noopener noreferrer">Book a consultation <ArrowUpRight size={16} aria-hidden="true" /></a>
       <button className="ms-menu-trigger" type="button" aria-label="Open navigation menu"
         aria-expanded={open} aria-controls="mobile-navigation" onClick={openMenu}><Menu size={21} /></button>
     </nav>
