@@ -1,11 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { whatsappUrl } from "@/lib/services";
 
 export function WhatsAppButton() {
+  const pathname = usePathname();
   const contactRef = useRef<HTMLElement>(null);
   useEffect(() => {
+    if (pathname === "/consultation") return;
     const footer = document.getElementById("site-footer");
     if (!footer) return;
     const observer = new IntersectionObserver(([entry]) => {
@@ -13,7 +16,8 @@ export function WhatsAppButton() {
     });
     observer.observe(footer);
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
+  if (pathname === "/consultation") return null;
   return (
     <aside ref={contactRef} aria-label="Quick contact">
     <a
